@@ -1,0 +1,37 @@
+@import '../../common-style/variable.scss';
+
+.Theme_input_light {
+    font-size: $font-size-16px;
+    line-height: $line-height-24px;
+    font-family: $font-family-Medium;
+    padding: 14px 24px;
+    background-color: $White-25;
+    color: $White;
+    backdrop-filter: blur(12.5px);
+    border-radius: 8px;
+    width: 100%;
+    border: none;
+    outline: none;
+
+    &::placeholder {
+        color: $White;
+    }
+}
+
+.Theme_input_white {
+    font-size: $font-size-16px;
+    line-height: $line-height-24px;
+    font-family: $font-family-Medium;
+    padding: 14px 24px;
+    background-color: $White;
+    color: $Black;
+    border-radius: 8px;
+    width: 100%;
+    border: none;
+    outline: none;
+    box-shadow: $Box-Shadow-Custom;
+
+    &::placeholder {
+        color: $Black-65;
+    }
+}

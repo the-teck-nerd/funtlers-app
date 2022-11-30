@@ -1,0 +1,32 @@
+@import '../../common-style/variable.scss';
+
+.faq_page {
+    .faq_main {
+        padding: 112px 0 128px 0;
+    }
+
+    .content_wrapper {
+        margin-bottom: 48px;
+
+        .contact_link {
+            display: inline;
+            color: $Primary;
+            margin-left: 4px;
+            transition: .3s;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .row_custom {
+        justify-content: center;
+
+        .accordion-item {
+            &:not(:last-child) {
+                margin-bottom: 20px;
+            }
+        }
+    }
+}

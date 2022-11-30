@@ -1,0 +1,128 @@
+@import '../../common-style/variable.scss';
+
+.Contact_main {
+    position: relative;
+    padding-bottom: 128px;
+
+    .marquee_main_top {
+        display: none;
+        top: 0;
+        left: 0;
+        bottom: auto;
+    }
+
+    .marquee_main {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 85px;
+    }
+
+    .marquee_ul {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 50px;
+        left: -2000px;
+    }
+
+    .row_custom {
+        align-items: center;
+
+        .col_content_inr {
+            padding-right: 48px;
+
+            .heading {
+                color: $Black;
+            }
+
+            .desc {
+                color: $Black-65;
+                margin: 16px 0 30px 0;
+            }
+
+            .icon_ul {
+                width: 70%;
+            }
+
+            .icon_li {
+                &:not(:last-child) {
+                    margin-bottom: 16px;
+                }
+            }
+
+            .icon_text_otr {
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                transition: .3s;
+
+                &:hover {
+                    .Icon_otr {
+                        background-color: $Primary-Dark;
+                    }
+
+                    .Icon {
+                        color: $Primary;
+                    }
+
+                    .text {
+                        color: $Primary;
+                    }
+                }
+            }
+
+            .Icon_otr {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 52px;
+                height: 52px;
+                border-radius: 8px;
+                background-color: $Primary;
+                transition: .3s;
+            }
+
+            .Icon {
+                font-size: 24px;
+                color: $White;
+                transition: .3s;
+            }
+
+            .text {
+                flex: 1;
+                color: $Black;
+                transition: .3s;
+            }
+        }
+
+        .col_form_inr {
+            margin: 0;
+            padding: 30px;
+            background-color: $Primary-Light2;
+            border-radius: 16px;
+
+            .input_otr {
+                &:not(:last-child) {
+                    margin-bottom: 24px;
+                }
+            }
+
+            .Text_area {
+                height: 110px;
+                resize: none;
+            }
+
+            .action_otr {
+                .send_btn {
+                    width: 100%;
+
+                    &:hover {
+                        background-color: $White;
+                    }
+                }
+            }
+        }
+    }
+}

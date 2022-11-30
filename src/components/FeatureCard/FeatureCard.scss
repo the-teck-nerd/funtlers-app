@@ -1,0 +1,108 @@
+@import '../../common-style/variable.scss';
+
+.col_card_inr {
+    position: relative;
+    background-color: $White;
+    box-shadow: $Box-Shadow-Custom;
+    border-radius: 16px;
+    padding: 28px 28px 20px 28px;
+    overflow: hidden;
+    transition: .4s;
+
+    &:hover {
+        background-color: $Primary-Light2;
+        box-shadow: none;
+
+        .Icon_otr {
+            background-color: $White;
+            box-shadow: $Box-Shadow-Custom;
+
+            i {
+                &:nth-child(1) {
+                    left: 50%;
+                }
+
+                &:nth-child(2) {
+                    left: 150%;
+                }
+            }
+        }
+
+        .card_img1 {
+            opacity: 0;
+            visibility: hidden;
+            top: -150px;
+            right: -220px;
+        }
+
+        .card_img2 {
+            opacity: 1;
+            visibility: visible;
+            top: 0;
+            right: 0;
+        }
+    }
+
+    .Icon_otr {
+        position: relative;
+        width: 72px;
+        height: 72px;
+        border-radius: 8px;
+        background-color: $Primary;
+        box-shadow: none;
+        overflow: hidden;
+        transition: .4s;
+
+        i {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 40px;
+            color: $White;
+            transition: .4s;
+
+            &:nth-child(1) {
+                color: $Primary;
+                left: -50px;
+            }
+        }
+    }
+
+    .card_tag {
+        color: $Primary;
+        margin: 20px 0 8px 0;
+    }
+
+    .card_heading {
+        color: $Black;
+        margin-bottom: 8px;
+    }
+
+    .card_desc {
+        color: $Black-65;
+    }
+
+    .card_img {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 180px;
+        height: 110px;
+        object-fit: contain;
+        object-position: top right;
+        transition: .6s;
+    }
+
+    .card_img1 {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .card_img2 {
+        opacity: 0;
+        visibility: hidden;
+        top: -150px;
+        right: -220px;
+    }
+}

@@ -1,0 +1,68 @@
+@import '../../common-style/variable.scss';
+
+.hero_header {
+    position: relative;
+    background-image: url(../../img/hero-background.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 110px;
+
+    .Hero_main {
+        position: relative;
+
+        .col_content_inr {
+            padding: 136px 0 200px 0;
+        }
+
+        .Heading {
+            color: $White;
+            text-transform: uppercase;
+        }
+
+        .heading_inr {
+            display: inline-block;
+            position: relative;
+            z-index: 2;
+        }
+
+        .circle_text {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 330px;
+            height: 72px;
+            object-fit: contain;
+            z-index: -1;
+        }
+
+        .desc {
+            color: $White;
+            margin: 20px 0 40px 0;
+        }
+
+        .action_otr {
+            display: flex;
+        }
+
+        .hero_img_otr {
+            position: absolute;
+            right: 0;
+            top: 45%;
+            transform: translateY(-50%);
+            width: 50%;
+            height: calc(100% - 150px);
+        }
+
+        .hero_img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            animation-name: UpDown;
+            animation-duration: 6s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+    }
+}

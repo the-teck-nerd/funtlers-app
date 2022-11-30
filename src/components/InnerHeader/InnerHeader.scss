@@ -1,0 +1,52 @@
+@import '../../common-style/variable.scss';
+
+.inner_header_main {
+    background-image: url(../../img/inner-header-bg.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 110px;
+
+    .header_wrapper {
+        padding: 72px 0 112px 0;
+        text-align: center;
+    }
+
+    .header_heading {
+        color: $White;
+        margin-bottom: 16px;
+    }
+
+    .header_desc_link {
+        color: $White;
+
+        span {
+            padding-right: 10px;
+        }
+    }
+
+    .linkk_home {
+        position: relative;
+        display: inline-flex;
+        overflow: hidden;
+        color: $White;
+        padding-left: 10px;
+        transition: .3s;
+
+        &:hover {
+            &::after {
+                left: 10px;
+            }
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 2px;
+            left: -100%;
+            bottom: 0;
+            background-color: $White;
+            transition: .3s;
+        }
+    }
+}

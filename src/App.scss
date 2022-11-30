@@ -1,0 +1,111 @@
+@import './common-style/variable.scss';
+
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: $font-family-Medium;
+}
+
+ul,
+li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    display: block;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0px;
+    padding: 0px;
+}
+
+.container-fluid {
+    padding: 0 45px;
+}
+
+
+.heading-h1 {
+    font-size: $font-size-60px;
+    line-height: $line-height-72px;
+    font-family: $font-family-Bold;
+}
+
+.heading-h2 {
+    font-size: $font-size-48px;
+    line-height: $line-height-64px;
+    font-family: $font-family-Bold;
+}
+
+.heading-h3 {
+    font-size: $font-size-24px;
+    line-height: $line-height-36px;
+    font-family: $font-family-Bold;
+}
+
+.heading-lb {
+    font-size: $font-size-20px;
+    line-height: $line-height-32px;
+    font-family: $font-family-SemiBold;
+}
+
+.heading-l {
+    font-size: $font-size-20px;
+    line-height: $line-height-32px;
+    font-family: $font-family-Regular;
+}
+
+.heading-mb {
+    font-size: $font-size-18px;
+    line-height: $line-height-30px;
+    font-family: $font-family-SemiBold;
+}
+
+.heading-m {
+    font-size: $font-size-18px;
+    line-height: $line-height-30px;
+    font-family: $font-family-Regular;
+}
+
+.heading-sb {
+    font-size: $font-size-16px;
+    line-height: $line-height-28px;
+    font-family: $font-family-Bold;
+}
+
+.heading-sb-semibold {
+    font-size: $font-size-16px;
+    line-height: $line-height-28px;
+    font-family: $font-family-SemiBold;
+}
+
+.heading-s {
+    font-size: $font-size-16px;
+    line-height: $line-height-28px;
+    font-family: $font-family-Regular;
+}

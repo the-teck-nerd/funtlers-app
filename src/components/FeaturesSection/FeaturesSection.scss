@@ -1,0 +1,14 @@
+@import '../../common-style/variable.scss';
+
+
+.Features_main {
+    padding-bottom: 128px;
+
+    .content_wrapper {
+        margin-bottom: 72px;
+    }
+
+    .row_custom {
+        gap: 24px 0;
+    }
+}

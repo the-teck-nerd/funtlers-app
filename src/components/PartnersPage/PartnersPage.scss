@@ -1,0 +1,60 @@
+@import '../../common-style/variable.scss';
+
+.partner_page {
+    .partner_main {
+        padding: 112px 0 128px 0;
+
+        .content_wrapper {
+            margin-bottom: 72px;
+        }
+
+        .swiper_main {
+            background-color: $Primary-Light2;
+            padding: 56px 72px 48px 72px;
+            border-radius: 16px;
+
+            .logo_swiper {
+                padding-bottom: 58px;
+            }
+
+            .swiper-pagination {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                bottom: 0;
+                gap: 12px;
+            }
+
+            .swiper-pagination-bullet {
+                width: 10px;
+                height: 10px;
+                border-radius: 100%;
+                background-color: $Black-25;
+                margin: 0;
+                opacity: 1;
+            }
+
+            .swiper-pagination-bullet-active {
+                background-color: $Primary;
+                opacity: 1;
+            }
+
+            .swiper-wrapper {
+                height: auto;
+            }
+
+            .logo_otr {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .logo_img {
+                    height: 52px;
+                    width: auto;
+                    object-fit: contain;
+                    object-position: center;
+                }
+            }
+        }
+    }
+}
