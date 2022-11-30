@@ -9,6 +9,7 @@ import ContactPage from './components/ContactPage/ContactPage';
 import FaqPage from './components/FaqPage/FaqPage';
 import AboutPage from './components/AboutPage/AboutPage';
 import PartnersPage from './components/PartnersPage/PartnersPage';
+import Activity from './components/Activity/Activity';
 
 function App() {
   return (
@@ -44,6 +45,11 @@ function App() {
           path="/partner"
           exact={true}
           element={<PartnersPage />}
+        />
+         <Route
+          path="/activity"
+          exact={true}
+          element={<Activity />}
         />
       </Routes>
       <Footer />
