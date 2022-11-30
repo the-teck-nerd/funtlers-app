@@ -21,6 +21,12 @@ img
   }
   
   /* Add some padding inside the card container */
-  .container {
-    padding: 2px 16px;
+  .activitiesContainer {
+    padding: 30px 60px;
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 20px;
+    background-color: wheat;
+    
   }

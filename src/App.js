@@ -9,7 +9,7 @@ import ContactPage from './components/ContactPage/ContactPage';
 import FaqPage from './components/FaqPage/FaqPage';
 import AboutPage from './components/AboutPage/AboutPage';
 import PartnersPage from './components/PartnersPage/PartnersPage';
-import Activity from './components/Activity/Activity';
+import Activities from './components/Activities/Activities';
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
         <Route
           path="/"
           exact={true}
-          element={<LandingPage />}
+          element={<Activities />}
         />
         <Route
           path="/login"
@@ -49,7 +49,7 @@ function App() {
          <Route
           path="/activity"
           exact={true}
-          element={<Activity />}
+          element={<Activities />}
         />
       </Routes>
       <Footer />
