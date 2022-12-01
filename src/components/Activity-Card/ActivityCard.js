@@ -1,9 +1,28 @@
-import React from "react"
-import './ActivityCard.scss';
-
-
+import React from "react";
+import "./ActivityCard.scss";
+import {Link, useNavigate} from 'react-router-dom';
 
 export function ActivityCard(props) {
     let activity = props.data;
-    return (<> <div class="activityCard"><img src={activity.avatar} /> <div class="activityInfo"> {activity.first_name} <b>{activity.last_name}</b> </div></div></>)
-} 
+
+    const navigate = useNavigate();
+    const toActivityDetails=()=>{
+       navigate('/activity-details',{state:activity});
+    }
+
+
+  return (
+    <>
+      <a  onClick={()=>{toActivityDetails()}}
+      >
+        <div class="activityCard">
+          <img src={activity.imagePath} />{" "}
+          <div class="activityInfo">
+            {" "}
+            {activity.name}{" "}
+          </div>
+        </div>
+      </a>
+    </>
+  );
+}
