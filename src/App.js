@@ -9,6 +9,11 @@ import ContactPage from './components/ContactPage/ContactPage';
 import FaqPage from './components/FaqPage/FaqPage';
 import AboutPage from './components/AboutPage/AboutPage';
 import PartnersPage from './components/PartnersPage/PartnersPage';
+import SearchResultPage from './components/SearchResultPage/SearchResultPage';
+import TeamPage from './components/TeamPage/TeamPage';
+import BookingConPage from './components/BookingConPage/BookingConPage';
+import CampaignPage from './components/CampaignPage/CampaignPage';
+import Register from './components/Register/Register';
 
 function App() {
   return (
@@ -24,6 +29,11 @@ function App() {
           path="/login"
           exact={true}
           element={<Login />}
+        />
+        <Route
+          path="/register"
+          exact={true}
+          element={<Register />}
         />
         <Route
           path="/contact"
@@ -44,6 +54,26 @@ function App() {
           path="/partner"
           exact={true}
           element={<PartnersPage />}
+        />
+        <Route
+          path="/searchResult"
+          exact={true}
+          element={<SearchResultPage />}
+        />
+        <Route
+          path="/team"
+          exact={true}
+          element={<TeamPage />}
+        />
+        <Route
+          path="/booking-confirmation"
+          exact={true}
+          element={<BookingConPage />}
+        />
+        <Route
+          path="/campaign"
+          exact={true}
+          element={<CampaignPage />}
         />
       </Routes>
       <Footer />

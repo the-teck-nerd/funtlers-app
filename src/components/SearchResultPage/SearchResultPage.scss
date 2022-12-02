@@ -1,0 +1,64 @@
+@import '../../common-style/variable.scss';
+
+.searchRsult_page {
+    .searchRsult_main {
+        padding: 112px 0 128px 0;
+    }
+
+    .filter_heading {
+        color: $Black;
+    }
+
+    .filter_main {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 20px 0 48px 0;
+    }
+
+    .activity_main {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+    }
+
+    .activity_ul {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        background-color: $Black-3;
+        padding: 6px 16px;
+        border-radius: 8px;
+
+        .activity_li {
+            &:not(:last-child) {
+                border-right: 1px solid $Black-65;
+            }
+
+            &:last-child {
+                .Theme_select {
+                    padding: 2px 24px 2px 0;
+                    background-position: right 0.15rem center;
+                }
+            }
+        }
+
+        .Theme_select {
+            padding: 2px 36px 2px 0;
+            background-color: transparent;
+            border-radius: 0;
+            background-position: right 0.65rem center;
+        }
+    }
+
+    .row_custom {
+        gap: 24px 0;
+    }
+
+    .action_otr {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 72px;
+    }
+}

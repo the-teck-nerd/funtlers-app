@@ -67,6 +67,8 @@
             gap: 16px;
 
             .Theme_select {
+                font-size: $font-size-16px;
+                font-family: $font-family-SemiBold;
                 background-color: transparent;
                 box-shadow: none;
                 border-right: 1px solid $Black-25;
@@ -80,6 +82,8 @@
         .filter_otr {
             .Theme_select {
                 background-color: transparent;
+                font-size: $font-size-16px;
+                font-family: $font-family-SemiBold;
                 box-shadow: none;
                 border-left: 1px solid $Black-25;
                 border-radius: 0;
@@ -98,9 +102,12 @@
             justify-content: center;
 
             .Theme_select {
+                font-size: $font-size-16px;
+                font-family: $font-family-SemiBold;
                 width: auto;
                 box-shadow: none;
-                padding-right: 40px;
+                padding: 12px 40px 12px 24px;
+                background-color: $White;
                 color: $Black-65;
                 background-position: right 0.85rem center;
                 cursor: pointer;
