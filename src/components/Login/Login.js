@@ -1,14 +1,43 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import Check from '../Check/Check';
 import InnerHeader from '../InnerHeader/InnerHeader';
 import Input from '../Input/Input';
 import ThemeBtn from '../ThemeBtn/ThemeBtn';
+import toast, { Toaster } from 'react-hot-toast';
+import { RequireAuth } from "react-auth-kit"
 import './Login.scss';
+import loginUser from '../../api/LoginService'
 
-function Login() {
+ 
+
+
+let token ={ state:"success"|"failed", user:"" }
+
+export default function Login({ setToken }) {
+ 
+  
+
+    const [userName, setUserName] = useState();
+    const [password, setPassword] = useState();
+
+
+   
+    
+  const handleSubmit = async e => {
+   
+    e.preventDefault();
+    const response = await loginUser({
+        userName,
+      password
+    }, token);
+    setToken(response);
+  }
+
     return (
+
         <div className='Login_page'>
+            <div><Toaster /></div>
             <InnerHeader
                 HeaderHeading="Log In"
                 PageText="Login"
@@ -19,23 +48,33 @@ function Login() {
                         <div className='col-lg-6 col_form_otr'>
                             <div className='col_form_inr'>
                                 <h3 className='heading-h3 form_heading'>
-                                    Login to Funtlers
+                                    Sign In to Funtlers
                                 </h3>
-                                <form className='form_main'>
+                                <form onSubmit={handleSubmit} className='form_main'>
                                     <div className='Input_otr'>
-                                        <Input
-                                            InputClass="Theme_input_white form_input"
-                                            Inputype="name"
-                                            InputName="name"
-                                            InputPlaceholder="Enter Your Full Name"
+
+                                        <input
+                                            required
+                                            className="Theme_input_white form_input"
+                                            type="email"
+                                            name="email"
+                                            placeholder="Email"
+                                            onChange={e => setUserName(e.target.value)}
+                                            autoComplete="off"
+                                            
                                         />
+
+                                       
                                     </div>
                                     <div className='Input_otr'>
-                                        <Input
-                                            InputClass="Theme_input_white form_input"
-                                            Inputype="email"
-                                            InputName="email"
-                                            InputPlaceholder="Enter Your Email Address"
+                                        
+                                         <input
+                                            required
+                                            className="Theme_input_white form_input"
+                                            type="password"
+                                            name="password"
+                                            placeholder="Password"
+                                            onChange={e => setPassword(e.target.value)}
                                         />
                                     </div>
                                     <div className='Input_otr check_forget_otr'>
@@ -47,10 +86,7 @@ function Login() {
                                         </Link>
                                     </div>
                                     <div className='Input_otr action_otr'>
-                                        <ThemeBtn
-                                            BtnClass="Theme_btn_primary form_btn"
-                                            BtnText="Login"
-                                        />
+                                        <button className="Theme_btn_primary form_btn" type='submit'>Login</button>
                                     </div>
                                     <p className='heading-sb Input_otr heading_another'>
                                         Another way to login
@@ -77,6 +113,10 @@ function Login() {
             </section>
         </div>
     )
+
 }
 
-export default Login
+
+
+
+
