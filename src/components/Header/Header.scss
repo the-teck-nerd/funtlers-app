@@ -67,4 +67,10 @@
             transition: .3s;
         }
     }
+
+    .action_otr {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+    }
 }

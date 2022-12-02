@@ -1,0 +1,83 @@
+@import '../../common-style/variable.scss';
+
+.BookingCon_Page {
+    .BookingCon_main {
+        padding: 112px 0 128px 0;
+    }
+
+    .content_wrapper {
+        margin-bottom: 72px;
+    }
+
+    .row_custom {
+        align-items: center;
+    }
+
+    .col_img_inr {
+        .booking_conf_img {
+            width: 100%;
+            height: 500px;
+            object-fit: contain;
+            object-position: center;
+            animation-name: UpDown;
+            animation-duration: 6s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+    }
+
+    .col_content_inr {
+        padding-left: 48px;
+
+        .booking_text {
+            color: $Black-65;
+
+            &:not(:last-child) {
+                margin-bottom: 16px;
+            }
+        }
+
+        .booking_text_inr {
+            color: $Black;
+            margin-right: 10px;
+        }
+
+        .social_ul {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: 24px 0 36px 0;
+        }
+
+        .social_a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 52px;
+            height: 52px;
+            border-radius: 100%;
+            background-color: $White;
+            box-shadow: $Box-Shadow-Custom;
+            transition: .3s;
+
+            &:hover {
+                background-color: $Primary;
+
+                .social_icon {
+                    color: $White;
+                }
+            }
+
+            .social_icon {
+                font-size: 24px;
+                line-height: 24px;
+                color: $Primary;
+                transition: .3s;
+            }
+        }
+
+        .action_otr {
+            display: inline-flex;
+        }
+    }
+}

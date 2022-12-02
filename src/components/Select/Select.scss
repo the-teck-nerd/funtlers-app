@@ -1,1 +1,16 @@
 @import '../../common-style/variable.scss';
+
+.Theme_select {
+    font-size: $font-size-14px;
+    line-height: $line-height-26px;
+    font-family: $font-family-Medium;
+    padding: 8px 36px 8px 16px;
+    color: $Black-65;
+    background-color: $Black-3;
+    border-radius: 8px;
+    box-shadow: none;
+
+    &:focus {
+        box-shadow: none;
+    }
+}

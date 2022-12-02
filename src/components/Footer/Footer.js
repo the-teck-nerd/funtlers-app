@@ -67,13 +67,13 @@ function Footer() {
                                         </Link>
                                     </li>
                                     <li className='link_li'>
-                                        <Link className='heading-s link_a'>
-                                            Link four
+                                        <Link to="/team" className='heading-s link_a'>
+                                            Team
                                         </Link>
                                     </li>
                                     <li className='link_li'>
-                                        <Link className='heading-s link_a'>
-                                            Link five
+                                        <Link to="/faq" className='heading-s link_a'>
+                                            Faq
                                         </Link>
                                     </li>
                                 </ul>
@@ -86,11 +86,6 @@ function Footer() {
                                 </h3>
                                 <ul className='link_ul'>
                                     <li className='link_li'>
-                                        <Link to="/faq" className='heading-s link_a'>
-                                            Faq
-                                        </Link>
-                                    </li>
-                                    <li className='link_li'>
                                         <Link to="/contact" className='heading-s link_a'>
                                             Contact
                                         </Link>
@@ -101,13 +96,18 @@ function Footer() {
                                         </Link>
                                     </li>
                                     <li className='link_li'>
-                                        <Link className='heading-s link_a'>
-                                            Link four
+                                        <Link to="/searchResult" className='heading-s link_a'>
+                                            Søkeresultat fysisk
                                         </Link>
                                     </li>
                                     <li className='link_li'>
-                                        <Link className='heading-s link_a'>
-                                            Link five
+                                        <Link to="/booking-confirmation" className='heading-s link_a'>
+                                            Bookingbekreftelse
+                                        </Link>
+                                    </li>
+                                    <li className='link_li'>
+                                        <Link to="/campaign" className='heading-s link_a'>
+                                            Campaign
                                         </Link>
                                     </li>
                                 </ul>

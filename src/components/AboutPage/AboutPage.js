@@ -5,7 +5,7 @@ import InnerHeader from '../InnerHeader/InnerHeader';
 
 import './AboutPage.scss';
 
-function AboutPage(props) {
+function AboutPage() {
     return (
         <div className='about_page'>
             <InnerHeader

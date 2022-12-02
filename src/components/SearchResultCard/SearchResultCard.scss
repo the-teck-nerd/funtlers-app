@@ -1,0 +1,40 @@
+@import '../../common-style/variable.scss';
+
+.col_searchCard_inr {
+    background-color: $White;
+    box-shadow: $Box-Shadow-Custom;
+    padding: 12px 12px 20px 12px;
+    border-radius: 8px;
+    transition: .3s;
+
+    &:hover {
+        background-color: $Primary-Light2;
+        box-shadow: none;
+
+        .card_heading {
+            color: $Primary;
+        }
+    }
+
+    .card_img {
+        width: 100%;
+        height: 160px;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 8px;
+    }
+
+    .content {
+        text-align: center;
+    }
+
+    .card_heading {
+        color: $Black;
+        margin: 16px 0 8px 0;
+        transition: .3s;
+    }
+
+    .card_desc {
+        color: $Black-65;
+    }
+}
