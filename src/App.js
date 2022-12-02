@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react"; 
 import "./App.scss";
 import { Routes, Route } from "react-router-dom";
 import LandingPage from "./components/LandingPage/LandingPage";
@@ -17,9 +17,17 @@ import TeamPage from './components/TeamPage/TeamPage';
 import BookingConPage from './components/BookingConPage/BookingConPage';
 import CampaignPage from './components/CampaignPage/CampaignPage';
 import Register from './components/Register/Register';
+import React from "react";
 
 function App() {
+
+  const [token, setToken] = useState(null);
+   
+  if(!token) {
+    return <Login setToken={setToken} />
+  }
   return (
+    
     <>
       <Header />
       <Routes>
