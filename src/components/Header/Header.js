@@ -7,18 +7,36 @@ import BrandLogo from "../../img/brand-logo.png";
 
 import { isLoggedIn, logOut } from "../../api/LoginService";
 import LoginPopup from "../LoginPopup/LoginPopup";
+import DialogueBox from "../DialogueBox/DialogueBox";
 
 function Header() {
   const [session, setSession] = useState(isLoggedIn());
   const [showLogin, setShowLogin] = useState(false);
+  const [showConfirmDialogue, setConfirmDialogue] = useState(false);
 
   if (showLogin) {
     return (
       <div>
-      <div  className="backdrop">
-        <LoginPopup  setShowLogin={setShowLogin} setUser={setSession} />
+        <div className="backdrop">
+          <LoginPopup setShowLogin={setShowLogin} setUser={setSession} />
+        </div>
       </div>
-      </div>
+    );
+  }
+  if (showConfirmDialogue) {
+    return (
+      <DialogueBox
+        title={"Confirm logout"}
+        onConfirm={logOut}
+        onConfirmState={setSession}
+        confirmText={"Logout"}
+        cancelText={"Cancel"}
+        open={showConfirmDialogue}
+        setOpen={setConfirmDialogue}
+      >
+       
+        Are you sure you want to logout?{" "}
+      </DialogueBox>
     );
   }
   return (
@@ -69,7 +87,7 @@ function Header() {
                 <u> {session?.user?.FirstName}</u>
                 <Link className="action">
                   <ThemeBtn
-                    onClick={() => logOut(setSession)}
+                    onClick={() => setConfirmDialogue(true)}
                     BtnClass="Theme_btn_white"
                     BtnText="Log Out"
                   />
