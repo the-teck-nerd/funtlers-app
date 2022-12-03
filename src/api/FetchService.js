@@ -2,7 +2,10 @@ import APIServices from "./API-Services";
 
 
 class FetchService {
+
   
+
+  /**Activity Conteroller */
     getAllActivities(ownerid) {
     let apicall = APIServices.GET(
       "https://localhost:44360/" + "Activity?ownerid=" + ownerid
@@ -34,6 +37,15 @@ class FetchService {
     );
     return apicall;
   }
+
+
+
+
+
+
+  
+
+
 }
 
 export default new FetchService();

@@ -28,7 +28,7 @@ function App() {
     <>
       <Header />
       <Routes>
-        <Route path="/" exact={true} element={<Activities />} />
+        <Route path="/" exact={true} element={<LandingPage />} />
         <Route path="/login" exact={true} element={<Login />} />
         <Route path="/contact" exact={true} element={<ContactPage />} />
         <Route path="/faq" exact={true} element={<FaqPage />} />
@@ -37,11 +37,11 @@ function App() {
         <Route path="/activity" exact={true} element={<Activities />} />
         <Route path="/payment" exact={true} element={<Payments />} />
 
-        <Route
+        {/* <Route
           path="/activity-details"
           exact={true}
           element={<ActivityDetails />}
-        />
+        /> */}
         <Route path="/login" exact={true} element={<Login />} />
         <Route path="/register" exact={true} element={<Register />} />
         <Route path="/contact" exact={true} element={<ContactPage />} />
@@ -49,7 +49,7 @@ function App() {
         <Route path="/about" exact={true} element={<AboutPage />} />
         <Route path="/partner" exact={true} element={<PartnersPage />} />
         <Route
-          path="/searchResult"
+          path="/activities"
           exact={true}
           element={<SearchResultPage />}
         />
@@ -59,7 +59,7 @@ function App() {
           exact={true}
           element={<BookingConPage />}
         />
-        <Route path="/campaign" exact={true} element={<CampaignPage />} />
+        <Route path="/activity-detail" exact={true} element={<CampaignPage />} />
       </Routes>
       <Footer />
     </>

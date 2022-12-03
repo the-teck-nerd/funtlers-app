@@ -2,18 +2,29 @@ import React from 'react'
 import InnerHeader from '../InnerHeader/InnerHeader';
 import { Link } from "react-router-dom";
 import ThemeBtn from '../ThemeBtn/ThemeBtn';
-
 import './CampaignPage.scss';
-
 import campaignImg from '../../img/booking-confirmation-img.png';
+import {useLocation , useNavigate} from 'react-router-dom';
+
 
 function CampaignPage() {
+
+    const formatDate = (dateString) => {
+        const options = { year: "numeric", month: "long", day: "numeric" }
+        return new Date(dateString).toLocaleDateString(undefined, options)
+      }
+      
+    const navigate = useNavigate();
+    const location = useLocation();
+    debugger;
     return (
         <div className='campaign_Page'>
             <InnerHeader
-                HeaderHeading="Campaign"
-                PageText="Campaign"
+                HeaderHeading={location.state.name}
+                PageText={location.state.name}
             />
+
+            
             <div className='campaign_main'>
                 <div className='container'>
                     <div className='row row_custom'>
@@ -41,7 +52,7 @@ function CampaignPage() {
                                 </h3>
                                 <div className='content'>
                                     <p className='heading-m campaign_text'>
-                                        Aktivitet må bookes mellom 1. september 2022 - 31. desember 2022
+                                        Aktivitet må bookes mellom 1. <b>{formatDate(location.state.validPeriodStart)} - {formatDate(location.state.validPeriodEnd)}</b>
                                     </p>
                                     <p className='heading-m campaign_text'>
                                         Bruk rabattkode ved booking
@@ -68,17 +79,17 @@ function CampaignPage() {
                                     <ul className='text_ul'>
                                         <li className='text_li'>
                                             <h3 className='text_heading heading-h3'>
-                                                7 personer
+                                                {location.state.totalPerson} personer
                                             </h3>
                                         </li>
                                         <li className='text_li'>
                                             <h3 className='text_heading heading-h3'>
-                                                300kr pr. pers.
+                                                {location.state.description}
                                             </h3>
                                         </li>
                                         <li className='text_li'>
                                             <h3 className='text_heading heading-h3'>
-                                                Du sparer 15%
+                                                {location.state.discountName}
                                             </h3>
                                         </li>
                                     </ul>
