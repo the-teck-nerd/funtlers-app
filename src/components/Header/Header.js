@@ -6,14 +6,23 @@ import ThemeBtn from "../ThemeBtn/ThemeBtn";
 import BrandLogo from "../../img/brand-logo.png";
 
 import { isLoggedIn, logOut } from "../../api/LoginService";
+import LoginPopup from "../LoginPopup/LoginPopup";
+import Backdrop from "@mui/material/Backdrop";
 
 function Header() {
- 
-
-    debugger;
   const [user, setUser] = useState(isLoggedIn());
+  const [showLogin, setShowLogin] = useState(false);
 
-
+  if (showLogin) {
+    return (
+      <Backdrop
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={showLogin}
+      >
+        <LoginPopup setShowLogin={setShowLogin} setUser={setUser} />
+      </Backdrop>
+    );
+  }
   return (
     <header className="header_main">
       <div className="container-fluid">
@@ -46,18 +55,25 @@ function Header() {
             </ul>
             {!user ? (
               <div className="action_otr">
-                <Link to="/login" className="action" state={setUser}>
-                  <ThemeBtn BtnClass="Theme_btn_light" BtnText="Login" />
-                </Link>
+                <ThemeBtn
+                  onClick={() => setShowLogin(true)}
+                  BtnClass="Theme_btn_light"
+                  BtnText="Login"
+                />
+
                 <Link to="/register" className="action">
                   <ThemeBtn BtnClass="Theme_btn_white" BtnText="Register" />
                 </Link>
               </div>
             ) : (
               <div className="action_otr">
-               <u> {user?.firstName}</u>
-                <Link  className="action">
-                  <ThemeBtn onClick={()=>logOut(setUser)} BtnClass="Theme_btn_white" BtnText="Log Out" />
+                <u> {user?.firstName}</u>
+                <Link className="action">
+                  <ThemeBtn
+                    onClick={() => logOut(setUser)}
+                    BtnClass="Theme_btn_white"
+                    BtnText="Log Out"
+                  />
                 </Link>
               </div>
             )}
