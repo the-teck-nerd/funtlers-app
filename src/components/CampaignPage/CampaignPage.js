@@ -1,22 +1,61 @@
-import React from 'react'
+import React, { useState } from "react";
 import InnerHeader from '../InnerHeader/InnerHeader';
 import { Link } from "react-router-dom";
 import ThemeBtn from '../ThemeBtn/ThemeBtn';
 import './CampaignPage.scss';
 import campaignImg from '../../img/booking-confirmation-img.png';
 import {useLocation , useNavigate} from 'react-router-dom';
+import FetchService from '../../api/FetchService';
 
 
 function CampaignPage() {
+
+
+    let currentdate=new Date();
+
+    const [booking, setBooking] = useState({currentdate});
 
     const formatDate = (dateString) => {
         const options = { year: "numeric", month: "long", day: "numeric" }
         return new Date(dateString).toLocaleDateString(undefined, options)
       }
+
+    // handleChange(e){
+    //     this.setState({[e.target.name]: e.target.value});
+    //  }
+
+
+      const BookActivity=async (activityData)=>{
+
+        let activity={
+            "id": 0,
+            "userID": 0,
+            "totalAmount": activityData.price*activityData.totalPerson,
+            "additionalDetails": "string",
+            "address": "string",
+            "createdDate": booking,
+            "activityOrders": [
+                activityData
+            ]
+          }
+          
+          const response = FetchService.BookAcitvity(activity);
+
+          response.then(data=>{
+            if(data.data>0)
+            {
+              navigate('/booking-confirmation',{state:activity});
+            }
+          });
+
+          
+
+
+     }
       
     const navigate = useNavigate();
     const location = useLocation();
-    debugger;
+    
     return (
         <div className='campaign_Page'>
             <InnerHeader
@@ -64,13 +103,17 @@ function CampaignPage() {
                                         Dealer som ikke brukes grunnet for sen booking, sykdom, manglende oppmøte, avbestilling eller flytting mindre enn 24 timer før bestilt time, refunderes ikke
                                     </p>
                                 </div>
-                                <Link className='action_otr'>
-                                    <ThemeBtn
-                                        BtnClass="Theme_btn_primary Book_btn"
-                                        BtnText="Book"
-                                    />
-                                </Link>
+                                
                             </div>
+                            <br/>
+                            <h3 class="heading-h3 heading_terms">Bestillingsdato</h3>
+                            
+                            <input name='value'  onChange={(e) => setBooking(e.target.value)}    type="datetime-local" class="Theme_input_white search_input"></input>
+                            <br/>
+                            <br/>
+
+                            <button class="Theme_btn_primary" onClick={()=>{BookActivity(location.state)}}>Book</button>
+
                         </div>
                         <div className='col-lg-6 col_img_otr'>
                             <div className='col_img_inr'>
