@@ -16,7 +16,7 @@ class APIServices {
      * @returns - response from the post api.
      */
     POST(url, message) {
-        return axios.post(URL, message);
+        return axios.post(url, message);
     }
 
     /**
@@ -26,7 +26,7 @@ class APIServices {
      * @returns - response contains status for update
      */
     PUT(url, message) {
-        return axios.put(URL, message);
+        return axios.put(url, message);
     }
 
     /**

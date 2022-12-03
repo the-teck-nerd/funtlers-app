@@ -8,7 +8,7 @@ import { useLocation } from "react-router-dom";
 let token = { state: "success" | "failed", email: "", firstName: "" };
 
 export default function Login(props) {
-  debugger;
+  
   const location = useLocation();
  
 

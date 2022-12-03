@@ -38,6 +38,13 @@ class FetchService {
     return apicall;
   }
 
+  
+  BookAcitvity(activity)
+  {
+    let apicall= APIServices.POST("https://localhost:44360/"+"Order", activity);
+    return apicall;
+  }
+
 
 
 
