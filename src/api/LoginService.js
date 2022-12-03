@@ -1,3 +1,5 @@
+import FetchService from "./FetchService";
+
 export async function loginUser(credentials, token) {
   // return fetch('http://localhost:8080/login', {
   //   method: 'POST',
@@ -50,4 +52,10 @@ export function isLoggedIn() {
 export function logOut(setIsLoggedOut) {
   setIsLoggedOut(null);
   sessionStorage.removeItem("token");
+}
+
+export function register(user) {
+  return FetchService.RegisterUser(user).then((response) => {
+    return response.data?"Success":"Failed";
+  });
 }

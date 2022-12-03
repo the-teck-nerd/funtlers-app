@@ -10,6 +10,8 @@ function Input(props) {
       type={props.Inputype}
       name={props.InputName}
       placeholder={props.InputPlaceholder}
+      value={props.value}
+      onChange={props.onChange}
     />
   );
 }
