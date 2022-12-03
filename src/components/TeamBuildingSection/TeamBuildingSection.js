@@ -138,33 +138,7 @@ function TeamBuildingSection() {
                                 </li>
                             </ul>
                         </div>
-                        <div className='col_logo_inr'>
-                            <h3 className='heading-h3 heading'>
-                                Eller ønsker du inpirasjon?
-                            </h3>
-                            <ul className='logo_ul'>
-                                <li className='logo_li'>
-                                    <Link className='logo_a'>
-                                        <img className='logo_img' src={Logo1} alt='logo' />
-                                    </Link>
-                                </li>
-                                <li className='logo_li'>
-                                    <Link className='logo_a'>
-                                        <img className='logo_img' src={Logo2} alt='logo' />
-                                    </Link>
-                                </li>
-                                <li className='logo_li'>
-                                    <Link className='logo_a'>
-                                        <img className='logo_img' src={Logo3} alt='logo' />
-                                    </Link>
-                                </li>
-                                <li className='logo_li'>
-                                    <Link className='logo_a'>
-                                        <img className='logo_img' src={Logo4} alt='logo' />
-                                    </Link>
-                                </li>
-                            </ul>
-                        </div>
+                       
                     </div>
                 </div>
             </div>
