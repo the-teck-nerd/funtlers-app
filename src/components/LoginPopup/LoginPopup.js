@@ -5,7 +5,7 @@ import InnerHeader from "../InnerHeader/InnerHeader";
 import "./LoginPopup.scss";
 import { loginUser, setToken } from "../../api/LoginService";
 
-let token = { state: "success" | "failed", email: "", firstName: "" };
+let token = { state: "success" | "failed", user: {} };
 
 export default function LoginPopup({ setUser, setShowLogin, ref }) {
   const [userName, setUserName] = useState();
@@ -35,7 +35,7 @@ export default function LoginPopup({ setUser, setShowLogin, ref }) {
               <div className="col_form_inr">
                 <div className="cross-icon">
                   <svg
-                    onClick={()=>setShowLogin(false)}
+                    onClick={() => setShowLogin(false)}
                     height="24px"
                     id="Layer_1"
                     version="1.1"

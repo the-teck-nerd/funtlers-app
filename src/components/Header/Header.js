@@ -9,14 +9,14 @@ import { isLoggedIn, logOut } from "../../api/LoginService";
 import LoginPopup from "../LoginPopup/LoginPopup";
 
 function Header() {
-  const [user, setUser] = useState(isLoggedIn());
+  const [session, setSession] = useState(isLoggedIn());
   const [showLogin, setShowLogin] = useState(false);
 
   if (showLogin) {
     return (
       <div>
       <div  className="backdrop">
-        <LoginPopup  setShowLogin={setShowLogin} setUser={setUser} />
+        <LoginPopup  setShowLogin={setShowLogin} setUser={setSession} />
       </div>
       </div>
     );
@@ -51,7 +51,7 @@ function Header() {
                 </Link>
               </li>
             </ul>
-            {!user ? (
+            {!session ? (
               <div className="action_otr">
                 <ThemeBtn
                   onClick={() => setShowLogin(true)}
@@ -65,10 +65,11 @@ function Header() {
               </div>
             ) : (
               <div className="action_otr">
-                <u> {user?.firstName}</u>
+                {console.log(session)}
+                <u> {session?.user?.FirstName}</u>
                 <Link className="action">
                   <ThemeBtn
-                    onClick={() => logOut(setUser)}
+                    onClick={() => logOut(setSession)}
                     BtnClass="Theme_btn_white"
                     BtnText="Log Out"
                   />
