@@ -9,7 +9,7 @@ function SearchResultCard(props) {
 
     const navigate = useNavigate();
     const toActivityDetails=()=>{
-       navigate('/campaign',{state:activity});
+       navigate('/activity-detail',{state:activity});
     }
     return (
         <div className='col-lg-3 col_searchCard_otr' onClick={()=>{toActivityDetails()}}>

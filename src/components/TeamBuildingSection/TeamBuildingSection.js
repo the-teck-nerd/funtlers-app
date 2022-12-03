@@ -1,7 +1,8 @@
-import React from 'react'
 import Input from '../Input/Input'
 import Select from '../Select/Select'
 import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react"
+import {useLocation , useNavigate} from 'react-router-dom';
 
 import './TeamBuildingSection.scss';
 
@@ -9,8 +10,39 @@ import Logo1 from '../../img/client-logo.png';
 import Logo2 from '../../img/client-logo2.png';
 import Logo3 from '../../img/client-logo3.png';
 import Logo4 from '../../img/client-logo4.png';
+import FetchService from '../../api/FetchService';
 
 function TeamBuildingSection() {
+
+    const navigate = useNavigate();
+   
+    const GotoActivity=async (activityData)=>{
+        navigate('/activities');
+
+    }
+    const [activities, setActivities] = useState([])
+
+    const fetchData = () => {
+      let ownerid = 1;
+      let apicall =   FetchService.getAllActivities(ownerid);
+  
+      apicall
+        .then(response => {
+          debugger;
+          return response.data
+        })
+        .then(data => {
+          debugger;
+          // data.data=[{"id":1,"name":"string","price":0,"validPeriod":"2022-11-27T00:00:00","description":"string","imagePath":"string","isDeleted":true,"ownerID":1,"activityType":"string"},{"id":2,"name":"string","price":10,"validPeriod":"2022-11-27T00:00:00","description":"string","imagePath":"string","isDeleted":false,"ownerID":1,"activityType":null},{"id":3,"name":"string","price":10,"validPeriod":"2022-11-27T00:00:00","description":"string","imagePath":"string","isDeleted":false,"ownerID":1,"activityType":null}];
+          setActivities(data)
+          console.log(data)
+        })
+    }
+  
+    useEffect(() => {
+      fetchData()
+    }, [])
+  
     return (
         <section className='Team_building_main'>
             <div className='container'>
@@ -28,11 +60,11 @@ function TeamBuildingSection() {
                                     InputClass="Theme_input_white search_input"
                                 />
                                 <div className='search_icon_otr'>
-                                    <i class="ri-search-2-line search_icon"></i>
+                                    <i class="ri-search-2-line search_icon" onClick={()=>{GotoActivity()}} ></i>
                                 </div>
                             </div>
                             <h3 className='heading-lb heading activity_heading'>
-                                Aktivitet (52)
+                                Aktivitet ({activities.length})
                             </h3>
                             <div className='activity_main'>
                                 <ul className='activity_ul'>

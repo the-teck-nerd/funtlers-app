@@ -52,7 +52,7 @@ function CampaignPage() {
                                 </h3>
                                 <div className='content'>
                                     <p className='heading-m campaign_text'>
-                                        Aktivitet må bookes mellom 1. {formatDate(location.state.validPeriodStart)} - {formatDate(location.state.validPeriodEnd)}
+                                        Aktivitet må bookes mellom 1. <b>{formatDate(location.state.validPeriodStart)} - {formatDate(location.state.validPeriodEnd)}</b>
                                     </p>
                                     <p className='heading-m campaign_text'>
                                         Bruk rabattkode ved booking
