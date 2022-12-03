@@ -68,7 +68,7 @@ function App() {
           element={<PartnersPage />}
         />
         <Route
-          path="/searchResult"
+          path="/activities"
           exact={true}
           element={<SearchResultPage />}
         />

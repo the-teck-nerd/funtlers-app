@@ -1,7 +1,8 @@
-import React from 'react'
 import InnerHeader from '../InnerHeader/InnerHeader';
 import SearchResultCard from '../SearchResultCard/SearchResultCard';
 import Select from '../Select/Select'
+import React, { useEffect, useState } from "react"
+import FetchService from "../../api/FetchService";
 
 import './SearchResultPage.scss';
 
@@ -9,6 +10,39 @@ import CardImg1 from '../../img/search-card-img1.png';
 import ThemeBtn from '../ThemeBtn/ThemeBtn';
 
 function SearchResultPage() {
+
+
+    const [activities, setActivities] = useState([])
+    const fetchData = () => {
+        let ownerid = 1;
+        let apicall =   FetchService.getAllActivities(ownerid);
+    
+        apicall
+          .then(response => {
+            debugger;
+            return response.data
+          })
+          .then(data => {
+            debugger;
+            // data.data=[{"id":1,"name":"string","price":0,"validPeriod":"2022-11-27T00:00:00","description":"string","imagePath":"string","isDeleted":true,"ownerID":1,"activityType":"string"},{"id":2,"name":"string","price":10,"validPeriod":"2022-11-27T00:00:00","description":"string","imagePath":"string","isDeleted":false,"ownerID":1,"activityType":null},{"id":3,"name":"string","price":10,"validPeriod":"2022-11-27T00:00:00","description":"string","imagePath":"string","isDeleted":false,"ownerID":1,"activityType":null}];
+            setActivities(data)
+            console.log(data)
+          })
+      }
+    
+      useEffect(() => {
+        fetchData()
+      }, [])
+    
+    
+        const [visible, setVisible] = useState(8);
+
+        const showMoreItems = () => {
+            debugger;
+        setVisible((prevValue) => prevValue + 8);
+        };
+
+
     return (
         <div className='searchRsult_page'>
             <InnerHeader
@@ -19,7 +53,7 @@ function SearchResultPage() {
                 <div className='container'>
                     <div className='wrapper'>
                         <h3 className='heading-h3 filter_heading'>
-                            Aktivitet (52)
+                            Aktivitet ({activities.length>0 ? activities.length : 0})
                         </h3>
                         <div className='filter_main'>
                             <div className='activity_main'>
@@ -59,52 +93,22 @@ function SearchResultPage() {
                         </div>
                     </div>
                     <div className='row row_custom'>
+                    {activities?.slice(0, visible).map(activity => (
                         <SearchResultCard
-                            CardImg={CardImg1}
-                            CardHeading="Shuffleboard"
-                            CardDesc="250kr pr.pers."
+                            CardImg={activity.imagePath}
+                            CardHeading={activity.name}
+                            CardDesc={activity.description}
+                            Data={activity}
+
                         />
-                        <SearchResultCard
-                            CardImg={CardImg1}
-                            CardHeading="Ølsmaking"
-                            CardDesc="250kr pr.pers."
-                        />
-                        <SearchResultCard
-                            CardImg={CardImg1}
-                            CardHeading="RIB båt"
-                            CardDesc="250kr pr.pers."
-                        />
-                        <SearchResultCard
-                            CardImg={CardImg1}
-                            CardHeading="Bowling"
-                            CardDesc="250kr pr.pers."
-                        />
-                        <SearchResultCard
-                            CardImg={CardImg1}
-                            CardHeading="Boblefotball"
-                            CardDesc="250kr pr.pers."
-                        />
-                        <SearchResultCard
-                            CardImg={CardImg1}
-                            CardHeading="Vinsmaking"
-                            CardDesc="250kr pr.pers."
-                        />
-                        <SearchResultCard
-                            CardImg={CardImg1}
-                            CardHeading="Fangen på fortet"
-                            CardDesc="250kr pr.pers."
-                        />
-                        <SearchResultCard
-                            CardImg={CardImg1}
-                            CardHeading="Oslo Camping"
-                            CardDesc="250kr pr.pers."
-                        />
+                    ))}
+               
                     </div>
                     <div className='action_otr'>
-                        <ThemeBtn
-                            BtnClass="Theme_btn_primary"
-                            BtnText="Load More"
-                        />
+
+                        <button  onClick={showMoreItems} className="Theme_btn_primary">
+                                {"Load More"}
+                        </button>
                     </div>
                 </div>
             </div>
