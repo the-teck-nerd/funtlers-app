@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./Header.scss";
 import { Link } from "react-router-dom";
 import ThemeBtn from "../ThemeBtn/ThemeBtn";
@@ -7,7 +7,6 @@ import BrandLogo from "../../img/brand-logo.png";
 
 import { isLoggedIn, logOut } from "../../api/LoginService";
 import LoginPopup from "../LoginPopup/LoginPopup";
-import Backdrop from "@mui/material/Backdrop";
 
 function Header() {
   const [user, setUser] = useState(isLoggedIn());
@@ -15,12 +14,11 @@ function Header() {
 
   if (showLogin) {
     return (
-      <Backdrop
-        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-        open={showLogin}
-      >
-        <LoginPopup setShowLogin={setShowLogin} setUser={setUser} />
-      </Backdrop>
+      <div>
+      <div  className="backdrop">
+        <LoginPopup  setShowLogin={setShowLogin} setUser={setUser} />
+      </div>
+      </div>
     );
   }
   return (

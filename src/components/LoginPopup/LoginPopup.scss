@@ -1,5 +1,12 @@
 @import '../../common-style/variable.scss';
 
+.cross-icon
+{ 
+ display: flex;
+ flex-direction: row-reverse;
+}
+
+
 .Login_page {
     .login_main {
         padding: 112px 0 128px 0;
