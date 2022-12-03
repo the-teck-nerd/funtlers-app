@@ -12,13 +12,20 @@ export async function loginUser(credentials, token) {
     credentials.userName === "taimoor@gmail.com" &&
     credentials.password === "taimoor"
   ) {
-    token.user = "taimoor@gmail.com";
+    token.user = {
+      Id: 3,
+      FirstName: "Taimoor",
+      LastName: "Faizal",
+      Phone: "96741213",
+      Email: "taimoor.fazal@test.com",
+      usertype: "Consumer",
+    };
     token.state = "success";
-    token.firstName = "Taimoor";
 
     return token;
   } else {
     token.state = "failed";
+    token.user = null;
     return null;
   }
 }

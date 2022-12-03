@@ -5,7 +5,7 @@ import InnerHeader from "../InnerHeader/InnerHeader";
 import "./Login.scss";
 import { loginUser, setToken } from "../../api/LoginService";
 import { useLocation } from "react-router-dom";
-let token = { state: "success" | "failed", email: "", firstName: "" };
+let token = { state: "success" | "failed", user: {} };
 
 export default function Login(props) {
   debugger;
