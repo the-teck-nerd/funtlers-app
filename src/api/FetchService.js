@@ -1,58 +1,33 @@
 import APIServices from "./API-Services";
-
+import apiURL from "./API-Url";
 
 class FetchService {
-
-  
-
   /**Activity Conteroller */
-    getAllActivities(ownerid) {
-    let apicall = APIServices.GET(
-      "https://localhost:44360/" + "Activity?ownerid=" + ownerid
-    );
+  getAllActivities(ownerid) {
+    let apicall = APIServices.GET(apiURL + "Activity?ownerid=" + ownerid);
     return apicall;
   }
 
   AddActivity(activity) {
-    let apicall = APIServices.POST(
-      "https://localhost:44360/" + "Activity",
-      activity
-    );
+    let apicall = APIServices.POST(apiURL + "Activity", activity);
 
     return apicall;
   }
 
   UpdateActivity(activity) {
-    let apicall = APIServices.PUT(
-      "https://localhost:44360/" + "UpdateActivity",
-      activity
-    );
+    let apicall = APIServices.PUT(apiURL + "UpdateActivity", activity);
     return apicall;
   }
 
   DeleteActivity(activity) {
-    let apicall = APIServices.POST(
-      "https://localhost:44360/" + "DeleteActivity",
-      activity
-    );
+    let apicall = APIServices.POST(apiURL + "DeleteActivity", activity);
     return apicall;
   }
 
-  
-  BookAcitvity(activity)
-  {
-    let apicall= APIServices.POST("https://localhost:44360/"+"Order", activity);
+  BookAcitvity(activity) {
+    let apicall = APIServices.POST(apiURL + "Order", activity);
     return apicall;
   }
-
-
-
-
-
-
-  
-
-
 }
 
 export default new FetchService();
