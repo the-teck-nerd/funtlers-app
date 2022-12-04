@@ -18,6 +18,8 @@ import CampaignPage from "./components/CampaignPage/CampaignPage";
 import Register from "./components/Register/Register";
 import React from "react";
 import AddActivity from "./components/AddActivity/AddActivity";
+import AddPartner from "./components/AddPartner/AddPartner";
+import EditPartner from "./components/EditPartner/EditPartner";
 
 function App() {
   return (
@@ -57,6 +59,10 @@ function App() {
         />
         <Route path="/add-activity" exact={true} element={<AddActivity />} />
         <Route path="/edit-activity" exact={true} element={<AddActivity />} />
+
+        <Route path="/add-partner" exact={true} element={<AddPartner />} />
+        <Route path="/edit-partner" exact={true} element={<EditPartner />} />
+
       </Routes>
       <Footer />
     </>
