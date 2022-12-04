@@ -17,8 +17,7 @@ import BookingConPage from "./components/BookingConPage/BookingConPage";
 import CampaignPage from "./components/CampaignPage/CampaignPage";
 import Register from "./components/Register/Register";
 import React   from "react";
-import { getToken } from "./api/LoginService";
-import { useState } from "react";
+
 
 function App() {
 
