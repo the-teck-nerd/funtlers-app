@@ -6,7 +6,7 @@ class FetchService {
 
   //Todo: make it all PascalCase
   getAllActivities(ownerid) {
-    debugger;
+    
     console.log(apiURL);
     let apicall = APIServices.GET(apiURL() + "Activity?ownerid=" + ownerid);
     return apicall;
@@ -37,6 +37,12 @@ class FetchService {
   RegisterUser(user)
   {
     let apicall = APIServices.POST(apiURL() + "User", user);
+    return apicall;
+  }
+  VerifyUser(user)
+  {
+
+    let apicall = APIServices.POST(apiURL() + "Login", user);
     return apicall;
   }
 }
