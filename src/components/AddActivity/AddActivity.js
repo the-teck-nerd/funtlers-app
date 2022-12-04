@@ -6,10 +6,11 @@ import ThemeBtn from "../ThemeBtn/ThemeBtn";
 import { register } from "../../api/LoginService";
 import FetchService from "../../api/FetchService";
 import LoadingOverlay from "react-loading-overlay";
+import ImageUploading from "react-images-uploading";
+import { ImageUploader } from "../../utility-components/ImageUploader/ImageUploader";
 
 import "./AddActivity.scss";
 
-//userTypeID = 1 because its for customers
 let activity = {
   name: "",
   type: "",
@@ -19,15 +20,17 @@ let activity = {
   validPeriodEnd: "",
   validPeriodStart: "",
   description: "",
-  imagePath: "",
+  imagePath: [],
   minPerson: 0,
-  maxPerson:0,
-  discountPercent:0,
-  addDate:new Date().toISOString().slice(0, 10),
-  occassion:""
+  maxPerson: 0,
+  discountPercent: 0,
+  addDate: new Date().toISOString().slice(0, 10),
+  occassion: "",
 };
 
 function AddActivity() {
+  const [images, setImages] = useState([]);
+
   const [name, setName] = useState("");
   const [type, setType] = useState("");
   const [city, setCity] = useState("");
@@ -37,52 +40,44 @@ function AddActivity() {
   const [validPeriodStart, setValidPeriodStart] = useState("");
   const [validPeriodEnd, setValidPeriodEnd] = useState("");
   const [description, setDescription] = useState("");
-  const [imagePath, setImage] = useState("");
+
   const [minPerson, setMinPerson] = useState(0);
   const [maxPerson, setMaxPerson] = useState(0);
   const [occassion, setOccassion] = useState("");
   const [date, setDate] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-    const handleSubmit = async (e) => {
-      e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-      activity.name= name
-      activity.activityType= type;
-      activity.city= city;
-      activity.price= price;
-      activity.originalPrice= originalPrice;
-      activity.validPeriodEnd= validPeriodEnd;
-      activity.validPeriodStart=validPeriodStart;
-      activity.description= description;
-      activity.imagePath= "imagePath";
-      activity.minPerson= minPerson;
-      activity.maxPerson=maxPerson;
-      activity.occassion=occassion;
-      activity.discountPercent =  100- ((price/originalPrice)*100);
-      
-      //setIsLoading(true);
-     
-     console.log(activity);
+    activity.name = name;
+    activity.activityType = type;
+    activity.city = city;
+    activity.price = price;
+    activity.originalPrice = originalPrice;
+    activity.validPeriodEnd = validPeriodEnd;
+    activity.validPeriodStart = validPeriodStart;
+    activity.description = description;
+    activity.minPerson = minPerson;
+    activity.maxPerson = maxPerson;
+    activity.occassion = occassion;
+    activity.discountPercent = 100 - (price / originalPrice) * 100;
 
-     FetchService.AddActivity(activity).then((response)=>{
-       if(response)
-       {
+    //setIsLoading(true);
+    activity.images = images;
+
+    console.log(activity);
+
+    FetchService.AddActivity(activity).then((response) => {
+      if (response) {
         alert("added");
-       }
-       else
-       {
+      } else {
         alert("failed");
-       }
-     })
-      
-    };
+      }
+    });
+  };
 
-    function clearForm() {
-      
-
-      
-    }
+  function clearForm() {}
 
   return (
     <LoadingOverlay
@@ -95,10 +90,10 @@ function AddActivity() {
         <section className="Register_main">
           <div className="container">
             <div className="row row_custom">
-              <div className="col-lg-6 col_form_otr">
+              <div className="col_form_otr">
                 <div className="col_form_inr">
                   <h3 className="heading-h3 form_heading">
-                    Register to Funtlers
+                    Add a new activity
                   </h3>
                   {/* {response === "Failed" && (
                     <div className="error_message">
@@ -115,69 +110,80 @@ function AddActivity() {
                     </div>
                   )} */}
 
-                  <form onSubmit={handleSubmit} className="form_main">
-                    <div className="Input_otr">
-                      <Input
-                        InputClass="Theme_input_white form_input"
-                        Inputype="text"
-                        InputName="name"
-                        label="Activity Name"
-                        value={name}
-                        onChange={(event) => setName(event.target.value)}
-                      />
+                  <form onSubmit={handleSubmit} className="row">
+                    <div className="col">
+                      <div className="Input_otr">
+                        <Input
+                          InputClass="Theme_input_white form_input"
+                          Inputype="text"
+                          InputName="name"
+                          label="Activity Name"
+                          value={name}
+                          onChange={(event) => setName(event.target.value)}
+                        />
+                      </div>
+                      <div className="Input_otr">
+                        <Input
+                          InputClass="Theme_input_white form_input"
+                          Inputype="text"
+                          InputName="type"
+                          label="Occassion"
+                          value={occassion}
+                          onChange={(event) => setOccassion(event.target.value)}
+                        />
+                      </div>
+                      <div className="Input_otr">
+                        <Input
+                          InputClass="Theme_input_white form_input"
+                          Inputype="text"
+                          InputName="city"
+                          label="City"
+                          value={city}
+                          onChange={(event) => setCity(event.target.value)}
+                        />
+                      </div>
+                      <div className="Input_otr">
+                        <Input
+                          InputClass="Theme_input_white form_input"
+                          Inputype="text"
+                          InputName="type"
+                          label="Acitivity Type"
+                          value={type}
+                          onChange={(event) => setType(event.target.value)}
+                        />
+                      </div>
+                      <div className="row">
+                        <div className="Input_otr col">
+                          <Input
+                            InputClass="Theme_input_white form_input"
+                            Inputype="number"
+                            InputName="number"
+                            label="Price"
+                            value={price}
+                            onChange={(event) => setPrice(event.target.value)}
+                          />
+                        </div>
+                        <div className="Input_otr col">
+                          <Input
+                            InputClass="Theme_input_white form_input"
+                            Inputype="number"
+                            InputName="number"
+                            label="Original Price"
+                            value={originalPrice}
+                            onChange={(event) =>
+                              setOriginalPrice(event.target.value)
+                            }
+                          />
+                        </div>
+                      </div>
                     </div>
-                    <div className="Input_otr">
-                      <Input
-                        InputClass="Theme_input_white form_input"
-                        Inputype="text"
-                        InputName="type"
-                        label="Acitivity Type"
-                        value={type}
-                        onChange={(event) => setType(event.target.value)}
-                      />
+                    <div className="col">
+                      <div className="image-uploader">
+                         
+                        <ImageUploader setImagesCallBack={setImages} />
+                      </div>
                     </div>
-                    <div className="Input_otr">
-                      <Input
-                        InputClass="Theme_input_white form_input"
-                        Inputype="text"
-                        InputName="type"
-                        label="Occassion"
-                        value={occassion}
-                        onChange={(event) => setOccassion(event.target.value)}
-                      />
-                    </div>
-                    <div className="Input_otr">
-                      <Input
-                        InputClass="Theme_input_white form_input"
-                        Inputype="text"
-                        InputName="city"
-                        label="City"
-                        value={city}
-                        onChange={(event) => setCity(event.target.value)}
-                      />
-                    </div>
-                    <div className="Input_otr">
-                      <Input
-                        InputClass="Theme_input_white form_input"
-                        Inputype="number"
-                        InputName="number"
-                        label="Price"
-                        value={price}
-                        onChange={(event) => setPrice(event.target.value)}
-                      />
-                    </div>
-                    <div className="Input_otr">
-                      <Input
-                        InputClass="Theme_input_white form_input"
-                        Inputype="number"
-                        InputName="number"
-                        label="Original Price"
-                        value={originalPrice}
-                        onChange={(event) =>
-                          setOriginalPrice(event.target.value)
-                        }
-                      />
-                    </div>
+
                     <div className="Input_otr">
                       <Input
                         InputClass="Theme_input_white form_input"
@@ -215,7 +221,9 @@ function AddActivity() {
                         InputName="number"
                         label="Valid from"
                         value={validPeriodStart}
-                        onChange={(event) => setValidPeriodStart(event.target.value)}
+                        onChange={(event) =>
+                          setValidPeriodStart(event.target.value)
+                        }
                       />
                     </div>
                     <div className="Input_otr">
@@ -225,24 +233,31 @@ function AddActivity() {
                         InputName="number"
                         label="Valid Til"
                         value={validPeriodEnd}
-                        onChange={(event) => setValidPeriodEnd(event.target.value)}
+                        onChange={(event) =>
+                          setValidPeriodEnd(event.target.value)
+                        }
                       />
                     </div>
 
-                    {imagePath && (
-        <div>
-        <img alt="not fount" width={"250px"}  src={URL.createObjectURL(imagePath)} />
-        <br />
-        <button onClick={()=>setImage(null)}>Remove</button>
-        </div>
-      )}
+                    {/* {imagePath && (
+                      <div>
+                        <img
+                          alt="not fount"
+                          width={"250px"}
+                          src={URL.createObjectURL(imagePath)}
+                        />
+                        <br />
+                        <button onClick={() => setImage(null)}>Remove</button>
+                      </div>
+                    )}
                     <div className="Input_otr">
                       <input
                         type="file"
                         name="myImage"
                         onChange={(event) => setImage(event.target.files[0])}
                       />
-                    </div>
+                    </div> */}
+
                     <div className="Input_otr action_otr">
                       <button
                         type="submit"

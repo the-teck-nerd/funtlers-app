@@ -1,5 +1,21 @@
 @import "../../common-style/variable.scss";
 
+
+
+ .image-uploader
+ {
+  border: 1px solid red;
+  width: 600px;
+  height: 450px;
+  margin-top:20px ;
+
+ }
+.add-activity-container
+{
+  border: 1px solid red;
+
+}
+
 .error_message {
   border: 1px solid red;
   color: red;
@@ -32,6 +48,7 @@
     background-color: $Primary-Light2;
     padding: 24px 30px 30px 30px;
     border-radius: 16px;
+  
   }
 
   .form_heading {
