@@ -21,8 +21,7 @@ function  ActivityDetails()  {
           }
           
           const response = await axios.post('https://localhost:44360/Order', activity);
-
-          console.log(response.data);
+ 
 
           if(response.data>0)
           {
