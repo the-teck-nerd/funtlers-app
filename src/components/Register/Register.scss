@@ -2,8 +2,17 @@
 
 .error_message {
   border: 1px solid red;
-
   color: red;
+  border-radius: 4px;
+  margin: 20px 80px;
+  padding: 25px 40px;
+  font-weight: bold;
+
+}
+.success_message {
+  border: 1px solid green;
+  font-weight: bold;
+  color: green;
   border-radius: 4px;
 
   margin: 20px 80px;
