@@ -1,0 +1,96 @@
+@import '../../common-style/variable.scss';
+
+.cross-icon
+{ 
+ display: flex;
+ flex-direction: row-reverse;
+}
+
+
+.Login_page {
+    .login_main {
+        padding: 112px 0 128px 0;
+    }
+
+    .row_custom {
+        justify-content: center;
+    }
+
+    .col_form_inr {
+        background-color: $Primary-Light2;
+        padding: 24px 30px 30px 30px;
+        border-radius: 16px
+    }
+
+    .form_heading {
+        color: $Black;
+        margin-bottom: 24px;
+        text-align: center;
+    }
+
+    .form_main {
+        margin: 0;
+    }
+
+    .Input_otr {
+        margin-bottom: 24px;
+    }
+
+    .action_otr {
+        display: flex;
+    }
+
+    .form_btn {
+        width: 100%;
+    }
+
+    .check_forget_otr {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .forgot_text {
+        font-family: $font-family-Medium;
+        color: $Black;
+    }
+
+    .heading_another {
+        color: $Black;
+        text-align: center;
+    }
+
+    .google_facebok_otr {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+
+        .buttons_otr {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 50%;
+            background-color: $White;
+            border: 1px solid $Primary;
+            padding: 14px 16px;
+            border-radius: 8px;
+            color: $Primary;
+            transition: .3s;
+
+            &:hover {
+                background-color: $Primary;
+                color: $White;
+            }
+
+            .button_icon {
+                font-size: 24px;
+                line-height: 24px;
+            }
+
+            .button_text {
+                line-height: 24px;
+            }
+        }
+    }
+}
