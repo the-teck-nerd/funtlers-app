@@ -20,7 +20,7 @@ let activity = {
   validPeriodEnd: "",
   validPeriodStart: "",
   description: "",
-  imagePath: [],
+  imagePath: "",
   minPerson: 0,
   maxPerson: 0,
   discountPercent: 0,
@@ -48,6 +48,7 @@ function AddActivity() {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e) => {
+    debugger;
     e.preventDefault();
 
     activity.name = name;
@@ -64,11 +65,12 @@ function AddActivity() {
     activity.discountPercent = 100 - (price / originalPrice) * 100;
 
     //setIsLoading(true);
-    activity.images = images;
+    activity.images = images.map(x=>x.data_url);
 
     console.log(activity);
 
     FetchService.AddActivity(activity).then((response) => {
+      debugger;
       if (response) {
         alert("added");
       } else {
