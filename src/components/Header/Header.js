@@ -1,24 +1,38 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import "./Header.scss";
 import { Link } from "react-router-dom";
 import ThemeBtn from "../ThemeBtn/ThemeBtn";
 
 import BrandLogo from "../../img/brand-logo.png";
 
-import { isLoggedIn, logOut } from "../../api/LoginService";
+import { isLoggedIn, logOut } from "../../api/NewLoginService";
 import LoginPopup from "../LoginPopup/LoginPopup";
 import DialogueBox from "../DialogueBox/DialogueBox";
 
+import { useLocation, useNavigate } from "react-router-dom";
+
 function Header() {
-  const [session, setSession] = useState(isLoggedIn());
+  const navigate = useNavigate();
+
+ 
+  const [userObject, setUser] = useState(isLoggedIn());
+  console.log("userObject");
+  console.log(userObject);
+
   const [showLogin, setShowLogin] = useState(false);
   const [showConfirmDialogue, setConfirmDialogue] = useState(false);
+
+  const location = useLocation();
+  
+  if (location.state) {
+    navigate(0);
+  }
 
   if (showLogin) {
     return (
       <div>
         <div className="backdrop">
-          <LoginPopup setShowLogin={setShowLogin} setUser={setSession} />
+          <LoginPopup setShowLogin={setShowLogin} setUser={setUser} />
         </div>
       </div>
     );
@@ -28,13 +42,12 @@ function Header() {
       <DialogueBox
         title={"Confirm logout"}
         onConfirm={logOut}
-        onConfirmState={setSession}
+        onConfirmState={setUser}
         confirmText={"Logout"}
         cancelText={"Cancel"}
         open={showConfirmDialogue}
         setOpen={setConfirmDialogue}
       >
-       
         Are you sure you want to logout?{" "}
       </DialogueBox>
     );
@@ -69,7 +82,7 @@ function Header() {
                 </Link>
               </li>
             </ul>
-            {!session ? (
+            {!userObject ? (
               <div className="action_otr">
                 <ThemeBtn
                   onClick={() => setShowLogin(true)}
@@ -83,8 +96,7 @@ function Header() {
               </div>
             ) : (
               <div className="action_otr">
-                {console.log(session)}
-                <u> {session?.user?.FirstName}</u>
+                <u> {userObject?.user?.firstName}</u>
                 <Link className="action">
                   <ThemeBtn
                     onClick={() => setConfirmDialogue(true)}
