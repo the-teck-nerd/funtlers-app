@@ -16,13 +16,10 @@ import TeamPage from "./components/TeamPage/TeamPage";
 import BookingConPage from "./components/BookingConPage/BookingConPage";
 import CampaignPage from "./components/CampaignPage/CampaignPage";
 import Register from "./components/Register/Register";
-import React   from "react";
-
+import React from "react";
+import AddActivity from "./components/AddActivity/AddActivity";
 
 function App() {
-
-  
-
   return (
     <>
       <Header />
@@ -35,7 +32,6 @@ function App() {
         <Route path="/partner" exact={true} element={<PartnersPage />} />
         <Route path="/activity" exact={true} element={<Activities />} />
         <Route path="/payment" exact={true} element={<Payments />} />
-
         {/* <Route
           path="/activity-details"
           exact={true}
@@ -47,18 +43,20 @@ function App() {
         <Route path="/faq" exact={true} element={<FaqPage />} />
         <Route path="/about" exact={true} element={<AboutPage />} />
         <Route path="/partner" exact={true} element={<PartnersPage />} />
-        <Route
-          path="/activities"
-          exact={true}
-          element={<SearchResultPage />}
-        />
+        <Route path="/activities" exact={true} element={<SearchResultPage />} />
         <Route path="/team" exact={true} element={<TeamPage />} />
         <Route
           path="/booking-confirmation"
           exact={true}
           element={<BookingConPage />}
         />
-        <Route path="/activity-detail" exact={true} element={<CampaignPage />} />
+        <Route
+          path="/activity-detail"
+          exact={true}
+          element={<CampaignPage />}
+        />
+        <Route path="/add-activity" exact={true} element={<AddActivity />} />
+        <Route path="/edit-activity" exact={true} element={<AddActivity />} />
       </Routes>
       <Footer />
     </>
