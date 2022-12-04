@@ -55,9 +55,7 @@ function Register() {
     setEmail("");
   }
 
-  function timeFunction() {
-   
-}
+ 
   return (
     <LoadingOverlay active={isLoading} spinner text="Processing your request...">
       <div className="Register_page">
