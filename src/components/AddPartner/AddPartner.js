@@ -81,8 +81,8 @@ function AddPartner() {
         <InnerHeader HeaderHeading="Partner" PageText="Add Partner" />
         <section className="Register_main">
           <div className="container">
-            <div className="row row_custom">
-              <div className="col-lg-6 col_form_otr">
+            <div className="row w-100">
+              <div className="px-2 col_form_otr">
                 <div className="col_form_inr">
                   <h3 className="heading-h3 form_heading">
                     Register to Funtlers

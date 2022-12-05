@@ -41,7 +41,14 @@ class FetchService {
   }
 
 
+  VerifyUser(user)
+  {
+    let apicall = APIServices.POST(apiURL() + "Login", user);
+    return apicall;
+  }
+
   
+
   GetPartner()
   {
     let apicall = APIServices.GET(apiURL() + "Partner");
