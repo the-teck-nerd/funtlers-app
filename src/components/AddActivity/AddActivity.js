@@ -65,7 +65,7 @@ function AddActivity() {
     activity.discountPercent = 100 - (price / originalPrice) * 100;
 
     //setIsLoading(true);
-    activity.images = images.map(x=>x.data_url);
+    activity.images = images.map((x) => x.data_url);
 
     console.log(activity);
 
@@ -181,84 +181,70 @@ function AddActivity() {
                     </div>
                     <div className="col">
                       <div className="image-uploader">
-                         
                         <ImageUploader setImagesCallBack={setImages} />
+                      </div>
+                    </div>
+
+                    <div className="row">
+                      <div className="Input_otr col">
+                        <Input
+                          InputClass="Theme_input_white form_input"
+                          Inputype="number"
+                          InputName="number"
+                          label="Minimum Person"
+                          value={minPerson}
+                          onChange={(event) => setMinPerson(event.target.value)}
+                        />
+                      </div>
+                      <div className="Input_otr col">
+                        <Input
+                          InputClass="Theme_input_white form_input"
+                          Inputype="number"
+                          InputName="number"
+                          label="Maximum Person"
+                          value={maxPerson}
+                          onChange={(event) => setMaxPerson(event.target.value)}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="row">
+                      <div className="Input_otr col">
+                        <Input
+                          InputClass="Theme_input_white form_input"
+                          Inputype="date"
+                          InputName="number"
+                          label="Valid from"
+                          value={validPeriodStart}
+                          onChange={(event) =>
+                            setValidPeriodStart(event.target.value)
+                          }
+                        />
+                      </div>
+                      <div className="Input_otr col">
+                        <Input
+                          InputClass="Theme_input_white form_input"
+                          Inputype="date"
+                          InputName="number"
+                          label="Valid Til"
+                          value={validPeriodEnd}
+                          onChange={(event) =>
+                            setValidPeriodEnd(event.target.value)
+                          }
+                        />
                       </div>
                     </div>
 
                     <div className="Input_otr">
                       <Input
-                        InputClass="Theme_input_white form_input"
-                        Inputype="number"
-                        InputName="number"
-                        label="Minimum Person"
-                        value={minPerson}
-                        onChange={(event) => setMinPerson(event.target.value)}
-                      />
-                    </div>
-                    <div className="Input_otr">
-                      <Input
-                        InputClass="Theme_input_white form_input"
-                        Inputype="number"
-                        InputName="number"
-                        label="Maximum Person"
-                        value={maxPerson}
-                        onChange={(event) => setMaxPerson(event.target.value)}
-                      />
-                    </div>
-                    <div className="Input_otr">
-                      <Input
-                        InputClass="Theme_input_white form_input"
+                        InputClass="Theme_input_white form_input description"
                         Inputype="text"
-                        InputName="number"
+                        InputName="description"
                         label="Description"
                         value={description}
                         onChange={(event) => setDescription(event.target.value)}
                       />
                     </div>
-                    <div className="Input_otr">
-                      <Input
-                        InputClass="Theme_input_white form_input"
-                        Inputype="date"
-                        InputName="number"
-                        label="Valid from"
-                        value={validPeriodStart}
-                        onChange={(event) =>
-                          setValidPeriodStart(event.target.value)
-                        }
-                      />
-                    </div>
-                    <div className="Input_otr">
-                      <Input
-                        InputClass="Theme_input_white form_input"
-                        Inputype="date"
-                        InputName="number"
-                        label="Valid Til"
-                        value={validPeriodEnd}
-                        onChange={(event) =>
-                          setValidPeriodEnd(event.target.value)
-                        }
-                      />
-                    </div>
-
-                    {/* {imagePath && (
-                      <div>
-                        <img
-                          alt="not fount"
-                          width={"250px"}
-                          src={URL.createObjectURL(imagePath)}
-                        />
-                        <br />
-                        <button onClick={() => setImage(null)}>Remove</button>
-                      </div>
-                    )}
-                    <div className="Input_otr">
-                      <input
-                        type="file"
-                        name="myImage"
-                        onChange={(event) => setImage(event.target.files[0])}
-                      />
-                    </div> */}
 
                     <div className="Input_otr action_otr">
                       <button

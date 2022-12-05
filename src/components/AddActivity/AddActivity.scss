@@ -1,19 +1,25 @@
 @import "../../common-style/variable.scss";
 
-
+//descrition textbox
+//todo: remove padding in the textbox
+.description
+{
+height:200px;
+text-align: start;
+}
 
  .image-uploader
- {
-  border: 1px solid red;
+ { 
   width: 600px;
-  height: 450px;
+  height: 500px;
   margin-top:20px ;
 
  }
-.add-activity-container
-{
-  border: 1px solid red;
+ 
 
+.slider-container
+{
+  display: flex;
 }
 
 .error_message {

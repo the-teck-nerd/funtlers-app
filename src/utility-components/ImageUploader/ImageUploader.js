@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import ImageUploading from "react-images-uploading";
-
 import "./ImageUploader.scss";
+import campaignImg from "../../img/booking-confirmation-img.png";
 
 export function ImageUploader({ setImagesCallBack }) {
   const [images, setImages] = useState([]);
+  
   //image uploader
   const maxNumber = 7;
 
@@ -15,7 +16,7 @@ export function ImageUploader({ setImagesCallBack }) {
   };
 
   return (
-    <div >
+    <div className="container">
       <ImageUploading
         multiple
         value={images}
@@ -30,12 +31,62 @@ export function ImageUploader({ setImagesCallBack }) {
           onImageRemoveAll,
           onImageUpdate,
           onImageRemove,
-          isDragging,
-          dragProps,
+
           errors,
         }) => (
           // write your building UI
-          <div className="upload__image-wrapper">
+          <div>
+            <div className="image-container">
+              <img
+                height={imageList.length < 2 ? 400 : 350}
+                alt="img"
+                width={470}
+                src={
+                  imageList.length === 0
+                    ? campaignImg
+                    : imageList[0]["data_url"]
+                }
+              />
+            </div>
+
+            {imageList.length > 1 && (
+              <div className="slider-container">
+                {imageList.map(
+                  (image, index) =>
+                    index > 0 && (
+                      <div key={index} className="image-item">
+                        <img
+                          src={image["data_url"]}
+                          alt="img"
+                          height="50"
+                          width="70"
+                        />
+                        <div>
+                          <button
+                            className="delete-button"
+                            onClick={() => onImageRemove(index)}
+                          >
+                            X
+                          </button>
+                        </div>
+                      </div>
+                    )
+                )}
+              </div>
+            )}
+            
+              <button
+                onClick={onImageUpload}
+                className="form_btn Theme_btn_primary"
+              >
+                Upload
+              </button>
+
+              {/* <button className="Theme_btn_primary" onClick={onImageRemoveAll}>
+                Remove all images
+              </button> */}
+            
+
             {errors && (
               <div>
                 {errors.maxNumber && (
@@ -54,24 +105,6 @@ export function ImageUploader({ setImagesCallBack }) {
                 )}
               </div>
             )}
-            <button
-              style={isDragging ? { color: "red" } : undefined}
-              onClick={onImageUpload}
-              {...dragProps}
-            >
-              Click or Drop here
-            </button>
-            &nbsp;
-            <button onClick={onImageRemoveAll}>Remove all images</button>
-            {imageList.map((image, index) => (
-              <div key={index} className="image-item">
-                <img src={image["data_url"]} alt="" width="100" />
-                <div className="image-item__btn-wrapper">
-                  <button className="Theme_btn_primary form_btn" onClick={() => onImageUpdate(index)}>Update</button>
-                  <button className="Theme_btn_primary form_btn" onClick={() => onImageRemove(index)}>Remove</button>
-                </div>
-              </div>
-            ))}
           </div>
         )}
       </ImageUploading>
