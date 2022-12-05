@@ -10,6 +10,7 @@ import LoadingOverlay from "react-loading-overlay";
 import "./AddPartner.scss";
 
 //userTypeID = 1 because its for customers
+//Todo: edit this object model
 let partner = {
   name: "",
   type: "",
@@ -21,55 +22,58 @@ let partner = {
   description: "",
   imagePath: "",
   minPerson: 0,
-  maxPerson:0,
-  discountPercent:0,
-  addDate:new Date().toISOString().slice(0, 10),
-  occassion:""
+  maxPerson: 0,
+  discountPercent: 0,
+  addDate: new Date().toISOString().slice(0, 10),
+  occassion: "",
 };
 
 function AddPartner() {
-
   const [name, setName] = useState("");
-  const [address, setaddress] = useState("");
-  const [city, setcity] = useState("");
-  const [zip, setzip] = useState("");
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [zip, setZip] = useState("");
   const [partnerSince, setpartnerSince] = useState("");
-
-
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
 
   const [isLoading, setIsLoading] = useState(false);
+  const [response, setResponse] = useState("");
 
-    const handleSubmit = async (e) => {
-      e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-      partner.name= name;
-      partner.address =address;
-      partner.city=city;
-      partner.zip=zip;
-      partner.partnerSince=partnerSince;
-      
+    partner.name = name;
+    partner.address = address;
+    partner.city = city;
+    partner.zip = zip;
+    partner.partnerSince = partnerSince;
+    partner.email = email;
+    partner.phone = phone;
 
-     
-     console.log(partner);
+    FetchService.AddPartner(partner).then((response) => {
+      setIsLoading(true);
+      debugger;
+      if (response?.data===1) {
+        setResponse("Success");
+        clearForm();
+      } else {
+        setIsLoading(false);
+        setResponse("Failed");
+      }
+    });
+  };
 
-     FetchService.AddPartner(partner).then((response)=>{
-       if(response)
-       {
-        alert("added");
-       }
-       else
-       {
-        alert("failed");
-       }
-     })
-      
-    };
-
-    function clearForm() {
-      
-
-      
-    }
+  function clearForm() {
+    setName("");
+    setEmail("");
+    setCity("");
+    setZip("");
+    setAddress("");
+    setPhone("");
+    setpartnerSince("");
+    setIsLoading(false);
+  }
 
   return (
     <LoadingOverlay
@@ -84,23 +88,21 @@ function AddPartner() {
             <div className="row w-100">
               <div className="px-2 col_form_otr">
                 <div className="col_form_inr">
-                  <h3 className="heading-h3 form_heading">
-                    Register to Funtlers
-                  </h3>
-                  {/* {response === "Failed" && (
+                  <h3 className="heading-h3 form_heading">Add a new partner</h3>
+                  {response === "Failed" && (
                     <div className="error_message">
                       {
-                        "User with this email address already exists. Please try again with different email."
+                        "Partner with this name already exists."
                       }
                     </div>
                   )}
                   {response === "Success" && (
                     <div className="success_message">
                       {
-                        "User successfully registered! Please login to access your account!"
+                        "Partner successfully registered!"
                       }
                     </div>
-                  )} */}
+                  )}
 
                   <form onSubmit={handleSubmit} className="form_main">
                     <div className="Input_otr">
@@ -108,64 +110,78 @@ function AddPartner() {
                         InputClass="Theme_input_white form_input"
                         Inputype="text"
                         InputName="name"
-                        label="Partner Name"
+                        label="Name"
                         value={name}
                         onChange={(event) => setName(event.target.value)}
                       />
                     </div>
-                   
+
                     <div className="Input_otr">
-                    <Input
-                      InputClass="Theme_input_white form_input"
-                      Inputype="text"
-                      InputName="address"
-                      label="Partner Address"
-                      value={address}
-                      onChange={(event) => setaddress(event.target.value)}
-                    />
-                  </div>
+                      <Input
+                        InputClass="Theme_input_white form_input"
+                        Inputype="text"
+                        InputName="address"
+                        label="Address"
+                        value={address}
+                        onChange={(event) => setAddress(event.target.value)}
+                      />
+                    </div>
 
-                  
-                  <div className="Input_otr">
-                  <Input
-                    InputClass="Theme_input_white form_input"
-                    Inputype="text"
-                    InputName="city"
-                    label="Partner City"
-                    value={city}
-                    onChange={(event) => setcity(event.target.value)}
-                  />
-                </div>
+                    <div className="Input_otr">
+                      <Input
+                        InputClass="Theme_input_white form_input"
+                        Inputype="text"
+                        InputName="city"
+                        label="City"
+                        value={city}
+                        onChange={(event) => setCity(event.target.value)}
+                      />
+                    </div>
 
+                    <div className="Input_otr">
+                      <Input
+                        InputClass="Theme_input_white form_input"
+                        Inputype="text"
+                        InputName="zip"
+                        label="Zip code"
+                        value={zip}
+                        onChange={(event) => setZip(event.target.value)}
+                      />
+                    </div>
 
-                <div className="Input_otr">
-                  <Input
-                    InputClass="Theme_input_white form_input"
-                    Inputype="text"
-                    InputName="zip"
-                    label="Partner Zip"
-                    value={zip}
-                    onChange={(event) => setzip(event.target.value)}
-                  />
-                </div>
-                
-                <div className="Input_otr">
-                  <Input
-                    InputClass="Theme_input_white form_input"
-                    Inputype="datetime-local"
-                    InputName="partnerSince"
-                    label="Partner Since"
-                    value={partnerSince}
-                    onChange={(event) => setpartnerSince(event.target.value)}
-                  />
-                </div>
-               
+                    <div className="Input_otr">
+                      <Input
+                        InputClass="Theme_input_white form_input"
+                        Inputype="datetime-local"
+                        InputName="partnerSince"
+                        label="Partner Since"
+                        value={partnerSince}
+                        onChange={(event) =>
+                          setpartnerSince(event.target.value)
+                        }
+                      />
+                    </div>
 
-                 
+                    <div className="Input_otr">
+                      <Input
+                        InputClass="Theme_input_white form_input"
+                        label="Email"
+                        value={email}
+                        onChange={(event) => setEmail(event.target.value)}
+                      />
+                    </div>
 
+                    <div className="Input_otr">
+                      <Input
+                        InputClass="Theme_input_white form_input"
+                        Inputype="number"
+                        InputName="phone"
+                        label="Phone number"
+                        value={phone}
+                        onChange={(event) => setPhone(event.target.value)}
+                      />
+                    </div>
 
-                    
-                
                     <div className="Input_otr action_otr">
                       <button
                         type="submit"
