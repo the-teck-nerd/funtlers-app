@@ -48,21 +48,61 @@
         .hero_img_otr {
             position: absolute;
             right: 0;
-            top: 45%;
+            top: 48%;
             transform: translateY(-50%);
             width: 50%;
-            height: calc(100% - 150px);
+            height: calc(100% - 100px);
         }
 
         .hero_img {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            object-position: center;
-            animation-name: UpDown;
-            animation-duration: 6s;
-            animation-iteration-count: infinite;
-            animation-timing-function: linear;
+        }
+
+        .hero_swiper,
+        .swiper-wrapper,
+        .swiper-slide,
+        .img_otr {
+            height: 100%;
+        }
+
+        .hero_swiper {
+            padding-bottom: 50px;
+        }
+
+        .swiper-slide {
+            opacity: 0;
+            visibility: hidden;
+            transition-duration: 3000ms !important;
+        }
+
+        .swiper-slide-visible,
+        .swiper-slide-active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .swiper-pagination {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            bottom: 0px;
+            gap: 4px;
+        }
+
+        .swiper-pagination-bullet {
+            width: 10px;
+            height: 10px;
+            border-radius: 100%;
+            background-color: $Black-25;
+            margin: 0;
+            opacity: 1;
+        }
+
+        .swiper-pagination-bullet-active {
+            background-color: $Primary-Dark;
+            opacity: 1;
         }
     }
 }

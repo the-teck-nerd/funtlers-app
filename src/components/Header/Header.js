@@ -3,7 +3,7 @@ import './Header.scss';
 import { Link } from "react-router-dom";
 import ThemeBtn from '../ThemeBtn/ThemeBtn';
 
-import BrandLogo from '../../img/brand-logo.png';
+import BrandLogo from '../../img/brand-logo2.png';
 
 function Header() {
     return (
