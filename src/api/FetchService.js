@@ -6,8 +6,6 @@ class FetchService {
 
   //Todo: make it all PascalCase
   getAllActivities(ownerid) {
-    debugger;
-    console.log(apiURL);
     let apicall = APIServices.GET(apiURL() + "Activity?ownerid=" + ownerid);
     return apicall;
   }
@@ -34,52 +32,35 @@ class FetchService {
   }
 
   //User entity API calls
-  RegisterUser(user)
-  {
+  RegisterUser(user) {
     let apicall = APIServices.POST(apiURL() + "User", user);
     return apicall;
   }
 
-
-  VerifyUser(user)
-  {
+  VerifyUser(user) {
     let apicall = APIServices.POST(apiURL() + "Login", user);
     return apicall;
   }
 
-  
-
-  GetPartner()
-  {
+  GetPartner() {
     let apicall = APIServices.GET(apiURL() + "Partner");
     return apicall;
   }
 
-
-  AddPartner(partner)
-  {
+  AddPartner(partner) {
     let apicall = APIServices.POST(apiURL() + "Partner", partner);
     return apicall;
   }
 
-
-  
-  UpdatePartner(partner)
-  {
+  UpdatePartner(partner) {
     let apicall = APIServices.PUT(apiURL() + "Partner", partner);
     return apicall;
   }
 
-  DeletePartner(partner)
-  {
+  DeletePartner(partner) {
     let apicall = APIServices.DELETE(apiURL() + "Partner", partner);
     return apicall;
   }
-
-
-
-
-
 }
 
 export default new FetchService();

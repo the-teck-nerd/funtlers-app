@@ -66,8 +66,7 @@ function AddActivity() {
 
     //setIsLoading(true);
     activity.images = images.map((x) => x.data_url);
-
-    console.log(activity);
+ 
 
     FetchService.AddActivity(activity).then((response) => {
       debugger;
