@@ -4,58 +4,53 @@ import { Link } from "react-router-dom";
 import ThemeBtn from '../ThemeBtn/ThemeBtn';
 import './CampaignPage.scss';
 import campaignImg from '../../img/booking-confirmation-img.png';
-import {useLocation , useNavigate} from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import FetchService from '../../api/FetchService';
 
 
 function CampaignPage() {
 
 
-    let currentdate=new Date();
+    let currentdate = new Date();
 
-    const [booking, setBooking] = useState({currentdate});
+    const [booking, setBooking] = useState({ currentdate });
 
     const formatDate = (dateString) => {
         const options = { year: "numeric", month: "long", day: "numeric" }
         return new Date(dateString).toLocaleDateString(undefined, options)
-      }
+    }
 
     // handleChange(e){
     //     this.setState({[e.target.name]: e.target.value});
     //  }
 
 
-      const BookActivity=async (activityData)=>{
+    const BookActivity = async (activityData) => {
 
-        let activity={
+        let activity = {
             "id": 0,
             "userID": 0,
-            "totalAmount": activityData.price*activityData.totalPerson,
+            "totalAmount": activityData.price * activityData.totalPerson,
             "additionalDetails": "string",
             "address": "string",
             "createdDate": booking,
             "activityOrders": [
                 activityData
             ]
-          }
-          
-          const response = FetchService.BookAcitvity(activity);
+        }
 
-          response.then(data=>{
-            if(data.data>0)
-            {
-              navigate('/booking-confirmation',{state:activity});
+        const response = FetchService.BookAcitvity(activity);
+
+        response.then(data => {
+            if (data.data > 0) {
+                navigate('/booking-confirmation', { state: activity });
             }
-          });
+        });
+    }
 
-          
-
-
-     }
-      
     const navigate = useNavigate();
     const location = useLocation();
-    
+
     return (
         <div className='campaign_Page'>
             <InnerHeader
@@ -63,7 +58,7 @@ function CampaignPage() {
                 PageText={location.state.name}
             />
 
-            
+
             <div className='campaign_main'>
                 <div className='container'>
                     <div className='row row_custom'>
@@ -103,16 +98,16 @@ function CampaignPage() {
                                         Dealer som ikke brukes grunnet for sen booking, sykdom, manglende oppmøte, avbestilling eller flytting mindre enn 24 timer før bestilt time, refunderes ikke
                                     </p>
                                 </div>
-                                
-                            </div>
-                            <br/>
-                            <h3 class="heading-h3 heading_terms">Bestillingsdato</h3>
-                            
-                            <input name='value'  onChange={(e) => setBooking(e.target.value)}    type="datetime-local" class="Theme_input_white search_input"></input>
-                            <br/>
-                            <br/>
 
-                            <button class="Theme_btn_primary" onClick={()=>{BookActivity(location.state)}}>Book</button>
+                            </div>
+                            <br />
+                            <h3 class="heading-h3 heading_terms">Bestillingsdato</h3>
+
+                            <input name='value' onChange={(e) => setBooking(e.target.value)} type="datetime-local" class="Theme_input_white search_input"></input>
+                            <br />
+                            <br />
+
+                            <button class="Theme_btn_primary" onClick={() => { BookActivity(location.state) }}>Book</button>
 
                         </div>
                         <div className='col-lg-6 col_img_otr'>
@@ -122,7 +117,12 @@ function CampaignPage() {
                                     <ul className='text_ul'>
                                         <li className='text_li'>
                                             <h3 className='text_heading heading-h3'>
-                                                {location.state.totalPerson} personer
+                                                <div className="icon_text_otr">
+                                                    <i class="ri-indeterminate-circle-fill q_icon"></i>
+                                                    <p>{location.state.totalPerson}</p>
+                                                    <i class="ri-add-circle-fill q_icon"></i>
+                                                </div>
+                                                personer
                                             </h3>
                                         </li>
                                         <li className='text_li'>

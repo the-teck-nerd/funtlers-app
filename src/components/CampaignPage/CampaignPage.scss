@@ -60,7 +60,23 @@
         }
 
         .text_heading {
+            display: flex;
+            align-items: center;
             color: $Black;
+
+            .icon_text_otr {
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                margin-right: 16px;
+            }
+
+            .q_icon {
+                font-size: 24px;
+                line-height: 24px;
+                color: $Primary;
+                transition: .3s;
+            }
         }
 
         .social_ul {

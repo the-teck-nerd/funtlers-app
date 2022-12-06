@@ -1,20 +1,18 @@
 import React from "react"
 import './Payments.scss';
 
-    
-function  Payments()  {
+
+function Payments() {
 
 
     return (
 
         <>
             <div>Payments work!</div>
-
-
         </>
     )
 
-} 
+}
 
 
 

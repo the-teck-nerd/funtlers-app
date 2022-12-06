@@ -1,14 +1,15 @@
 @import '../../common-style/variable.scss';
 
 
-.backdrop
-{
+.backdrop {
     position: fixed;
     right: 0;
     bottom: 0;
     left: 0;
     top: 0;
     z-index: 999;
+    width: 100%;
+    height: 100vh;
     backdrop-filter: blur(8px);
 }
 
@@ -26,13 +27,24 @@
         justify-content: space-between;
     }
 
-    .logo_otr {}
+    .logo_otr {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        height: 80px;
+    }
 
     .logo {
-        width: 280px;
+        width: 270px;
         height: 52px;
         object-fit: contain;
         object-position: left;
+    }
+
+    .logo_text {
+        color: $White;
+        text-transform: capitalize;
     }
 
     .action_menu_otr {

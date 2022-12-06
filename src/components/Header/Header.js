@@ -14,7 +14,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 function Header() {
   const navigate = useNavigate();
 
- 
+
   const [userObject, setUser] = useState(isLoggedIn());
  
 
@@ -22,7 +22,7 @@ function Header() {
   const [showConfirmDialogue, setConfirmDialogue] = useState(false);
 
   const location = useLocation();
-  
+
   if (location.state) {
     navigate(0);
   }
@@ -57,6 +57,9 @@ function Header() {
         <div className="wrapper">
           <Link to="/" className="logo_otr">
             <img className="logo" src={BrandLogo} alt="logo" />
+            <p className="heading-xsb logo_text">
+              Din markedsplass for sosiale aktiviteter
+            </p>
           </Link>
           <div className="action_menu_otr">
             <ul className="menu_ul">
@@ -105,7 +108,7 @@ function Header() {
                 </Link>
               </div>
             )}
-            {}
+            { }
           </div>
         </div>
       </div>

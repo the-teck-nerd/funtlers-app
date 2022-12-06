@@ -1,7 +1,7 @@
 @import '../../common-style/variable.scss';
 
 .Team_building_main {
-    padding-top: 112px;
+    padding: 112px 0 128px 0;
 
     .row_custom {
         justify-content: center;
@@ -116,7 +116,7 @@
     }
 
     .col_inpiration_inr {
-        margin: 48px 0;
+        margin-top: 48px;
 
         .heading {
             color: $Black;
