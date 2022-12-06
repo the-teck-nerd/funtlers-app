@@ -1,19 +1,69 @@
-import React from 'react'
+import React, { useState } from "react";
 import InnerHeader from '../InnerHeader/InnerHeader';
 import { Link } from "react-router-dom";
 import ThemeBtn from '../ThemeBtn/ThemeBtn';
-
 import './CampaignPage.scss';
-
 import campaignImg from '../../img/booking-confirmation-img.png';
+import {useLocation , useNavigate} from 'react-router-dom';
+import FetchService from '../../api/FetchService';
+
 
 function CampaignPage() {
+
+
+    let currentdate=new Date();
+
+    const [booking, setBooking] = useState({currentdate});
+
+    const formatDate = (dateString) => {
+        const options = { year: "numeric", month: "long", day: "numeric" }
+        return new Date(dateString).toLocaleDateString(undefined, options)
+      }
+
+    // handleChange(e){
+    //     this.setState({[e.target.name]: e.target.value});
+    //  }
+
+
+      const BookActivity=async (activityData)=>{
+
+        let activity={
+            "id": 0,
+            "userID": 0,
+            "totalAmount": activityData.price*activityData.totalPerson,
+            "additionalDetails": "string",
+            "address": "string",
+            "createdDate": booking,
+            "activityOrders": [
+                activityData
+            ]
+          }
+          
+          const response = FetchService.BookAcitvity(activity);
+
+          response.then(data=>{
+            if(data.data>0)
+            {
+              navigate('/booking-confirmation',{state:activity});
+            }
+          });
+
+          
+
+
+     }
+      
+    const navigate = useNavigate();
+    const location = useLocation();
+    
     return (
         <div className='campaign_Page'>
             <InnerHeader
-                HeaderHeading="Campaign"
-                PageText="Campaign"
+                HeaderHeading={location.state.name}
+                PageText={location.state.name}
             />
+
+            
             <div className='campaign_main'>
                 <div className='container'>
                     <div className='row row_custom'>
@@ -41,7 +91,7 @@ function CampaignPage() {
                                 </h3>
                                 <div className='content'>
                                     <p className='heading-m campaign_text'>
-                                        Aktivitet må bookes mellom 1. september 2022 - 31. desember 2022
+                                        Aktivitet må bookes mellom 1. <b>{formatDate(location.state.validPeriodStart)} - {formatDate(location.state.validPeriodEnd)}</b>
                                     </p>
                                     <p className='heading-m campaign_text'>
                                         Bruk rabattkode ved booking
@@ -53,13 +103,17 @@ function CampaignPage() {
                                         Dealer som ikke brukes grunnet for sen booking, sykdom, manglende oppmøte, avbestilling eller flytting mindre enn 24 timer før bestilt time, refunderes ikke
                                     </p>
                                 </div>
-                                <Link className='action_otr'>
-                                    <ThemeBtn
-                                        BtnClass="Theme_btn_primary Book_btn"
-                                        BtnText="Book"
-                                    />
-                                </Link>
+                                
                             </div>
+                            <br/>
+                            <h3 class="heading-h3 heading_terms">Bestillingsdato</h3>
+                            
+                            <input name='value'  onChange={(e) => setBooking(e.target.value)}    type="datetime-local" class="Theme_input_white search_input"></input>
+                            <br/>
+                            <br/>
+
+                            <button class="Theme_btn_primary" onClick={()=>{BookActivity(location.state)}}>Book</button>
+
                         </div>
                         <div className='col-lg-6 col_img_otr'>
                             <div className='col_img_inr'>
@@ -68,17 +122,17 @@ function CampaignPage() {
                                     <ul className='text_ul'>
                                         <li className='text_li'>
                                             <h3 className='text_heading heading-h3'>
-                                                7 personer
+                                                {location.state.totalPerson} personer
                                             </h3>
                                         </li>
                                         <li className='text_li'>
                                             <h3 className='text_heading heading-h3'>
-                                                300kr pr. pers.
+                                                {location.state.description}
                                             </h3>
                                         </li>
                                         <li className='text_li'>
                                             <h3 className='text_heading heading-h3'>
-                                                Du sparer 15%
+                                                {location.state.discountName}
                                             </h3>
                                         </li>
                                     </ul>

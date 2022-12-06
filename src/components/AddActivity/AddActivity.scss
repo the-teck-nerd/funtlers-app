@@ -1,5 +1,27 @@
 @import "../../common-style/variable.scss";
 
+//descrition textbox
+//todo: remove padding in the textbox
+.description
+{
+height:200px;
+text-align: start;
+}
+
+ .image-uploader
+ { 
+  width: 600px;
+  height: 500px;
+  margin-top:20px ;
+
+ }
+ 
+
+.slider-container
+{
+  display: flex;
+}
+
 .error_message {
   border: 1px solid red;
   color: red;
@@ -32,6 +54,7 @@
     background-color: $Primary-Light2;
     padding: 24px 30px 30px 30px;
     border-radius: 16px;
+  
   }
 
   .form_heading {

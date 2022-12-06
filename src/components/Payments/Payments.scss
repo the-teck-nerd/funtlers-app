@@ -1,0 +1,26 @@
+
+.activityCard
+{
+  
+  width: 300px;
+  padding: 5px;
+}
+.activityCard:hover
+{
+  background-color: orange;
+   
+  cursor: pointer;
+}
+
+.activityCard > img
+{
+  width: 290px;
+  height: 250px;
+}
+
+.activityInfo
+{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

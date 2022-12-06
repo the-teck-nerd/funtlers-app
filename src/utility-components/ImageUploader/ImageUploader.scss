@@ -1,0 +1,33 @@
+.container
+{
+ display: flex;
+ flex-direction: column;
+ justify-content: space-between ;
+ align-items: center;
+}
+.slider-container
+{
+  
+margin: 5px 0;
+display: flex;
+justify-content: flex-start;
+gap: 10px;
+
+}
+
+.image-container
+{
+   margin-bottom: 5px;
+}
+ 
+.delete-button
+{
+    border: none;
+    border-radius: 0 0 4px 4px;
+
+    background-color: rgba($color: red, $alpha: 0.5);
+    color:white;
+
+    width:100%;
+}
+ 
