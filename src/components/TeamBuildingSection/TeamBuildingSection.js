@@ -1,149 +1,188 @@
-import Input from '../Input/Input'
-import Select from '../Select/Select'
+import Input from "../Input/Input";
+import Select from "../Select/Select";
 import { Link } from "react-router-dom";
-import React, { useEffect, useState } from "react"
-import {useLocation , useNavigate} from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
-import './TeamBuildingSection.scss';
+import "./TeamBuildingSection.scss";
 
-import Logo1 from '../../img/client-logo.png';
-import Logo2 from '../../img/client-logo2.png';
-import Logo3 from '../../img/client-logo3.png';
-import Logo4 from '../../img/client-logo4.png';
-import FetchService from '../../api/FetchService';
+import FetchService from "../../api/FetchService";
+import {
+  getAllActivityCategories,
+  getAllActivityTypes,
+  getAllCities,
+  getBudgetOptions,
+  getNumberOfPeopleOptions,
+} from "../../commons/activity-filters/Helpers";
+
+let searchModal = {
+  name: "",
+  category: "",
+  type: "",
+  city: "",
+  peopleNumber: "",
+  budgetOptions: "",
+};
 
 function TeamBuildingSection() {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
-   
-    const GotoActivity=async (activityData)=>{
-        navigate('/activities');
+  const cities = getAllCities();
+  const activityTypes = getAllActivityTypes();
+  const categories = getAllActivityCategories();
+  const peopleOptions = getNumberOfPeopleOptions();
+  const budgetOptions = getBudgetOptions();
 
-    }
-    const [activities, setActivities] = useState([])
+  const [searchBar, setSearchBar] = useState("");
+  const [city, setCity] = useState("");
+  const [type, setType] = useState("");
+  const [category, setCategory] = useState("");
+  const [peopleNumber, setPeopleNumber] = useState("");
+  const [budget, setBudget] = useState("");
 
-    const fetchData = () => {
-      let ownerid = 1;
-      let apicall =   FetchService.getAllActivities(ownerid);
+  const [activities, setActivities] = useState([]);
   
-      apicall
-        .then(response => {
-          
-          return response.data
-        })
-        .then(data => {
-          
-          // data.data=[{"id":1,"name":"string","price":0,"validPeriod":"2022-11-27T00:00:00","description":"string","imagePath":"string","isDeleted":true,"ownerID":1,"activityType":"string"},{"id":2,"name":"string","price":10,"validPeriod":"2022-11-27T00:00:00","description":"string","imagePath":"string","isDeleted":false,"ownerID":1,"activityType":null},{"id":3,"name":"string","price":10,"validPeriod":"2022-11-27T00:00:00","description":"string","imagePath":"string","isDeleted":false,"ownerID":1,"activityType":null}];
-          setActivities(data)
-         
-        })
-    }
-  
-    useEffect(() => {
-      fetchData()
-    }, [])
-  
-    return (
-        <section className='Team_building_main'>
-            <div className='container'>
-                <div className='row row_custom'>
-                    <div className='col-lg-10 col_otr'>
-                        <div className='col_team_building_inr'>
-                            <h3 className='heading-h3 heading'>
-                                Makes teambuilding funtlier
-                            </h3>
-                            <div className='search_otr'>
-                                <Input
-                                    InputPlaceholder="Vet du hvilken aktivitet du vil gjøre"
-                                    InputName="search"
-                                    Inputype="search"
-                                    InputClass="Theme_input_white search_input"
-                                />
-                                <div className='search_icon_otr'>
-                                    <i class="ri-search-2-line search_icon" onClick={()=>{GotoActivity()}} ></i>
-                                </div>
-                            </div>
-                            <h3 className='heading-lb heading activity_heading'>
-                                Aktivitet ({activities.length})
-                            </h3>
-                            <div className='activity_main'>
-                                <ul className='activity_ul'>
-                                    <li className='activity_li'>
-                                        <Select
-                                            defaultText="Fysisk"
-                                        />
-                                    </li>
-                                    <li className='activity_li'>
-                                        <Select
-                                            defaultText="Antall"
-                                        />
-                                    </li>
-                                    <li className='activity_li'>
-                                        <Select
-                                            defaultText="Budsjett"
-                                        />
-                                    </li>
-                                    <li className='activity_li'>
-                                        <Select
-                                            defaultText="Anledning"
-                                        />
-                                    </li>
-                                </ul>
-                                <div className='filter_otr'>
-                                    <Select
-                                        defaultText="Flere filtere"
-                                    />
-                                </div>
-                            </div>
-                            <div className='relevent_select_otr'>
-                                <Select
-                                    defaultText="Vis: Mest relevant"
-                                />
-                            </div>
-                        </div>
-                        <div className='col_inpiration_inr'>
-                            <h3 className='heading-h3 heading'>
-                                Eller ønsker du inpirasjon?
-                            </h3>
-                            <ul className='inspiration_ul'>
-                                <li className='inspiration_li'>
-                                    <button className='inspiration_btn'>
-                                        Teambuilding
-                                    </button>
-                                </li>
-                                <li className='inspiration_li'>
-                                    <button className='inspiration_btn'>
-                                        Julebord
-                                    </button>
-                                </li>
-                                <li className='inspiration_li'>
-                                    <button className='inspiration_btn'>
-                                        Sommerfest
-                                    </button>
-                                </li>
-                                <li className='inspiration_li'>
-                                    <button className='inspiration_btn'>
-                                        Afterwork
-                                    </button>
-                                </li>
-                                <li className='inspiration_li'>
-                                    <button className='inspiration_btn'>
-                                        Online
-                                    </button>
-                                </li>
-                                <li className='inspiration_li'>
-                                    <button className='inspiration_btn'>
-                                        Dagsutflukt
-                                    </button>
-                                </li>
-                            </ul>
-                        </div>
-                       
-                    </div>
+
+  const fetchData = () => {
+    let ownerid = 1;
+    let apicall = FetchService.getAllActivities(ownerid);
+
+    apicall
+      .then((response) => {
+        return response.data;
+      })
+      .then((data) => {
+        setActivities(data);
+      });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    searchModal.name = searchBar;
+    searchModal.type = type;
+    searchModal.category = category;
+    searchModal.budget = budget;
+    searchModal.peopleNumber = peopleNumber;
+    searchModal.city = city;
+    debugger;
+
+    navigate("/activities", { state: searchModal });
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  return (
+    <section className="Team_building_main">
+      <div className="container">
+        <div className="row row_custom">
+          <div className="col-lg-10 col_otr">
+            <div className="col_team_building_inr">
+              <h3 className="heading-h3 heading">
+                Makes teambuilding funtlier
+              </h3>
+
+              <form onSubmit={handleSubmit}>
+                <div className="search_otr">
+                  <input
+                    placeholder="Vet du hvilken aktivitet du vil gjøre"
+                    name="search"
+                    type="search"
+                    className="Theme_input_white search_input"
+                    onChange={(e) => setSearchBar(e.target.value)}
+                  />
+                  <div className="search_icon_otr">
+                    <button
+                      class="ri-search-2-line search_icon"
+                      type="submit"
+                    ></button>
+                  </div>
                 </div>
+                <h3 className="heading-lb heading activity_heading">
+                  Aktivitet ({activities.length})
+                </h3>
+                <div className="activity_main">
+                  <ul className="activity_ul">
+                    <li className="activity_li">
+                      <Select
+                        options={activityTypes}
+                        defaultText="Acitivity Type"
+                        value={type}
+                        setValue={setType}
+                      />
+                    </li>
+                    <li className="activity_li">
+                      <Select
+                        value={category}
+                        setValue={setCategory}
+                        options={categories}
+                        defaultText="Category"
+                      />
+                    </li>
+                    <li className="activity_li">
+                      <Select
+                        value={city}
+                        setValue={setCity}
+                        options={cities}
+                        defaultText="Cities"
+                      />
+                    </li>
+                    <li className="activity_li">
+                      <Select
+                        value={budget}
+                        setValue={setBudget}
+                        options={budgetOptions}
+                        defaultText="Budget Options"
+                      />
+                    </li>
+                    <li className="activity_li">
+                      <Select
+                        setValue={setPeopleNumber}
+                        value={peopleNumber}
+                        options={peopleOptions}
+                        defaultText="Number of people"
+                      />
+                    </li>
+                  </ul>
+                  {/* <div className="filter_otr">
+                  <Select options={categories} defaultText="Number of people" />
+                </div> */}
+                </div>
+              </form>
             </div>
-        </section>
-    )
+
+            <div className="col_inpiration_inr">
+              <h3 className="heading-h3 heading">
+                Eller ønsker du inpirasjon?
+              </h3>
+              <ul className="inspiration_ul">
+                <li className="inspiration_li">
+                  <button className="inspiration_btn">Teambuilding</button>
+                </li>
+                <li className="inspiration_li">
+                  <button className="inspiration_btn">Julebord</button>
+                </li>
+                <li className="inspiration_li">
+                  <button className="inspiration_btn">Sommerfest</button>
+                </li>
+                <li className="inspiration_li">
+                  <button className="inspiration_btn">Afterwork</button>
+                </li>
+                <li className="inspiration_li">
+                  <button className="inspiration_btn">Online</button>
+                </li>
+                <li className="inspiration_li">
+                  <button className="inspiration_btn">Dagsutflukt</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }
 
-export default TeamBuildingSection
+export default TeamBuildingSection;

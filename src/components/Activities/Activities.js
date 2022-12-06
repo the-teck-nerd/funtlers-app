@@ -6,9 +6,6 @@ import FetchService from "../../api/FetchService";
 
 
 function Activities() {
-
-
-
   const [activities, setActivities] = useState([])
 
   const fetchData = () => {
