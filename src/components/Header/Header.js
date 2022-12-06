@@ -58,6 +58,9 @@ function Header() {
         <div className="wrapper">
           <Link to="/" className="logo_otr">
             <img className="logo" src={BrandLogo} alt="logo" />
+            <p className="heading-xsb logo_text">
+              Din markedsplass for sosiale aktiviteter
+            </p>
           </Link>
           <div className="action_menu_otr">
             <ul className="menu_ul">

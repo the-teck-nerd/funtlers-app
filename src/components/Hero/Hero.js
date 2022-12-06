@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom";
+import Input from '../Input/Input'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Autoplay, Pagination } from "swiper";
 import './Hero.scss';
@@ -23,7 +24,7 @@ function Hero() {
                     <div className='container'>
                         <div className='row row_custom'>
                             <div className='col-lg-6 col_content_otr'>
-                                <div className='col_content_inr'>
+                                {/* <div className='col_content_inr'>
                                     <h1 className='heading-h1 Heading hero_heading'>
                                         Velkommen til
                                         <span className='heading_inr'>
@@ -41,6 +42,19 @@ function Hero() {
                                                 BtnText='Read More'
                                             />
                                         </Link>
+                                    </div>
+                                </div> */}
+                                <div className='col_content_inr'>
+                                    <div className='search_otr'>
+                                        <Input
+                                            InputPlaceholder="Vet du hvilken aktivitet du vil gjøre"
+                                            InputName="search"
+                                            Inputype="search"
+                                            InputClass="Theme_input_white search_input"
+                                        />
+                                        <div className='search_icon_otr'>
+                                            <i class="ri-search-2-line search_icon"></i>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

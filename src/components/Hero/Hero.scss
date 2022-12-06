@@ -11,7 +11,43 @@
         position: relative;
 
         .col_content_inr {
-            padding: 136px 0 200px 0;
+            padding: 200px 0 250px 0;
+        }
+
+        .search_otr {
+            position: relative;
+            margin: 20px 0 24px 0;
+        }
+
+        .search_input {
+            line-height: 26px;
+            padding-right: 52px;
+            box-shadow: none;
+
+            &::-webkit-search-cancel-button {
+                display: none;
+            }
+        }
+
+        .search_icon_otr {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            width: 52px;
+            height: 54px;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 0 8px 8px 0;
+            background-color: $Primary-Dark;
+            cursor: pointer;
+        }
+
+        .search_icon {
+            font-size: 24px;
+            line-height: 24px;
+            color: $White;
         }
 
         .Heading {
