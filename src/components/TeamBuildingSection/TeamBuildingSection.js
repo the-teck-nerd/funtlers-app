@@ -8,11 +8,8 @@ import "./TeamBuildingSection.scss";
 
 import FetchService from "../../api/FetchService";
 import {
-  getAllActivityCategories,
-  getAllActivityTypes,
-  getAllCities,
-  getBudgetOptions,
-  getNumberOfPeopleOptions,
+  getFilteredActivities,
+  getFilters,
 } from "../../commons/activity-filters/Helpers";
 
 let searchModal = {
@@ -27,11 +24,7 @@ let searchModal = {
 function TeamBuildingSection() {
   const navigate = useNavigate();
 
-  const cities = getAllCities();
-  const activityTypes = getAllActivityTypes();
-  const categories = getAllActivityCategories();
-  const peopleOptions = getNumberOfPeopleOptions();
-  const budgetOptions = getBudgetOptions();
+  const filters = getFilters();
 
   const [searchBar, setSearchBar] = useState("");
   const [city, setCity] = useState("");
@@ -41,7 +34,6 @@ function TeamBuildingSection() {
   const [budget, setBudget] = useState("");
 
   const [activities, setActivities] = useState([]);
-  
 
   const fetchData = () => {
     let ownerid = 1;
@@ -107,7 +99,7 @@ function TeamBuildingSection() {
                   <ul className="activity_ul">
                     <li className="activity_li">
                       <Select
-                        options={activityTypes}
+                        options={filters.types}
                         defaultText="Acitivity Type"
                         value={type}
                         setValue={setType}
@@ -117,7 +109,7 @@ function TeamBuildingSection() {
                       <Select
                         value={category}
                         setValue={setCategory}
-                        options={categories}
+                        options={filters.categories}
                         defaultText="Category"
                       />
                     </li>
@@ -125,7 +117,7 @@ function TeamBuildingSection() {
                       <Select
                         value={city}
                         setValue={setCity}
-                        options={cities}
+                        options={filters.cities}
                         defaultText="Cities"
                       />
                     </li>
@@ -133,7 +125,7 @@ function TeamBuildingSection() {
                       <Select
                         value={budget}
                         setValue={setBudget}
-                        options={budgetOptions}
+                        options={filters.budgetOptions}
                         defaultText="Budget Options"
                       />
                     </li>
@@ -141,7 +133,7 @@ function TeamBuildingSection() {
                       <Select
                         setValue={setPeopleNumber}
                         value={peopleNumber}
-                        options={peopleOptions}
+                        options={filters.peopleNumber}
                         defaultText="Number of people"
                       />
                     </li>

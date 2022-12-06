@@ -1,6 +1,14 @@
 export function getAllActivityCategories() {
   const categories = [
     {
+      value: "all",
+      label: "Categories",
+    },
+    {
+      value: "all",
+      label: "Alle",
+    },
+    {
       value: "vennegjeng",
       label: "Vennegjeng",
     },
@@ -55,6 +63,14 @@ export function getAllActivityCategories() {
 export function getAllActivityTypes() {
   const types = [
     {
+      value: "all",
+      label: "Types",
+    },
+    {
+      value: "all",
+      label: "Alle",
+    },
+    {
       value: "fysisk",
       label: "Fysisk",
     },
@@ -68,6 +84,14 @@ export function getAllActivityTypes() {
 }
 export function getAllCities() {
   const cities = [
+    {
+      value: "all",
+      label: "Cities",
+    },
+    {
+      value: "all",
+      label: "Alle",
+    },
     {
       value: "oslo",
       label: "Oslo",
@@ -95,6 +119,14 @@ export function getAllCities() {
 export function getBudgetOptions() {
   const budgetOptions = [
     {
+      value: "all",
+      label: "Budget Options",
+    },
+    {
+      value: "all",
+      label: "Alle",
+    },
+    {
       value: "1",
       label: "0 - 100 NOK",
     },
@@ -104,11 +136,11 @@ export function getBudgetOptions() {
     },
     {
       value: "3",
-      label: "201 - 350 NOK",
+      label: "201 - 349 NOK",
     },
     {
       value: "4",
-      label: "351+ NOK",
+      label: "350+ NOK",
     },
   ];
 
@@ -117,6 +149,14 @@ export function getBudgetOptions() {
 
 export function getNumberOfPeopleOptions() {
   const peopleOptions = [
+    {
+      value: "all",
+      label: "Number of Persons",
+    },
+    {
+      value: "all",
+      label: "Alle",
+    },
     {
       value: "1",
       label: "1 - 5 Personer",
@@ -132,4 +172,83 @@ export function getNumberOfPeopleOptions() {
   ];
 
   return peopleOptions;
+}
+
+export function getFilters() {
+  let filterModal = {
+    categories: "",
+    types: "",
+    cities: "",
+    peopleNumber: "",
+    budgetOptions: "",
+  };
+
+  filterModal.types = getAllActivityTypes();
+  filterModal.categories = getAllActivityCategories();
+  filterModal.budgetOptions = getBudgetOptions();
+  filterModal.peopleNumber = getNumberOfPeopleOptions();
+  filterModal.cities = getAllCities();
+
+  return filterModal;
+}
+
+export function getFilteredActivities(activities, filterModal) {
+  
+
+  const [minPeople, maxPeople] = getMinMax(filterModal.peopleNumber);
+  const [minBudget, maxBudget] = getBudget(filterModal.budget);
+
+  const filteredActivities = activities.filter(
+    (activity) =>
+      (filterModal.city === "all" || activity.city === filterModal.city) &&
+      (filterModal.type === "all" ||
+        activity.activityType === filterModal.type) &&
+      (filterModal.category === "all" ||
+        activity.category === filterModal.category) &&
+      (filterModal.peopleNumber === "all" ||
+        (activity.minPerson >= minPeople && activity.minPerson <= maxPeople)) &&
+      (filterModal.budget === "all" ||
+        (activity.price >= minBudget && activity.price <= maxBudget))
+  );
+
+  return filteredActivities;
+}
+
+export function getMinMax(peopleNumber) {
+  let min = 0;
+  let max = 0;
+
+  if (peopleNumber === "1") {
+    min = 1;
+    max = 5;
+  } else if (peopleNumber === "2") {
+    min = 6;
+    max = 10;
+  } else {
+    min = 10;
+    max = 999;
+  }
+
+  return [min, max];
+}
+
+export function getBudget(budget) {
+  let min = 0;
+  let max = 0;
+
+  if (budget === "1") {
+    min = 0;
+    max = 100;
+  } else if (budget === "2") {
+    min = 101;
+    max = 200;
+  } else if (budget === "3") {
+    min = 201;
+    max = 349;
+  } else {
+    min = 350;
+    max = 99999;
+  }
+
+  return [min, max];
 }
