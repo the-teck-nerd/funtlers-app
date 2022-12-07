@@ -16,8 +16,7 @@ export function loginUser(credentials, token) {
       };
       token.state = "success";
       alert("success");
-      console.log("debug:");
-      console.log(token);
+       
       return token;
     } else {
       alert("failed");

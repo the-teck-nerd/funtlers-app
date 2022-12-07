@@ -10,7 +10,7 @@ export function ImageUploader({ setImagesCallBack }) {
   const maxNumber = 7;
 
   const onChange = (imageList, addUpdateIndex) => {
-    console.log(imageList, addUpdateIndex);
+     
     setImages(imageList);
     setImagesCallBack(imageList);
   };

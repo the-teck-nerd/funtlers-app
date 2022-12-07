@@ -16,8 +16,7 @@ function Header() {
 
 
   const [userObject, setUser] = useState(isLoggedIn());
-  console.log("userObject");
-  console.log(userObject);
+ 
 
   const [showLogin, setShowLogin] = useState(false);
   const [showConfirmDialogue, setConfirmDialogue] = useState(false);
