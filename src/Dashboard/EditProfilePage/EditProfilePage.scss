@@ -1,0 +1,22 @@
+@import '../../common-style//variable.scss';
+
+.profile_edit_page_main {
+    .info_main {
+
+        .info_li {
+            &:not(:last-child) {
+                margin-bottom: 16px;
+            }
+        }
+
+        .form_input {
+            background-color: $White;
+            border-radius: 8px;
+            box-shadow: $Box-Shadow-Custom;
+        }
+
+        .action_otr {
+            display: flex;
+        }
+    }
+}

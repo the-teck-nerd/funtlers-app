@@ -20,51 +20,75 @@ import React from "react";
 import AddActivity from "./components/AddActivity/AddActivity";
 import AddPartner from "./components/AddPartner/AddPartner";
 import EditPartner from "./components/EditPartner/EditPartner";
+import ProfilePage from "./Dashboard/ProfilePage/ProfilePage";
+import DashboardHeader from "./Dashboard/DashboardHeader/DashboardHeader";
+import DashboardSidebar from "./Dashboard/DashboardSidebar/DashboardSidebar";
+import EditProfilePage from "./Dashboard/EditProfilePage/EditProfilePage";
 
 function App() {
   return (
+    // <>
+    //   <Header />
+    //   <Routes>
+    //     <Route path="/" exact={true} element={<LandingPage />} />
+    //     <Route path="/login" exact={true} element={<Login />} />
+    //     <Route path="/contact" exact={true} element={<ContactPage />} />
+    //     <Route path="/faq" exact={true} element={<FaqPage />} />
+    //     <Route path="/about" exact={true} element={<AboutPage />} />
+    //     <Route path="/partner" exact={true} element={<PartnersPage />} />
+    //     <Route path="/activity" exact={true} element={<Activities />} />
+    //     <Route path="/payment" exact={true} element={<Payments />} />
+    //     {/* <Route
+    //       path="/activity-details"
+    //       exact={true}
+    //       element={<ActivityDetails />}
+    //     /> */}
+    //     <Route path="/login" exact={true} element={<Login />} />
+    //     <Route path="/register" exact={true} element={<Register />} />
+    //     <Route path="/contact" exact={true} element={<ContactPage />} />
+    //     <Route path="/faq" exact={true} element={<FaqPage />} />
+    //     <Route path="/about" exact={true} element={<AboutPage />} />
+    //     <Route path="/partner" exact={true} element={<PartnersPage />} />
+    //     <Route path="/activities" exact={true} element={<SearchResultPage />} />
+    //     <Route path="/team" exact={true} element={<TeamPage />} />
+    //     <Route
+    //       path="/booking-confirmation"
+    //       exact={true}
+    //       element={<BookingConPage />}
+    //     />
+    //     <Route
+    //       path="/activity-detail"
+    //       exact={true}
+    //       element={<CampaignPage />}
+    //     />
+    //     <Route path="/add-activity" exact={true} element={<AddActivity />} />
+    //     <Route path="/edit-activity" exact={true} element={<AddActivity />} />
+
+    //     <Route path="/add-partner" exact={true} element={<AddPartner />} />
+    //     <Route path="/edit-partner" exact={true} element={<EditPartner />} />
+
+    //   </Routes>
+    //   <Footer />
+    // </>
     <>
-      <Header />
-      <Routes>
-        <Route path="/" exact={true} element={<LandingPage />} />
-        <Route path="/login" exact={true} element={<Login />} />
-        <Route path="/contact" exact={true} element={<ContactPage />} />
-        <Route path="/faq" exact={true} element={<FaqPage />} />
-        <Route path="/about" exact={true} element={<AboutPage />} />
-        <Route path="/partner" exact={true} element={<PartnersPage />} />
-        <Route path="/activity" exact={true} element={<Activities />} />
-        <Route path="/payment" exact={true} element={<Payments />} />
-        {/* <Route
-          path="/activity-details"
-          exact={true}
-          element={<ActivityDetails />}
-        /> */}
-        <Route path="/login" exact={true} element={<Login />} />
-        <Route path="/register" exact={true} element={<Register />} />
-        <Route path="/contact" exact={true} element={<ContactPage />} />
-        <Route path="/faq" exact={true} element={<FaqPage />} />
-        <Route path="/about" exact={true} element={<AboutPage />} />
-        <Route path="/partner" exact={true} element={<PartnersPage />} />
-        <Route path="/activities" exact={true} element={<SearchResultPage />} />
-        <Route path="/team" exact={true} element={<TeamPage />} />
-        <Route
-          path="/booking-confirmation"
-          exact={true}
-          element={<BookingConPage />}
-        />
-        <Route
-          path="/activity-detail"
-          exact={true}
-          element={<CampaignPage />}
-        />
-        <Route path="/add-activity" exact={true} element={<AddActivity />} />
-        <Route path="/edit-activity" exact={true} element={<AddActivity />} />
-
-        <Route path="/add-partner" exact={true} element={<AddPartner />} />
-        <Route path="/edit-partner" exact={true} element={<EditPartner />} />
-
-      </Routes>
-      <Footer />
+      <div className="dashboard_main">
+        <div className="sidebar_content_main">
+          <div className="sidebar_main">
+            <DashboardSidebar />
+          </div>
+          <div className="Header_content_main">
+            <div className="dashboard_header_main">
+              <DashboardHeader />
+            </div>
+            <div className="content_main">
+              <Routes>
+                <Route path="/profile" exact={true} element={<ProfilePage />} />
+                <Route path="/profile-edit" exact={true} element={<EditProfilePage />} />
+              </Routes>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 }
