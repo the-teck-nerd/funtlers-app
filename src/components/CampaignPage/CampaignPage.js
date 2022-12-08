@@ -11,15 +11,11 @@ function CampaignPage() {
   let currentdate = new Date();
 
   const [booking, setBooking] = useState({ currentdate });
-
+  
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
-
-  // handleChange(e){
-  //     this.setState({[e.target.name]: e.target.value});
-  //  }
 
   const BookActivity = async (activityData) => {
     let activity = {
@@ -44,11 +40,16 @@ function CampaignPage() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const [state, setState]= useState(location.state);
+  const [peopleNumber, setPeopleNumber] = useState(+location.state?.totalPerson);
+
+
+
   return (
     <div className="campaign_Page">
       <InnerHeader
-        HeaderHeading={location.state.name}
-        PageText={location.state.name}
+        HeaderHeading={state.name}
+        PageText={state.name}
       />
 
       <div className="campaign_main">
@@ -86,8 +87,8 @@ function CampaignPage() {
                   <p className="heading-m campaign_text">
                     Aktivitet må bookes mellom 1.{" "}
                     <b>
-                      {formatDate(location.state.validPeriodStart)} -{" "}
-                      {formatDate(location.state.validPeriodEnd)}
+                      {formatDate(state.validPeriodStart)} -{" "}
+                      {formatDate(state.validPeriodEnd)}
                     </b>
                   </p>
                   <p className="heading-m campaign_text">
@@ -109,7 +110,7 @@ function CampaignPage() {
               <button
                 class="Theme_btn_primary"
                 onClick={() => {
-                  BookActivity(location.state);
+                  BookActivity(state);
                 }}
               >
                 Book
@@ -123,9 +124,9 @@ function CampaignPage() {
                     <li className="text_li">
                       <h3 className="text_heading heading-h3">
                         <div className="icon_text_otr">
-                          <i class="ri-indeterminate-circle-fill q_icon"></i>
-                          <p>{location.state.totalPerson}</p>
-                          <i class="ri-add-circle-fill q_icon"></i>
+                          <i onClick={()=>setPeopleNumber(peopleNumber-1)} class="ri-indeterminate-circle-fill q_icon"></i>
+                          <p>{peopleNumber}</p>
+                          <i onClick={()=>setPeopleNumber(1+peopleNumber)} class="ri-add-circle-fill q_icon"></i>
                         </div>
                         personer
                       </h3>
@@ -137,7 +138,7 @@ function CampaignPage() {
                     </li>
                     <li className="text_li">
                       <h3 className="text_heading heading-h3">
-                        {location.state.discountName}
+                        {"Discount: "+state.discountPercent+'%'}
                       </h3>
                     </li>
                   </ul>

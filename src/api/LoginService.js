@@ -15,11 +15,11 @@ export function loginUser(credentials, token) {
         usertype: "Consumer",
       };
       token.state = "success";
-      alert("success");
+     
        
       return token;
     } else {
-      alert("failed");
+      
       token.state = "failed";
       token.user = null;
       return null;

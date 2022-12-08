@@ -3,10 +3,8 @@ import { Link } from "react-router-dom";
 import Check from "../Check/Check";
 import "./LoginComponent.scss";
 import { loginUser } from "../../api/NewLoginService";
- 
 
-export default function LoginComponent({setUser , setShowLogin}) {
-   
+export default function LoginComponent({ setUser, setShowLogin }) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
@@ -17,14 +15,10 @@ export default function LoginComponent({setUser , setShowLogin}) {
       password,
     }).then((response) => {
       if (response) {
-        
-        alert("correct information");  
         //Setting state for parent component to redirect to home (/) page
         setUser(response);
         setShowLogin(false);
-         
       } else {
-        alert("wrong information");
       }
     });
   };

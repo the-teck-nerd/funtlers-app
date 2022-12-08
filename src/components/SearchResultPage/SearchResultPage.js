@@ -10,6 +10,7 @@ import {
 } from "../../commons/activity-filters/Helpers";
 import { useLocation } from "react-router-dom";
 import "./SearchResultPage.scss";
+import bookingImg from '../../img/booking-confirmation-img.png';
 
 let filterModal = {
   category: "all",
@@ -141,7 +142,7 @@ function SearchResultPage() {
                 CardImg={
                   activity.images
                     ? JSON.parse(activity.images)?.[0].imageURL
-                    : "/static/media/search-card-img1.24ac83481c42dc337b40.png"
+                    : bookingImg
                 }
                 CardHeading={activity.name}
                 CardDesc={activity.description}
