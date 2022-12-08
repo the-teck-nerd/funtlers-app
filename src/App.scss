@@ -121,3 +121,49 @@ p {
     line-height: $line-height-26px;
     font-family: $font-family-SemiBold;
 }
+
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: $White;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $Primary;
+    transition: .3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: $Primary-Dark;
+}
+
+
+.dashboard_main {
+    .sidebar_content_main {
+        display: flex;
+    }
+
+    .sidebar_main {
+        border-right: 1px solid $Black-10;
+    }
+
+    .dashboard_header_main {
+        border-bottom: 1px solid $Black-10;
+        margin-bottom: 24px;
+    }
+
+    .Header_content_main {
+        flex: 1;
+    }
+
+    .content_main {
+        margin-left: 24px;
+        border-top: 1px solid $Black-10;
+        border-left: 1px solid $Black-10;
+        height: calc(100vh - 106px);
+        padding: 24px;
+        overflow-y: auto;
+    }
+}

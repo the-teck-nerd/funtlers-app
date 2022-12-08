@@ -2,13 +2,13 @@
 
 
 
-.input-container
-{
+.input-container {
     display: flex;
     flex-direction: column;
     gap: 4px;
 }
-.input-container > label{
+
+.input-container>label {
     margin-left: 5px;
 }
 
@@ -46,4 +46,8 @@
     &::placeholder {
         color: $Black-65;
     }
+}
+
+.input_disable {
+    pointer-events: none;
 }
