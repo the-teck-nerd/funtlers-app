@@ -1,0 +1,45 @@
+@import '../../common-style//variable.scss';
+
+.activity_page_main {
+    .heading_filter_otr {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 30px;
+
+        .heading_activity {
+            color: $Black;
+        }
+
+        .filter_main {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .sort_text {
+            color: $Black-65;
+        }
+
+        .form-select {
+            flex: 1;
+        }
+    }
+
+    .row_custom {
+        gap: 24px 0;
+
+        .col_searchCard_inr {
+            .edit_icon_otr {
+                display: flex;
+            }
+        }
+    }
+
+    .action_otr {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 48px;
+    }
+}

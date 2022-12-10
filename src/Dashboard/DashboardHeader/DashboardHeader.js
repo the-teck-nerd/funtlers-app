@@ -43,7 +43,7 @@ function DashboardHeader() {
                                 </Link>
                             </li>
                             <li className='profile_drop_li'>
-                                <Link className='profile_drop_link'>
+                                <Link to="/" className='profile_drop_link'>
                                     <i class="ri-file-list-2-fill menu_icon"></i>
                                     <p className='menu_text heading-xs'>
                                         Activity

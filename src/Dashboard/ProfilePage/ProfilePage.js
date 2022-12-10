@@ -7,6 +7,7 @@ import './ProfilePage.scss';
 import ProfileImg from '../../img/profile-img.png';
 import Input from '../../components/Input/Input';
 import { Link } from 'react-router-dom';
+import Select from '../../components/Select/Select';
 
 function ProfilePage() {
     return (
@@ -90,6 +91,111 @@ function ProfilePage() {
                         </li>
                     </ul>
                 </form>
+            </div>
+            <div className='profile_table_main'>
+                <div className='heading_filter_otr'>
+                    <p className='heading_activity heading-lb'>
+                        User setting
+                    </p>
+                    <div className='search_otr'>
+                        <i class="ri-search-2-line search_icon"></i>
+                        <Input
+                            InputClass="Theme_input_white search_input"
+                            Inputype="search"
+                            InputName="search"
+                            InputPlaceholder="Search"
+                        />
+                    </div>
+                </div>
+                <div className='profile_table'>
+                    <table className='data_table'>
+                        <thead className='table_header'>
+                            <tr>
+                                <th>
+                                    <p className='heading-xsb header_text'>
+                                        User ID
+                                    </p>
+                                </th>
+                                <th>
+                                    <p className='heading-xsb header_text'>
+                                        Profile
+                                    </p>
+                                </th>
+                                <th>
+                                    <p className='heading-xsb header_text'>
+                                        Date
+                                    </p>
+                                </th>
+                                <th>
+                                    <p className='heading-xsb header_text'>
+                                        Total
+                                    </p>
+                                </th>
+                                <th>
+                                    <p className='heading-xsb header_text'>
+                                        Role
+                                    </p>
+                                </th>
+                                <th>
+                                    <p className='heading-xsb header_text'>
+                                        Status
+                                    </p>
+                                </th>
+                                <th>
+                                    <p className='heading-xsb header_text'>
+                                        Action
+                                    </p>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody className='table_body'>
+                            <tr>
+                                <td>
+                                    <p className='heading-xs body_text'>
+                                        #VL2110
+                                    </p>
+                                </td>
+                                <td>
+                                    <div className='prodile_otr'>
+                                        <img className='profile_img' src={ProfileImg} alt='img' />
+                                        <p className='heading-xs profile_name'>
+                                            Benedicte
+                                        </p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <p className='heading-xs body_text'>
+                                        07 Oct, 2021
+                                    </p>
+                                </td>
+                                <td>
+                                    <p className='heading-xsb body_text'>
+                                        $24.05
+                                    </p>
+                                </td>
+                                <td>
+                                    <div className='role_select_otr'>
+                                        <Select
+
+                                        />
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className='status_text_otr'>
+                                        <p className='heading-xsb status_text'>
+                                            Paid
+                                        </p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className='icon_otr'>
+                                        <i class="ri-edit-fill edit_icon"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     )

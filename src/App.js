@@ -24,6 +24,8 @@ import ProfilePage from "./Dashboard/ProfilePage/ProfilePage";
 import DashboardHeader from "./Dashboard/DashboardHeader/DashboardHeader";
 import DashboardSidebar from "./Dashboard/DashboardSidebar/DashboardSidebar";
 import EditProfilePage from "./Dashboard/EditProfilePage/EditProfilePage";
+import ActivityPage from "./Dashboard/ActivityPage/ActivityPage";
+import PartnerPage from "./Dashboard/PartnerPage/PartnerPage";
 
 function App() {
   return (
@@ -82,8 +84,10 @@ function App() {
             </div>
             <div className="content_main">
               <Routes>
+                <Route path="/" exact={true} element={<ActivityPage />} />
                 <Route path="/profile" exact={true} element={<ProfilePage />} />
                 <Route path="/profile-edit" exact={true} element={<EditProfilePage />} />
+                <Route path="/partner-dashboard" exact={true} element={<PartnerPage />} />
               </Routes>
             </div>
           </div>
