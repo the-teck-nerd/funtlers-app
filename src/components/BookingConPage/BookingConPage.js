@@ -30,6 +30,7 @@ function BookingConPage() {
   const location = useLocation();
   const activity = location.state?.activity;
   const peopleNumber = location.state?.peopleNumber;
+  const user= location.state?.user;
   const activityImages = JSON.parse(activity.images);
 
    
@@ -44,7 +45,7 @@ function BookingConPage() {
         <div className="container">
           <SectionHeadingDesc
             Heading="Hurra! Nå er det bare å glede seg!"
-            Desc="Bookingbekreftelse er sendt på mail til {xxxx@gmail.com}"
+            Desc={"Bookingbekreftelse er sendt på mail til "+ user?.email} 
           />
           <div className="row row_custom">
             <div className="col-lg-6 col_img_otr">

@@ -4,9 +4,11 @@ import "./CampaignPage.scss";
 
 import { useLocation, useNavigate } from "react-router-dom";
 import FetchService from "../../api/FetchService";
+import { isLoggedIn } from "../../api/NewLoginService";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Autoplay, Pagination } from "swiper";
+
 
 import "swiper/css";
 import "swiper/css/effect-fade";
@@ -21,6 +23,8 @@ function CampaignPage() {
   const [activity, setActivity] = useState(location.state);
   const [peopleNumber, setPeopleNumber] = useState(+location.state?.minPerson);
   const [images, setImages] = useState(JSON.parse(activity.images));
+  const [userObject, setUser] = useState(isLoggedIn()?.user);
+
 
   debugger;
 
@@ -33,13 +37,12 @@ function CampaignPage() {
     const bookActivity = {
       activity: activity,
       peopleNumber: peopleNumber,
+      user: userObject
     };
 
-
-    debugger;
     var request =   
     {
-    userID: 1,
+    userID: userObject.id,
     totalAmount: activity.price * peopleNumber,
     additionalDetails: "No details right now.",
     address: activity.city,
