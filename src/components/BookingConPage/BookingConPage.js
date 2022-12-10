@@ -5,8 +5,13 @@ import { Link } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import "./BookingConPage.scss";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectFade, Autoplay, Pagination } from "swiper";
 
-import bookingImg from "../../img/booking-confirmation-img.png";
+import "swiper/css";
+import "swiper/css/effect-fade";
+import "swiper/css/pagination";
+ 
 import ThemeBtn from "../ThemeBtn/ThemeBtn";
 
 const formatDate = (dateString) => {
@@ -22,14 +27,13 @@ const formatTime = (dateString) => {
   });
 };
 function BookingConPage() {
-
-
-
   const location = useLocation();
-  const activity=location.state?.activity;
-  const peopleNumber=location.state?.peopleNumber;
+  const activity = location.state?.activity;
+  const peopleNumber = location.state?.peopleNumber;
+  const activityImages = JSON.parse(activity.images);
 
-  debugger;
+   
+
   return (
     <div className="BookingCon_Page">
       <InnerHeader
@@ -40,12 +44,37 @@ function BookingConPage() {
         <div className="container">
           <SectionHeadingDesc
             Heading="Hurra! Nå er det bare å glede seg!"
-            Desc="Bookingbekreftelse er sendt på mail til xxxx@gmail.com"
+            Desc="Bookingbekreftelse er sendt på mail til {xxxx@gmail.com}"
           />
           <div className="row row_custom">
             <div className="col-lg-6 col_img_otr">
-              <div className="col_img_inr">
-                <img className="booking_conf_img" src={bookingImg} alt="img" />
+              <div className="col_img_inr ">
+                <Swiper
+                  slidesPerView={1}
+                  spaceBetween={24}
+                  effect={"fade"}
+                  pagination={{
+                    clickable: true,
+                  }}
+                  autoplay={{
+                    delay: 2500,
+                    disableOnInteraction: false,
+                  }}
+                  modules={[EffectFade, Autoplay, Pagination]}
+                  className="mySwiper hero_swiper"
+                >
+                  {activityImages.map((image) => (
+                    <SwiperSlide>
+                      <div className="img_otr">
+                        <img
+                          className="booking_conf_img"
+                          src={image.imageURL}
+                          alt="img"
+                        />
+                      </div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
               </div>
             </div>
             <div className="col-lg-6 col_content_otr">
@@ -57,15 +86,23 @@ function BookingConPage() {
                   {activity.name}
                 </p>
                 <p className="heading-l booking_text">
-                  <span className="heading-lb booking_text_inr">Gyldig Periode : </span>{" "}
-                  {formatDate(activity.validPeriodStart)} {" - "} 
+                  <span className="heading-lb booking_text_inr">
+                    Gyldig Periode :{" "}
+                  </span>{" "}
+                  {formatDate(activity.validPeriodStart)} {" - "}
                   {formatDate(activity.validPeriodEnd)}
+                </p>
+                <p className="heading-l booking_text">
+                  <span className="heading-lb booking_text_inr">
+                    Activity Provide :{" "}
+                  </span>{" "}
+                  {activity.partnerName}
                 </p>
                 <p className="heading-l booking_text">
                   <span className="heading-lb booking_text_inr">
                     Adresse :{" "}
                   </span>{" "}
-                  xxxxxxxx
+                  {activity.partnerAddress}
                 </p>
                 <p className="heading-l booking_text">
                   <span className="heading-lb booking_text_inr">Antall : </span>{" "}
@@ -79,13 +116,18 @@ function BookingConPage() {
                 </p>
                 <p className="heading-l booking_text">
                   <span className="heading-lb booking_text_inr">Pris : </span>{" "}
-                  {activity.price}{" NOK / Person "}
+                  {activity.price}
+                  {" NOK / Person "}
                 </p>
                 <p className="heading-l booking_text">
-                  <span className="heading-lb booking_text_inr">Totale Beløpet : </span>{" "}
-                  {activity.price*peopleNumber}{" "}kr ink. mva
+                  <span className="heading-lb booking_text_inr">
+                    Totale Beløpet :{" "}
+                  </span>{" "}
+                  {activity.price * peopleNumber} kr ink. mva
                 </p>
-                <ul className="social_ul">
+{/* 
+                //Todo: partner social media */}
+                {/* <ul className="social_ul">
                   <li className="social_li">
                     <Link className="social_a">
                       <i class="ri-facebook-circle-fill social_icon"></i>
@@ -106,7 +148,7 @@ function BookingConPage() {
                       <i class="ri-linkedin-fill social_icon"></i>
                     </Link>
                   </li>
-                </ul>
+                </ul> */}
                 <Link className="action_otr">
                   <ThemeBtn
                     BtnClass="Theme_btn_primary del_btn"
