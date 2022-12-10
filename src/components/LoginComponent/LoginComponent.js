@@ -4,11 +4,17 @@ import Check from "../Check/Check";
 import "./LoginComponent.scss";
 import { loginUser } from "../../api/NewLoginService";
 
-export default function LoginComponent({ setUser, setShowLogin }) {
+export default function LoginComponent({
+  setUser,
+  setShowLogin,
+  setIsLoading,
+}) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [responseMessage, setResponseMessage] = useState("");
 
   const handleSubmit = async (e) => {
+    setIsLoading(true);
     e.preventDefault();
     loginUser({
       email,
@@ -16,9 +22,19 @@ export default function LoginComponent({ setUser, setShowLogin }) {
     }).then((response) => {
       if (response) {
         //Setting state for parent component to redirect to home (/) page
-        setUser(response);
-        setShowLogin(false);
+
+        setResponseMessage("Success");
+
+        setTimeout(() => {
+          setIsLoading(false);
+          setUser(response);
+          setShowLogin(false);
+        }, 4000);
       } else {
+        setResponseMessage("Failed");
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 3000);
       }
     });
   };
@@ -26,6 +42,13 @@ export default function LoginComponent({ setUser, setShowLogin }) {
   return (
     <>
       <h3 className="heading-h3 form_heading">Sign In to Funtlers</h3>
+      {responseMessage === "Failed" && (
+        <div className="error_message">{"Wrong username or password."}</div>
+      )}
+      {responseMessage === "Success" && (
+        <div className="success_message">{"Logged in successfully."}</div>
+      )}
+
       <form onSubmit={handleSubmit} className="form_main">
         <div className="Input_otr">
           <input
