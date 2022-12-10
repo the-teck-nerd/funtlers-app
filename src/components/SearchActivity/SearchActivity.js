@@ -98,6 +98,7 @@ function SearchActivity() {
                         defaultText="Acitivity Type"
                         value={type}
                         setValue={setType}
+                       
                       />
                     </li>
                     <li className="activity_li">

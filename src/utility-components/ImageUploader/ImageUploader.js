@@ -90,7 +90,7 @@ export function ImageUploader({ setImagesCallBack }) {
             {errors && (
               <div>
                 {errors.maxNumber && (
-                  <span>Number of selected images exceed maxNumber</span>
+                  <span>Number of selected images exceed allowed limit</span>
                 )}
                 {errors.acceptType && (
                   <span>Your selected file type is not allow</span>

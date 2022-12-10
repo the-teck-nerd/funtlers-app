@@ -8,8 +8,9 @@ import FetchService from "../../api/FetchService";
 import LoadingOverlay from "react-loading-overlay";
 import ImageUploading from "react-images-uploading";
 import { ImageUploader } from "../../utility-components/ImageUploader/ImageUploader";
-
+import { getFilters } from "../../commons/activity-filters/Helpers";
 import "./AddActivity.scss";
+import Select from "../Select/Select";
 
 let activity = {
   name: "",
@@ -43,9 +44,11 @@ function AddActivity() {
 
   const [minPerson, setMinPerson] = useState(0);
   const [maxPerson, setMaxPerson] = useState(0);
-  const [occassion, setOccassion] = useState("");
+  const [category, setCategory] = useState("");
   const [date, setDate] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  const filters = getFilters();
 
   const handleSubmit = async (e) => {
     debugger;
@@ -61,12 +64,12 @@ function AddActivity() {
     activity.description = description;
     activity.minPerson = minPerson;
     activity.maxPerson = maxPerson;
-    activity.occassion = occassion;
+    activity.category = category;
+    activity.activityType=type;
     activity.discountPercent = 100 - (price / originalPrice) * 100;
 
     //setIsLoading(true);
     activity.images = images.map((x) => x.data_url);
- 
 
     FetchService.AddActivity(activity).then((response) => {
       debugger;
@@ -124,35 +127,39 @@ function AddActivity() {
                         />
                       </div>
                       <div className="Input_otr">
-                        <Input
-                          InputClass="Theme_input_white form_input"
-                          Inputype="text"
-                          InputName="type"
-                          label="Occassion"
-                          value={occassion}
-                          onChange={(event) => setOccassion(event.target.value)}
+                        {"Categories"}
+                        <Select
+                          hideDefault
+                          className={"Theme_input_white form_input"}
+                          setValue={setCategory}
+                          value={category}
+                          options={filters.categories}
+                          defaultText=""
                         />
                       </div>
                       <div className="Input_otr">
-                        <Input
-                          InputClass="Theme_input_white form_input"
-                          Inputype="text"
-                          InputName="city"
-                          label="City"
+                        {"City"}
+                        <Select
+                          hideDefault
+                          className={"Theme_input_white form_input"}
+                          setValue={setCity}
                           value={city}
-                          onChange={(event) => setCity(event.target.value)}
+                          options={filters.cities}
+                          defaultText=""
                         />
                       </div>
                       <div className="Input_otr">
-                        <Input
-                          InputClass="Theme_input_white form_input"
-                          Inputype="text"
-                          InputName="type"
-                          label="Acitivity Type"
+                        {"Activity Type"}
+                        <Select
+                          hideDefault
+                          className={"Theme_input_white form_input"}
+                          setValue={type}
                           value={type}
-                          onChange={(event) => setType(event.target.value)}
+                          options={filters.types}
+                          defaultText=""
                         />
                       </div>
+
                       <div className="row">
                         <div className="Input_otr col">
                           <Input
