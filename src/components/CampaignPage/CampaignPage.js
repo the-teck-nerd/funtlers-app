@@ -35,7 +35,7 @@ function CampaignPage() {
       peopleNumber: peopleNumber,
     };
 
-    //const response = FetchService.BookAcitvity(activity);
+   //  response = FetchService.BookAcitvity(activity);
 
     // response.then((data) => {
     //   if (data.data > 0) {
@@ -153,6 +153,11 @@ function CampaignPage() {
 
                 <div className="social_text_otr">
                   <ul className="text_ul">
+                  <li className="text_li">
+                      <h3 className="text_heading heading-h3">
+                        {"Vendor: " + activity.partnerName}
+                      </h3>
+                    </li>
                     <li className="text_li">
                       <h3 className="text_heading heading-h3">
                         {"Price: " + activity.price + " NOK / Person"}
