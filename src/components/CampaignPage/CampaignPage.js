@@ -35,14 +35,26 @@ function CampaignPage() {
       peopleNumber: peopleNumber,
     };
 
-   //  response = FetchService.BookAcitvity(activity);
 
-    // response.then((data) => {
-    //   if (data.data > 0) {
-    //     
+    debugger;
+    var request =   
+    {
+    userID: 1,
+    totalAmount: activity.price * peopleNumber,
+    additionalDetails: "No details right now.",
+    address: activity.city,
+    createdDate: booking.currentdate,
+    activityOrders: [activity],
+  };
+
+    var response = FetchService.BookAcitvity(request);
+
+    response.then((data) => {
+      if (data.data > 0) {
+        
     navigate("/booking-confirmation", { state: bookActivity });
-    //   }
-    // });
+      }
+    });
   };
 
   return (
