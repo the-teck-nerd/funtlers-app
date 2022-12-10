@@ -11,6 +11,7 @@ import {
 import { useLocation } from "react-router-dom";
 import "./SearchResultPage.scss";
 import bookingImg from '../../img/booking-confirmation-img.png';
+import LoadingOverlay from "react-loading-overlay";
 
 let filterModal = {
   category: "all",
@@ -34,6 +35,7 @@ function SearchResultPage() {
   const [filteredActivities, setFilteredActivities] = useState([]);
 
   const [visible, setVisible] = useState(8);
+  const [isLoading, setIsLoading]= useState(false);
 
   const fetchData = () => {
     let ownerid = 1;
@@ -46,15 +48,19 @@ function SearchResultPage() {
       .then((data) => {
         setActivities(data);
         setFilteredActivities(data);
-        debugger;
+        
       });
   };
 
   useEffect(() => {
+    setIsLoading(true);
     fetchData();
   }, []);
 
   useEffect(() => {
+
+    setIsLoading(true);
+
     filterModal.category = category===""?"all" : category;
     filterModal.type = type===""?"all" : type;
     filterModal.city = city===""?"all" : city;
@@ -62,13 +68,18 @@ function SearchResultPage() {
     filterModal.budget = budget===""?"all": budget;
 
     setFilteredActivities(getFilteredActivities(activities, filterModal));
+
+     setTimeout(()=>{setIsLoading(false);  }, 1000);
+
   }, [city, type, category, peopleNumber, budget]);
 
   const showMoreItems = () => {
     setVisible((prevValue) => prevValue + 8);
   };
 
-  return (
+  return ( 
+    <LoadingOverlay active={isLoading} spinner text="Processing your request...">
+  
     <div className="searchRsult_page">
       <InnerHeader
         HeaderHeading="Søkeresultat fysisk"
@@ -158,6 +169,7 @@ function SearchResultPage() {
         </div>
       </div>
     </div>
+    </LoadingOverlay>
   );
 }
 
