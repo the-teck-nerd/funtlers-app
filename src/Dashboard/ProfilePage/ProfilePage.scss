@@ -247,6 +247,54 @@
                             border-radius: 100%;
                         }
                     }
+
+                    .status_text_otr {
+                        display: flex;
+                        padding: 5px 10px 5px 16px;
+                        border-right: 1px solid $Black-25;
+
+                        .status_text {
+                            font-size: 12px;
+                            line-height: 19px;
+                            border-radius: 4px;
+                            padding: 4px 12px;
+                        }
+
+                        .paid_text {
+                            color: $White;
+                            background-color: $Primary;
+                        }
+
+                        .unpaid_text {
+                            color: $Black-65;
+                            background-color: $Black-3;
+                        }
+                    }
+
+                    .role_select_otr {
+                        display: flex;
+                        padding: 5px 10px 5px 16px;
+                        border-right: 1px solid $Black-25;
+
+                        .form-select {
+                            padding: 0 24px 0 0;
+                            background-color: transparent;
+                            background-position: right 0.25rem center;
+                        }
+                    }
+
+                    .icon_otr {
+                        display: flex;
+                        align-items: center;
+                        padding: 5px 10px 5px 16px;
+
+                        .edit_icon {
+                            font-size: 20px;
+                            line-height: 20px;
+                            color: $Black-65;
+                            cursor: pointer;
+                        }
+                    }
                 }
             }
         }

@@ -176,14 +176,277 @@ function ProfilePage() {
                                 <td>
                                     <div className='role_select_otr'>
                                         <Select
+                                        />
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className='status_text_otr'>
+                                        <p className='heading-xsb status_text paid_text'>
+                                            Paid
+                                        </p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className='icon_otr'>
+                                        <i class="ri-edit-fill edit_icon"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p className='heading-xs body_text'>
+                                        #VL2110
+                                    </p>
+                                </td>
+                                <td>
+                                    <div className='prodile_otr'>
+                                        <img className='profile_img' src={ProfileImg} alt='img' />
+                                        <p className='heading-xs profile_name'>
+                                            Benedicte
+                                        </p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <p className='heading-xs body_text'>
+                                        07 Oct, 2021
+                                    </p>
+                                </td>
+                                <td>
+                                    <p className='heading-xsb body_text'>
+                                        $24.05
+                                    </p>
+                                </td>
+                                <td>
+                                    <div className='role_select_otr'>
+                                        <Select
 
                                         />
                                     </div>
                                 </td>
                                 <td>
                                     <div className='status_text_otr'>
-                                        <p className='heading-xsb status_text'>
+                                        <p className='heading-xsb status_text paid_text'>
                                             Paid
+                                        </p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className='icon_otr'>
+                                        <i class="ri-edit-fill edit_icon"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p className='heading-xs body_text'>
+                                        #VL2110
+                                    </p>
+                                </td>
+                                <td>
+                                    <div className='prodile_otr'>
+                                        <img className='profile_img' src={ProfileImg} alt='img' />
+                                        <p className='heading-xs profile_name'>
+                                            Benedicte
+                                        </p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <p className='heading-xs body_text'>
+                                        07 Oct, 2021
+                                    </p>
+                                </td>
+                                <td>
+                                    <p className='heading-xsb body_text'>
+                                        $24.05
+                                    </p>
+                                </td>
+                                <td>
+                                    <div className='role_select_otr'>
+                                        <Select
+
+                                        />
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className='status_text_otr'>
+                                        <p className='heading-xsb status_text paid_text'>
+                                            Paid
+                                        </p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className='icon_otr'>
+                                        <i class="ri-edit-fill edit_icon"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p className='heading-xs body_text'>
+                                        #VL2110
+                                    </p>
+                                </td>
+                                <td>
+                                    <div className='prodile_otr'>
+                                        <img className='profile_img' src={ProfileImg} alt='img' />
+                                        <p className='heading-xs profile_name'>
+                                            Benedicte
+                                        </p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <p className='heading-xs body_text'>
+                                        07 Oct, 2021
+                                    </p>
+                                </td>
+                                <td>
+                                    <p className='heading-xsb body_text'>
+                                        $24.05
+                                    </p>
+                                </td>
+                                <td>
+                                    <div className='role_select_otr'>
+                                        <Select
+
+                                        />
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className='status_text_otr'>
+                                        <p className='heading-xsb status_text unpaid_text'>
+                                            Un Paid
+                                        </p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className='icon_otr'>
+                                        <i class="ri-edit-fill edit_icon"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p className='heading-xs body_text'>
+                                        #VL2110
+                                    </p>
+                                </td>
+                                <td>
+                                    <div className='prodile_otr'>
+                                        <img className='profile_img' src={ProfileImg} alt='img' />
+                                        <p className='heading-xs profile_name'>
+                                            Benedicte
+                                        </p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <p className='heading-xs body_text'>
+                                        07 Oct, 2021
+                                    </p>
+                                </td>
+                                <td>
+                                    <p className='heading-xsb body_text'>
+                                        $24.05
+                                    </p>
+                                </td>
+                                <td>
+                                    <div className='role_select_otr'>
+                                        <Select
+
+                                        />
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className='status_text_otr'>
+                                        <p className='heading-xsb status_text unpaid_text'>
+                                            Un Paid
+                                        </p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className='icon_otr'>
+                                        <i class="ri-edit-fill edit_icon"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p className='heading-xs body_text'>
+                                        #VL2110
+                                    </p>
+                                </td>
+                                <td>
+                                    <div className='prodile_otr'>
+                                        <img className='profile_img' src={ProfileImg} alt='img' />
+                                        <p className='heading-xs profile_name'>
+                                            Benedicte
+                                        </p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <p className='heading-xs body_text'>
+                                        07 Oct, 2021
+                                    </p>
+                                </td>
+                                <td>
+                                    <p className='heading-xsb body_text'>
+                                        $24.05
+                                    </p>
+                                </td>
+                                <td>
+                                    <div className='role_select_otr'>
+                                        <Select
+
+                                        />
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className='status_text_otr'>
+                                        <p className='heading-xsb status_text paid_text'>
+                                            Paid
+                                        </p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className='icon_otr'>
+                                        <i class="ri-edit-fill edit_icon"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p className='heading-xs body_text'>
+                                        #VL2110
+                                    </p>
+                                </td>
+                                <td>
+                                    <div className='prodile_otr'>
+                                        <img className='profile_img' src={ProfileImg} alt='img' />
+                                        <p className='heading-xs profile_name'>
+                                            Benedicte
+                                        </p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <p className='heading-xs body_text'>
+                                        07 Oct, 2021
+                                    </p>
+                                </td>
+                                <td>
+                                    <p className='heading-xsb body_text'>
+                                        $24.05
+                                    </p>
+                                </td>
+                                <td>
+                                    <div className='role_select_otr'>
+                                        <Select
+
+                                        />
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className='status_text_otr'>
+                                        <p className='heading-xsb status_text unpaid_text'>
+                                            Un Paid
                                         </p>
                                     </div>
                                 </td>
