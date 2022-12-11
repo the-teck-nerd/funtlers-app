@@ -9,7 +9,6 @@ import { isLoggedIn } from "../../api/NewLoginService";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Autoplay, Pagination } from "swiper";
 
-
 import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/pagination";
@@ -25,9 +24,6 @@ function CampaignPage() {
   const [images, setImages] = useState(JSON.parse(activity.images));
   const [userObject, setUser] = useState(isLoggedIn()?.user);
 
-
-  
-
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     return new Date(dateString).toLocaleDateString(undefined, options);
@@ -37,27 +33,24 @@ function CampaignPage() {
     const bookActivity = {
       activity: activity,
       peopleNumber: peopleNumber,
-      user: userObject
+      user: userObject,
     };
 
-    var request =   
-    {
-    userID: userObject.id,
-    totalAmount: activity.price * peopleNumber,
-    additionalDetails: "No details right now.",
-    address: activity.city,
-    createdDate: booking.currentdate,
-    quantity: peopleNumber,
-    activityId: activity.id,
-  };
- 
+    var request = {
+      userID: userObject.id,
+      totalAmount: activity.price * peopleNumber,
+      additionalDetails: "No details right now.",
+      address: activity.city,
+      createdDate: booking.currentdate,
+      quantity: peopleNumber,
+      activityId: activity.id,
+    };
 
     var response = FetchService.BookAcitvity(request);
 
     response.then((data) => {
       if (data.data > 0) {
-        
-    navigate("/booking-confirmation", { state: bookActivity });
+        navigate("/booking-confirmation", { state: bookActivity });
       }
     });
   };
@@ -131,7 +124,11 @@ function CampaignPage() {
               <button
                 class="Theme_btn_primary"
                 onClick={() => {
-                  BookActivity();
+                  if (!userObject) {
+                    alert("Error: User not logged in");
+                  } else {
+                    BookActivity();
+                  }
                 }}
               >
                 Book
@@ -170,7 +167,7 @@ function CampaignPage() {
 
                 <div className="social_text_otr">
                   <ul className="text_ul">
-                  <li className="text_li">
+                    <li className="text_li">
                       <h3 className="text_heading heading-h3">
                         {"Vendor: " + activity.partnerName}
                       </h3>

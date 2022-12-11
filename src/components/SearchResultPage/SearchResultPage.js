@@ -28,8 +28,8 @@ function SearchResultPage() {
   const [city, setCity] = useState(searchFilter?.city);
   const [type, setType] = useState(searchFilter?.type);
   const [category, setCategory] = useState(searchFilter?.category);
-  const [peopleNumber, setPeopleNumber] = useState(searchFilter.peopleNumber);
-  const [budget, setBudget] = useState(searchFilter.budget);
+  const [peopleNumber, setPeopleNumber] = useState(searchFilter?.peopleNumber);
+  const [budget, setBudget] = useState(searchFilter?.budget);
 
   const [activities, setActivities] = useState([]);
   const [filteredActivities, setFilteredActivities] = useState([]);

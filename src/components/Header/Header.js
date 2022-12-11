@@ -23,9 +23,10 @@ function Header() {
 
   const location = useLocation();
 
-  if (location.state) {
+  if (location.state&&showLogin===false&&showConfirmDialogue===false) {
     navigate(0);
   }
+
 
   if (showLogin) {
     return (
