@@ -50,7 +50,7 @@ function SearchActivity() {
     searchModal.budget = budget;
     searchModal.peopleNumber = peopleNumber;
     searchModal.city = city;
-    debugger;
+    
 
     navigate("/activities", { state: searchModal });
   };

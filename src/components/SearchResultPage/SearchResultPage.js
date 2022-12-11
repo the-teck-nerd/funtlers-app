@@ -23,7 +23,7 @@ let filterModal = {
 
 function SearchResultPage() {
   const searchFilter = useLocation().state;
-  debugger;
+  
   const filters = getFilters();
   const [city, setCity] = useState(searchFilter?.city);
   const [type, setType] = useState(searchFilter?.type);

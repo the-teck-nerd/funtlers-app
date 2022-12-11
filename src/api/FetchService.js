@@ -63,7 +63,7 @@ class FetchService {
   }
 
   GetOrdersByUserId(userId) {
-    debugger;
+    
     let apicall = APIServices.GET(apiURL() + "Order?id=" + userId);
     return apicall;
   }

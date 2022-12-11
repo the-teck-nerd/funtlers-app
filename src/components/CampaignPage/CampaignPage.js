@@ -26,7 +26,7 @@ function CampaignPage() {
   const [userObject, setUser] = useState(isLoggedIn()?.user);
 
 
-  debugger;
+  
 
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
