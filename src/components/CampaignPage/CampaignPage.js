@@ -47,8 +47,10 @@ function CampaignPage() {
     additionalDetails: "No details right now.",
     address: activity.city,
     createdDate: booking.currentdate,
-    activityOrders: [activity],
+    quantity: peopleNumber,
+    activityId: activity.id,
   };
+ 
 
     var response = FetchService.BookAcitvity(request);
 
