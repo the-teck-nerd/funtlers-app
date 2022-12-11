@@ -26,6 +26,7 @@ import DashboardSidebar from "./Dashboard/DashboardSidebar/DashboardSidebar";
 import EditProfilePage from "./Dashboard/EditProfilePage/EditProfilePage";
 import ActivityPage from "./Dashboard/ActivityPage/ActivityPage";
 import PartnerPage from "./Dashboard/PartnerPage/PartnerPage";
+import CustomerPage from "./components/CustomerPage/CustomerPage";
 
 function App() {
   return (
@@ -68,7 +69,7 @@ function App() {
 
         <Route path="/add-partner" exact={true} element={<AddPartner />} />
         <Route path="/edit-partner" exact={true} element={<EditPartner />} />
-
+        <Route path="/my-page" exact={true} element={<CustomerPage />} />
       </Routes>
       <Footer />
     </>
