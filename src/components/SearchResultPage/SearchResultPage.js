@@ -23,7 +23,7 @@ let filterModal = {
 
 function SearchResultPage() {
   const searchFilter = useLocation().state;
-
+  debugger;
   const filters = getFilters();
   const [city, setCity] = useState(searchFilter?.city);
   const [type, setType] = useState(searchFilter?.type);
@@ -47,6 +47,7 @@ function SearchResultPage() {
       })
       .then((data) => {
         setActivities(data);
+        setFilteredActivities(data);
 
         filterModal.category = category === "" ? "all" : category;
         filterModal.type = type === "" ? "all" : type;
@@ -54,8 +55,7 @@ function SearchResultPage() {
         filterModal.peopleNumber = peopleNumber === "" ? "all" : peopleNumber;
         filterModal.budget = budget === "" ? "all" : budget;
 
-        setFilteredActivities(getFilteredActivities(activities, filterModal));
-
+        setFilteredActivities(getFilteredActivities(data, filterModal));
       });
   };
 
