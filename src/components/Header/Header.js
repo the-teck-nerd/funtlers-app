@@ -98,7 +98,7 @@ function Header() {
               </div>
             ) : (
               <div className="action_otr">
-                <u> {userObject?.user?.firstName}</u>
+               <button className="Theme_btn_primary" onClick={()=>{ navigate("/my-page");}}> <u> {userObject?.user?.firstName}</u> </button>
                 <Link className="action">
                   <ThemeBtn
                     onClick={() => setConfirmDialogue(true)}
