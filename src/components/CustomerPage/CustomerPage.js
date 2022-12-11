@@ -30,6 +30,7 @@ function CustomerPage() {
         console.table(data);
       });
   };
+  
   return (
     <div className="container-mypage">
       <div className="partner_page_main">
@@ -82,18 +83,16 @@ function CustomerPage() {
               {orders.map((order) => (
                 <tr>
                   <td>
-                    <p className="heading-xs body_text">{order?.id}</p>
+                    <p className="heading-xs body_text">{order?.orderId}</p>
                   </td>
                   <td>
-                    <p className="heading-xs body_text">
-                      {order?.activityName}
-                    </p>
+                    <p className="heading-xs body_text">{order?.name}</p>
                   </td>
                   <td>
                     <p className="heading-xs body_text">{order?.code}</p>
                   </td>
                   <td>
-                    <p className="heading-xsb body_text">{order?.isConsumed}</p>
+                    <p className="heading-xsb body_text">{order?.isConsumed? "Yes" : "No"}</p>
                   </td>
                   <td>
                     <p className="heading-xs body_text">{order?.createdDate}</p>
