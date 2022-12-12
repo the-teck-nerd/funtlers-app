@@ -5,7 +5,7 @@ import "./Input.scss";
 function Input(props) {
   return (
     <div className="input-container">
-      {props.label && <label>{props.label}</label>}
+      {props.label && <label className="label_input heading-xs">{props.label}</label>}
       <input
         required={true}
         className={props.InputClass}

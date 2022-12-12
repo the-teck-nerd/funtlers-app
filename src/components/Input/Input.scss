@@ -5,11 +5,16 @@
 .input-container {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 8px;
 }
 
 .input-container>label {
     margin-left: 5px;
+}
+
+.label_input {
+    font-family: $font-family-Medium;
+    color: $Black-65;
 }
 
 .Theme_input_light {

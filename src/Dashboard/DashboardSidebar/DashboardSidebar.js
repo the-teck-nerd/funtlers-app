@@ -6,9 +6,9 @@ import './DashboardSidebar.scss';
 import BrandLogo from '../../img/brand-logo-primary.png';
 import BrandLogoIcon from '../../img/logo-icon.svg';
 
-function DashboardSidebar() {
+function DashboardSidebar(props) {
     return (
-        <div className='Dashboard_Sidebar'>
+        <div className={props.SidebarAddClass ? 'Dashboard_Sidebar Dashboard_Sidebar_strech' : 'Dashboard_Sidebar'}>
             <Link to="/" className='logo_otr'>
                 <img className='logo_icon' src={BrandLogoIcon} alt='logo' />
                 <img className='brand_logo' src={BrandLogo} alt='logo' />
@@ -32,7 +32,7 @@ function DashboardSidebar() {
                         </Link>
                     </li>
                     <li className='sidebar_menu_li'>
-                        <Link className='sidebar_menu_link'>
+                        <Link to="/partner-analytics" className='sidebar_menu_link'>
                             <i class="ri-service-fill menu_icon"></i>
                             <p className='menu_text heading-m'>
                                 Partners Analytics
@@ -40,10 +40,10 @@ function DashboardSidebar() {
                         </Link>
                     </li>
                     <li className='sidebar_menu_li'>
-                        <Link className='sidebar_menu_link'>
-                            <i class="ri-home-4-fill menu_icon"></i>
+                        <Link to="/order" className='sidebar_menu_link'>
+                            <i class="ri-shopping-cart-fill menu_icon"></i>
                             <p className='menu_text heading-m'>
-                                Home
+                                Order
                             </p>
                         </Link>
                     </li>

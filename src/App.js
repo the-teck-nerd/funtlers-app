@@ -16,7 +16,7 @@ import TeamPage from "./components/TeamPage/TeamPage";
 import BookingConPage from "./components/BookingConPage/BookingConPage";
 import CampaignPage from "./components/CampaignPage/CampaignPage";
 import Register from "./components/Register/Register";
-import React from "react";
+import React, { useState } from "react";
 import AddActivity from "./components/AddActivity/AddActivity";
 import AddPartner from "./components/AddPartner/AddPartner";
 import EditPartner from "./components/EditPartner/EditPartner";
@@ -26,8 +26,15 @@ import DashboardSidebar from "./Dashboard/DashboardSidebar/DashboardSidebar";
 import EditProfilePage from "./Dashboard/EditProfilePage/EditProfilePage";
 import ActivityPage from "./Dashboard/ActivityPage/ActivityPage";
 import PartnerPage from "./Dashboard/PartnerPage/PartnerPage";
+import OrderPage from "./Dashboard/OrderPage/OrderPage";
+import EditOrderPage from "./Dashboard/EditOrderPage/EditOrderPage";
+import PartnerAnalyticsPage from "./Dashboard/PartnerAnalyticsPage/PartnerAnalyticsPage";
 
 function App() {
+  const [SideBar, setSideBar] = useState(false);
+  const SideMenuClick = () => {
+    setSideBar(!SideBar)
+  }
   return (
     // <>
     //   <Header />
@@ -76,11 +83,15 @@ function App() {
       <div className="dashboard_main">
         <div className="sidebar_content_main">
           <div className="sidebar_main">
-            <DashboardSidebar />
+            <DashboardSidebar
+              SidebarAddClass={SideBar}
+            />
           </div>
           <div className="Header_content_main">
             <div className="dashboard_header_main">
-              <DashboardHeader />
+              <DashboardHeader
+                SidebarStrech={SideMenuClick}
+              />
             </div>
             <div className="content_main">
               <Routes>
@@ -88,6 +99,9 @@ function App() {
                 <Route path="/profile" exact={true} element={<ProfilePage />} />
                 <Route path="/profile-edit" exact={true} element={<EditProfilePage />} />
                 <Route path="/partner-dashboard" exact={true} element={<PartnerPage />} />
+                <Route path="/partner-analytics" exact={true} element={<PartnerAnalyticsPage />} />
+                <Route path="/order" exact={true} element={<OrderPage />} />
+                <Route path="/edit-order" exact={true} element={<EditOrderPage />} />
               </Routes>
             </div>
           </div>

@@ -6,11 +6,11 @@ import './DashboardHeader.scss';
 import ProfileImg from '../../img/profile-img.png';
 import { Link } from 'react-router-dom';
 
-function DashboardHeader() {
+function DashboardHeader(props) {
     return (
         <div className='dashboard_header'>
             <div className='wrapper'>
-                <div className='sidebar_menu_icon_otr'>
+                <div className='sidebar_menu_icon_otr' onClick={props.SidebarStrech}>
                     <i class="ri-menu-3-line sidebar_menu_icon"></i>
                 </div>
                 <div className='search_otr'>

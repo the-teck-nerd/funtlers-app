@@ -82,3 +82,42 @@
         }
     }
 }
+
+.Dashboard_Sidebar_strech {
+    width: 72px;
+
+    .logo_otr {
+        padding: 20px 16px;
+    }
+
+    .logo_icon {
+        display: flex;
+    }
+
+    .brand_logo {
+        display: none;
+    }
+
+    .menu_text {
+        display: none;
+    }
+
+    .sidebar_menu_ul {
+        padding: 16px 0;
+    }
+
+    .sidebar_menu_link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .menu_icon {
+        font-size: 24px;
+        line-height: 24px;
+    }
+
+    .sidebar_menu_link {
+        padding: 16px 0;
+    }
+}

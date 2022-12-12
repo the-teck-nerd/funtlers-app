@@ -177,9 +177,12 @@
                         }
 
                         &:nth-child(5),
-                        &:nth-child(6),
-                        &:last-child {
+                        &:nth-child(6) {
                             width: 140px;
+                        }
+
+                        &:last-child {
+                            width: 100px;
                         }
 
                         &:not(:last-child) {
@@ -222,11 +225,10 @@
                     }
 
                     .body_text {
-                        display: flex;
-                        align-items: center;
                         color: $Black-65;
                         padding: 5px 10px 5px 16px;
                         overflow: hidden;
+                        display: -webkit-box;
                         text-overflow: ellipsis;
                         -webkit-line-clamp: 2;
                         -webkit-box-orient: vertical;
@@ -245,6 +247,15 @@
                             object-fit: cover;
                             object-position: center;
                             border-radius: 100%;
+                        }
+
+                        .profile_name {
+                            color: $Black-65;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            display: -webkit-box;
+                            -webkit-line-clamp: 2;
+                            -webkit-box-orient: vertical;
                         }
                     }
 
