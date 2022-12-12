@@ -51,7 +51,7 @@ function AddActivity() {
   const filters = getFilters();
 
   const handleSubmit = async (e) => {
-    debugger;
+    
     e.preventDefault();
 
     activity.name = name;
@@ -72,7 +72,7 @@ function AddActivity() {
     activity.images = images.map((x) => x.data_url);
 
     FetchService.AddActivity(activity).then((response) => {
-      debugger;
+      
       if (response) {
         alert("added");
       } else {

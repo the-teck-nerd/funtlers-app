@@ -1,56 +1,63 @@
 import React, { useState } from "react";
 import InnerHeader from "../InnerHeader/InnerHeader";
-import { Link } from "react-router-dom";
-import ThemeBtn from "../ThemeBtn/ThemeBtn";
 import "./CampaignPage.scss";
-import campaignImg from "../../img/booking-confirmation-img.png";
+
 import { useLocation, useNavigate } from "react-router-dom";
 import FetchService from "../../api/FetchService";
+import { isLoggedIn } from "../../api/NewLoginService";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectFade, Autoplay, Pagination } from "swiper";
+
+import "swiper/css";
+import "swiper/css/effect-fade";
+import "swiper/css/pagination";
 
 function CampaignPage() {
   let currentdate = new Date();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const [booking, setBooking] = useState({ currentdate });
-  
+  const [activity, setActivity] = useState(location.state);
+  const [peopleNumber, setPeopleNumber] = useState(+location.state?.minPerson);
+  const [images, setImages] = useState(JSON.parse(activity.images));
+  const [userObject, setUser] = useState(isLoggedIn()?.user);
+
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
-  const BookActivity = async (activityData) => {
-    let activity = {
-      id: 0,
-      userID: 0,
-      totalAmount: activityData.price * activityData.totalPerson,
-      additionalDetails: "string",
-      address: "string",
-      createdDate: booking,
-      activityOrders: [activityData],
+  const BookActivity = async () => {
+    const bookActivity = {
+      activity: activity,
+      peopleNumber: peopleNumber,
+      user: userObject,
     };
 
-    const response = FetchService.BookAcitvity(activity);
+    var request = {
+      userID: userObject.id,
+      totalAmount: activity.price * peopleNumber,
+      additionalDetails: "No details right now.",
+      address: activity.city,
+      createdDate: booking.currentdate,
+      quantity: peopleNumber,
+      activityId: activity.id,
+    };
+
+    var response = FetchService.BookAcitvity(request);
 
     response.then((data) => {
       if (data.data > 0) {
-        navigate("/booking-confirmation", { state: activity });
+        navigate("/booking-confirmation", { state: bookActivity });
       }
     });
   };
 
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  const [state, setState]= useState(location.state);
-  const [peopleNumber, setPeopleNumber] = useState(+location.state?.totalPerson);
-
-
-
   return (
     <div className="campaign_Page">
-      <InnerHeader
-        HeaderHeading={state.name}
-        PageText={state.name}
-      />
+      <InnerHeader HeaderHeading={activity.name} PageText={activity.name} />
 
       <div className="campaign_main">
         <div className="container">
@@ -85,10 +92,17 @@ function CampaignPage() {
                 <h3 className="heading-h3 heading_terms">Vilkår</h3>
                 <div className="content">
                   <p className="heading-m campaign_text">
-                    Aktivitet må bookes mellom 1.{" "}
+                    Valid for:{" "}
                     <b>
-                      {formatDate(state.validPeriodStart)} -{" "}
-                      {formatDate(state.validPeriodEnd)}
+                      {activity.minPerson} - {activity.maxPerson}
+                    </b>{" "}
+                    Personer
+                  </p>
+                  <p className="heading-m campaign_text">
+                    Aktivitet må bookes mellom:{" "}
+                    <b>
+                      {formatDate(activity.validPeriodStart)} -{" "}
+                      {formatDate(activity.validPeriodEnd)}
                     </b>
                   </p>
                   <p className="heading-m campaign_text">
@@ -110,7 +124,11 @@ function CampaignPage() {
               <button
                 class="Theme_btn_primary"
                 onClick={() => {
-                  BookActivity(state);
+                  if (!userObject) {
+                    alert("Error: User not logged in");
+                  } else {
+                    BookActivity();
+                  }
                 }}
               >
                 Book
@@ -118,52 +136,85 @@ function CampaignPage() {
             </div>
             <div className="col-lg-6 col_img_otr">
               <div className="col_img_inr">
-                <img className="campaign_img" src={campaignImg} alt="img" />
+                <Swiper
+                  slidesPerView={1}
+                  spaceBetween={24}
+                  effect={"fade"}
+                  pagination={{
+                    clickable: true,
+                  }}
+                  autoplay={{
+                    delay: 2500,
+                    disableOnInteraction: false,
+                  }}
+                  modules={[EffectFade, Autoplay, Pagination]}
+                  className="mySwiper hero_swiper"
+                >
+                  {images.map((image) => (
+                    <SwiperSlide>
+                      <div className="img_otr">
+                        <img
+                          className="campaign_img"
+                          height="50"
+                          width="70"
+                          src={image.imageURL}
+                          alt="img"
+                        />
+                      </div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+
                 <div className="social_text_otr">
                   <ul className="text_ul">
                     <li className="text_li">
                       <h3 className="text_heading heading-h3">
+                        {"Vendor: " + activity.partnerName}
+                      </h3>
+                    </li>
+                    <li className="text_li">
+                      <h3 className="text_heading heading-h3">
+                        {"Price: " + activity.price + " NOK / Person"}
+                      </h3>
+                    </li>
+                    <li className="text_li">
+                      <h3 className="text_heading heading-h3">
                         <div className="icon_text_otr">
-                          <i onClick={()=>setPeopleNumber(peopleNumber-1)} class="ri-indeterminate-circle-fill q_icon"></i>
+                          <i
+                            onClick={() =>
+                              peopleNumber > activity.minPerson
+                                ? setPeopleNumber(peopleNumber - 1)
+                                : setPeopleNumber(peopleNumber)
+                            }
+                            class="ri-indeterminate-circle-fill q_icon"
+                          ></i>
                           <p>{peopleNumber}</p>
-                          <i onClick={()=>setPeopleNumber(1+peopleNumber)} class="ri-add-circle-fill q_icon"></i>
+                          <i
+                            onClick={() =>
+                              peopleNumber < activity.maxPerson
+                                ? setPeopleNumber(1 + peopleNumber)
+                                : setPeopleNumber(peopleNumber)
+                            }
+                            class="ri-add-circle-fill q_icon"
+                          ></i>
                         </div>
                         personer
                       </h3>
                     </li>
-                    <li className="text_li">
+                    {/* <li className="text_li">
                       <h3 className="text_heading heading-h3">
                         {location.state.description}
                       </h3>
-                    </li>
+                    </li> */}
                     <li className="text_li">
                       <h3 className="text_heading heading-h3">
-                        {"Discount: "+state.discountPercent+'%'}
+                        {"Discount: " + activity.discountPercent + "%"}
                       </h3>
                     </li>
                   </ul>
-                  <ul className="social_ul">
-                    <li className="social_li">
-                      <Link className="social_a">
-                        <i class="ri-facebook-circle-fill social_icon"></i>
-                      </Link>
-                    </li>
-                    <li className="social_li">
-                      <Link className="social_a">
-                        <i class="ri-instagram-fill social_icon"></i>
-                      </Link>
-                    </li>
-                    <li className="social_li">
-                      <Link className="social_a">
-                        <i class="ri-twitter-fill social_icon"></i>
-                      </Link>
-                    </li>
-                    <li className="social_li">
-                      <Link className="social_a">
-                        <i class="ri-linkedin-fill social_icon"></i>
-                      </Link>
-                    </li>
-                  </ul>
+
+                  {/* Todo: here we can put some more information */}
+                  <ul className="social_ul"></ul>
                 </div>
               </div>
             </div>

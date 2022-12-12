@@ -61,6 +61,12 @@ class FetchService {
     let apicall = APIServices.DELETE(apiURL() + "Partner", partner);
     return apicall;
   }
+
+  GetOrdersByUserId(userId) {
+    
+    let apicall = APIServices.GET(apiURL() + "Order?id=" + userId);
+    return apicall;
+  }
 }
 
 export default new FetchService();

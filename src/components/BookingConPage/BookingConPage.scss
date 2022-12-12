@@ -17,12 +17,10 @@
         .booking_conf_img {
             width: 100%;
             height: 500px;
-            object-fit: contain;
+            object-fit:fill;
             object-position: center;
-            animation-name: UpDown;
-            animation-duration: 6s;
-            animation-iteration-count: infinite;
-            animation-timing-function: linear;
+
+             
         }
     }
 

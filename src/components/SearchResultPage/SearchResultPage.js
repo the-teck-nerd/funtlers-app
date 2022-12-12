@@ -10,7 +10,8 @@ import {
 } from "../../commons/activity-filters/Helpers";
 import { useLocation } from "react-router-dom";
 import "./SearchResultPage.scss";
-import bookingImg from '../../img/booking-confirmation-img.png';
+import bookingImg from "../../img/booking-confirmation-img.png";
+import LoadingOverlay from "react-loading-overlay";
 
 let filterModal = {
   category: "all",
@@ -22,18 +23,19 @@ let filterModal = {
 
 function SearchResultPage() {
   const searchFilter = useLocation().state;
-
+  
   const filters = getFilters();
   const [city, setCity] = useState(searchFilter?.city);
   const [type, setType] = useState(searchFilter?.type);
   const [category, setCategory] = useState(searchFilter?.category);
-  const [peopleNumber, setPeopleNumber] = useState(searchFilter.peopleNumber);
-  const [budget, setBudget] = useState(searchFilter.budget);
+  const [peopleNumber, setPeopleNumber] = useState(searchFilter?.peopleNumber);
+  const [budget, setBudget] = useState(searchFilter?.budget);
 
   const [activities, setActivities] = useState([]);
   const [filteredActivities, setFilteredActivities] = useState([]);
 
   const [visible, setVisible] = useState(8);
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchData = () => {
     let ownerid = 1;
@@ -46,22 +48,36 @@ function SearchResultPage() {
       .then((data) => {
         setActivities(data);
         setFilteredActivities(data);
-        debugger;
+
+        filterModal.category = category === "" ? "all" : category;
+        filterModal.type = type === "" ? "all" : type;
+        filterModal.city = city === "" ? "all" : city;
+        filterModal.peopleNumber = peopleNumber === "" ? "all" : peopleNumber;
+        filterModal.budget = budget === "" ? "all" : budget;
+
+        setFilteredActivities(getFilteredActivities(data, filterModal));
       });
   };
 
   useEffect(() => {
+    setIsLoading(true);
     fetchData();
   }, []);
 
   useEffect(() => {
-    filterModal.category = category===""?"all" : category;
-    filterModal.type = type===""?"all" : type;
-    filterModal.city = city===""?"all" : city;
-    filterModal.peopleNumber = peopleNumber===""? "all": peopleNumber;
-    filterModal.budget = budget===""?"all": budget;
+    setIsLoading(true);
+
+    filterModal.category = category === "" ? "all" : category;
+    filterModal.type = type === "" ? "all" : type;
+    filterModal.city = city === "" ? "all" : city;
+    filterModal.peopleNumber = peopleNumber === "" ? "all" : peopleNumber;
+    filterModal.budget = budget === "" ? "all" : budget;
 
     setFilteredActivities(getFilteredActivities(activities, filterModal));
+
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
   }, [city, type, category, peopleNumber, budget]);
 
   const showMoreItems = () => {
@@ -69,95 +85,101 @@ function SearchResultPage() {
   };
 
   return (
-    <div className="searchRsult_page">
-      <InnerHeader
-        HeaderHeading="Søkeresultat fysisk"
-        PageText="Søkeresultat fysisk"
-      />
-      <div className="searchRsult_main">
-        <div className="container">
-          <div className="wrapper">
-            <h3 className="heading-h3 filter_heading">
-              Aktivitet (
-              {filteredActivities.length > 0 ? filteredActivities.length : 0})
-            </h3>
-            <div className="filter_main">
-              <div className="activity_main">
-                <ul className="activity_ul">
-                  <li className="activity_li">
-                    <Select
-                      options={filters.types}
-                      defaultText="Acitivity Type"
-                      value={type}
-                      setValue={setType}
-                    />
-                  </li>
-                  <li className="activity_li">
-                    <Select
-                      value={category}
-                      setValue={setCategory}
-                      options={filters.categories}
-                      defaultText="Category"
-                    />
-                  </li>
-                  <li className="activity_li">
-                    <Select
-                      value={city}
-                      setValue={setCity}
-                      options={filters.cities}
-                      defaultText="Cities"
-                    />
-                  </li>
-                  <li className="activity_li">
-                    <Select
-                      value={budget}
-                      setValue={setBudget}
-                      options={filters.budgetOptions}
-                      defaultText="Budget Options"
-                    />
-                  </li>
-                  <li className="activity_li">
-                    <Select
-                      setValue={setPeopleNumber}
-                      value={peopleNumber}
-                      options={filters.peopleNumber}
-                      defaultText="Number of people"
-                    />
-                  </li>
-                </ul>
-              </div>
-              <div className="filter_otr">
-                <Select defaultText="Flere filtere" />
-              </div>
-              {/* <div className='relevent_select_otr'>
+    <LoadingOverlay
+      active={isLoading}
+      spinner
+      text="Processing your request..."
+    >
+      <div className="searchRsult_page">
+        <InnerHeader
+          HeaderHeading="Søkeresultat fysisk"
+          PageText="Søkeresultat fysisk"
+        />
+        <div className="searchRsult_main">
+          <div className="container">
+            <div className="wrapper">
+              <h3 className="heading-h3 filter_heading">
+                Aktivitet (
+                {filteredActivities.length > 0 ? filteredActivities.length : 0})
+              </h3>
+              <div className="filter_main">
+                <div className="activity_main">
+                  <ul className="activity_ul">
+                    <li className="activity_li">
+                      <Select
+                        options={filters.types}
+                        defaultText="Acitivity Type"
+                        value={type}
+                        setValue={setType}
+                      />
+                    </li>
+                    <li className="activity_li">
+                      <Select
+                        value={category}
+                        setValue={setCategory}
+                        options={filters.categories}
+                        defaultText="Category"
+                      />
+                    </li>
+                    <li className="activity_li">
+                      <Select
+                        value={city}
+                        setValue={setCity}
+                        options={filters.cities}
+                        defaultText="Cities"
+                      />
+                    </li>
+                    <li className="activity_li">
+                      <Select
+                        value={budget}
+                        setValue={setBudget}
+                        options={filters.budgetOptions}
+                        defaultText="Budget Options"
+                      />
+                    </li>
+                    <li className="activity_li">
+                      <Select
+                        setValue={setPeopleNumber}
+                        value={peopleNumber}
+                        options={filters.peopleNumber}
+                        defaultText="Number of people"
+                      />
+                    </li>
+                  </ul>
+                </div>
+                <div className="filter_otr">
+                  <Select defaultText="Flere filtere" />
+                </div>
+                {/* <div className='relevent_select_otr'>
                                 <Select
                                     defaultText="Vis: Mest relevant"
                                 />
                             </div> */}
+              </div>
             </div>
-          </div>
-          <div className="row row_custom">
-            {filteredActivities?.slice(0, visible).map((activity) => (
-              <SearchResultCard
-                CardImg={
-                  activity.images
-                    ? JSON.parse(activity.images)?.[0].imageURL
-                    : bookingImg
-                }
-                CardHeading={activity.name}
-                CardDesc={activity.description}
-                Data={activity}
-              />
-            ))}
-          </div>
-          <div className="action_otr">
-            <button onClick={showMoreItems} className="Theme_btn_primary">
-              {"Load More"}
-            </button>
+            <div className="row row_custom">
+              {filteredActivities?.slice(0, visible).map((activity) => (
+                <SearchResultCard
+                  CardImg={
+                    activity.images
+                      ? JSON.parse(activity.images)?.[0].imageURL
+                      : bookingImg
+                  }
+                  CardHeading={activity.name}
+                  CardDesc={activity.description}
+                  Data={activity}
+                />
+              ))}
+            </div>
+            <div className="action_otr">
+              <button onClick={showMoreItems} className="Theme_btn_primary">
+                {"Load More"}
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </LoadingOverlay>
   );
 }
 

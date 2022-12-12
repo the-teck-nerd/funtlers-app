@@ -53,7 +53,7 @@ function AddPartner() {
 
     FetchService.AddPartner(partner).then((response) => {
       setIsLoading(true);
-      debugger;
+      
       if (response?.data===1) {
         setResponse("Success");
         clearForm();

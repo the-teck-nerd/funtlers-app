@@ -21,7 +21,6 @@ function SearchActivity() {
 
   const filters = getFilters();
 
-  const [searchBar, setSearchBar] = useState("");
   const [city, setCity] = useState("");
   const [type, setType] = useState("");
   const [category, setCategory] = useState("");
@@ -46,13 +45,12 @@ function SearchActivity() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    searchModal.name = searchBar;
     searchModal.type = type;
     searchModal.category = category;
     searchModal.budget = budget;
     searchModal.peopleNumber = peopleNumber;
     searchModal.city = city;
-    debugger;
+    
 
     navigate("/activities", { state: searchModal });
   };
@@ -72,24 +70,6 @@ function SearchActivity() {
               </h3>
 
               <form onSubmit={handleSubmit}>
-                <div className="search_otr">
-                  <input
-                    placeholder="Vet du hvilken aktivitet du vil gjøre"
-                    name="search"
-                    type="search"
-                    className="Theme_input_white search_input"
-                    onChange={(e) => setSearchBar(e.target.value)}
-                  />
-                  <div className="search_icon_otr">
-                    <button
-                      class="ri-search-2-line search_icon"
-                      type="submit"
-                    ></button>
-                  </div>
-                </div>
-                <h3 className="heading-lb heading activity_heading">
-                  Aktivitet ({activities.length})
-                </h3>
                 <div className="activity_main">
                   <ul className="activity_ul">
                     <li className="activity_li">
@@ -98,7 +78,6 @@ function SearchActivity() {
                         defaultText="Acitivity Type"
                         value={type}
                         setValue={setType}
-                       
                       />
                     </li>
                     <li className="activity_li">
@@ -133,11 +112,21 @@ function SearchActivity() {
                         defaultText="Number of people"
                       />
                     </li>
-                    
+                    <li className="activity_li">
+                      <div className="search_icon_otr_local">
+                        <button
+                          class="ri-search-2-line search_icon_local"
+                          type="submit"
+                        ></button>
+                      </div>
+                    </li>
                   </ul>
                   {/* <div className="filter_otr">
                   <Select options={categories} defaultText="Number of people" />
                 </div> */}
+                </div>
+                <div className="activity-container">
+                  <b>Aktivitet ({activities.length})</b>
                 </div>
               </form>
             </div>
