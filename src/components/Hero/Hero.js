@@ -18,16 +18,131 @@ import HeroImg5 from "../../img/hero-img5.png";
 
 import SearchActivity from "../SearchActivity/SearchActivity";
 
+
+import FetchService from "../../api/FetchService";
+import { getFilters } from "../../commons/activity-filters/Helpers";
+
+let searchModal = {
+  name: "",
+  category: "",
+  type: "",
+  city: "",
+  peopleNumber: "",
+  budgetOptions: "",
+};
+
 function Hero() {
+  const navigate = useNavigate();
+
+  const filters = getFilters();
+
+  const [city, setCity] = useState("");
+  const [type, setType] = useState("");
+  const [category, setCategory] = useState("");
+  const [peopleNumber, setPeopleNumber] = useState("");
+  const [budget, setBudget] = useState("");
+
+  const [activities, setActivities] = useState([]);
+
+  const fetchData = () => {
+    let ownerid = 1;
+    let apicall = FetchService.getAllActivities(ownerid);
+
+    apicall
+      .then((response) => {
+        return response.data;
+      })
+      .then((data) => {
+        setActivities(data);
+      });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    searchModal.type = type;
+    searchModal.category = category;
+    searchModal.budget = budget;
+    searchModal.peopleNumber = peopleNumber;
+    searchModal.city = city;
+
+
+    navigate("/activities", { state: searchModal });
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
   return (
     <>
       <section className="hero_header">
         <div className="Hero_main">
-          <div className="">
+          <div className="container">
             <div className="row row_custom">
-              <div className="col-lg-8 col_content_otr">
-                <div className="col_team_building_otr">
-                  <SearchActivity />
+              <div className="col-lg-7 col_team_building_otr">
+                <div className="col_team_building_inr">
+                  <h3 className="heading-h3 heading">
+                    Makes teambuilding funtlier
+                  </h3>
+
+                  <form onSubmit={handleSubmit}>
+                    <div className="activity_main">
+                      <ul className="activity_ul">
+                        <li className="activity_li">
+                          <Select
+                            options={filters.types}
+                            defaultText="Acitivity Type"
+                            value={type}
+                            setValue={setType}
+                          />
+                        </li>
+                        <li className="activity_li">
+                          <Select
+                            value={category}
+                            setValue={setCategory}
+                            options={filters.categories}
+                            defaultText="Category"
+                          />
+                        </li>
+                        <li className="activity_li">
+                          <Select
+                            value={city}
+                            setValue={setCity}
+                            options={filters.cities}
+                            defaultText="Cities"
+                          />
+                        </li>
+                        <li className="activity_li">
+                          <Select
+                            value={budget}
+                            setValue={setBudget}
+                            options={filters.budgetOptions}
+                            defaultText="Budget Options"
+                          />
+                        </li>
+                        <li className="activity_li">
+                          <Select
+                            setValue={setPeopleNumber}
+                            value={peopleNumber}
+                            options={filters.peopleNumber}
+                            defaultText="Number of people"
+                          />
+                        </li>
+                      </ul>
+                      <div className="search_icon_otr_local">
+                        <button
+                          class="ri-search-2-line search_icon_local"
+                          type="submit"
+                        ></button>
+                      </div>
+                      {/* <div className="filter_otr">
+                  <Select options={categories} defaultText="Number of people" />
+                </div> */}
+                    </div>
+                    <div className="activity-container">
+                      <b>Aktivitet ({activities.length})</b>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>

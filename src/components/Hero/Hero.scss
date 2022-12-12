@@ -11,11 +11,11 @@
         position: relative;
 
         .col_team_building_otr {
-            padding: 128px 48px 170px 0;
+            margin: 128px 24px 170px 0;
         }
 
         .col_team_building_inr {
-            padding: 24px 36px 36px 36px;
+            padding: 24px;
             border-radius: 16px;
             background-color: $Primary-Light2;
 
@@ -38,24 +38,32 @@
                 }
             }
 
-            .search_icon_otr {
+            .search_icon_otr_local {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                position: absolute;
                 width: 52px;
                 height: 52px;
-                right: 0;
-                top: 50%;
-                transform: translateY(-50%);
                 border-radius: 0 8px 8px 0;
-                background-color: $Primary-Dark;
+                background-color: $Primary;
                 cursor: pointer;
+                transition: .3s;
+
+                &:hover {
+                    background-color: $Primary-Dark;
+                }
+
+                @media (max-width: 1440px) {
+                    border-radius: 4px;
+                }
             }
 
-            .search_icon {
+            .search_icon_local {
                 font-size: 24px;
                 color: $White;
+                background-color: transparent;
+                border: none;
+                outline: none;
             }
 
             .activity_main {
@@ -64,38 +72,55 @@
                 justify-content: space-between;
                 background-color: $White;
                 border-radius: 8px;
-                padding: 6px 24px;
+                padding: 0px 0px 0px 16px;
                 margin: 24px 0 0 0;
+                gap: 10px;
 
                 @media (max-width: 1440px) {
                     flex-direction: column;
                     align-items: flex-start;
                     gap: 16px;
+                    padding: 12px;
                 }
             }
 
             .activity_ul {
                 display: flex;
                 align-items: center;
+                flex: 1;
+
+                @media (max-width: 1440px) {
+                    background-color: $Black-3;
+                    padding: 6px 0 6px 10px;
+                    border-radius: 4px;
+                }
 
                 .activity_li {
                     &:not(:first-child) {
                         .Theme_select {
-                            padding-left: 16px;
+                            padding-left: 10px;
+                        }
+                    }
+
+                    @media (max-width: 1440px) {
+                        &:last-child {
+                            .Theme_select {
+                                border-right: 1px solid transparent;
+                            }
                         }
                     }
                 }
 
                 .Theme_select {
-                    font-size: 15px;
+                    font-size: 12px;
                     font-family: $font-family-SemiBold;
                     background-color: transparent;
                     box-shadow: none;
                     border-right: 1px solid $Black-25;
-                    background-position: right 0.45rem center;
+                    background-position: right 0.30rem center;
                     border-radius: 0;
                     color: $Black-65;
-                    padding: 6px 30px 6px 0;
+                    padding: 6px 24px 6px 0;
                     cursor: pointer;
                 }
             }
@@ -179,7 +204,7 @@
             right: 0;
             top: 48%;
             transform: translateY(-50%);
-            width: 45%;
+            width: 40%;
             height: calc(100% - 100px);
         }
 
