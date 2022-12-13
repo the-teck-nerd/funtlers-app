@@ -1,5 +1,23 @@
 @import "../../common-style/variable.scss";
 
+
+.error_message {
+  border: 1px solid red;
+  color: red;
+  border-radius: 4px;
+  margin: 20px 280px;
+  font-weight: bold;
+  text-align: center;
+}
+.success_message {
+  border: 1px solid green;
+  color: green;
+  border-radius: 4px;
+  margin: 20px 280px;
+  font-weight: bold;
+  text-align: center;
+}
+
 //descrition textbox
 //todo: remove padding in the textbox
 .description

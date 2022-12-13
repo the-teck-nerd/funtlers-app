@@ -9,8 +9,9 @@ import LoadingOverlay from "react-loading-overlay";
 import ImageUploading from "react-images-uploading";
 import { ImageUploader } from "../../utility-components/ImageUploader/ImageUploader";
 import { getFilters } from "../../commons/activity-filters/Helpers";
-import "./AddActivity.scss";
-import Select from "../Select/Select";
+
+import Form from "react-bootstrap/Form";
+import "./AddActivity.scss"; 
 
 let activity = {
   name: "",
@@ -37,7 +38,6 @@ function AddActivity() {
   const [city, setCity] = useState("");
   const [price, setPrice] = useState(0);
   const [originalPrice, setOriginalPrice] = useState(0);
-  const [discount, setDiscount] = useState(0);
   const [validPeriodStart, setValidPeriodStart] = useState("");
   const [validPeriodEnd, setValidPeriodEnd] = useState("");
   const [description, setDescription] = useState("");
@@ -45,17 +45,16 @@ function AddActivity() {
   const [minPerson, setMinPerson] = useState(0);
   const [maxPerson, setMaxPerson] = useState(0);
   const [category, setCategory] = useState("");
-  const [date, setDate] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const filters = getFilters();
+  const [response, setResponse] = useState("");
+
+  const filters = getFilters("add");
 
   const handleSubmit = async (e) => {
-    
     e.preventDefault();
 
     activity.name = name;
-    activity.activityType = type;
     activity.city = city;
     activity.price = price;
     activity.originalPrice = originalPrice;
@@ -65,23 +64,38 @@ function AddActivity() {
     activity.minPerson = minPerson;
     activity.maxPerson = maxPerson;
     activity.category = category;
-    activity.activityType=type;
+    activity.activityType = type;
     activity.discountPercent = 100 - (price / originalPrice) * 100;
 
-    //setIsLoading(true);
+    setIsLoading(true);
     activity.images = images.map((x) => x.data_url);
 
     FetchService.AddActivity(activity).then((response) => {
-      
       if (response) {
-        alert("added");
+        setTimeout(() => {
+          setResponse("Success");
+          clearForm();
+          setIsLoading(false);
+        }, 3000);
       } else {
-        alert("failed");
+        setTimeout(() => {
+          setResponse("Failed");
+          setIsLoading(false);
+        }, 2000);
       }
     });
   };
 
-  function clearForm() {}
+  function clearForm() {
+    setName("");
+    setPrice(0);
+    setOriginalPrice(0);
+    setMinPerson(0);
+    setMaxPerson(0);
+    setValidPeriodEnd("");
+    setValidPeriodStart("");
+    setImages([]);
+  }
 
   return (
     <LoadingOverlay
@@ -90,8 +104,11 @@ function AddActivity() {
       text="Processing your request..."
     >
       <div className="Register_page">
+        {/* Todo: might need to change this in future for better design
         <InnerHeader HeaderHeading="Activity" PageText="Add Activity" />
-        <section className="Register_main">
+     */}
+
+        <section>
           <div className="container">
             <div className="row row_custom">
               <div className="col_form_otr">
@@ -99,20 +116,18 @@ function AddActivity() {
                   <h3 className="heading-h3 form_heading">
                     Add a new activity
                   </h3>
-                  {/* {response === "Failed" && (
+                  {response === "Failed" && (
                     <div className="error_message">
                       {
-                        "User with this email address already exists. Please try again with different email."
+                        "Error: System was not able to save the activity. Please try again."
                       }
                     </div>
                   )}
                   {response === "Success" && (
                     <div className="success_message">
-                      {
-                        "User successfully registered! Please login to access your account!"
-                      }
+                      {"Activity has been added successfully."}
                     </div>
-                  )} */}
+                  )}
 
                   <form onSubmit={handleSubmit} className="row">
                     <div className="col">
@@ -128,36 +143,48 @@ function AddActivity() {
                       </div>
                       <div className="Input_otr">
                         {"Categories"}
-                        <Select
-                          hideDefault
-                          className={"Theme_input_white form_input"}
-                          setValue={setCategory}
+                        <Form.Select
+                          className="Theme_input_white form_input"
+                          aria-label="Default select example"
                           value={category}
-                          options={filters.categories}
-                          defaultText=""
-                        />
+                          onChange={(event) => {
+                            setCategory(event.target.value);
+                          }}
+                        >
+                          {filters.categories.map((option) => (
+                            <option value={option.value}>{option.label}</option>
+                          ))}
+                        </Form.Select>
                       </div>
                       <div className="Input_otr">
                         {"City"}
-                        <Select
-                          hideDefault
-                          className={"Theme_input_white form_input"}
-                          setValue={setCity}
+                        <Form.Select
+                          className="Theme_input_white form_input"
+                          aria-label="Default select example"
                           value={city}
-                          options={filters.cities}
-                          defaultText=""
-                        />
+                          onChange={(event) => {
+                            setCity(event.target.value);
+                          }}
+                        >
+                          {filters.cities.map((option) => (
+                            <option value={option.value}>{option.label}</option>
+                          ))}
+                        </Form.Select>
                       </div>
                       <div className="Input_otr">
                         {"Activity Type"}
-                        <Select
-                          hideDefault
-                          className={"Theme_input_white form_input"}
-                          setValue={type}
+                        <Form.Select
+                          className="Theme_input_white form_input"
+                          aria-label="Default select example"
                           value={type}
-                          options={filters.types}
-                          defaultText=""
-                        />
+                          onChange={(event) => {
+                            setType(event.target.value);
+                          }}
+                        >
+                          {filters.types.map((option) => (
+                            <option value={option.value}>{option.label}</option>
+                          ))}
+                        </Form.Select>
                       </div>
 
                       <div className="row">
