@@ -174,7 +174,7 @@ export function getNumberOfPeopleOptions() {
   return peopleOptions;
 }
 
-export function getFilters() {
+export function getFilters(type) {
   let filterModal = {
     categories: "",
     types: "",
@@ -189,12 +189,19 @@ export function getFilters() {
   filterModal.peopleNumber = getNumberOfPeopleOptions();
   filterModal.cities = getAllCities();
 
+  //Removing all type pf option if we are add any activity
+  if (type === "add") {
+    filterModal.types = filterModal.types.filter(x=>x.value!=="all")
+    filterModal.categories=filterModal.categories.filter(x=>x.value!=="all");
+    filterModal.budgetOptions=filterModal.budgetOptions.filter(x=>x.value!=="all");
+    filterModal.peopleNumber=filterModal.peopleNumber.filter(x=>x.value!=="all");
+    filterModal.cities=filterModal.cities.filter(x=>x.value!=="all");
+  }
+
   return filterModal;
 }
 
 export function getFilteredActivities(activities, filterModal) {
-  
-
   const [minPeople, maxPeople] = getMinMax(filterModal.peopleNumber);
   const [minBudget, maxBudget] = getBudget(filterModal.budget);
 
