@@ -13,19 +13,11 @@ import "./AddPartner.scss";
 //Todo: edit this object model
 let partner = {
   name: "",
-  type: "",
   city: "",
-  price: 0,
-  originalPrice: 0,
-  validPeriodEnd: "",
-  validPeriodStart: "",
-  description: "",
-  imagePath: "",
-  minPerson: 0,
-  maxPerson: 0,
-  discountPercent: 0,
-  addDate: new Date().toISOString().slice(0, 10),
-  occassion: "",
+  address: "",
+  zip: "",
+  email: "",
+  phone: "",
 };
 
 function AddPartner() {
@@ -33,7 +25,6 @@ function AddPartner() {
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [zip, setZip] = useState("");
-  const [partnerSince, setpartnerSince] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
 
@@ -43,23 +34,31 @@ function AddPartner() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    setIsLoading(true);
+    setResponse("");
     partner.name = name;
     partner.address = address;
     partner.city = city;
     partner.zip = zip;
-    partner.partnerSince = partnerSince;
+    partner.partnerSince = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
     partner.email = email;
     partner.phone = phone;
 
     FetchService.AddPartner(partner).then((response) => {
-      setIsLoading(true);
-      
-      if (response?.data===1) {
+      if (response?.data === 1) {
+        //todo: fix this timer of loader issue
+        // setTimeout(() => {
         setResponse("Success");
         clearForm();
+        setIsLoading(false);
+        // }, 5);
+
+        clearForm();
       } else {
+        // setTimeout(() => {
         setIsLoading(false);
         setResponse("Failed");
+        // }, 0);
       }
     });
   };
@@ -71,7 +70,6 @@ function AddPartner() {
     setZip("");
     setAddress("");
     setPhone("");
-    setpartnerSince("");
     setIsLoading(false);
   }
 
@@ -82,8 +80,7 @@ function AddPartner() {
       text="Processing your request..."
     >
       <div className="Register_page">
-        <InnerHeader HeaderHeading="Partner" PageText="Add Partner" />
-        <section className="Register_main">
+        <section>
           <div className="container">
             <div className="row w-100">
               <div className="px-2 col_form_otr">
@@ -91,16 +88,12 @@ function AddPartner() {
                   <h3 className="heading-h3 form_heading">Add a new partner</h3>
                   {response === "Failed" && (
                     <div className="error_message">
-                      {
-                        "Partner with this name already exists."
-                      }
+                      {"Partner with this name already exists."}
                     </div>
                   )}
                   {response === "Success" && (
                     <div className="success_message">
-                      {
-                        "Partner successfully registered!"
-                      }
+                      {"Partner successfully registered!"}
                     </div>
                   )}
 
@@ -146,19 +139,6 @@ function AddPartner() {
                         label="Zip code"
                         value={zip}
                         onChange={(event) => setZip(event.target.value)}
-                      />
-                    </div>
-
-                    <div className="Input_otr">
-                      <Input
-                        InputClass="Theme_input_white form_input"
-                        Inputype="datetime-local"
-                        InputName="partnerSince"
-                        label="Partner Since"
-                        value={partnerSince}
-                        onChange={(event) =>
-                          setpartnerSince(event.target.value)
-                        }
                       />
                     </div>
 
