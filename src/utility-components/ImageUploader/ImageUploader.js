@@ -5,12 +5,11 @@ import campaignImg from "../../img/booking-confirmation-img.png";
 
 export function ImageUploader({ setImagesCallBack }) {
   const [images, setImages] = useState([]);
-  
+
   //image uploader
   const maxNumber = 7;
 
   const onChange = (imageList, addUpdateIndex) => {
-     
     setImages(imageList);
     setImagesCallBack(imageList);
   };
@@ -63,6 +62,7 @@ export function ImageUploader({ setImagesCallBack }) {
                         />
                         <div>
                           <button
+                            type="button"
                             className="delete-button"
                             onClick={() => onImageRemove(index)}
                           >
@@ -74,18 +74,18 @@ export function ImageUploader({ setImagesCallBack }) {
                 )}
               </div>
             )}
-            
-              <button
-                onClick={onImageUpload}
-                className="form_btn Theme_btn_primary"
-              >
-                Upload
-              </button>
 
-              {/* <button className="Theme_btn_primary" onClick={onImageRemoveAll}>
+            <button
+              type="button"
+              onClick={onImageUpload}
+              className="form_btn Theme_btn_primary"
+            >
+              Upload
+            </button>
+
+            {/* <button className="Theme_btn_primary" onClick={onImageRemoveAll}>
                 Remove all images
               </button> */}
-            
 
             {errors && (
               <div>
