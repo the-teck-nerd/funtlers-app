@@ -26,6 +26,8 @@ let activity = {
   minPerson: 0,
   maxPerson: 0,
   discountPercent: 0,
+  //todo: remove this static value going forward in future
+  ownerId:1,
   addDate: new Date().toISOString().slice(0, 10),
   occassion: "",
 };
@@ -34,8 +36,8 @@ function AddActivity() {
   const [images, setImages] = useState([]);
 
   const [name, setName] = useState("");
-  const [type, setType] = useState("");
-  const [city, setCity] = useState("");
+  const [type, setType] = useState("fysisk");
+  const [city, setCity] = useState("oslo");
   const [price, setPrice] = useState(0);
   const [originalPrice, setOriginalPrice] = useState(0);
   const [validPeriodStart, setValidPeriodStart] = useState("");
@@ -44,7 +46,7 @@ function AddActivity() {
 
   const [minPerson, setMinPerson] = useState(0);
   const [maxPerson, setMaxPerson] = useState(0);
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("vennegjeng");
   const [isLoading, setIsLoading] = useState(false);
 
   const [response, setResponse] = useState("");
@@ -70,6 +72,8 @@ function AddActivity() {
     setIsLoading(true);
     activity.images = images.map((x) => x.data_url);
 
+
+    debugger;
     FetchService.AddActivity(activity).then((response) => {
       if (response) {
         setTimeout(() => {
