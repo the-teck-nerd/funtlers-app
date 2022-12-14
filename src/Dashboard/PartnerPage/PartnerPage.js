@@ -5,17 +5,16 @@ import FetchService from "../../api/FetchService";
 import { useNavigate } from "react-router-dom";
 
 import "./PartnerPage.scss";
-
-import ProfileImg from "../../img/profile-img.png";
+ 
 
 import ThemeBtn from "../../components/ThemeBtn/ThemeBtn";
 
 function PartnerPage() {
   const navigate = useNavigate();
   const [partners, setPartners] = useState([]);
+  const [search, setSearch] = useState("");
 
   const fetchData = () => {
-    let ownerid = 1;
     let apicall = FetchService.GetPartner();
 
     apicall
@@ -44,10 +43,11 @@ function PartnerPage() {
       <div className="heading_filter_otr">
         <p className="heading_activity heading-lb">Partners</p>
         <div className="filter_search_otr">
-          <div className="filter_main">
+          {/* Todo: implement filter by solution */}
+          {/* <div className="filter_main">
             <p className="sort_text heading-xs">Sort By:</p>
             <Select />
-          </div>
+          </div> */}
           <div className="search_otr">
             <i class="ri-search-2-line search_icon"></i>
             <Input
@@ -55,6 +55,9 @@ function PartnerPage() {
               Inputype="search"
               InputName="search"
               InputPlaceholder="Search"
+              value={search}
+             
+              onChange={(event) => setSearch(event.target.value)}
             />
           </div>
         </div>
@@ -87,7 +90,12 @@ function PartnerPage() {
 
           <tbody className="table_body">
             {partners.map((partner) => (
-              <tr>
+              <tr
+                onClick={() => {
+                  navigate("/edit-partner", { state: partner });
+                }}
+                className="partner_row"
+              >
                 <td>
                   <p className="heading-xs body_text">{partner.id}</p>
                 </td>
