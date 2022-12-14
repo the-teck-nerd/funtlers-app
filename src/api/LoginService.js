@@ -8,10 +8,10 @@ export function loginUser(credentials, token) {
       console.log(response.data);
       token.user = {
         Id: 3,
-        FirstName: "Taimoor",
-        LastName: "Faizal",
-        Phone: "96741213",
-        Email: "taimoor.fazal@test.com",
+        FirstName: "Mark",
+        LastName: "John",
+        Phone: "123456",
+        Email: "Mark@test.com",
         usertype: "Consumer",
       };
       token.state = "success";

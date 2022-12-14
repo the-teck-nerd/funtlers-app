@@ -15,8 +15,7 @@ function ActivityPage({ setIsLoading }) {
   const [search, setSearch] = useState("");
 
   const navigate = useNavigate();
-
-  console.table(activities);
+ 
 
   const fetchData = () => {
     setIsLoading(true);

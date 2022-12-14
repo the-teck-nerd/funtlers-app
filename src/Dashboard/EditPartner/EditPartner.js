@@ -20,8 +20,7 @@ let partnerRequest = {
 function EditPartner() {
   const location = useLocation();
   const partner = location.state;
-
-  console.table(partner);
+ 
 
   const [name, setName] = useState(partner.name);
   const [address, setAddress] = useState(partner.address);
@@ -41,8 +40,7 @@ function EditPartner() {
     partnerRequest.zip = zip;
     partnerRequest.id = partner.id;
     partnerRequest.email=email;
-
-    console.log(partner);
+ 
 
     FetchService.UpdatePartner(partnerRequest).then((response) => {
       if (response) {
