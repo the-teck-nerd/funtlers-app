@@ -168,6 +168,7 @@ function SearchResultPage() {
                   CardHeading={activity.name}
                   CardDesc={activity.description}
                   Data={activity}
+                  source="customer"
                 />
               ))}
             </div>
