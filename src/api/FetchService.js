@@ -17,7 +17,7 @@ class FetchService {
   }
 
   UpdateActivity(activity) {
-    let apicall = APIServices.PUT(apiURL() + "UpdateActivity", activity);
+    let apicall = APIServices.PUT(apiURL() + "Activity", activity);
     return apicall;
   }
 
