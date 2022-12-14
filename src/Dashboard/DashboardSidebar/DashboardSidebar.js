@@ -19,7 +19,7 @@ function DashboardSidebar(props) {
                         <Link to="/" className='sidebar_menu_link active'>
                             <i class="ri-home-4-fill menu_icon"></i>
                             <p className='menu_text heading-m'>
-                                Home
+                                Activities
                             </p>
                         </Link>
                     </li>
