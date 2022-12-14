@@ -1,5 +1,15 @@
 @import '../../common-style//variable.scss';
 
+.partner_row
+{
+    cursor: pointer;
+}
+.partner_row:hover
+{
+    font-weight: bold;
+}
+
+
 .partner_page_main {
     .heading_filter_otr {
         display: flex;
