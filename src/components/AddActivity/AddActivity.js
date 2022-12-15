@@ -11,7 +11,8 @@ import { ImageUploader } from "../../utility-components/ImageUploader/ImageUploa
 import { getFilters } from "../../commons/activity-filters/Helpers";
 
 import Form from "react-bootstrap/Form";
-import "./AddActivity.scss"; 
+import "./AddActivity.scss";
+import AttachActivity from "../../Dashboard/AttachActivity/AttachActivity";
 
 let activity = {
   name: "",
@@ -27,7 +28,7 @@ let activity = {
   maxPerson: 0,
   discountPercent: 0,
   //todo: remove this static value going forward in future
-  ownerId:1,
+  ownerId: 0,
   addDate: new Date().toISOString().slice(0, 10),
   occassion: "",
 };
@@ -50,6 +51,9 @@ function AddActivity() {
   const [isLoading, setIsLoading] = useState(false);
 
   const [response, setResponse] = useState("");
+  const [showPopup, setShowPopup] = useState(false);
+  const [partnerId, setPartnerID] = useState(0);
+  const [partnerName, setPartnerName] = useState("");
 
   const filters = getFilters("add");
 
@@ -68,10 +72,10 @@ function AddActivity() {
     activity.category = category;
     activity.activityType = type;
     activity.discountPercent = 100 - (price / originalPrice) * 100;
+    activity.ownerID= partnerId;
 
     setIsLoading(true);
     activity.images = images.map((x) => x.data_url);
-
 
     debugger;
     FetchService.AddActivity(activity).then((response) => {
@@ -98,6 +102,8 @@ function AddActivity() {
     setMaxPerson(0);
     setValidPeriodEnd("");
     setValidPeriodStart("");
+    setPartnerID(0);
+    setPartnerName(0);
     setImages([]);
   }
 
@@ -283,13 +289,36 @@ function AddActivity() {
                       />
                     </div>
 
-                    <div className="Input_otr action_otr">
-                      <button
-                        type="submit"
-                        className="Theme_btn_primary form_btn"
-                      >
-                        Add Activity
-                      </button>
+                    <div >
+                      {/* Add activity button if the partner is not attached. */}
+                      {partnerId !== 0 && (
+                        <>
+                          <div className="Input_otr">
+                            <p><b>Partner Id: </b> {partnerId}</p>
+                            <br/>
+                            <p><b>Partner Name: </b> {partnerName}</p>
+                          </div>
+                          <div className="Input_otr action_otr">
+                          <button
+                            type="submit"
+                            className="Theme_btn_primary form_btn"
+                          >
+                            Add Activity
+                          </button>
+                          </div>
+                        </>
+                      )}
+                      {partnerId === 0 && (
+                        <button
+                          type="button"
+                          className="Theme_btn_primary form_btn"
+                          onClick={() => {
+                            setShowPopup(true);
+                          }}
+                        >
+                          Attach Partner
+                        </button>
+                      )}
                     </div>
                   </form>
                 </div>
@@ -298,6 +327,18 @@ function AddActivity() {
           </div>
         </section>
       </div>
+
+      {showPopup && (
+        <div className="backdrop">
+          <div className="backdrop-container">
+            <AttachActivity
+              setShowPopup={setShowPopup}
+              setPartnerID={setPartnerID}
+              setPartnerName={setPartnerName}
+            />
+          </div>
+        </div>
+      )}
     </LoadingOverlay>
   );
 }
