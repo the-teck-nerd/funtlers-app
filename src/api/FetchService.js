@@ -66,6 +66,12 @@ class FetchService {
     let apicall = APIServices.GET(apiURL() + "Order?id=" + userId);
     return apicall;
   }
+
+
+  GetAnalytics() {
+    let apicall = APIServices.GET(apiURL() + "Analytics");
+    return apicall;
+  }
 }
 
 export default new FetchService();
