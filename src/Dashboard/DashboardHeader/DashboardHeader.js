@@ -1,13 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import Input from "../../components/Input/Input";
 
 import "./DashboardHeader.scss";
+import { isLoggedIn, logOut } from "../../api/NewLoginService";
+import DialogueBox from "../../../src/components/DialogueBox/DialogueBox";
 
 import ProfileImg from "../../img/profile-img.png";
 import { Link } from "react-router-dom";
 
 function DashboardHeader(props) {
+  const [showConfirmDialogue, setConfirmDialogue] = useState(false);
+  const [userObject, setUser] = useState(isLoggedIn());
+
+
+  if (showConfirmDialogue) {
+    return (
+      <DialogueBox
+        title={"Confirm logout"}
+        onConfirm={logOut}
+        onConfirmState={setUser}
+        confirmText={"Logout"}
+        cancelText={"Cancel"}
+        open={showConfirmDialogue}
+        setOpen={setConfirmDialogue}
+      >
+        Are you sure you want to logout?{" "}
+      </DialogueBox>
+    );
+  }
   return (
+    
     <div className="dashboard_header">
       <div className="wrapper">
         <div className="sidebar_menu_icon_otr" onClick={props.SidebarStrech}>
@@ -49,9 +71,9 @@ function DashboardHeader(props) {
                 </Link>
               </li>
               <li className="profile_drop_li">
-                <Link className="profile_drop_link">
+                <Link className="profile_drop_link"    onClick={() => setConfirmDialogue(true)}>
                   <i class="ri-logout-box-fill menu_icon"></i>
-                  <p className="menu_text heading-xs">Logout</p>
+                  <p className="menu_text heading-xs" >Logout</p>
                 </Link>
               </li>
             </ul>
