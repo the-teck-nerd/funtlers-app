@@ -5,13 +5,13 @@ import FetchService from "../../api/FetchService";
 import { useNavigate } from "react-router-dom";
 
 import "./PartnerPage.scss";
- 
 
 import ThemeBtn from "../../components/ThemeBtn/ThemeBtn";
 
 function PartnerPage() {
   const navigate = useNavigate();
   const [partners, setPartners] = useState([]);
+  const [filteredPartners, setFilteredPartners] = useState([]);
   const [search, setSearch] = useState("");
 
   const fetchData = () => {
@@ -23,12 +23,21 @@ function PartnerPage() {
       })
       .then((data) => {
         setPartners(data);
+        setFilteredPartners(data);
       });
   };
 
   useEffect(() => {
     fetchData();
   }, []);
+
+  useEffect(() => {
+    const filter = partners.filter((x) =>
+      x.name.toLowerCase().includes(search) ||
+      (x.id).toString().includes(search)
+    );
+    setFilteredPartners(filter);
+  }, [search]);
 
   return (
     <div className="partner_page_main">
@@ -54,9 +63,8 @@ function PartnerPage() {
               InputClass="Theme_input_white search_input"
               Inputype="search"
               InputName="search"
-              InputPlaceholder="Search"
+              InputPlaceholder="Search by Id or name"
               value={search}
-             
               onChange={(event) => setSearch(event.target.value)}
             />
           </div>
@@ -89,7 +97,7 @@ function PartnerPage() {
           </thead>
 
           <tbody className="table_body">
-            {partners.map((partner) => (
+            {filteredPartners.map((partner) => (
               <tr
                 onClick={() => {
                   navigate("/edit-partner", { state: partner });
