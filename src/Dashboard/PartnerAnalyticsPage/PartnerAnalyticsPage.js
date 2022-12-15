@@ -3,12 +3,14 @@ import FetchService from "../../api/FetchService";
 import React, { useState, useEffect } from "react";
 
 import './PartnerAnalyticsPage.scss';
+import { isLoggedIn } from '../../api/NewLoginService';
 
 function PartnerAnalyticsPage() {
 
    const [filteredPartners, setFilteredPartners] = useState([]);
+   const [userObject, setUser] = useState(isLoggedIn());
 
-    FetchService.GetAnalytics().then(data=>{
+    FetchService.GetAnalyticsById(userObject.user.id).then(data=>{
         setFilteredPartners(data.data[0]);
     })
     

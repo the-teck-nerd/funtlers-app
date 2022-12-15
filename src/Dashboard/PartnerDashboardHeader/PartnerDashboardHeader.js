@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import Input from "../../components/Input/Input";
 
-import "./DashboardHeader.scss";
+import "./PartnerDashboardHeader.scss";
 import { isLoggedIn, logOut } from "../../api/NewLoginService";
 import DialogueBox from "../../../src/components/DialogueBox/DialogueBox";
 
 import ProfileImg from "../../img/profile-img.png";
 import { Link } from "react-router-dom";
 
-function DashboardHeader(props) {
+function PartnerDashboardHeader(props) {
   const [showConfirmDialogue, setConfirmDialogue] = useState(false);
   // const [userObject, setUser] = useState(isLoggedIn());
 
@@ -60,18 +60,6 @@ function DashboardHeader(props) {
                 </Link>
               </li>
               <li className="profile_drop_li">
-                <Link to="/" className="profile_drop_link">
-                  <i class="ri-file-list-2-fill menu_icon"></i>
-                  <p className="menu_text heading-xs">Activity</p>
-                </Link>
-              </li>
-              <li className="profile_drop_li">
-                <Link className="profile_drop_link">
-                  <i class="ri-settings-3-fill menu_icon"></i>
-                  <p className="menu_text heading-xs">Setting</p>
-                </Link>
-              </li>
-              <li className="profile_drop_li">
                 <Link className="profile_drop_link"    onClick={() => setConfirmDialogue(true)}>
                   <i class="ri-logout-box-fill menu_icon"></i>
                   <p className="menu_text heading-xs" >Logout</p>
@@ -85,4 +73,4 @@ function DashboardHeader(props) {
   );
 }
 
-export default DashboardHeader;
+export default PartnerDashboardHeader;

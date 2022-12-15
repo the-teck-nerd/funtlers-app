@@ -16,16 +16,22 @@ import TeamPage from "./components/TeamPage/TeamPage";
 import BookingConPage from "./components/BookingConPage/BookingConPage";
 import CampaignPage from "./components/CampaignPage/CampaignPage";
 import Register from "./components/Register/Register";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AddActivity from "./components/AddActivity/AddActivity";
 import AddPartner from "./components/AddPartner/AddPartner";
 import EditPartner from "./Dashboard/EditPartner/EditPartner";
 import ProfilePage from "./Dashboard/ProfilePage/ProfilePage";
 import DashboardHeader from "./Dashboard/DashboardHeader/DashboardHeader";
+
+import PartnerDashboardHeader from "./Dashboard/PartnerDashboardHeader/PartnerDashboardHeader";
+
 import DashboardSidebar from "./Dashboard/DashboardSidebar/DashboardSidebar";
 import EditProfilePage from "./Dashboard/EditProfilePage/EditProfilePage";
 import ActivityPage from "./Dashboard/ActivityPage/ActivityPage";
 import PartnerPage from "./Dashboard/PartnerPage/PartnerPage";
+import PartnerOrderPage from "./Dashboard/PartnerOrders/PartnerOrder";
+
+
 import CustomerPage from "./components/CustomerPage/CustomerPage";
 import PartnerAnalyticsPage from "./Dashboard/PartnerAnalyticsPage/PartnerAnalyticsPage";
 import OrderPage from "./Dashboard/OrderPage/OrderPage";
@@ -33,20 +39,79 @@ import EditOrderPage from "./Dashboard/EditOrderPage/EditOrderPage";
 import LoadingOverlay from "react-loading-overlay";
 import EditActivity from "./Dashboard/EditActivity/EditActivity";
 import { isLoggedIn } from "./api/NewLoginService";
+import { useLocation, useNavigate } from "react-router-dom";
+import PartnerDashboardSidebar from "./Dashboard/PartnerDashboardSidebar/PartnerDashboardSidebar";
 
 function App() {
   const [SideBar, setSideBar] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const [userObject, setUser] = useState(isLoggedIn());
+  const navigate = useNavigate();
 
   console.log(userObject);
+  useEffect(() => {
+   // navigate(0);
+  }, [userObject]);
 
   const SideMenuClick = () => {
     setSideBar(!SideBar);
   };
   return (
-    userObject && userObject.user.userTypeId==2 ? (
+    userObject && userObject.user.userTypeId==3 ? (
+<>
+      <LoadingOverlay
+        active={isLoading}
+        spinner
+        text="Processing your request..."
+      >
+        <div className="dashboard_main">
+          <div className="sidebar_content_main">
+            <div className="sidebar_main">
+              <PartnerDashboardSidebar SidebarAddClass={SideBar}  />
+            </div>
+            <div className="Header_content_main">
+              <div className="dashboard_header_main">
+                <PartnerDashboardHeader SidebarStrech={SideMenuClick}  setUser={setUser}/>
+              </div>
+              <div className="content_main">
+                <Routes>
+                  <Route path="/" exact={true} element={<ActivityPage setIsLoading={setIsLoading} />} />
+               
+                  
+                 
+                  <Route
+                    path="/profile"
+                    exact={true}
+                    element={<ProfilePage />}
+                  />
+                  <Route
+                    path="/profile-edit"
+                    exact={true}
+                    element={<EditProfilePage />}
+                  />
+              
+                  <Route
+                    path="/partner-analytics"
+                    exact={true}
+                    element={<PartnerAnalyticsPage />}
+                  />
+                  <Route path="/order" exact={true} element={<PartnerOrderPage />} />
+                  <Route
+                    path="/edit-order"
+                    exact={true}
+                    element={<EditOrderPage />}
+                  />
+                </Routes>
+              </div>
+            </div>
+          </div>
+        </div>
+      </LoadingOverlay>
+    </>
+
+    ) :
+    (userObject && userObject.user.userTypeId==2 ? (
       <>
       <LoadingOverlay
         active={isLoading}
@@ -56,11 +121,11 @@ function App() {
         <div className="dashboard_main">
           <div className="sidebar_content_main">
             <div className="sidebar_main">
-              <DashboardSidebar SidebarAddClass={SideBar} />
+              <DashboardSidebar SidebarAddClass={SideBar}  />
             </div>
             <div className="Header_content_main">
               <div className="dashboard_header_main">
-                <DashboardHeader SidebarStrech={SideMenuClick} />
+                <DashboardHeader SidebarStrech={SideMenuClick}  setUser={setUser}/>
               </div>
               <div className="content_main">
                 <Routes>
@@ -102,6 +167,11 @@ function App() {
                     element={<PartnerPage />}
                   />
                   <Route
+                    path="/partnerorder-dashboard"
+                    exact={true}
+                    element={<PartnerOrderPage />}
+                  />
+                  <Route
                     path="/partner-analytics"
                     exact={true}
                     element={<PartnerAnalyticsPage />}
@@ -119,7 +189,7 @@ function App() {
         </div>
       </LoadingOverlay>
     </>) :(    <>
-      <Header />
+      <Header setUser={setUser} userObject={userObject} />
       <Routes>
         <Route path="/" exact={true} element={<LandingPage />} />
         <Route path="/login" exact={true} element={<Login />} />
@@ -161,6 +231,7 @@ function App() {
       </Routes>
       <Footer />
     </>)
+    )
 
   );
 }

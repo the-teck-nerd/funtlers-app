@@ -42,7 +42,7 @@ function EditActivity() {
   const location = useLocation();
   const activity = location.state;
 
-  debugger;
+  
 
   const [name, setName] = useState(activity.name);
   const [type, setType] = useState(activity.activityType);

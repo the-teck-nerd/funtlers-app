@@ -4,9 +4,11 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function DialogueBox(props) {
   const { title, children, open, setOpen, onConfirm, onConfirmState, confirmText, cancelText} = props;
+  const navigate = useNavigate();
 
   return (
     <Dialog
@@ -19,7 +21,7 @@ export default function DialogueBox(props) {
       <DialogActions>
         <Button
           variant="contained"
-          onClick={() =>{ setOpen(false);  onConfirm(onConfirmState);}}
+          onClick={() =>{ setOpen(false);  onConfirm(onConfirmState); navigate('/')}}
           
           color="secondary"
         >

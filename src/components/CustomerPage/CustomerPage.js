@@ -12,6 +12,8 @@ import InnerHeader from '../InnerHeader/InnerHeader';
 
 function CustomerPage() {
   const [orders, setOrders] = useState([]);
+  const [filteredOrders, setFilteredOrders] = useState([]);
+
   const [user] = useState(isLoggedIn);
 
   useEffect(() => {
@@ -28,8 +30,18 @@ function CustomerPage() {
       .then((data) => {
         // data.data=[{"id":1,"name":"string","price":0,"validPeriod":"2022-11-27T00:00:00","description":"string","imagePath":"string","isDeleted":true,"ownerID":1,"activityType":"string"},{"id":2,"name":"string","price":10,"validPeriod":"2022-11-27T00:00:00","description":"string","imagePath":"string","isDeleted":false,"ownerID":1,"activityType":null},{"id":3,"name":"string","price":10,"validPeriod":"2022-11-27T00:00:00","description":"string","imagePath":"string","isDeleted":false,"ownerID":1,"activityType":null}];
         setOrders(data); 
+        setFilteredOrders(data);
       });
   };
+
+
+  const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    
+    const filter = orders.filter((x)=>{ return JSON.stringify(x).indexOf(search)>0 || search==''})    ;
+    setFilteredOrders(filter);
+  }, [search]);
 
   return (
     <div className="my_page_main">
@@ -43,10 +55,7 @@ function CustomerPage() {
           <div className="heading_filter_otr">
             <p className="heading_activity heading-lb">My Orders</p>
             <div className="filter_search_otr">
-              <div className="filter_main">
-                <p className="sort_text heading-xs">Sort By:</p>
-                <Select />
-              </div>
+          
               <div className="search_otr">
                 <i class="ri-search-2-line search_icon"></i>
                 <Input
@@ -54,6 +63,7 @@ function CustomerPage() {
                   Inputype="search"
                   InputName="search"
                   InputPlaceholder="Search"
+                  onChange={(event) => setSearch(event.target.value)}
                 />
               </div>
             </div>
@@ -86,7 +96,7 @@ function CustomerPage() {
                 </tr>
               </thead>
               <tbody className="table_body">
-                {orders.map((order) => (
+                {filteredOrders.map((order) => (
                   <tr>
                     <td>
                       <p className="heading-xs body_text">{order?.orderId}</p>
@@ -101,7 +111,7 @@ function CustomerPage() {
                       <p className="heading-xsb body_text">{order?.isConsumed ? "Yes" : "No"}</p>
                     </td>
                     <td>
-                      <p className="heading-xs body_text">{order?.createdDate}</p>
+                      <p className="heading-xs body_text">{order?.createdDate.slice(0, 10)}</p>
                     </td>
                     <td>
                       <p className="heading-xs body_text">{order?.quantity}</p>

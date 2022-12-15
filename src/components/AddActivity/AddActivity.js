@@ -77,7 +77,7 @@ function AddActivity() {
     setIsLoading(true);
     activity.images = images.map((x) => x.data_url);
 
-    debugger;
+    
     FetchService.AddActivity(activity).then((response) => {
       if (response) {
         setTimeout(() => {

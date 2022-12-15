@@ -3,17 +3,20 @@ import Select from '../../components/Select/Select';
 import FetchService from "../../api/FetchService";
 
 
-import './OrderPage.scss';
+import './PartnerOrder.scss';
 
 
 import ProfileImg from '../../img/profile-img.png';
 import { Link } from 'react-router-dom';
+import { isLoggedIn } from "../../api/NewLoginService";
 
-function OrderPage() {
+function PartnerOrderPage() {
 
   const [filteredPartners, setFilteredPartners] = useState([]);
+  const [userObject, setUser] = useState(isLoggedIn());
+  
 
-  FetchService.GetOrderByPartnerId(1,"all").then(data=>{
+  FetchService.GetOrderByPartnerId(userObject.user.id,"partner").then(data=>{
       
     setFilteredPartners(data.data);
   })
@@ -80,11 +83,11 @@ function OrderPage() {
                     </thead>
                     <tbody className='table_body'>
                       {filteredPartners.map((obj)=>(
-                        <tr>                       
+                        <tr>                        
 
                             <td>
                                 <p className='heading-xs body_text'>
-                                    {obj.Id}
+                                    {obj.id}
                                 </p>
                             </td>
                             <td>
@@ -136,4 +139,4 @@ function OrderPage() {
     )
 }
 
-export default OrderPage
+export default PartnerOrderPage

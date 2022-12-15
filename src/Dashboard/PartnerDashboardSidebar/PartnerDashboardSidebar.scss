@@ -1,0 +1,123 @@
+@import '../../common-style/variable.scss';
+
+
+.Dashboard_Sidebar {
+    width: 280px;
+    height: 100vh;
+
+    .logo_otr {
+        display: flex;
+        border-bottom: 1px solid $Black-10;
+        padding: 20px 24px;
+    }
+
+    .logo_icon {
+        display: none;
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 4px;
+    }
+
+    .brand_logo {
+        height: 40px;
+        width: 220px;
+        object-fit: contain;
+        object-position: left;
+    }
+
+    .sidebar_menu_main {
+        height: calc(100% - 82px);
+        overflow-y: auto;
+    }
+
+    .sidebar_menu_ul {
+        padding: 24px;
+    }
+
+    .sidebar_menu_link {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        border-bottom: 1px solid $Black-10;
+        padding: 12px 0;
+        transition: .3s;
+
+        &:hover {
+            border-bottom: 1px solid $Primary;
+
+            .menu_icon {
+                color: $Primary;
+            }
+
+            .menu_text {
+                color: $Primary;
+            }
+        }
+    }
+
+    .menu_icon {
+        font-size: 20px;
+        line-height: 20px;
+        color: $Black-65;
+        transition: .3s;
+    }
+
+    .menu_text {
+        font-family: $font-family-Medium;
+        color: $Black-65;
+        transition: .3s;
+    }
+
+    .active {
+        border-bottom: 1px solid $Primary;
+
+        .menu_icon {
+            color: $Primary;
+        }
+
+        .menu_text {
+            color: $Primary;
+        }
+    }
+}
+
+.Dashboard_Sidebar_strech {
+    width: 72px;
+
+    .logo_otr {
+        padding: 20px 16px;
+    }
+
+    .logo_icon {
+        display: flex;
+    }
+
+    .brand_logo {
+        display: none;
+    }
+
+    .menu_text {
+        display: none;
+    }
+
+    .sidebar_menu_ul {
+        padding: 16px 0;
+    }
+
+    .sidebar_menu_link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .menu_icon {
+        font-size: 24px;
+        line-height: 24px;
+    }
+
+    .sidebar_menu_link {
+        padding: 16px 0;
+    }
+}

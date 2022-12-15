@@ -11,11 +11,11 @@ import DialogueBox from "../DialogueBox/DialogueBox";
 
 import { useLocation, useNavigate } from "react-router-dom";
 
-function Header() {
+function Header({setUser,userObject}) {
   const navigate = useNavigate();
 
 
-  const [userObject, setUser] = useState(isLoggedIn());
+  // const [userObject, setUser] = useState(isLoggedIn());
  
 
   const [showLogin, setShowLogin] = useState(false);

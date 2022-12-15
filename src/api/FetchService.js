@@ -67,11 +67,24 @@ class FetchService {
     return apicall;
   }
 
+  GetOrderByPartnerId(id,type)
+  {
+    let apicall = APIServices.GET(apiURL() + "Order?id="+1+"&type="+type+"");
+    return apicall;
+    
+  }
+
 
   GetAnalytics() {
     let apicall = APIServices.GET(apiURL() + "Analytics");
     return apicall;
   }
+
+  GetAnalyticsById(id){
+    let apicall = APIServices.GET(apiURL() + "Analytics?type=Partner&id="+id);
+    return apicall;
+  }
+
 }
 
 export default new FetchService();
