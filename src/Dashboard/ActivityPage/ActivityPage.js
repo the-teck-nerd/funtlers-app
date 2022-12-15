@@ -47,7 +47,7 @@ function ActivityPage({ setIsLoading }) {
   return (
     <div className="activity_page_main">
       <ThemeBtn
-        BtnClass="Theme_btn_primary"
+        BtnClass="Theme_btn_primary1"
         BtnText="Add Activity"
         onClick={() => {
           navigate("/add-activity");

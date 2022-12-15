@@ -42,7 +42,7 @@ function PartnerPage() {
   return (
     <div className="partner_page_main">
       <ThemeBtn
-        BtnClass="Theme_btn_primary"
+        BtnClass="Theme_btn_primary1"
         BtnText="Add Partner"
         onClick={() => {
           navigate("/add-partner");
