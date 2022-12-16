@@ -150,7 +150,7 @@ function CampaignPage() {
                   modules={[EffectFade, Autoplay, Pagination]}
                   className="mySwiper hero_swiper"
                 >
-                  {images.map((image) => (
+                  {images&&images.map((image) => (
                     <SwiperSlide>
                       <div className="img_otr">
                         <img

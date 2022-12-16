@@ -111,7 +111,7 @@ function CustomerPage() {
                       <p className="heading-xsb body_text">{order?.isConsumed ? "Yes" : "No"}</p>
                     </td>
                     <td>
-                      <p className="heading-xs body_text">{order?.createdDate.slice(0, 10)}</p>
+                      <p className="heading-xs body_text">{order?.createdDate?.slice(0, 10)}</p>
                     </td>
                     <td>
                       <p className="heading-xs body_text">{order?.quantity}</p>
