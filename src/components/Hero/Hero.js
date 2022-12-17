@@ -17,7 +17,7 @@ import HeroImg4 from "../../img/hero-img4.png";
 import HeroImg5 from "../../img/hero-img5.png";
 
 import SearchActivity from "../SearchActivity/SearchActivity";
-
+import TeamBuildingSection from "../TeamBuildingSection/TeamBuildingSection";
 
 import FetchService from "../../api/FetchService";
 import { getFilters } from "../../commons/activity-filters/Helpers";
@@ -66,7 +66,6 @@ function Hero() {
     searchModal.peopleNumber = peopleNumber;
     searchModal.city = city;
 
-
     navigate("/activities", { state: searchModal });
   };
 
@@ -81,8 +80,8 @@ function Hero() {
             <div className="row row_custom">
               <div className="col-lg-7 col_team_building_otr">
                 <div className="col_team_building_inr">
-                  <h3 className="heading-h3 heading">
-                    Makes teambuilding funtlier
+                  <h3 className="heading-h3 heading text-center">
+                    Din markedsplass for sosiale aktiviter
                   </h3>
 
                   <form onSubmit={handleSubmit}>

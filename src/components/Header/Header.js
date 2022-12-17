@@ -11,22 +11,19 @@ import DialogueBox from "../DialogueBox/DialogueBox";
 
 import { useLocation, useNavigate } from "react-router-dom";
 
-function Header({setUser,userObject}) {
+function Header({ setUser, userObject }) {
   const navigate = useNavigate();
 
-
   // const [userObject, setUser] = useState(isLoggedIn());
- 
 
   const [showLogin, setShowLogin] = useState(false);
   const [showConfirmDialogue, setConfirmDialogue] = useState(false);
 
   const location = useLocation();
 
-  if (location.state&&showLogin===false&&showConfirmDialogue===false) {
+  if (location.state && showLogin === false && showConfirmDialogue === false) {
     navigate(0);
   }
-
 
   if (showLogin) {
     return (
@@ -58,12 +55,19 @@ function Header({setUser,userObject}) {
         <div className="wrapper">
           <Link to="/" className="logo_otr">
             <img className="logo" src={BrandLogo} alt="logo" />
-            <p className="heading-xsb logo_text">
-              Din markedsplass for sosiale aktiviteter
-            </p>
           </Link>
           <div className="action_menu_otr">
             <ul className="menu_ul">
+              <li className="menu_li">
+                <Link to="/about" className="menu_a heading-sb">
+                  Hvordan fungerer det
+                </Link>
+              </li>
+              <li className="menu_li">
+                <Link to="/about" className="menu_a heading-sb">
+                  Vilkår
+                </Link>
+              </li>
               <li className="menu_li">
                 <Link to="/about" className="menu_a heading-sb">
                   Om oss
@@ -99,7 +103,14 @@ function Header({setUser,userObject}) {
               </div>
             ) : (
               <div className="action_otr">
-               <button className="Theme_btn_primary" onClick={()=>{ navigate("/my-page");}}> <u> {userObject?.user?.firstName}</u> </button>
+                <button
+                  className="Theme_btn_primary"
+                  onClick={() => {
+                    navigate("/my-page");
+                  }}
+                >
+                  <u> {userObject?.user?.firstName}</u>{" "}
+                </button>
                 <Link className="action">
                   <ThemeBtn
                     onClick={() => setConfirmDialogue(true)}
@@ -109,7 +120,7 @@ function Header({setUser,userObject}) {
                 </Link>
               </div>
             )}
-            { }
+            {}
           </div>
         </div>
       </div>
