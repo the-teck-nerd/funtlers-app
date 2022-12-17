@@ -15,7 +15,7 @@ function ActivityPage({ setIsLoading }) {
   const [search, setSearch] = useState("");
 
   const navigate = useNavigate();
- 
+
 
   const fetchData = () => {
     setIsLoading(true);
@@ -46,14 +46,6 @@ function ActivityPage({ setIsLoading }) {
 
   return (
     <div className="activity_page_main">
-      <ThemeBtn
-        BtnClass="Theme_btn_primary1"
-        BtnText="Add Activity"
-        onClick={() => {
-          navigate("/add-activity");
-        }}
-      />
-
       <div className="heading_filter_otr">
         <p className="heading_activity heading-lb">Activity</p>
         <div className="filter_search_otr">
@@ -67,6 +59,13 @@ function ActivityPage({ setIsLoading }) {
               onChange={(event) => setSearch(event.target.value)}
             />
           </div>
+          <ThemeBtn
+            BtnClass="Theme_btn_primary"
+            BtnText="Add Activity"
+            onClick={() => {
+              navigate("/add-activity");
+            }}
+          />
         </div>
       </div>
       <div className="row row_custom">

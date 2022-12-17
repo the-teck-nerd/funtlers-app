@@ -41,14 +41,6 @@ function PartnerPage() {
 
   return (
     <div className="partner_page_main">
-      <ThemeBtn
-        BtnClass="Theme_btn_primary1"
-        BtnText="Add Partner"
-        onClick={() => {
-          navigate("/add-partner");
-        }}
-      />
-
       <div className="heading_filter_otr">
         <p className="heading_activity heading-lb">Partners</p>
         <div className="filter_search_otr">
@@ -68,6 +60,13 @@ function PartnerPage() {
               onChange={(event) => setSearch(event.target.value)}
             />
           </div>
+          <ThemeBtn
+            BtnClass="Theme_btn_primary"
+            BtnText="Add Partner"
+            onClick={() => {
+              navigate("/add-partner");
+            }}
+          />
         </div>
       </div>
       <div className="partner_table">
@@ -92,6 +91,9 @@ function PartnerPage() {
 
               <th>
                 <p className="heading-xsb header_text">Partner Since</p>
+              </th>
+              <th>
+                <p className="heading-xsb header_text">Action</p>
               </th>
             </tr>
           </thead>
@@ -122,6 +124,19 @@ function PartnerPage() {
                 </td>
                 <td>
                   <p className="heading-xs body_text">{partner.partnerSince}</p>
+                </td>
+                <td>
+                  <div className="action_otr">
+                    <div className="icon_otr">
+                      <i class="ri-eye-fill view_icon icon"></i>
+                    </div>
+                    <div className="icon_otr">
+                      <i class="ri-edit-fill edit_icon icon"></i>
+                    </div>
+                    <div className="icon_otr">
+                      <i class="ri-delete-bin-6-fill delete_icon icon"></i>
+                    </div>
+                  </div>
                 </td>
               </tr>
             ))}

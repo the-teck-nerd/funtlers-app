@@ -80,68 +80,94 @@ function Hero() {
             <div className="row row_custom">
               <div className="col-lg-7 col_team_building_otr">
                 <div className="col_team_building_inr">
-                  <h3 className="heading-h3 heading text-center">
+                  <h3 className="heading-h3 heading_market">
                     Din markedsplass for sosiale aktiviter
                   </h3>
-
-                  <form onSubmit={handleSubmit}>
-                    <div className="activity_main">
-                      <ul className="activity_ul">
-                        <li className="activity_li">
-                          <Select
-                            options={filters.types}
-                            defaultText="Acitivity Type"
-                            value={type}
-                            setValue={setType}
-                          />
-                        </li>
-                        <li className="activity_li">
+                  <div className="inpiration_teambuilding">
+                    <form className="teambuilding_Form" onSubmit={handleSubmit}>
+                      <div className="activity_main">
+                        <ul className="activity_ul">
+                          <li className="activity_li">
+                            <Select
+                              options={filters.types}
+                              defaultText="Acitivity Type"
+                              value={type}
+                              setValue={setType}
+                            />
+                          </li>
+                          {/* <li className="activity_li">
                           <Select
                             value={category}
                             setValue={setCategory}
                             options={filters.categories}
                             defaultText="Category"
                           />
-                        </li>
-                        <li className="activity_li">
-                          <Select
-                            value={city}
-                            setValue={setCity}
-                            options={filters.cities}
-                            defaultText="Cities"
-                          />
-                        </li>
-                        <li className="activity_li">
-                          <Select
-                            value={budget}
-                            setValue={setBudget}
-                            options={filters.budgetOptions}
-                            defaultText="Budget Options"
-                          />
-                        </li>
-                        <li className="activity_li">
-                          <Select
-                            setValue={setPeopleNumber}
-                            value={peopleNumber}
-                            options={filters.peopleNumber}
-                            defaultText="Number of people"
-                          />
-                        </li>
-                      </ul>
-                      <div className="search_icon_otr_local">
-                        <button
-                          class="ri-search-2-line search_icon_local"
-                          type="submit"
-                        ></button>
-                      </div>
-                      {/* <div className="filter_otr">
+                        </li> */}
+                          <li className="activity_li">
+                            <Select
+                              value={city}
+                              setValue={setCity}
+                              options={filters.cities}
+                              defaultText="Cities"
+                            />
+                          </li>
+                          <li className="activity_li">
+                            <Select
+                              value={budget}
+                              setValue={setBudget}
+                              options={filters.budgetOptions}
+                              defaultText="Budget Options"
+                            />
+                          </li>
+                          <li className="activity_li">
+                            <Select
+                              setValue={setPeopleNumber}
+                              value={peopleNumber}
+                              options={filters.peopleNumber}
+                              defaultText="Number of people"
+                            />
+                          </li>
+                        </ul>
+                        <div className="search_icon_otr_local">
+                          <button
+                            class="ri-search-2-line search_icon_local"
+                            type="submit"
+                          ></button>
+                        </div>
+                        {/* <div className="filter_otr">
                   <Select options={categories} defaultText="Number of people" />
                 </div> */}
+                      </div>
+                      <div className="activity-container">
+                        <b>Aktivitet ({activities.length})</b>
+                      </div>
+                    </form>
+                    <div className="col_inpiration_inr">
+                      <h3 className="heading-lb heading">
+                        Eller ønsker du inpirasjon?
+                      </h3>
+                      <ul className="inspiration_ul">
+                        <li className="inspiration_li">
+                          <button className="inspiration_btn Theme_btn_primary">Teambuilding</button>
+                        </li>
+                        <li className="inspiration_li">
+                          <button className="inspiration_btn Theme_btn_primary">Julebord</button>
+                        </li>
+                        <li className="inspiration_li">
+                          <button className="inspiration_btn Theme_btn_primary">Sommerfest</button>
+                        </li>
+                        <li className="inspiration_li">
+                          <button className="inspiration_btn Theme_btn_primary">Afterwork</button>
+                        </li>
+                        <li className="inspiration_li">
+                          <button className="inspiration_btn Theme_btn_primary">Online</button>
+                        </li>
+                        <li className="inspiration_li">
+                          <button className="inspiration_btn Theme_btn_primary">Dagsutflukt</button>
+                        </li>
+                      </ul>
                     </div>
-                    <div className="activity-container">
-                      <b>Aktivitet ({activities.length})</b>
-                    </div>
-                  </form>
+                  </div>
                 </div>
               </div>
             </div>

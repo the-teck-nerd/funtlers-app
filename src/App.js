@@ -41,6 +41,7 @@ import EditActivity from "./Dashboard/EditActivity/EditActivity";
 import { isLoggedIn } from "./api/NewLoginService";
 import { useLocation, useNavigate } from "react-router-dom";
 import PartnerDashboardSidebar from "./Dashboard/PartnerDashboardSidebar/PartnerDashboardSidebar";
+import FeaturesPage from "./components/FeaturesPage/FeaturesPage";
 
 function App() {
   const [SideBar, setSideBar] = useState(false);
@@ -51,187 +52,192 @@ function App() {
 
   console.log(userObject);
   useEffect(() => {
-   // navigate(0);
+    // navigate(0);
   }, [userObject]);
 
   const SideMenuClick = () => {
     setSideBar(!SideBar);
   };
   return (
-    userObject && userObject.user.userTypeId==3 ? (
-<>
-      <LoadingOverlay
-        active={isLoading}
-        spinner
-        text="Processing your request..."
-      >
-        <div className="dashboard_main">
-          <div className="sidebar_content_main">
-            <div className="sidebar_main">
-              <PartnerDashboardSidebar SidebarAddClass={SideBar}  />
-            </div>
-            <div className="Header_content_main">
-              <div className="dashboard_header_main">
-                <PartnerDashboardHeader SidebarStrech={SideMenuClick}  setUser={setUser}/>
+    userObject && userObject.user.userTypeId == 3 ? (
+      <>
+        <LoadingOverlay
+          active={isLoading}
+          spinner
+          text="Processing your request..."
+        >
+          <div className="dashboard_main">
+            <div className="sidebar_content_main">
+              <div className="sidebar_main">
+                <PartnerDashboardSidebar SidebarAddClass={SideBar} />
               </div>
-              <div className="content_main">
-                <Routes>
-                  <Route path="/" exact={true} element={<ActivityPage setIsLoading={setIsLoading} />} />
-               
-                  
-                 
-                  <Route
-                    path="/profile"
-                    exact={true}
-                    element={<ProfilePage />}
-                  />
-                  <Route
-                    path="/profile-edit"
-                    exact={true}
-                    element={<EditProfilePage />}
-                  />
-              
-                  <Route
-                    path="/partner-analytics"
-                    exact={true}
-                    element={<PartnerAnalyticsPage />}
-                  />
-                  <Route path="/order" exact={true} element={<PartnerOrderPage />} />
-                  <Route
-                    path="/edit-order"
-                    exact={true}
-                    element={<EditOrderPage />}
-                  />
-                </Routes>
+              <div className="Header_content_main">
+                <div className="dashboard_header_main">
+                  <PartnerDashboardHeader SidebarStrech={SideMenuClick} setUser={setUser} />
+                </div>
+                <div className="content_main">
+                  <Routes>
+                    <Route path="/" exact={true} element={<ActivityPage setIsLoading={setIsLoading} />} />
+
+
+
+                    <Route
+                      path="/profile"
+                      exact={true}
+                      element={<ProfilePage />}
+                    />
+                    <Route
+                      path="/profile-edit"
+                      exact={true}
+                      element={<EditProfilePage />}
+                    />
+
+                    <Route
+                      path="/partner-analytics"
+                      exact={true}
+                      element={<PartnerAnalyticsPage />}
+                    />
+                    <Route path="/order" exact={true} element={<PartnerOrderPage />} />
+                    <Route
+                      path="/edit-order"
+                      exact={true}
+                      element={<EditOrderPage />}
+                    />
+                  </Routes>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </LoadingOverlay>
-    </>
+        </LoadingOverlay>
+      </>
 
     ) :
-    (userObject && userObject.user.userTypeId==2 ? (
-      <>
-      <LoadingOverlay
-        active={isLoading}
-        spinner
-        text="Processing your request..."
-      >
-        <div className="dashboard_main">
-          <div className="sidebar_content_main">
-            <div className="sidebar_main">
-              <DashboardSidebar SidebarAddClass={SideBar}  />
-            </div>
-            <div className="Header_content_main">
-              <div className="dashboard_header_main">
-                <DashboardHeader SidebarStrech={SideMenuClick}  setUser={setUser}/>
-              </div>
-              <div className="content_main">
-                <Routes>
-                  <Route path="/" exact={true} element={<ActivityPage setIsLoading={setIsLoading} />} />
-                  <Route
-                    path="/add-activity"
-                    exact={true}
-                    element={<AddActivity  />}
-                  />
-                  <Route
-                    path="/edit-activity"
-                    exact={true}
-                    element={<EditActivity />}
-                  />
-                  <Route
-                    path="/add-partner"
-                    exact={true}
-                    element={<AddPartner />}
-                  />
-                    <Route
-                    path="/edit-partner"
-                    exact={true}
-                    element={<EditPartner />}
-                  />
+      (userObject && userObject.user.userTypeId == 2 ? (
+        <>
+          <LoadingOverlay
+            active={isLoading}
+            spinner
+            text="Processing your request..."
+          >
+            <div className="dashboard_main">
+              <div className="sidebar_content_main">
+                <div className="sidebar_main">
+                  <DashboardSidebar SidebarAddClass={SideBar} />
+                </div>
+                <div className="Header_content_main">
+                  <div className="dashboard_header_main">
+                    <DashboardHeader SidebarStrech={SideMenuClick} setUser={setUser} />
+                  </div>
+                  <div className="content_main">
+                    <Routes>
+                      <Route path="/" exact={true} element={<ActivityPage setIsLoading={setIsLoading} />} />
+                      <Route
+                        path="/add-activity"
+                        exact={true}
+                        element={<AddActivity />}
+                      />
+                      <Route
+                        path="/edit-activity"
+                        exact={true}
+                        element={<EditActivity />}
+                      />
+                      <Route
+                        path="/add-partner"
+                        exact={true}
+                        element={<AddPartner />}
+                      />
+                      <Route
+                        path="/edit-partner"
+                        exact={true}
+                        element={<EditPartner />}
+                      />
 
-                  <Route
-                    path="/profile"
-                    exact={true}
-                    element={<ProfilePage />}
-                  />
-                  <Route
-                    path="/profile-edit"
-                    exact={true}
-                    element={<EditProfilePage />}
-                  />
-                  <Route
-                    path="/partner-dashboard"
-                    exact={true}
-                    element={<PartnerPage />}
-                  />
-                  <Route
-                    path="/partnerorder-dashboard"
-                    exact={true}
-                    element={<PartnerOrderPage />}
-                  />
-                  <Route
-                    path="/partner-analytics"
-                    exact={true}
-                    element={<PartnerAnalyticsPage />}
-                  />
-                  <Route path="/order" exact={true} element={<OrderPage />} />
-                  <Route
-                    path="/edit-order"
-                    exact={true}
-                    element={<EditOrderPage />}
-                  />
-                </Routes>
+                      <Route
+                        path="/profile"
+                        exact={true}
+                        element={<ProfilePage />}
+                      />
+                      <Route
+                        path="/profile-edit"
+                        exact={true}
+                        element={<EditProfilePage />}
+                      />
+                      <Route
+                        path="/partner-dashboard"
+                        exact={true}
+                        element={<PartnerPage />}
+                      />
+                      <Route
+                        path="/partnerorder-dashboard"
+                        exact={true}
+                        element={<PartnerOrderPage />}
+                      />
+                      <Route
+                        path="/partner-analytics"
+                        exact={true}
+                        element={<PartnerAnalyticsPage />}
+                      />
+                      <Route path="/order" exact={true} element={<OrderPage />} />
+                      <Route
+                        path="/edit-order"
+                        exact={true}
+                        element={<EditOrderPage />}
+                      />
+                    </Routes>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      </LoadingOverlay>
-    </>) :(    <>
-      <Header setUser={setUser} userObject={userObject} />
-      <Routes>
-        <Route path="/" exact={true} element={<LandingPage />} />
-        <Route path="/login" exact={true} element={<Login />} />
-        <Route path="/contact" exact={true} element={<ContactPage />} />
-        <Route path="/faq" exact={true} element={<FaqPage />} />
-        <Route path="/about" exact={true} element={<AboutPage />} />
-        <Route path="/partner" exact={true} element={<PartnersPage />} />
-        <Route path="/activity" exact={true} element={<Activities />} />
-        <Route path="/payment" exact={true} element={<Payments />} />
-        {/* <Route
+          </LoadingOverlay>
+        </>) : (<>
+          <Header setUser={setUser} userObject={userObject} />
+          <Routes>
+            <Route path="/" exact={true} element={<LandingPage />} />
+            <Route path="/login" exact={true} element={<Login />} />
+            <Route path="/contact" exact={true} element={<ContactPage />} />
+            <Route path="/faq" exact={true} element={<FaqPage />} />
+            <Route path="/about" exact={true} element={<AboutPage />} />
+            <Route path="/partner" exact={true} element={<PartnersPage />} />
+            <Route path="/activity" exact={true} element={<Activities />} />
+            <Route path="/payment" exact={true} element={<Payments />} />
+            {/* <Route
           path="/activity-details"
           exact={true}
           element={<ActivityDetails />}
         /> */}
-        <Route path="/login" exact={true} element={<Login />} />
-        <Route path="/register" exact={true} element={<Register />} />
-        <Route path="/contact" exact={true} element={<ContactPage />} />
-        <Route path="/faq" exact={true} element={<FaqPage />} />
-        <Route path="/about" exact={true} element={<AboutPage />} />
-        <Route path="/partner" exact={true} element={<PartnersPage />} />
-        <Route path="/activities" exact={true} element={<SearchResultPage />} />
-        <Route path="/team" exact={true} element={<TeamPage />} />
-        <Route
-          path="/booking-confirmation"
-          exact={true}
-          element={<BookingConPage />}
-        />
-        <Route
-          path="/activity-detail"
-          exact={true}
-          element={<CampaignPage />}
-        />
-        <Route path="/add-activity" exact={true} element={<AddActivity />} />
-        <Route path="/edit-activity" exact={true} element={<AddActivity />} />
+            <Route path="/login" exact={true} element={<Login />} />
+            <Route path="/register" exact={true} element={<Register />} />
+            <Route path="/contact" exact={true} element={<ContactPage />} />
+            <Route path="/faq" exact={true} element={<FaqPage />} />
+            <Route path="/about" exact={true} element={<AboutPage />} />
+            <Route path="/partner" exact={true} element={<PartnersPage />} />
+            <Route path="/activities" exact={true} element={<SearchResultPage />} />
+            <Route path="/team" exact={true} element={<TeamPage />} />
+            <Route
+              path="/booking-confirmation"
+              exact={true}
+              element={<BookingConPage />}
+            />
+            <Route
+              path="/activity-detail"
+              exact={true}
+              element={<CampaignPage />}
+            />
+            <Route path="/add-activity" exact={true} element={<AddActivity />} />
+            <Route path="/edit-activity" exact={true} element={<AddActivity />} />
 
-        <Route path="/add-partner" exact={true} element={<AddPartner />} />
-        <Route path="/edit-partner" exact={true} element={<EditPartner />} />
-        <Route path="/my-page" exact={true} element={<CustomerPage />} />
-      </Routes>
-      <Footer />
-    </>)
-    )
+            <Route path="/add-partner" exact={true} element={<AddPartner />} />
+            <Route path="/edit-partner" exact={true} element={<EditPartner />} />
+            <Route path="/my-page" exact={true} element={<CustomerPage />} />
+            <Route
+              path="/features"
+              exact={true}
+              element={<FeaturesPage />}
+            />
+          </Routes>
+          <Footer />
+        </>)
+      )
 
   );
 }

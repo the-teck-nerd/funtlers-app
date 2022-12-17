@@ -19,7 +19,7 @@ function Footer() {
                                     <img className='logo' src={BrandLogo} alt='logo' />
                                 </Link>
                                 <p className='desc heading-m'>
-                                    Vi forsøker å leve i nuet hver dag, og huske på at Hverdagen består av nettopp det.
+                                    Din markedsplass for sosiale aktiviter
                                 </p>
                                 <ul className='social_ul'>
                                     <li className='social_li'>
@@ -34,7 +34,7 @@ function Footer() {
                                     </li>
                                     <li className='social_li'>
                                         <Link className='social_a'>
-                                            <i class="ri-twitter-fill social_icon"></i>
+                                            <i class="ri-snapchat-fill social_icon"></i>
                                         </Link>
                                     </li>
                                     <li className='social_li'>
@@ -45,45 +45,8 @@ function Footer() {
                                 </ul>
                             </div>
                         </div>
-                        <div className='col-lg-2 col_link_otr'>
+                        <div className='col-lg-3 col_link_otr'>
                             <div className='col_link_inr'>
-                                <h3 className='heading-h3 heading'>
-                                    Navigation
-                                </h3>
-                                <ul className='link_ul'>
-                                    <li className='link_li'>
-                                        <Link to="/" className='heading-s link_a'>
-                                            Home
-                                        </Link>
-                                    </li>
-                                    <li className='link_li'>
-                                        <Link to="/about" className='heading-s link_a'>
-                                            About
-                                        </Link>
-                                    </li>
-                                    <li className='link_li'>
-                                        <Link to="/partner" className='heading-s link_a'>
-                                            Partners
-                                        </Link>
-                                    </li>
-                                    <li className='link_li'>
-                                        <Link to="/team" className='heading-s link_a'>
-                                            Team
-                                        </Link>
-                                    </li>
-                                    <li className='link_li'>
-                                        <Link to="/faq" className='heading-s link_a'>
-                                            Faq
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div className='col-lg-2 col_link_otr'>
-                            <div className='col_link_inr'>
-                                <h3 className='heading-h3 heading'>
-                                    Navigation
-                                </h3>
                                 <ul className='link_ul'>
                                     <li className='link_li'>
                                         <Link to="/contact" className='heading-s link_a'>
@@ -110,10 +73,15 @@ function Footer() {
                                             Campaign
                                         </Link>
                                     </li>
+                                    <li className='link_li'>
+                                        <Link to="/features" className='heading-s link_a'>
+                                            Features
+                                        </Link>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
-                        <div className='col-lg-4 col_sub_otr'>
+                        <div className='col-lg-5 col_sub_otr'>
                             <div className='col_sub_inr'>
                                 <h3 className='heading-h3 heading_sub'>
                                     Subscribe to Funtlers For Latest update.

@@ -10,9 +10,9 @@ function LandingPage() {
     return (
         <>
             <Hero />
-            <TeamBuildingSection />
-            <FeaturesSection />
-            <ContactSection />
+            <div className='landing_contact_otr'>
+                <ContactSection />
+            </div>
         </>
     )
 }

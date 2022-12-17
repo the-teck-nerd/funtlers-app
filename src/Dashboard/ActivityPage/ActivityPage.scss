@@ -24,6 +24,16 @@
         .form-select {
             flex: 1;
         }
+
+        .filter_search_otr {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+
+            .search_input {
+                width: 280px;
+            }
+        }
     }
 
     .row_custom {
