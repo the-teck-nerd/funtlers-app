@@ -43,7 +43,10 @@ function AddActivity() {
   const [originalPrice, setOriginalPrice] = useState(0);
   const [validPeriodStart, setValidPeriodStart] = useState("");
   const [validPeriodEnd, setValidPeriodEnd] = useState("");
+  const [liveDate, setLiveDate] = useState("");
+
   const [description, setDescription] = useState("");
+  const [terms, setTerms] = useState("");
 
   const [minPerson, setMinPerson] = useState(0);
   const [maxPerson, setMaxPerson] = useState(0);
@@ -64,20 +67,24 @@ function AddActivity() {
     activity.city = city;
     activity.price = price;
     activity.originalPrice = originalPrice;
+
     activity.validPeriodEnd = validPeriodEnd;
     activity.validPeriodStart = validPeriodStart;
+    activity.liveDate = liveDate;
+
     activity.description = description;
+    activity.terms = terms;
+
     activity.minPerson = minPerson;
     activity.maxPerson = maxPerson;
     activity.category = category;
     activity.activityType = type;
     activity.discountPercent = 100 - (price / originalPrice) * 100;
-    activity.ownerID= partnerId;
+    activity.ownerID = partnerId;
 
     setIsLoading(true);
     activity.images = images.map((x) => x.data_url);
 
-    
     FetchService.AddActivity(activity).then((response) => {
       if (response) {
         setTimeout(() => {
@@ -102,6 +109,8 @@ function AddActivity() {
     setMaxPerson(0);
     setValidPeriodEnd("");
     setValidPeriodStart("");
+    setTerms("");
+    setLiveDate("");
     setPartnerID(0);
     setPartnerName(0);
     setImages([]);
@@ -276,6 +285,16 @@ function AddActivity() {
                           }
                         />
                       </div>
+                      <div className="Input_otr col">
+                        <Input
+                          InputClass="Theme_input_white form_input"
+                          Inputype="date"
+                          InputName="number"
+                          label="Live Date"
+                          value={liveDate}
+                          onChange={(event) => setLiveDate(event.target.value)}
+                        />
+                      </div>
                     </div>
 
                     <div className="Input_otr">
@@ -288,23 +307,37 @@ function AddActivity() {
                         onChange={(event) => setDescription(event.target.value)}
                       />
                     </div>
+                    <div className="Input_otr">
+                      <Input
+                        InputClass="Theme_input_white form_input description"
+                        Inputype="text"
+                        InputName="terms"
+                        label="Terms and Conditions"
+                        value={terms}
+                        onChange={(event) => setTerms(event.target.value)}
+                      />
+                    </div>
 
-                    <div >
+                    <div>
                       {/* Add activity button if the partner is not attached. */}
                       {partnerId !== 0 && (
                         <>
                           <div className="Input_otr">
-                            <p><b>Partner Id: </b> {partnerId}</p>
-                            <br/>
-                            <p><b>Partner Name: </b> {partnerName}</p>
+                            <p>
+                              <b>Partner Id: </b> {partnerId}
+                            </p>
+                            <br />
+                            <p>
+                              <b>Partner Name: </b> {partnerName}
+                            </p>
                           </div>
                           <div className="Input_otr action_otr">
-                          <button
-                            type="submit"
-                            className="Theme_btn_primary form_btn"
-                          >
-                            Add Activity
-                          </button>
+                            <button
+                              type="submit"
+                              className="Theme_btn_primary form_btn"
+                            >
+                              Add Activity
+                            </button>
                           </div>
                         </>
                       )}

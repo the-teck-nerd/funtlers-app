@@ -54,6 +54,10 @@ function EditActivity() {
   const [validPeriodEnd, setValidPeriodEnd] = useState(
     activity.validPeriodEnd.slice(0, 10)
   );
+
+  const [liveDate, setLiveDate] = useState("");
+
+  const [terms, setTerms] = useState("");
   const [description, setDescription] = useState(activity.description);
 
   const [minPerson, setMinPerson] = useState(activity.minPerson);
@@ -76,6 +80,11 @@ function EditActivity() {
     activityRequest.originalPrice = originalPrice;
     activityRequest.validPeriodEnd = validPeriodEnd;
     activityRequest.validPeriodStart = validPeriodStart;
+
+    activity.liveDate = liveDate;
+
+    activity.terms = terms;
+
     activityRequest.description = description;
     activityRequest.minPerson = minPerson;
     activityRequest.maxPerson = maxPerson;
@@ -230,39 +239,37 @@ function EditActivity() {
 
                     <div className="col-lg-6 col_img_otr">
                       <div className="col_img_inr">
-                     
-
                         <div className="image-uploader">
-                        {!showImagePreview && (
-                          <Swiper
-                            slidesPerView={1}
-                            spaceBetween={24}
-                            effect={"fade"}
-                            pagination={{
-                              clickable: true,
-                            }}
-                            autoplay={{
-                              delay: 2500,
-                              disableOnInteraction: false,
-                            }}
-                            modules={[EffectFade, Autoplay, Pagination]}
-                            className="mySwiper hero_swiper"
-                          >
-                            {images?.map((image) => (
-                              <SwiperSlide>
-                                <div className="img_otr">
-                                  <img
-                                    className="campaign_img"
-                                    height="50"
-                                    width="70"
-                                    src={image.imageURL}
-                                    alt="img"
-                                  />
-                                </div>
-                              </SwiperSlide>
-                            ))}
-                          </Swiper>
-                        )}
+                          {!showImagePreview && (
+                            <Swiper
+                              slidesPerView={1}
+                              spaceBetween={24}
+                              effect={"fade"}
+                              pagination={{
+                                clickable: true,
+                              }}
+                              autoplay={{
+                                delay: 2500,
+                                disableOnInteraction: false,
+                              }}
+                              modules={[EffectFade, Autoplay, Pagination]}
+                              className="mySwiper hero_swiper"
+                            >
+                              {images?.map((image) => (
+                                <SwiperSlide>
+                                  <div className="img_otr">
+                                    <img
+                                      className="campaign_img"
+                                      height="50"
+                                      width="70"
+                                      src={image.imageURL}
+                                      alt="img"
+                                    />
+                                  </div>
+                                </SwiperSlide>
+                              ))}
+                            </Swiper>
+                          )}
                           <ImageUploader
                             showImagePreview={showImagePreview}
                             setShowImagePreview={setShowImagePreview}
@@ -321,6 +328,16 @@ function EditActivity() {
                           }
                         />
                       </div>
+                      <div className="Input_otr col">
+                        <Input
+                          InputClass="Theme_input_white form_input"
+                          Inputype="date"
+                          InputName="number"
+                          label="Live Date"
+                          value={liveDate}
+                          onChange={(event) => setLiveDate(event.target.value)}
+                        />
+                      </div>
                     </div>
 
                     <div className="Input_otr">
@@ -331,6 +348,16 @@ function EditActivity() {
                         label="Description"
                         value={description}
                         onChange={(event) => setDescription(event.target.value)}
+                      />
+                    </div>
+                    <div className="Input_otr">
+                      <Input
+                        InputClass="Theme_input_white form_input description"
+                        Inputype="text"
+                        InputName="terms"
+                        label="Terms and Conditions"
+                        value={terms}
+                        onChange={(event) => setTerms(event.target.value)}
                       />
                     </div>
 
