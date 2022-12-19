@@ -2,7 +2,7 @@ export function getAllActivityCategories() {
   const categories = [
     {
       value: "all",
-      label: "Categories",
+      label: "Kategori",
     },
     {
       value: "all",
@@ -64,7 +64,7 @@ export function getAllActivityTypes() {
   const types = [
     {
       value: "all",
-      label: "Types",
+      label: "Type",
     },
     {
       value: "all",
@@ -86,7 +86,7 @@ export function getAllCities() {
   const cities = [
     {
       value: "all",
-      label: "Cities",
+      label: "Sted",
     },
     {
       value: "all",
@@ -120,7 +120,7 @@ export function getBudgetOptions() {
   const budgetOptions = [
     {
       value: "all",
-      label: "Budget Options",
+      label: "Pris",
     },
     {
       value: "all",
@@ -151,7 +151,7 @@ export function getNumberOfPeopleOptions() {
   const peopleOptions = [
     {
       value: "all",
-      label: "Number of Persons",
+      label: "Antall",
     },
     {
       value: "all",
