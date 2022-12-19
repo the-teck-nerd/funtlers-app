@@ -22,6 +22,8 @@ let activity = {
   originalPrice: 0,
   validPeriodEnd: "",
   validPeriodStart: "",
+  liveDate: "",
+  terms: "",
   description: "",
   imagePath: "",
   minPerson: 0,
