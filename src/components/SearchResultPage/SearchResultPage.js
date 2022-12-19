@@ -23,7 +23,7 @@ let filterModal = {
 
 function SearchResultPage() {
   const searchFilter = useLocation().state;
-  
+
   const filters = getFilters();
   const [city, setCity] = useState(searchFilter?.city);
   const [type, setType] = useState(searchFilter?.type);
@@ -95,6 +95,9 @@ function SearchResultPage() {
           HeaderHeading="Søkeresultat fysisk"
           PageText="Søkeresultat fysisk"
         />
+        {/* //todo: show the label not the actual value */}
+        <h2 className="padding header_heading text-center">{category}</h2>
+
         <div className="searchRsult_main">
           <div className="container">
             <div className="wrapper">
@@ -111,14 +114,6 @@ function SearchResultPage() {
                         defaultText="Acitivity Type"
                         value={type}
                         setValue={setType}
-                      />
-                    </li>
-                    <li className="activity_li">
-                      <Select
-                        value={category}
-                        setValue={setCategory}
-                        options={filters.categories}
-                        defaultText="Category"
                       />
                     </li>
                     <li className="activity_li">
@@ -145,16 +140,21 @@ function SearchResultPage() {
                         defaultText="Number of people"
                       />
                     </li>
+                    <li className="activity_li">
+                    <button
+                            class="ri-search-2-line search_icon_local search-button"
+                            type="submit"
+                          ></button>
+                      </li>
+
                   </ul>
                 </div>
-                <div className="filter_otr">
-                  <Select defaultText="Flere filtere" />
-                </div>
-                {/* <div className='relevent_select_otr'>
-                                <Select
-                                    defaultText="Vis: Mest relevant"
-                                />
-                            </div> */}
+                {/* todo: hide it for now */}
+                {false && (
+                  <div className="filter_otr">
+                    <Select defaultText="Flere filtere" />
+                  </div>
+                )}
               </div>
             </div>
             <div className="row row_custom">

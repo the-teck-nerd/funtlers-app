@@ -1,5 +1,14 @@
 @import '../../common-style/variable.scss';
 
+.search-button
+{
+    border: none;
+    background:none;
+}
+.padding
+{
+    margin-top:50px;
+}
 .searchRsult_page {
     .searchRsult_main {
         padding: 112px 0 128px 0;

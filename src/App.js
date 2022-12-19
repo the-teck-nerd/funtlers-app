@@ -121,14 +121,14 @@ function App() {
           >
             <div className="dashboard_main">
               <div className="sidebar_content_main">
-                <div className="sidebar_main">
+                <div className="sidebar_main dashboard-header-color">
                   <DashboardSidebar SidebarAddClass={SideBar} />
                 </div>
-                <div className="Header_content_main">
-                  <div className="dashboard_header_main">
+                <div className="Header_content_main dashboard-header-color">
+                  <div className="dashboard_header_main dashboard-header-color">
                     <DashboardHeader SidebarStrech={SideMenuClick} setUser={setUser} />
                   </div>
-                  <div className="content_main">
+                  <div className="content_main dashboard-body-color">
                     <Routes>
                       <Route path="/" exact={true} element={<ActivityPage setIsLoading={setIsLoading} />} />
                       <Route
@@ -207,9 +207,6 @@ function App() {
         /> */}
             <Route path="/login" exact={true} element={<Login />} />
             <Route path="/register" exact={true} element={<Register />} />
-            <Route path="/contact" exact={true} element={<ContactPage />} />
-            <Route path="/faq" exact={true} element={<FaqPage />} />
-            <Route path="/about" exact={true} element={<AboutPage />} />
             <Route path="/partner" exact={true} element={<PartnersPage />} />
             <Route path="/activities" exact={true} element={<SearchResultPage />} />
             <Route path="/team" exact={true} element={<TeamPage />} />

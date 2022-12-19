@@ -188,8 +188,8 @@ function Header({ setUser, userObject }) {
                   BtnText="Login"
                 />
 
-                <Link to="/register" className="action register_btn_otr">
-                  <ThemeBtn BtnClass="Theme_btn_white" BtnText="Register" />
+                <Link to="/register" className="action">
+                  <ThemeBtn BtnClass="Theme_btn_white" BtnText="Registrer profil" />
                 </Link>
               </div>
             ) : (

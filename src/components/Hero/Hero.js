@@ -142,31 +142,146 @@ function Hero() {
                         <b>Aktivitet ({activities.length})</b>
                       </div>
                     </form>
-                    <div className="col_inpiration_inr">
-                      <h3 className="heading-lb heading">
-                        Eller ønsker du inpirasjon?
-                      </h3>
-                      <ul className="inspiration_ul">
-                        <li className="inspiration_li">
-                          <button className="inspiration_btn Theme_btn_primary">Teambuilding</button>
-                        </li>
-                        <li className="inspiration_li">
-                          <button className="inspiration_btn Theme_btn_primary">Julebord</button>
-                        </li>
-                        <li className="inspiration_li">
-                          <button className="inspiration_btn Theme_btn_primary">Sommerfest</button>
-                        </li>
-                        <li className="inspiration_li">
-                          <button className="inspiration_btn Theme_btn_primary">Afterwork</button>
-                        </li>
-                        <li className="inspiration_li">
-                          <button className="inspiration_btn Theme_btn_primary">Online</button>
-                        </li>
-                        <li className="inspiration_li">
-                          <button className="inspiration_btn Theme_btn_primary">Dagsutflukt</button>
-                        </li>
-                      </ul>
-                    </div>
+                    <form onSubmit={handleSubmit}>
+                      <div className="col_inpiration_inr">
+                        <h3 className="heading-lb heading">
+                          Eller ønsker du inpirasjon?
+                        </h3>
+                        <ul className="inspiration_ul">
+                          <li className="inspiration_li">
+                            <button
+                              className="inspiration_btn Theme_btn_primary"
+                              onClick={() => {
+                                setCategory("vennegjeng");
+                              }}
+                            >
+                              Vennegjeng
+                            </button>
+                          </li>
+                          <li className="inspiration_li">
+                            <button
+                              className="inspiration_btn Theme_btn_primary"
+                              onClick={() => {
+                                setCategory("datenight");
+                              }}
+                            >
+                              Datenight
+                            </button>
+                          </li>
+                          <li className="inspiration_li">
+                            <button
+                              className="inspiration_btn Theme_btn_primary"
+                              onClick={() => {
+                                setCategory("barnebursdag");
+                              }}
+                            >
+                              Barnebursdag
+                            </button>
+                          </li>
+                          <li className="inspiration_li">
+                            <button
+                              className="inspiration_btn Theme_btn_primary"
+                              onClick={() => {
+                                setCategory("bursdag");
+                              }}
+                            >
+                              Bursdag
+                            </button>
+                          </li>
+                          <li className="inspiration_li">
+                            <button
+                              className="inspiration_btn Theme_btn_primary"
+                              //here we are setting the type instead of category
+                              onClick={() => {
+                                setType("online");
+                              }}
+                            >
+                              Online
+                            </button>
+                          </li>
+                          <li className="inspiration_li">
+                            <button
+                              className="inspiration_btn Theme_btn_primary"
+                              onClick={() => {
+                                setCategory("familiedag");
+                              }}
+                            >
+                              Familiedag
+                            </button>
+                          </li>
+                          <li className="inspiration_li">
+                            <button
+                              className="inspiration_btn Theme_btn_primary"
+                              onClick={() => {
+                                setCategory("egentid");
+                              }}
+                            >
+                              Egentid
+                            </button>
+                          </li>
+                          <li className="inspiration_li">
+                            <button
+                              className="inspiration_btn Theme_btn_primary"
+                              onClick={() => {
+                                setCategory("dagsutflukt");
+                              }}
+                            >
+                              Dagsutflukt
+                            </button>
+                          </li>
+                          <li className="inspiration_li">
+                            <button
+                              className="inspiration_btn Theme_btn_primary"
+                              onClick={() => {
+                                setCategory("teambuilding");
+                              }}
+                            >
+                              Teambuilding
+                            </button>
+                          </li>
+                          <li className="inspiration_li">
+                            <button
+                              className="inspiration_btn Theme_btn_primary"
+                              onClick={() => {
+                                setCategory("sommerfest");
+                              }}
+                            >
+                              Sommerfest
+                            </button>
+                          </li>
+                          <li className="inspiration_li">
+                            <button
+                              className="inspiration_btn Theme_btn_primary"
+                              onClick={() => {
+                                setCategory("afterWork");
+                              }}
+                            >
+                              After work
+                            </button>
+                          </li>
+                          <li className="inspiration_li">
+                            <button
+                              className="inspiration_btn Theme_btn_primary"
+                              onClick={() => {
+                                setCategory("julebord");
+                              }}
+                            >
+                              Julebord
+                            </button>
+                          </li>
+                          <li className="inspiration_li">
+                            <button
+                              className="inspiration_btn Theme_btn_primary"
+                              onClick={() => {
+                                setCategory("utdrikningslag");
+                              }}
+                            >
+                              Utdrikningslag
+                            </button>
+                          </li>
+                        </ul>
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>
