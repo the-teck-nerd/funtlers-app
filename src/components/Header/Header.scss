@@ -278,6 +278,7 @@
             .action_otr {
                 display: flex;
                 align-items: center;
+                flex-direction: column;
                 gap: 24px;
 
                 button {
@@ -286,11 +287,11 @@
                 }
 
                 .login_btn {
-                    width: 50%;
+                    width: 100%;
                 }
 
                 .register_btn_otr {
-                    width: 50%;
+                    width: 100%;
 
                     button {
                         background-color: $Primary-Light2;

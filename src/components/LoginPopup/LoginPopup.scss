@@ -35,7 +35,11 @@
     .col_form_inr {
         background-color: $Primary-Light2;
         padding: 24px 30px 30px 30px;
-        border-radius: 16px
+        border-radius: 16px;
+
+        @media (max-width: 575px) {
+            padding: 16px;
+        }
     }
 
     .form_heading {
@@ -93,6 +97,10 @@
             border-radius: 8px;
             color: $Primary;
             transition: .3s;
+
+            @media (max-width: 575px) {
+                width: 100%;
+            }
 
             &:hover {
                 background-color: $Primary;
