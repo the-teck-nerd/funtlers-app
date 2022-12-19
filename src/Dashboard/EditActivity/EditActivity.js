@@ -22,21 +22,20 @@ import "./EditActivity.scss";
 let activityRequest = {
   id: 0,
   name: "",
-  type: "",
+  activityType: "",
   city: "",
   price: 0,
   originalPrice: 0,
   validPeriodEnd: "",
   validPeriodStart: "",
-  liveDate:"",
-  terms:"",
+  liveDate: "",
+  terms: "",
   description: "",
   imagePath: "",
   minPerson: 0,
   maxPerson: 0,
   discountPercent: 0,
   addDate: new Date().toISOString().slice(0, 10),
-  occassion: "",
 };
 
 function EditActivity() {
@@ -61,6 +60,7 @@ function EditActivity() {
 
   const [terms, setTerms] = useState("");
   const [description, setDescription] = useState(activity.description);
+
 
   const [minPerson, setMinPerson] = useState(activity.minPerson);
   const [maxPerson, setMaxPerson] = useState(activity.maxPerson);
@@ -121,6 +121,8 @@ function EditActivity() {
     setValidPeriodEnd("");
     setValidPeriodStart("");
     setDescription("");
+    setTerms("");
+    setLiveDate("");
 
     setImages([]);
   }
