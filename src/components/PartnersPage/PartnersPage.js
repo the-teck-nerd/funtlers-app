@@ -36,6 +36,20 @@ function PartnersPage() {
                                 clickable: true,
                             }}
                             modules={[Pagination]}
+                            breakpoints={{
+                                0: {
+                                    slidesPerView: 2,
+                                },
+                                575: {
+                                    slidesPerView: 3,
+                                },
+                                768: {
+                                    slidesPerView: 3,
+                                },
+                                1024: {
+                                    slidesPerView: 5,
+                                },
+                            }}
                             className="mySwiper logo_swiper"
                         >
                             <SwiperSlide>

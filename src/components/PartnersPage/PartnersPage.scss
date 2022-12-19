@@ -4,14 +4,30 @@
     .partner_main {
         padding: 112px 0 128px 0;
 
+        @media (max-width: 575px) {
+            padding: 48px 0 72px 0;
+        }
+
         .content_wrapper {
             margin-bottom: 72px;
+
+            @media (max-width: 768px) {
+                margin-bottom: 48px;
+            }
         }
 
         .swiper_main {
             background-color: $Primary-Light2;
             padding: 56px 72px 48px 72px;
             border-radius: 16px;
+
+            @media (max-width: 768px) {
+                padding: 48px 36px 36px 36px;
+            }
+
+            @media (max-width: 575px) {
+                padding: 36px 20px 20px 20px;
+            }
 
             .logo_swiper {
                 padding-bottom: 58px;

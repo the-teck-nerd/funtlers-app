@@ -5,6 +5,14 @@
     margin: 0 auto;
     text-align: center;
 
+    @media (max-width: 768px) {
+        width: 80%;
+    }
+
+    @media (max-width: 575px) {
+        width: 100%;
+    }
+
     .wrapper_heading {
         color: $Black;
         margin-bottom: 16px;

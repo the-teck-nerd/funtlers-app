@@ -8,7 +8,7 @@ import CardImg2 from '../../img/card-shape-white.svg';
 
 function FeatureCard(props) {
     return (
-        <div className='col-lg-4 col_card_otr'>
+        <div className='col-lg-4 col-md-6 col-sm-6 col_card_otr'>
             <div className='col_card_inr'>
                 <div className='Icon_otr'>
                     <i class={props.IconClass}></i>

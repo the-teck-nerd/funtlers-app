@@ -6,7 +6,25 @@
     padding: 112px 0 128px 0;
     overflow: hidden;
 
+    @media (max-width: 575px) {
+        padding: 48px 0 72px 0;
+    }
+
     .content_wrapper {
         margin-bottom: 72px;
+
+        @media (max-width: 575px) {
+            margin-bottom: 48px;
+        }
+    }
+
+    .about_row_custom {
+        @media (max-width: 992px) {
+            gap: 72px 0;
+        }
+
+        @media (max-width: 575px) {
+            gap: 48px 0;
+        }
     }
 }

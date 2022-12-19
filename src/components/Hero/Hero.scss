@@ -12,6 +12,18 @@
 
         .col_team_building_otr {
             margin: 128px 24px 170px 0;
+
+            @media (max-width: 1200px) {
+                margin: 48px 24px 128px 0;
+            }
+
+            @media (max-width: 992px) {
+                margin: 24px 0 48px 0;
+            }
+
+            @media (max-width: 450px) {
+                margin: 0 0 48px 0;
+            }
         }
 
         .col_team_building_inr {
@@ -53,6 +65,11 @@
                 cursor: pointer;
                 transition: .3s;
 
+                @media (max-width: 450px) {
+                    height: 40px;
+                    width: 100%;
+                }
+
                 &:hover {
                     background-color: $Primary-Dark;
                 }
@@ -68,6 +85,7 @@
                 background-color: transparent;
                 border: none;
                 outline: none;
+                width: 100%;
             }
 
             .activity_main {
@@ -78,6 +96,12 @@
                 border-radius: 8px;
                 padding: 0px 0px 0px 16px;
                 gap: 10px;
+
+                @media (max-width: 450px) {
+                    padding: 0;
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
             }
 
             .activity_ul {
@@ -85,8 +109,30 @@
                 grid-template-columns: auto auto auto auto;
                 flex: 1;
 
+                @media (max-width: 450px) {
+                    width: 100%;
+                    grid-template-columns: auto auto;
+                }
+
                 .activity_li {
                     &:not(:first-child) {
+                        .Theme_select {
+                            padding-left: 10px;
+                        }
+                    }
+
+                    &:nth-child(2),
+                    &:nth-child(4) {
+                        .Theme_select {
+                            @media (max-width: 450px) {
+                                border-right: none;
+                            }
+                        }
+                    }
+
+                    @media (max-width: 450px) {
+                        border-bottom: 1px solid $Black-25;
+
                         .Theme_select {
                             padding-left: 10px;
                         }
@@ -164,6 +210,10 @@
                     align-items: center;
                     flex-wrap: wrap;
                     gap: 24px;
+
+                    @media (max-width: 992px) {
+                        gap: 16px;
+                    }
                 }
 
                 .inspiration_btn {
@@ -213,6 +263,25 @@
             transform: translateY(-50%);
             width: 40%;
             height: calc(100% - 100px);
+
+            @media (max-width: 1200px) {
+                width: 35%;
+                right: 48px;
+            }
+
+            @media (max-width: 992px) {
+                position: inherit;
+                width: 100%;
+                right: inherit;
+                top: inherit;
+                transform: translateY(0);
+                height: 450px;
+                padding-bottom: 48px;
+            }
+
+            @media (max-width: 575px) {
+                height: 400px;
+            }
         }
 
         .hero_img {

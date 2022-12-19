@@ -3,6 +3,10 @@
 .faq_page {
     .faq_main {
         padding: 112px 0 128px 0;
+
+        @media (max-width: 575px) {
+            padding: 48px 0 72px 0;
+        }
     }
 
     .content_wrapper {

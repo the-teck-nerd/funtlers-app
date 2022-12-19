@@ -15,6 +15,11 @@
         box-shadow: none;
         padding: 0 0 20px 0;
 
+        @media (max-width: 575px) {
+            padding: 0 0 16px 0;
+            gap: 16px;
+        }
+
         &::after {
             display: none;
         }
@@ -26,6 +31,11 @@
 
     .accordion_heading {
         color: $Black;
+
+        @media (max-width: 575px) {
+            font-size: $font-size-16px;
+            line-height: $line-height-28px;
+        }
     }
 
     .heading_Icon {
@@ -34,6 +44,11 @@
         color: $Primary;
         transform: rotate(315deg);
         transition: .3s;
+
+        @media (max-width: 575px) {
+            font-size: 24px;
+            line-height: 24px;
+        }
     }
 
     .collapsed {
@@ -48,11 +63,19 @@
 
     .accordion-body {
         padding: 0 0 24px 48px;
+
+        @media (max-width: 575px) {
+            padding: 0 0 16px 0;
+        }
     }
 
     .desc_otr {
         padding: 12px 24px 16px 24px;
         border-left: 4px solid $Primary;
+
+        @media (max-width: 575px) {
+            padding: 8px 0px 12px 16px;
+        }
     }
 
     .accordion_desc {

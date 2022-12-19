@@ -9,6 +9,7 @@
   font-weight: bold;
   text-align: center;
 }
+
 .success_message {
   border: 1px solid green;
   color: green;
@@ -20,23 +21,20 @@
 
 //descrition textbox
 //todo: remove padding in the textbox
-.description
-{
-height:200px;
-text-align: start;
+.description {
+  height: 200px;
+  text-align: start;
 }
 
- .image-uploader
- { 
+.image-uploader {
   width: 600px;
   height: 500px;
-  margin-top:20px ;
+  margin-top: 20px;
 
- }
- 
+}
 
-.slider-container
-{
+
+.slider-container {
   display: flex;
 }
 
@@ -49,6 +47,7 @@ text-align: start;
   font-weight: bold;
 
 }
+
 .success_message {
   border: 1px solid green;
   font-weight: bold;
@@ -62,6 +61,10 @@ text-align: start;
 .Register_page {
   .Register_main {
     padding: 112px 0 128px 0;
+
+    @media (max-width: 575px) {
+      padding: 72px 0;
+    }
   }
 
   .row_custom {
@@ -72,13 +75,21 @@ text-align: start;
     background-color: $Primary-Light2;
     padding: 24px 30px 30px 30px;
     border-radius: 16px;
-  
+
+    @media (max-width: 575px) {
+      padding: 16px;
+      border-radius: 8px;
+    }
   }
 
   .form_heading {
     color: $Black;
     margin-bottom: 24px;
     text-align: center;
+
+    @media (max-width: 575px) {
+      margin-bottom: 16px;
+    }
   }
 
   .form_main {
@@ -87,11 +98,19 @@ text-align: start;
 
   .Input_otr {
     margin-bottom: 24px;
+
+    @media (max-width: 575px) {
+      margin-bottom: 16px;
+    }
   }
 
   .action_otr {
     display: flex;
     margin: 36px 0 24px 0;
+
+    @media (max-width: 575px) {
+      margin: 24px 0 16px 0;
+    }
   }
 
   .form_btn {
@@ -116,84 +135,84 @@ text-align: start;
 
 .col_img_inr {
   .campaign_img {
-      width: 100%;
-      height: 500px;
-      object-fit:fill;
-      object-position: center;
-      // animation-name: UpDown;
-      // animation-duration: 6s;
-      // animation-iteration-count: infinite;
-      // animation-timing-function: linear;
+    width: 100%;
+    height: 500px;
+    object-fit: fill;
+    object-position: center;
+    // animation-name: UpDown;
+    // animation-duration: 6s;
+    // animation-iteration-count: infinite;
+    // animation-timing-function: linear;
   }
 
   .social_text_otr {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background-color: $Primary-Light2;
-      border-radius: 8px;
-      padding: 28px 36px;
-      margin-top: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $Primary-Light2;
+    border-radius: 8px;
+    padding: 28px 36px;
+    margin-top: 72px;
   }
 
   .text_ul {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
 
   .text_heading {
+    display: flex;
+    align-items: center;
+    color: $Black;
+
+    .icon_text_otr {
       display: flex;
       align-items: center;
-      color: $Black;
+      gap: 16px;
+      margin-right: 16px;
+    }
 
-      .icon_text_otr {
-          display: flex;
-          align-items: center;
-          gap: 16px;
-          margin-right: 16px;
-      }
-
-      .q_icon {
-          font-size: 24px;
-          line-height: 24px;
-          color: $Primary;
-          transition: .3s;
-      }
+    .q_icon {
+      font-size: 24px;
+      line-height: 24px;
+      color: $Primary;
+      transition: .3s;
+    }
   }
 
   .social_ul {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      width: 120px;
-      gap: 16px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 120px;
+    gap: 16px;
   }
 
   .social_a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 52px;
-      height: 52px;
-      border-radius: 100%;
-      background-color: $White;
-      box-shadow: $Box-Shadow-Custom;
-      transition: .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 100%;
+    background-color: $White;
+    box-shadow: $Box-Shadow-Custom;
+    transition: .3s;
 
-      &:hover {
-          background-color: $Primary;
-
-          .social_icon {
-              color: $White;
-          }
-      }
+    &:hover {
+      background-color: $Primary;
 
       .social_icon {
-          font-size: 24px;
-          line-height: 24px;
-          color: $Primary;
-          transition: .3s;
+        color: $White;
       }
+    }
+
+    .social_icon {
+      font-size: 24px;
+      line-height: 24px;
+      color: $Primary;
+      transition: .3s;
+    }
   }
 }

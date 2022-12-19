@@ -13,7 +13,7 @@ function Footer() {
             <section className='footer_main'>
                 <div className='container'>
                     <div className='row row_custom'>
-                        <div className='col-lg-4 col_logo_otr'>
+                        <div className='col-lg-4 col-md-6 col-sm-6 col_logo_otr'>
                             <div className='col_logo_inr'>
                                 <Link to="/" className='logo_otr'>
                                     <img className='logo' src={BrandLogo} alt='logo' />
@@ -45,7 +45,7 @@ function Footer() {
                                 </ul>
                             </div>
                         </div>
-                        <div className='col-lg-3 col_link_otr'>
+                        <div className='col-lg-3 col-md-6 col-sm-6 col_link_otr'>
                             <div className='col_link_inr'>
                                 <ul className='link_ul'>
                                     <li className='link_li'>
@@ -81,7 +81,7 @@ function Footer() {
                                 </ul>
                             </div>
                         </div>
-                        <div className='col-lg-5 col_sub_otr'>
+                        <div className='col-lg-5 col-md-6 col-sm-6 col_sub_otr'>
                             <div className='col_sub_inr'>
                                 <h3 className='heading-h3 heading_sub'>
                                     Subscribe to Funtlers For Latest update.

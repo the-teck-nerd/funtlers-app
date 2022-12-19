@@ -9,6 +9,7 @@
   font-weight: bold;
 
 }
+
 .success_message {
   border: 1px solid green;
   font-weight: bold;
@@ -22,6 +23,10 @@
 .Register_page {
   .Register_main {
     padding: 112px 0 128px 0;
+
+    @media (max-width: 575px) {
+      padding: 72px 0;
+    }
   }
 
   .row_custom {
@@ -32,6 +37,10 @@
     background-color: $Primary-Light2;
     padding: 24px 30px 30px 30px;
     border-radius: 16px;
+
+    @media (max-width: 575px) {
+      padding: 16px;
+    }
   }
 
   .form_heading {

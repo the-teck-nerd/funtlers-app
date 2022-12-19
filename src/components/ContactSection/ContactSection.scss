@@ -29,9 +29,18 @@
 
     .row_custom {
         align-items: center;
+        gap: 72px 0;
+
+        @media (max-width: 575px) {
+            gap: 48px 0;
+        }
 
         .col_content_inr {
             padding-right: 48px;
+
+            @media (max-width: 992px) {
+                padding-right: 0;
+            }
 
             .heading {
                 color: $Black;
@@ -44,6 +53,10 @@
 
             .icon_ul {
                 width: 70%;
+
+                @media (max-width: 575px) {
+                    width: 100%;
+                }
             }
 
             .icon_li {
@@ -103,9 +116,18 @@
             background-color: $Primary-Light2;
             border-radius: 16px;
 
+            @media (max-width: 575px) {
+                padding: 16px;
+                border-radius: 8px;
+            }
+
             .input_otr {
                 &:not(:last-child) {
                     margin-bottom: 24px;
+
+                    @media (max-width: 575px) {
+                        margin-bottom: 16px;
+                    }
                 }
             }
 

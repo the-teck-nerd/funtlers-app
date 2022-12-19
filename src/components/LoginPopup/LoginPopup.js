@@ -12,7 +12,7 @@ export default function LoginPopup({ setUser, setShowLogin, ref }) {
       spinner
       text="Processing your request..."
     >
-      <div className="Login_page">
+      <div className="Login_page login_popup">
         <section className="login_main">
           <div className="container" ref={ref}>
             <div className="row row_custom">

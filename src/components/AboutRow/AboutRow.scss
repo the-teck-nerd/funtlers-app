@@ -6,6 +6,10 @@
     .col_content_inr {
         padding-right: 48px;
 
+        @media (max-width: 992px) {
+            padding-right: 0;
+        }
+
         .about_heading {
             color: $Black;
             margin-bottom: 16px;
@@ -37,6 +41,14 @@
             animation-duration: 6s;
             animation-iteration-count: infinite;
             animation-timing-function: linear;
+
+            @media (max-width: 992px) {
+                height: 400px;
+            }
+
+            @media (max-width: 575px) {
+                height: 350px;
+            }
         }
 
         .about_shape {

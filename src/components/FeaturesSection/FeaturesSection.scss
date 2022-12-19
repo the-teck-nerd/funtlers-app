@@ -4,8 +4,16 @@
 .Features_main {
     padding: 112px 0 128px 0;
 
+    @media (max-width: 1200px) {
+        padding: 48px 0 72px 0;
+    }
+
     .content_wrapper {
         margin-bottom: 72px;
+
+        @media (max-width: 1200px) {
+            margin-bottom: 48px;
+        }
     }
 
     .row_custom {

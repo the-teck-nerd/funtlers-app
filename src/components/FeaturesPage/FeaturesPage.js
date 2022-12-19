@@ -12,9 +12,7 @@ function FeaturesPage() {
                 PageText="Features"
             />
             <div className='feature_main'>
-                <div className='container'>
-                    <FeaturesSection />
-                </div>
+                <FeaturesSection />
             </div>
         </div>
     )

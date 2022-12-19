@@ -3,6 +3,10 @@
 .Login_page {
     .login_main {
         padding: 112px 0 128px 0;
+
+        @media (max-width: 575px) {
+            padding: 72px 0;
+        }
     }
 
     .row_custom {
@@ -12,13 +16,22 @@
     .col_form_inr {
         background-color: $Primary-Light2;
         padding: 24px 30px 30px 30px;
-        border-radius: 16px
+        border-radius: 16px;
+
+        @media (max-width: 575px) {
+            padding: 16px;
+            border-radius: 8px;
+        }
     }
 
     .form_heading {
         color: $Black;
         margin-bottom: 24px;
         text-align: center;
+
+        @media (max-width: 575px) {
+            margin-bottom: 16px;
+        }
     }
 
     .form_main {
@@ -27,6 +40,10 @@
 
     .Input_otr {
         margin-bottom: 24px;
+
+        @media (max-width: 575px) {
+            margin-bottom: 16px;
+        }
     }
 
     .action_otr {
@@ -46,6 +63,11 @@
     .forgot_text {
         font-family: $font-family-Medium;
         color: $Black;
+
+        @media (max-width: 420px) {
+            font-size: 14px;
+            line-height: 24px;
+        }
     }
 
     .heading_another {
@@ -57,6 +79,11 @@
         display: flex;
         align-items: center;
         gap: 24px;
+
+        @media (max-width: 575px) {
+            flex-direction: column;
+            gap: 16px;
+        }
 
         .buttons_otr {
             display: flex;
@@ -70,6 +97,10 @@
             border-radius: 8px;
             color: $Primary;
             transition: .3s;
+
+            @media (max-width: 575px) {
+                width: 100%;
+            }
 
             &:hover {
                 background-color: $Primary;

@@ -8,6 +8,12 @@
 
     .row_custom {
         padding: 112px 0 128px 0;
+        gap: 48px 0;
+
+        @media (max-width: 575px) {
+            gap: 36px 0;
+            padding: 72px 0;
+        }
     }
 
     .logo_otr {
@@ -61,6 +67,10 @@
 
     .col_link_inr {
         padding-left: 24px;
+
+        @media (max-width: 575px) {
+            padding-left: 0;
+        }
 
         .heading {
             color: $White;

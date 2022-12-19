@@ -9,6 +9,10 @@
     .header_wrapper {
         padding: 72px 0 112px 0;
         text-align: center;
+
+        @media (max-width: 575px) {
+            padding: 0 0 48px 0;
+        }
     }
 
     .header_heading {
