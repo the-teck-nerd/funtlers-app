@@ -50,13 +50,13 @@ function EditActivity() {
   const [images, setImages] = useState(JSON.parse(activity.images));
   const [originalPrice, setOriginalPrice] = useState(activity.originalPrice);
   const [validPeriodStart, setValidPeriodStart] = useState(
-    activity.validPeriodStart.slice(0, 10)
+    activity.validPeriodStart?.slice(0, 10)
   );
   const [validPeriodEnd, setValidPeriodEnd] = useState(
-    activity.validPeriodEnd.slice(0, 10)
+    activity.validPeriodEnd?.slice(0, 10)
   );
-
-  const [liveDate, setLiveDate] = useState(activity.liveDate);
+ 
+  const [liveDate, setLiveDate] = useState(activity.liveDate?.slice(0,10));
 
   const [terms, setTerms] = useState(activity.terms);
   const [description, setDescription] = useState(activity.description);
