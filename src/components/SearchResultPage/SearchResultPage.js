@@ -140,6 +140,13 @@ function SearchResultPage() {
                         defaultText="Number of people"
                       />
                     </li>
+                    <li className="activity_li">
+                    <button
+                            class="ri-search-2-line search_icon_local search-button"
+                            type="submit"
+                          ></button>
+                      </li>
+
                   </ul>
                 </div>
                 {/* todo: hide it for now */}
