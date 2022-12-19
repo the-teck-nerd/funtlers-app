@@ -12,15 +12,12 @@ function Footer() {
       <section className="footer_main">
         <div className="container">
           <div className="row row_custom">
-            <div className="col-lg-3 col-md-6 col-sm-6 col_logo_otr">
+            <div className="col-lg-6 col-md-6 col-sm-6 col_logo_otr">
               <div className="col_logo_inr">
                 <Link to="/" className="logo_otr">
                   <img className="logo" src={BrandLogo} alt="logo" />
                 </Link>
-                <p className="desc heading-m">
-                  Vi forsøker å leve i nuet hver dag, og huske på at
-                  Hverdagen består av nettopp det.
-                </p>
+
                 <p className="desc2 heading-m">
                   Din markedsplass for sosiale aktiviter
                 </p>
@@ -48,7 +45,9 @@ function Footer() {
                 </ul>
               </div>
             </div>
-            <div className="col-lg-4 col-md-6 col-sm-6 col_sub_otr">
+
+            {/* Todo: it was originally added butlater asked to delete */}
+            {/* <div className="col-lg-4 col-md-6 col-sm-6 col_sub_otr">
               <div className="col_sub_inr col_sub_inr2">
                 <h3 className="heading-h3 heading_sub">FUNTLERS AS</h3>
                 <p className="heading-s desc_sub">
@@ -60,12 +59,10 @@ function Footer() {
                   Informasjon angående 14 dagers angrerett
                 </p>
               </div>
-            </div>
+            </div> */}
             <div className="col-lg-2 col-md-6 col-sm-6 col_link_otr">
               <div className="col_link_inr">
-                <h3 className="heading-h3 heading">
-                  Viktige lenker
-                </h3>
+                <h3 className="heading-h3 heading">Viktige lenker</h3>
                 <ul className="link_ul">
                   <li className="link_li">
                     <Link to="/contact" className="heading-s link_a">
@@ -90,7 +87,7 @@ function Footer() {
                 </ul>
               </div>
             </div>
-            <div className="col-lg-3 col-md-6 col-sm-6 col_sub_otr">
+            <div className="col-lg-4 col-md-6 col-sm-6 col_sub_otr">
               <div className="col_sub_inr">
                 <h3 className="heading-h3 heading_sub">
                   Abonner på vårt nyhetsrev!
