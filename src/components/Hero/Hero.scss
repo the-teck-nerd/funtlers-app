@@ -225,6 +225,8 @@
                     padding: 8px 16px;
                     cursor: pointer;
                     outline: none;
+                    min-width: 160px;
+                    width: auto;
 
                     @media (max-width: 575px) {
                         font-size: $font-size-12px;
