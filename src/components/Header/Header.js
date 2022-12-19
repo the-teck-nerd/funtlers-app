@@ -69,7 +69,7 @@ function Header({ setUser, userObject }) {
               <ul className="menu_ul">
                 <li className="menu_li">
                   <Link to="/about" className="menu_a heading-sb">
-                    Hvordan fungerer det
+                    Slik fungerer det
                   </Link>
                 </li>
                 <li className="menu_li">
