@@ -18,7 +18,6 @@ import "swiper/css/effect-fade";
 import "swiper/css/pagination";
 import Form from "react-bootstrap/Form";
 import "./EditActivity.scss";
- 
 
 let activityRequest = {
   id: 0,
@@ -42,8 +41,7 @@ function EditActivity() {
   const location = useLocation();
   const activity = location.state;
 
-  
-
+  const [showImagePreview, setShowImagePreview] = useState(false);
   const [name, setName] = useState(activity.name);
   const [type, setType] = useState(activity.activityType);
   const [city, setCity] = useState(activity.city);
@@ -232,34 +230,46 @@ function EditActivity() {
 
                     <div className="col-lg-6 col_img_otr">
                       <div className="col_img_inr">
-                        <Swiper
-                          slidesPerView={1}
-                          spaceBetween={24}
-                          effect={"fade"}
-                          pagination={{
-                            clickable: true,
-                          }}
-                          autoplay={{
-                            delay: 2500,
-                            disableOnInteraction: false,
-                          }}
-                          modules={[EffectFade, Autoplay, Pagination]}
-                          className="mySwiper hero_swiper"
-                        >
-                          {images?.map((image) => (
-                            <SwiperSlide>
-                              <div className="img_otr">
-                                <img
-                                  className="campaign_img"
-                                  height="50"
-                                  width="70"
-                                  src={image.imageURL}
-                                  alt="img"
-                                />
-                              </div>
-                            </SwiperSlide>
-                          ))}
-                        </Swiper>
+                     
+
+                        <div className="image-uploader">
+                        {!showImagePreview && (
+                          <Swiper
+                            slidesPerView={1}
+                            spaceBetween={24}
+                            effect={"fade"}
+                            pagination={{
+                              clickable: true,
+                            }}
+                            autoplay={{
+                              delay: 2500,
+                              disableOnInteraction: false,
+                            }}
+                            modules={[EffectFade, Autoplay, Pagination]}
+                            className="mySwiper hero_swiper"
+                          >
+                            {images?.map((image) => (
+                              <SwiperSlide>
+                                <div className="img_otr">
+                                  <img
+                                    className="campaign_img"
+                                    height="50"
+                                    width="70"
+                                    src={image.imageURL}
+                                    alt="img"
+                                  />
+                                </div>
+                              </SwiperSlide>
+                            ))}
+                          </Swiper>
+                        )}
+                          <ImageUploader
+                            showImagePreview={showImagePreview}
+                            setShowImagePreview={setShowImagePreview}
+                            setImagesCallBack={setImages}
+                            editMode={true}
+                          />
+                        </div>
                       </div>
                     </div>
 
