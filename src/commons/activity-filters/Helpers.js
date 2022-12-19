@@ -78,6 +78,10 @@ export function getAllActivityTypes() {
       value: "digital",
       label: "Digital",
     },
+    {
+      value: "online",
+      label: "Online"
+    }
   ];
 
   return types;
