@@ -29,7 +29,12 @@
 
     .desc {
         color: $White;
-        margin: 24px 0 30px;
+        margin-top: 24px;
+    }
+
+    .desc2 {
+        color: $White;
+        margin: 10px 0 24px;
     }
 
     .social_ul {
@@ -68,7 +73,7 @@
     .col_link_inr {
         padding-left: 24px;
 
-        @media (max-width: 575px) {
+        @media (max-width: 992px) {
             padding-left: 0;
         }
 
@@ -114,6 +119,12 @@
     }
 
     .col_sub_inr {
+        padding-left: 30px;
+
+        @media (max-width: 992px) {
+            padding-left: 0;
+        }
+
         .heading_sub {
             color: $White;
         }
@@ -130,6 +141,19 @@
 
         .Theme_btn_white {
             margin-top: 24px;
+        }
+    }
+
+    .col_sub_inr2 {
+        padding-left: 30px;
+
+        .desc_sub {
+            color: $White;
+            margin: 10px 0 0 0;
+        }
+
+        @media (max-width: 992px) {
+            padding-left: 0;
         }
     }
 
