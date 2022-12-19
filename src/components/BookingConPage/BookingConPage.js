@@ -11,7 +11,7 @@ import { EffectFade, Autoplay, Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/pagination";
- 
+
 import ThemeBtn from "../ThemeBtn/ThemeBtn";
 
 const formatDate = (dateString) => {
@@ -30,10 +30,8 @@ function BookingConPage() {
   const location = useLocation();
   const activity = location.state?.activity;
   const peopleNumber = location.state?.peopleNumber;
-  const user= location.state?.user;
-  const activityImages = JSON.parse(activity.images);
-
-   
+  const user = location.state?.user;
+  const activityImages = activity?.images ? JSON.parse(activity?.images) : [];
 
   return (
     <div className="BookingCon_Page">
@@ -45,7 +43,7 @@ function BookingConPage() {
         <div className="container">
           <SectionHeadingDesc
             Heading="Hurra! Nå er det bare å glede seg!"
-            Desc={"Bookingbekreftelse er sendt på mail til "+ user?.email} 
+            Desc={"Bookingbekreftelse er sendt på mail til " + user?.email}
           />
           <div className="row row_custom">
             <div className="col-lg-6 col_img_otr">
@@ -84,26 +82,26 @@ function BookingConPage() {
                   <span className="heading-lb booking_text_inr">
                     Aktivitet :{" "}
                   </span>{" "}
-                  {activity.name}
+                  {activity?.name}
                 </p>
                 <p className="heading-l booking_text">
                   <span className="heading-lb booking_text_inr">
                     Gyldig Periode :{" "}
                   </span>{" "}
-                  {formatDate(activity.validPeriodStart)} {" - "}
-                  {formatDate(activity.validPeriodEnd)}
+                  {formatDate(activity?.validPeriodStart)} {" - "}
+                  {formatDate(activity?.validPeriodEnd)}
                 </p>
                 <p className="heading-l booking_text">
                   <span className="heading-lb booking_text_inr">
                     Activity Provide :{" "}
                   </span>{" "}
-                  {activity.partnerName}
+                  {activity?.partnerName}
                 </p>
                 <p className="heading-l booking_text">
                   <span className="heading-lb booking_text_inr">
                     Adresse :{" "}
                   </span>{" "}
-                  {activity.partnerAddress}
+                  {activity?.partnerAddress}
                 </p>
                 <p className="heading-l booking_text">
                   <span className="heading-lb booking_text_inr">Antall : </span>{" "}
@@ -117,16 +115,16 @@ function BookingConPage() {
                 </p>
                 <p className="heading-l booking_text">
                   <span className="heading-lb booking_text_inr">Pris : </span>{" "}
-                  {activity.price}
+                  {activity?.price}
                   {" NOK / Person "}
                 </p>
                 <p className="heading-l booking_text">
                   <span className="heading-lb booking_text_inr">
                     Totale Beløpet :{" "}
                   </span>{" "}
-                  {activity.price * peopleNumber} kr ink. mva
+                  {activity?.price * peopleNumber} kr ink. mva
                 </p>
-{/* 
+                {/* 
                 //Todo: partner social media */}
                 {/* <ul className="social_ul">
                   <li className="social_li">
@@ -150,12 +148,13 @@ function BookingConPage() {
                     </Link>
                   </li>
                 </ul> */}
-                <Link className="action_otr">
+                {/* <Link className="action_otr">
                   <ThemeBtn
                     BtnClass="Theme_btn_primary del_btn"
                     BtnText="Del"
+                    onClick={() => {}}
                   />
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>
