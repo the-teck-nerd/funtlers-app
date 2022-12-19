@@ -102,12 +102,12 @@ function Header({ setUser, userObject }) {
                 <div className="action_otr">
                   <ThemeBtn
                     onClick={() => setShowLogin(true)}
-                    BtnClass="Theme_btn_light"
+                    BtnClass="Theme_btn_light header_button"
                     BtnText="Login"
                   />
 
                   <Link to="/register" className="action">
-                    <ThemeBtn BtnClass="Theme_btn_white" BtnText="Register" />
+                    <ThemeBtn BtnClass="Theme_btn_white header_button" BtnText="Registrer profil" />
                   </Link>
                 </div>
               ) : (
@@ -184,11 +184,11 @@ function Header({ setUser, userObject }) {
               <div className="action_otr">
                 <ThemeBtn
                   onClick={() => setShowLogin(true)}
-                  BtnClass="Theme_btn_primary login_btn"
+                  BtnClass="Theme_btn_primary login_btn header_button"
                   BtnText="Login"
                 />
 
-                <Link to="/register" className="action register_btn_otr">
+                <Link to="/register" className="action register_btn_otr header_button">
                   <ThemeBtn BtnClass="Theme_btn_white" BtnText="Registrer profil" />
                 </Link>
               </div>
