@@ -8,7 +8,7 @@ import "./CustomerPage.scss";
 
 import ProfileImg from "../../img/profile-img.png";
 import { isLoggedIn } from "../../api/NewLoginService";
-import InnerHeader from '../InnerHeader/InnerHeader';
+import InnerHeader from "../InnerHeader/InnerHeader";
 
 function CustomerPage() {
   const [orders, setOrders] = useState([]);
@@ -29,33 +29,30 @@ function CustomerPage() {
       })
       .then((data) => {
         // data.data=[{"id":1,"name":"string","price":0,"validPeriod":"2022-11-27T00:00:00","description":"string","imagePath":"string","isDeleted":true,"ownerID":1,"activityType":"string"},{"id":2,"name":"string","price":10,"validPeriod":"2022-11-27T00:00:00","description":"string","imagePath":"string","isDeleted":false,"ownerID":1,"activityType":null},{"id":3,"name":"string","price":10,"validPeriod":"2022-11-27T00:00:00","description":"string","imagePath":"string","isDeleted":false,"ownerID":1,"activityType":null}];
-        setOrders(data); 
+        setOrders(data);
         setFilteredOrders(data);
+        debugger;
       });
   };
-
 
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    
-    const filter = orders.filter((x)=>{ return JSON.stringify(x).indexOf(search)>0 || search==''})    ;
+    const filter = orders.filter((x) => {
+      return JSON.stringify(x).indexOf(search) > 0 || search == "";
+    });
     setFilteredOrders(filter);
   }, [search]);
 
   return (
     <div className="my_page_main">
-      <InnerHeader
-        HeaderHeading="My Page"
-        PageText="My Page"
-      />
+      <InnerHeader HeaderHeading="My Page" PageText="My Page" />
 
       <div className="container">
         <div className="partner_page_main">
           <div className="heading_filter_otr">
             <p className="heading_activity heading-lb">My Orders</p>
             <div className="filter_search_otr">
-          
               <div className="search_otr">
                 <i class="ri-search-2-line search_icon"></i>
                 <Input
@@ -99,25 +96,31 @@ function CustomerPage() {
                 {filteredOrders.map((order) => (
                   <tr>
                     <td>
-                      <p className="heading-xs body_text">{order?.orderId}</p>
+                      <p className="heading-xs body_text">{order?.OrderId}</p>
                     </td>
                     <td>
-                      <p className="heading-xs body_text">{order?.name}</p>
+                      <p className="heading-xs body_text">{order?.Name}</p>
                     </td>
                     <td>
-                      <p className="heading-xs body_text">{order?.code}</p>
+                      <p className="heading-xs body_text">{order?.Code}</p>
                     </td>
                     <td>
-                      <p className="heading-xsb body_text">{order?.isConsumed ? "Yes" : "No"}</p>
+                      <p className="heading-xsb body_text">
+                        {order?.IsConsumed ? "Yes" : "No"}
+                      </p>
                     </td>
                     <td>
-                      <p className="heading-xs body_text">{order?.createdDate?.slice(0, 10)}</p>
+                      <p className="heading-xs body_text">
+                        {order?.CreatedDate?.slice(0, 10)}
+                      </p>
                     </td>
                     <td>
-                      <p className="heading-xs body_text">{order?.quantity}</p>
+                      <p className="heading-xs body_text">{order?.Quantity}</p>
                     </td>
                     <td>
-                      <p className="heading-xs body_text">{order?.totalAmount}</p>
+                      <p className="heading-xs body_text">
+                        {order?.TotalAmount}
+                      </p>
                     </td>
                   </tr>
                 ))}
