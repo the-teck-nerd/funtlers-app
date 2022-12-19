@@ -56,9 +56,9 @@ function EditActivity() {
     activity.validPeriodEnd.slice(0, 10)
   );
 
-  const [liveDate, setLiveDate] = useState("");
+  const [liveDate, setLiveDate] = useState(activity.liveDate);
 
-  const [terms, setTerms] = useState("");
+  const [terms, setTerms] = useState(activity.terms);
   const [description, setDescription] = useState(activity.description);
 
 
