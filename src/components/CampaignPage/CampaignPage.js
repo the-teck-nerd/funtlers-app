@@ -92,6 +92,8 @@ function CampaignPage() {
                 <h3 className="heading-h3 heading_terms">Vilkår</h3>
                 <div className="content">
                   <p className="heading-m campaign_text">
+                    Prisen: <b> {activity.price + " NOK"} </b> {" pr.pers"}
+                    <br />
                     Valid for:{" "}
                     <b>
                       {activity.minPerson} - {activity.maxPerson}
@@ -150,32 +152,36 @@ function CampaignPage() {
                   modules={[EffectFade, Autoplay, Pagination]}
                   className="mySwiper hero_swiper"
                 >
-                  {images&&images.map((image) => (
-                    <SwiperSlide>
-                      <div className="img_otr">
-                        <img
-                          className="campaign_img"
-                          height="50"
-                          width="70"
-                          src={image.imageURL}
-                          alt="img"
-                        />
-                      </div>
-                    </SwiperSlide>
-                  ))}
+                  {images &&
+                    images.map((image) => (
+                      <SwiperSlide>
+                        <div className="img_otr">
+                          <img
+                            className="campaign_img"
+                            height="50"
+                            width="70"
+                            src={image.imageURL}
+                            alt="img"
+                          />
+                        </div>
+                      </SwiperSlide>
+                    ))}
                 </Swiper>
 
                 <div className="social_text_otr">
                   <ul className="text_ul">
                     <li className="text_li">
                       <h3 className="text_heading heading-h3">
-                        {"Vendor: " + activity.partnerName}
+                        {"Leverandør: " + activity.partnerName}
                       </h3>
                     </li>
                     <li className="text_li">
                       <h3 className="text_heading heading-h3">
-                        {"Price: " + activity.price + " NOK / Person"}
+                        {"Totalkostnad: " +
+                          activity.price * peopleNumber +
+                          " NOK"}
                       </h3>
+                      <h3 className="text_heading heading-h3"></h3>
                     </li>
                     <li className="text_li">
                       <h3 className="text_heading heading-h3">
@@ -208,7 +214,15 @@ function CampaignPage() {
                     </li> */}
                     <li className="text_li">
                       <h3 className="text_heading heading-h3">
-                        {"Discount: " + activity.discountPercent + "%"}
+                        {"Rabatt: " + activity.discountPercent + "%"}
+                      </h3>
+                      </li>
+                      <li className="text_li">
+                  
+                      <h3 className="text_heading heading-h3">
+                        {"Spart beløp: " +
+                          (activity.originalPrice - activity.price) *
+                            peopleNumber + " NOK"}
                       </h3>
                     </li>
                   </ul>
