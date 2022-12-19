@@ -263,3 +263,14 @@ export function getBudget(budget) {
 
   return [min, max];
 }
+
+export function getLabelByValue(filterArray, value)
+{
+  if(!filterArray || filterArray.length===0)
+  return;
+  else
+  {
+     const label=filterArray.find(x=>x.value===value)?.label;
+     return label;
+  }
+}
