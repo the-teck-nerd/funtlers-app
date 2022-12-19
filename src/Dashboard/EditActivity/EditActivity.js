@@ -83,9 +83,9 @@ function EditActivity() {
     activityRequest.validPeriodEnd = validPeriodEnd;
     activityRequest.validPeriodStart = validPeriodStart;
 
-    activity.liveDate = liveDate;
+    activityRequest.liveDate = liveDate;
 
-    activity.terms = terms;
+    activityRequest.terms = terms;
 
     activityRequest.description = description;
     activityRequest.minPerson = minPerson;
