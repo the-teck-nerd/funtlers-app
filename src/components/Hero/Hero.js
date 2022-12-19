@@ -152,20 +152,91 @@ function Hero() {
                             <button
                               className="inspiration_btn Theme_btn_primary"
                               onClick={() => {
-                                setCategory("teambuilding");
+                                setCategory("vennegjeng");
                               }}
                             >
-                              Teambuilding
+                              Vennegjeng
                             </button>
                           </li>
                           <li className="inspiration_li">
                             <button
                               className="inspiration_btn Theme_btn_primary"
                               onClick={() => {
-                                setCategory("julebord");
+                                setCategory("datenight");
                               }}
                             >
-                              Julebord
+                              Datenight
+                            </button>
+                          </li>
+                          <li className="inspiration_li">
+                            <button
+                              className="inspiration_btn Theme_btn_primary"
+                              onClick={() => {
+                                setCategory("barnebursdag");
+                              }}
+                            >
+                              Barnebursdag
+                            </button>
+                          </li>
+                          <li className="inspiration_li">
+                            <button
+                              className="inspiration_btn Theme_btn_primary"
+                              onClick={() => {
+                                setCategory("bursdag");
+                              }}
+                            >
+                              Bursdag
+                            </button>
+                          </li>
+                          <li className="inspiration_li">
+                            <button
+                              className="inspiration_btn Theme_btn_primary"
+                              //here we are setting the type instead of category
+                              onClick={() => {
+                                setType("online");
+                              }}
+                            >
+                              Online
+                            </button>
+                          </li>
+                          <li className="inspiration_li">
+                            <button
+                              className="inspiration_btn Theme_btn_primary"
+                              onClick={() => {
+                                setCategory("familiedag");
+                              }}
+                            >
+                              Familiedag
+                            </button>
+                          </li>
+                          <li className="inspiration_li">
+                            <button
+                              className="inspiration_btn Theme_btn_primary"
+                              onClick={() => {
+                                setCategory("egentid");
+                              }}
+                            >
+                              Egentid
+                            </button>
+                          </li>
+                          <li className="inspiration_li">
+                            <button
+                              className="inspiration_btn Theme_btn_primary"
+                              onClick={() => {
+                                setCategory("dagsutflukt");
+                              }}
+                            >
+                              Dagsutflukt
+                            </button>
+                          </li>
+                          <li className="inspiration_li">
+                            <button
+                              className="inspiration_btn Theme_btn_primary"
+                              onClick={() => {
+                                setCategory("teambuilding");
+                              }}
+                            >
+                              Teambuilding
                             </button>
                           </li>
                           <li className="inspiration_li">
@@ -185,27 +256,27 @@ function Hero() {
                                 setCategory("afterWork");
                               }}
                             >
-                              Afterwork
+                              After work
                             </button>
                           </li>
                           <li className="inspiration_li">
                             <button
                               className="inspiration_btn Theme_btn_primary"
                               onClick={() => {
-                                setType("online");
+                                setCategory("julebord");
                               }}
                             >
-                              Online
+                              Julebord
                             </button>
                           </li>
                           <li className="inspiration_li">
                             <button
                               className="inspiration_btn Theme_btn_primary"
                               onClick={() => {
-                                setCategory("");
+                                setCategory("utdrikningslag");
                               }}
                             >
-                              Dagsutflukt
+                              Utdrikningslag
                             </button>
                           </li>
                         </ul>
