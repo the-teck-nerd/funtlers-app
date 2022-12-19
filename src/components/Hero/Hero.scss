@@ -209,10 +209,14 @@
                     display: flex;
                     align-items: center;
                     flex-wrap: wrap;
-                    gap: 24px;
+                    gap: 16px;
 
                     @media (max-width: 992px) {
-                        gap: 16px;
+                        gap: 12px;
+                    }
+
+                    @media (max-width: 575px) {
+                        gap: 8px;
                     }
                 }
 
@@ -221,6 +225,12 @@
                     padding: 8px 16px;
                     cursor: pointer;
                     outline: none;
+
+                    @media (max-width: 575px) {
+                        font-size: $font-size-12px;
+                        line-height: $line-height-20px;
+                        padding: 6px 10px;
+                    }
                 }
             }
         }

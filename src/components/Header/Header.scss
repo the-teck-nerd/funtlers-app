@@ -214,6 +214,7 @@
         padding: 24px 16px;
         left: -350px;
         transition: .3s;
+        overflow-y: auto;
 
         .logo_close_otr {
             display: flex;
