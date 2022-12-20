@@ -16,7 +16,15 @@ function DashboardSidebar(props) {
             <div className='sidebar_menu_main'>
                 <ul className='sidebar_menu_ul'>
                     <li className='sidebar_menu_li'>
-                        <Link to="/" className='sidebar_menu_link active'>
+                        <Link to="/" className='sidebar_menu_link'>
+                            <i class="ri-home-4-fill menu_icon"></i>
+                            <p className='menu_text heading-m'>
+                                Home
+                            </p>
+                        </Link>
+                    </li>
+                    <li className='sidebar_menu_li'>
+                        <Link to="/activity-page" className='sidebar_menu_link'>
                             <i class="ri-home-4-fill menu_icon"></i>
                             <p className='menu_text heading-m'>
                                 Activities
@@ -47,14 +55,7 @@ function DashboardSidebar(props) {
                             </p>
                         </Link>
                     </li>
-                    <li className='sidebar_menu_li'>
-                        <Link className='sidebar_menu_link'>
-                            <i class="ri-home-4-fill menu_icon"></i>
-                            <p className='menu_text heading-m'>
-                                Home
-                            </p>
-                        </Link>
-                    </li>
+                  
                 </ul>
             </div>
         </div>

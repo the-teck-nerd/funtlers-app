@@ -107,7 +107,10 @@ function Header({ setUser, userObject }) {
                   />
 
                   <Link to="/register" className="action">
-                    <ThemeBtn BtnClass="Theme_btn_white header_button" BtnText="Registrer profil" />
+                    <ThemeBtn
+                      BtnClass="Theme_btn_white header_button"
+                      BtnText="Registrer profil"
+                    />
                   </Link>
                 </div>
               ) : (
@@ -129,7 +132,7 @@ function Header({ setUser, userObject }) {
                   </Link>
                 </div>
               )}
-              { }
+              {}
               <div className="menu_icon_otr" onClick={handleOpenMenu}>
                 <i class="ri-menu-3-line menu_icon"></i>
               </div>
@@ -137,7 +140,7 @@ function Header({ setUser, userObject }) {
           </div>
         </div>
       </header>
-      <div className={openMenu ? 'overlay_main overlay_open' : 'overlay_main'}>
+      <div className={openMenu ? "overlay_main overlay_open" : "overlay_main"}>
         <div className="overlay_wrapper">
           <div className="logo_close_otr">
             <Link to="/" className="logo_otr" onClick={handleCloseMenu}>
@@ -188,8 +191,14 @@ function Header({ setUser, userObject }) {
                   BtnText="Login"
                 />
 
-                <Link to="/register" className="action register_btn_otr header_button">
-                  <ThemeBtn BtnClass="Theme_btn_white" BtnText="Registrer profil" />
+                <Link
+                  to="/register"
+                  className="action register_btn_otr header_button"
+                >
+                  <ThemeBtn
+                    BtnClass="Theme_btn_white"
+                    BtnText="Registrer profil"
+                  />
                 </Link>
               </div>
             ) : (
@@ -211,7 +220,7 @@ function Header({ setUser, userObject }) {
                 </Link>
               </div>
             )}
-            { }
+            {}
           </div>
         </div>
       </div>
