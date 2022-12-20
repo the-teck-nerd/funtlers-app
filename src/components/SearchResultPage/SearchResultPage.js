@@ -7,6 +7,7 @@ import {
   getFilters,
   getNumberOfPeopleOptions,
   getFilteredActivities,
+  getLabelByValue,
 } from "../../commons/activity-filters/Helpers";
 import { useLocation } from "react-router-dom";
 import "./SearchResultPage.scss";
@@ -27,7 +28,11 @@ function SearchResultPage() {
   const filters = getFilters();
   const [city, setCity] = useState(searchFilter?.city);
   const [type, setType] = useState(searchFilter?.type);
-  const [category, setCategory] = useState(searchFilter?.category);
+
+
+  let category = getLabelByValue(filters.categories, searchFilter?.category);
+  
+
   const [peopleNumber, setPeopleNumber] = useState(searchFilter?.peopleNumber);
   const [budget, setBudget] = useState(searchFilter?.budget);
 
