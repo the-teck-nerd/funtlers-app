@@ -24,7 +24,7 @@ function Footer() {
                 <p className="desc2 heading-m">
                   Din markedsplass for sosiale aktiviter
                 </p>
-                <p className="desc2">
+                <p className="desc2 company-data">
                   FUNTLERS AS
                   <br />
                   930 276 367
