@@ -93,7 +93,7 @@ function Footer() {
                     </Link>
                   </li>
                   <li className="link_li" onClick={scrollToTop}>
-                    <Link to="/contact" className="heading-s link_a">
+                    <Link to="/faq" className="heading-s link_a">
                       Vanlige spørsmål
                     </Link>
                   </li>

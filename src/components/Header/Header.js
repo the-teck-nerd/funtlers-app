@@ -64,6 +64,9 @@ function Header({ setUser, userObject }) {
           <div className="wrapper">
             <Link to="/" className="logo_otr">
               <img className="logo" src={BrandLogo} alt="logo" />
+              <p className="heading-xsb logo_text p-1">
+              Din markedsplass for sosiale aktiviteter
+            </p>
             </Link>
             <div className="action_menu_otr">
               <ul className="menu_ul">
