@@ -11,12 +11,17 @@ import LoginPopup from "../LoginPopup/LoginPopup";
 import DialogueBox from "../DialogueBox/DialogueBox";
 
 import { useLocation, useNavigate } from "react-router-dom";
+import CustomerDashboardHeader from "../../Dashboard/CustomerDashboardHeader/CustomerDashboardHeader";
 
 function Header({ setUser, userObject }) {
   const navigate = useNavigate();
+  const [SideBar, setSideBar] = useState(false);
 
   // const [userObject, setUser] = useState(isLoggedIn());
 
+  const SideMenuClick = () => {
+    setSideBar(!SideBar);
+  };
   const [showLogin, setShowLogin] = useState(false);
   const [showConfirmDialogue, setConfirmDialogue] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
@@ -117,23 +122,28 @@ function Header({ setUser, userObject }) {
                   </Link>
                 </div>
               ) : (
-                <div className="action_otr">
-                  <button
-                    className="Theme_btn_primary"
-                    onClick={() => {
-                      navigate("/my-page");
-                    }}
-                  >
-                    <u> {userObject?.user?.firstName}</u>{" "}
-                  </button>
-                  <Link className="action">
-                    <ThemeBtn
-                      onClick={() => setConfirmDialogue(true)}
-                      BtnClass="Theme_btn_white"
-                      BtnText="Log Out"
-                    />
-                  </Link>
-                </div>
+                <><CustomerDashboardHeader
+                    SidebarStrech={SideMenuClick}
+                    setUser={setUser}
+                    firstName={userObject?.user?.firstName}
+                    lastName={userObject?.user?.lastName}
+
+                    /><div className="action_otr">
+                      {/* <button
+                        className="Theme_btn_primary"
+                        onClick={() => {
+                          navigate("/my-page");
+                        } }
+                      >
+                        <u> {userObject?.user?.firstName}</u>{" "}
+                      </button>
+                      <Link className="action">
+                        <ThemeBtn
+                          onClick={() => setConfirmDialogue(true)}
+                          BtnClass="Theme_btn_white"
+                          BtnText="Log Out" />
+                      </Link> */}
+                    </div></>
               )}
               {}
               <div className="menu_icon_otr" onClick={handleOpenMenu}>
@@ -187,7 +197,9 @@ function Header({ setUser, userObject }) {
               </li>
             </ul>
             {!userObject ? (
+              
               <div className="action_otr">
+
                 <ThemeBtn
                   onClick={() => setShowLogin(true)}
                   BtnClass="Theme_btn_primary login_btn header_button"
@@ -205,7 +217,10 @@ function Header({ setUser, userObject }) {
                 </Link>
               </div>
             ) : (
+              
               <div className="action_otr">
+                 
+
                 <button
                   className="Theme_btn_primary"
                   onClick={() => {
