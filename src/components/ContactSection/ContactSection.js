@@ -10,7 +10,7 @@ import ThemeBtn from "../ThemeBtn/ThemeBtn";
 function ContactSection() {
   return (
     <section className="Contact_main">
-      <marquee
+      {/* <marquee
         className="marquee_main marquee_main_top"
         direction="left"
         behavior="scroll"
@@ -33,7 +33,7 @@ function ContactSection() {
             <img className="marquee_img" src={TextImg} alt="img" />
           </li>
         </ul>
-      </marquee>
+      </marquee> */}
       <div className="container">
         <div className="row row_custom">
           <div className="col-lg-6 col_content_otr margin-temp">
