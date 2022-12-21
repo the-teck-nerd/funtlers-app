@@ -78,10 +78,6 @@ export function getAllActivityTypes() {
       value: "digital",
       label: "Digital",
     },
-    {
-      value: "online",
-      label: "Online"
-    }
   ];
 
   return types;
@@ -104,18 +100,18 @@ export function getAllCities() {
       value: "bergen",
       label: "Bergen",
     },
-    {
-      value: "stavanger",
-      label: "Stavanger",
-    },
-    {
-      value: "trondheim",
-      label: "Trondheim",
-    },
-    {
-      value: "tromsø",
-      label: "Tromsø",
-    },
+    // {
+    //   value: "stavanger",
+    //   label: "Stavanger",
+    // },
+    // {
+    //   value: "trondheim",
+    //   label: "Trondheim",
+    // },
+    // {
+    //   value: "tromsø",
+    //   label: "Tromsø",
+    // },
   ];
   return cities;
 }
@@ -124,7 +120,7 @@ export function getBudgetOptions() {
   const budgetOptions = [
     {
       value: "all",
-      label: "Pris",
+      label: "Pris per person",
     },
     {
       value: "all",
@@ -162,12 +158,16 @@ export function getNumberOfPeopleOptions() {
       label: "Alle",
     },
     {
+      value: "0",
+      label: "1 Person",
+    },
+    {
       value: "1",
-      label: "1 - 5 Personer",
+      label: "2 - 5 Personer",
     },
     {
       value: "2",
-      label: "6 - 10 Personer",
+      label: "6 - 9 Personer",
     },
     {
       value: "3",
@@ -195,11 +195,17 @@ export function getFilters(type) {
 
   //Removing all type pf option if we are add any activity
   if (type === "add") {
-    filterModal.types = filterModal.types.filter(x=>x.value!=="all")
-    filterModal.categories=filterModal.categories.filter(x=>x.value!=="all");
-    filterModal.budgetOptions=filterModal.budgetOptions.filter(x=>x.value!=="all");
-    filterModal.peopleNumber=filterModal.peopleNumber.filter(x=>x.value!=="all");
-    filterModal.cities=filterModal.cities.filter(x=>x.value!=="all");
+    filterModal.types = filterModal.types.filter((x) => x.value !== "all");
+    filterModal.categories = filterModal.categories.filter(
+      (x) => x.value !== "all"
+    );
+    filterModal.budgetOptions = filterModal.budgetOptions.filter(
+      (x) => x.value !== "all"
+    );
+    filterModal.peopleNumber = filterModal.peopleNumber.filter(
+      (x) => x.value !== "all"
+    );
+    filterModal.cities = filterModal.cities.filter((x) => x.value !== "all");
   }
 
   return filterModal;
@@ -229,12 +235,15 @@ export function getMinMax(peopleNumber) {
   let min = 0;
   let max = 0;
 
-  if (peopleNumber === "1") {
+  if (peopleNumber === "0") {
     min = 1;
+    max = 1;
+  } else if (peopleNumber === "1") {
+    min = 2;
     max = 5;
   } else if (peopleNumber === "2") {
     min = 6;
-    max = 10;
+    max = 9;
   } else {
     min = 10;
     max = 999;
@@ -264,13 +273,10 @@ export function getBudget(budget) {
   return [min, max];
 }
 
-export function getLabelByValue(filterArray, value)
-{
-  if(!filterArray || filterArray.length===0)
-  return;
-  else
-  {
-     const label=filterArray.find(x=>x.value===value)?.label;
-     return label;
+export function getLabelByValue(filterArray, value) {
+  if (!filterArray || filterArray.length === 0) return;
+  else {
+    const label = filterArray.find((x) => x.value === value)?.label;
+    return label;
   }
 }
