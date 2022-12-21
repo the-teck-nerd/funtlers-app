@@ -36,10 +36,10 @@ function ContactSection() {
       </marquee>
       <div className="container">
         <div className="row row_custom">
-          <div className="col-lg-6 col_content_otr">
+          <div className="col-lg-6 col_content_otr margin-temp">
             <div className="col_content_inr">
-              <h2 className="heading-h2 heading">
-                Ikke nøl med å ta kontact om du har lurer på noe, har
+              <h2 className="heading-h22">
+                Ikke nøl med å ta kontakt om du har lurer på noe, har
                 tilbakemeldinger eller ideer du ønsker å foreslå!
               </h2>
               {/* <p className='heading-m desc'>
