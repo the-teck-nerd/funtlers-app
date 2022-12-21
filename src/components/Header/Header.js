@@ -89,7 +89,7 @@ function Header({ setUser, userObject }) {
                 </li>
                 <li className="menu_li">
                   <Link to="/partner" className="menu_a heading-sb">
-                    Partner
+                    Bli en partner
                   </Link>
                 </li>
                 <li className="menu_li">
@@ -103,7 +103,7 @@ function Header({ setUser, userObject }) {
                   <ThemeBtn
                     onClick={() => setShowLogin(true)}
                     BtnClass="Theme_btn_light header_button"
-                    BtnText="Login"
+                    BtnText="Logg inn"
                   />
 
                   <Link to="/register" className="action">
@@ -188,7 +188,7 @@ function Header({ setUser, userObject }) {
                 <ThemeBtn
                   onClick={() => setShowLogin(true)}
                   BtnClass="Theme_btn_primary login_btn header_button"
-                  BtnText="Login"
+                  BtnText="Logg inn"
                 />
 
                 <Link
