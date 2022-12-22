@@ -53,6 +53,7 @@ function EditProfile() {
       user.currentPassword = currentPassword;
       user.newPassword = newPassword;
       user.phone = phone;
+      user.id= userObject.id;
 
       FetchService.UpdateUser(user).then((response) => {
         if (response === true) {
