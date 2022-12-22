@@ -1,0 +1,45 @@
+@import "../../common-style/variable.scss";
+
+.about_page {
+  .about_row_custom2 {
+    flex-direction: row-reverse;
+    margin-top: 128px;
+
+    .col_content_inr {
+      padding-right: 0;
+      padding-left: 48px;
+    }
+  }
+}
+
+.terms-section {
+  padding: 20px 10px;
+}
+
+.ul-style {
+  margin-left: 50px;
+  margin-top: 20px;
+}
+.ul-style > li {
+  list-style: circle;
+}
+.heading-h2 {
+  font-size: 36px;
+}
+.sub-heading {
+  font-size: 28px;
+  margin: 0px 10px;
+   
+  font-weight: 400 !important;
+}
+
+.heading-s {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-size: 22px;
+  text-align: left;
+}
+.heading-s > a
+{
+    display: inline;
+}

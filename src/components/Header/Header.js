@@ -70,8 +70,8 @@ function Header({ setUser, userObject }) {
             <Link to="/" className="logo_otr">
               <img className="logo" src={BrandLogo} alt="logo" />
               <p className="heading-xsb logo_text p-1">
-              Din markedsplass for sosiale aktiviteter
-            </p>
+                Din markedsplass for sosiale aktiviteter
+              </p>
             </Link>
             <div className="action_menu_otr">
               <ul className="menu_ul">
@@ -81,7 +81,7 @@ function Header({ setUser, userObject }) {
                   </Link>
                 </li>
                 <li className="menu_li">
-                  <Link to="/about" className="menu_a heading-sb">
+                  <Link to="/terms" className="menu_a heading-sb">
                     Vilkår
                   </Link>
                 </li>
@@ -122,30 +122,16 @@ function Header({ setUser, userObject }) {
                   </Link>
                 </div>
               ) : (
-                <><CustomerDashboardHeader
+                <>
+                  <CustomerDashboardHeader
                     SidebarStrech={SideMenuClick}
                     setUser={setUser}
                     firstName={userObject?.user?.firstName}
                     lastName={userObject?.user?.lastName}
-
-                    /><div className="action_otr">
-                      {/* <button
-                        className="Theme_btn_primary"
-                        onClick={() => {
-                          navigate("/my-page");
-                        } }
-                      >
-                        <u> {userObject?.user?.firstName}</u>{" "}
-                      </button>
-                      <Link className="action">
-                        <ThemeBtn
-                          onClick={() => setConfirmDialogue(true)}
-                          BtnClass="Theme_btn_white"
-                          BtnText="Log Out" />
-                      </Link> */}
-                    </div></>
+                  />
+                </>
               )}
-              {}
+
               <div className="menu_icon_otr" onClick={handleOpenMenu}>
                 <i class="ri-menu-3-line menu_icon"></i>
               </div>
@@ -171,7 +157,7 @@ function Header({ setUser, userObject }) {
                 </Link>
               </li>
               <li className="menu_li" onClick={handleCloseMenu}>
-                <Link to="/about" className="menu_a heading-sb">
+                <Link to="/terms" className="menu_a heading-sb">
                   Vilkår
                 </Link>
               </li>
@@ -197,9 +183,7 @@ function Header({ setUser, userObject }) {
               </li>
             </ul>
             {!userObject ? (
-              
               <div className="action_otr">
-
                 <ThemeBtn
                   onClick={() => setShowLogin(true)}
                   BtnClass="Theme_btn_primary login_btn header_button"
@@ -217,10 +201,7 @@ function Header({ setUser, userObject }) {
                 </Link>
               </div>
             ) : (
-              
               <div className="action_otr">
-                 
-
                 <button
                   className="Theme_btn_primary"
                   onClick={() => {
