@@ -129,9 +129,13 @@ function AddActivity() {
         <InnerHeader HeaderHeading="Activity" PageText="Add Activity" />
      */}
 
-        <section>
+        <section className="add_activity_main">
+          <InnerHeader
+            HeaderHeading="Add Activity"
+            PageText="Add Activity"
+          />
           <div className="container">
-            <div className="row row_custom">
+            <div className="row_custom">
               <div className="col_form_otr">
                 <div className="col_form_inr">
                   <h3 className="heading-h3 form_heading">
@@ -150,92 +154,151 @@ function AddActivity() {
                     </div>
                   )}
 
-                  <form onSubmit={handleSubmit} className="row">
-                    <div className="col">
-                      <div className="Input_otr">
-                        <Input
-                          InputClass="Theme_input_white form_input"
-                          Inputype="text"
-                          InputName="name"
-                          label="Activity Name"
-                          value={name}
-                          onChange={(event) => setName(event.target.value)}
-                        />
-                      </div>
-                      <div className="Input_otr">
-                        {"Categories"}
-                        <Form.Select
-                          className="Theme_input_white form_input"
-                          aria-label="Default select example"
-                          value={category}
-                          onChange={(event) => {
-                            setCategory(event.target.value);
-                          }}
-                        >
-                          {filters.categories.map((option) => (
-                            <option value={option.value}>{option.label}</option>
-                          ))}
-                        </Form.Select>
-                      </div>
-                      <div className="Input_otr">
-                        {"City"}
-                        <Form.Select
-                          className="Theme_input_white form_input"
-                          aria-label="Default select example"
-                          value={city}
-                          onChange={(event) => {
-                            setCity(event.target.value);
-                          }}
-                        >
-                          {filters.cities.map((option) => (
-                            <option value={option.value}>{option.label}</option>
-                          ))}
-                        </Form.Select>
-                      </div>
-                      <div className="Input_otr">
-                        {"Activity Type"}
-                        <Form.Select
-                          className="Theme_input_white form_input"
-                          aria-label="Default select example"
-                          value={type}
-                          onChange={(event) => {
-                            setType(event.target.value);
-                          }}
-                        >
-                          {filters.types.map((option) => (
-                            <option value={option.value}>{option.label}</option>
-                          ))}
-                        </Form.Select>
-                      </div>
-
-                      <div className="row">
-                        <div className="Input_otr col">
-                          <Input
-                            InputClass="Theme_input_white form_input"
-                            Inputype="number"
-                            InputName="number"
-                            label="Price"
-                            value={price}
-                            onChange={(event) => setPrice(event.target.value)}
-                          />
+                  <form onSubmit={handleSubmit} className="form_main">
+                    <div className="row row_custom_inr row_custom_inr1">
+                      <div className="col-lg-6 col_input_otr">
+                        <div className="col_input_inr">
+                          <div className="Input_otr">
+                            <Input
+                              InputClass="Theme_input_white form_input"
+                              Inputype="text"
+                              InputName="name"
+                              label="Activity Name"
+                              value={name}
+                              onChange={(event) => setName(event.target.value)}
+                            />
+                          </div>
+                          <div className="Input_otr">
+                            {"Categories"}
+                            <Form.Select
+                              className="Theme_input_white form_input"
+                              aria-label="Default select example"
+                              value={category}
+                              onChange={(event) => {
+                                setCategory(event.target.value);
+                              }}
+                            >
+                              {filters.categories.map((option) => (
+                                <option value={option.value}>{option.label}</option>
+                              ))}
+                            </Form.Select>
+                          </div>
+                          <div className="Input_otr">
+                            {"City"}
+                            <Form.Select
+                              className="Theme_input_white form_input"
+                              aria-label="Default select example"
+                              value={city}
+                              onChange={(event) => {
+                                setCity(event.target.value);
+                              }}
+                            >
+                              {filters.cities.map((option) => (
+                                <option value={option.value}>{option.label}</option>
+                              ))}
+                            </Form.Select>
+                          </div>
+                          <div className="Input_otr">
+                            {"Activity Type"}
+                            <Form.Select
+                              className="Theme_input_white form_input"
+                              aria-label="Default select example"
+                              value={type}
+                              onChange={(event) => {
+                                setType(event.target.value);
+                              }}
+                            >
+                              {filters.types.map((option) => (
+                                <option value={option.value}>{option.label}</option>
+                              ))}
+                            </Form.Select>
+                          </div>
+                          <div className="input_main">
+                            <div className="Input_otr ">
+                              <Input
+                                InputClass="Theme_input_white form_input"
+                                Inputype="number"
+                                InputName="number"
+                                label="Price"
+                                value={price}
+                                onChange={(event) => setPrice(event.target.value)}
+                              />
+                            </div>
+                            <div className="Input_otr ">
+                              <Input
+                                InputClass="Theme_input_white form_input"
+                                Inputype="number"
+                                InputName="number"
+                                label="Original Price"
+                                value={originalPrice}
+                                onChange={(event) =>
+                                  setOriginalPrice(event.target.value)
+                                }
+                              />
+                            </div>
+                          </div>
                         </div>
-                        <div className="Input_otr col">
-                          <Input
-                            InputClass="Theme_input_white form_input"
-                            Inputype="number"
-                            InputName="number"
-                            label="Original Price"
-                            value={originalPrice}
-                            onChange={(event) =>
-                              setOriginalPrice(event.target.value)
-                            }
-                          />
+                      </div>
+                      <div className="col-lg-6 col_img_otr">
+                        <div className="col_img_inr">
+                          <div className="image-uploader">
+                            <ImageUploader setImagesCallBack={setImages} />
+                          </div>
                         </div>
                       </div>
                     </div>
-                    <div className="col">
-                      <div className="image-uploader">
-                        <ImageUploader setImagesCallBack={setImages} />
+                    <div className="row row_custom_inr">
+                      <div className="col-lg-6 col_input_otr">
+                        <div className="col_input_inr">
+                          <div className="Input_otr ">
+                            <Input
+                              InputClass="Theme_input_white form_input"
+                              Inputype="number"
+                              InputName="number"
+                              label="Minimum Person"
+                              value={minPerson}
+                              onChange={(event) => setMinPerson(event.target.value)}
+                            />
+                          </div>
+                          <div className="Input_otr ">
+                            <Input
+                              InputClass="Theme_input_white form_input"
+                              Inputype="date"
+                              InputName="number"
+                              label="Valid from"
+                              value={validPeriodStart}
+                              onChange={(event) =>
+                                setValidPeriodStart(event.target.value)
+                              }
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-lg-6 col_img_otr">
+                        <div className="col_img_inr">
+                          <div className="Input_otr ">
+                            <Input
+                              InputClass="Theme_input_white form_input"
+                              Inputype="number"
+                              InputName="number"
+                              label="Maximum Person"
+                              value={maxPerson}
+                              onChange={(event) => setMaxPerson(event.target.value)}
+                            />
+                          </div>
+                          <div className="Input_otr ">
+                            <Input
+                              InputClass="Theme_input_white form_input"
+                              Inputype="date"
+                              InputName="number"
+                              label="Valid Til"
+                              value={validPeriodEnd}
+                              onChange={(event) =>
+                                setValidPeriodEnd(event.target.value)
+                              }
+                            />
+                          </div>
+                        </div>
                       </div>
                     </div>
 

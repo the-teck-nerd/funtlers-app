@@ -14,17 +14,16 @@
     backdrop-filter: blur(8px);
 }
 
-.partner_row
-{
+.partner_row {
     cursor: pointer;
 }
-.partner_row:hover
-{
+
+.partner_row:hover {
     font-weight: bold;
 }
 
 
-.partner_page_main {
+.attach_activity {
     .heading_filter_otr {
         display: flex;
         align-items: center;

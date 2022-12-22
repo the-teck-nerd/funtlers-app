@@ -6,7 +6,7 @@ import campaignImg from "../../img/booking-confirmation-img.png";
 export function ImageUploader({
   editMode,
   setImagesCallBack,
-  showImagePreview=true,
+  showImagePreview = true,
   setShowImagePreview,
 }) {
   const [images, setImages] = useState([]);
@@ -21,7 +21,7 @@ export function ImageUploader({
   };
 
   return (
-    <div className="container">
+    <div className="img_uploader_container">
       <ImageUploading
         multiple
         value={images}

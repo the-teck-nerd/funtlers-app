@@ -12,11 +12,11 @@
   height: 100%;
   backdrop-filter: blur(8px);
 }
-.backdrop-container
-{
+
+.backdrop-container {
   position: fixed;
   left: 30%;
-  top: 15%; 
+  top: 15%;
   background-color: white;
   padding: 50px;
   border-radius: 4px;
@@ -32,6 +32,7 @@
   font-weight: bold;
   text-align: center;
 }
+
 .success_message {
   border: 1px solid green;
   color: green;
@@ -43,23 +44,13 @@
 
 //descrition textbox
 //todo: remove padding in the textbox
-.description
-{
-height:200px;
-text-align: start;
+.description {
+  height: 200px;
+  text-align: start;
 }
 
- .image-uploader
- { 
-  width: 600px;
-  height: 500px;
-  margin-top:20px ;
 
- }
- 
-
-.slider-container
-{
+.slider-container {
   display: flex;
 }
 
@@ -72,12 +63,12 @@ text-align: start;
   font-weight: bold;
 
 }
+
 .success_message {
   border: 1px solid green;
   font-weight: bold;
   color: green;
   border-radius: 4px;
-
   margin: 20px 80px;
   padding: 25px 40px;
 }
@@ -95,7 +86,7 @@ text-align: start;
     background-color: $Primary-Light2;
     padding: 24px 30px 30px 30px;
     border-radius: 16px;
-  
+
   }
 
   .form_heading {
@@ -135,4 +126,66 @@ text-align: start;
       color: $Primary;
     }
   }
+}
+
+
+.add_activity_main {
+  .row_custom {
+    padding: 112px 0 128px 0;
+
+    @media (max-width: 575px) {
+      padding: 72px 0;
+    }
+  }
+
+  .row_custom_inr1 {
+    @media (max-width: 575px) {
+      flex-direction: column-reverse;
+    }
+
+    .uploadd_img {
+      @media (max-width: 575px) {
+        height: 350px;
+      }
+
+      @media (max-width: 450px) {
+        height: 250px;
+      }
+    }
+  }
+
+  .input_main {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    @media (max-width: 575px) {
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .Input_otr {
+      width: 50%;
+
+      @media (max-width: 575px) {
+        width: 100%;
+      }
+    }
+  }
+
+  .col_img_inr {
+    .image-uploader {
+      margin-bottom: 24px;
+    }
+
+    .Input_otr {
+      margin-bottom: 24px;
+    }
+  }
+}
+
+.img_btn_otr {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }

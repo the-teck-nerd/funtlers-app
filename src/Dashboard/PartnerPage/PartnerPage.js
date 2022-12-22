@@ -40,7 +40,7 @@ function PartnerPage() {
   }, [search]);
 
   return (
-    <div className="partner_page_main">
+    <div className="partner_page_main partner_page_main_da">
       <div className="heading_filter_otr">
         <p className="heading_activity heading-lb">Partners</p>
         <div className="filter_search_otr">
@@ -70,78 +70,80 @@ function PartnerPage() {
         </div>
       </div>
       <div className="partner_table">
-        <table className="data_table">
-          <thead className="table_header">
-            <tr>
-              <th>
-                <p className="heading-xsb header_text">Partner ID</p>
-              </th>
-              <th>
-                <p className="heading-xsb header_text">Name</p>
-              </th>
-              <th>
-                <p className="heading-xsb header_text">Email</p>
-              </th>
-              <th>
-                <p className="heading-xsb header_text">Phone</p>
-              </th>
-              <th>
-                <p className="heading-xsb header_text">City</p>
-              </th>
+        <div className="partner_table_inr">
+          <table className="data_table">
+            <thead className="table_header">
+              <tr>
+                <th>
+                  <p className="heading-xsb header_text">Partner ID</p>
+                </th>
+                <th>
+                  <p className="heading-xsb header_text">Name</p>
+                </th>
+                <th>
+                  <p className="heading-xsb header_text">Email</p>
+                </th>
+                <th>
+                  <p className="heading-xsb header_text">Phone</p>
+                </th>
+                <th>
+                  <p className="heading-xsb header_text">City</p>
+                </th>
 
-              <th>
-                <p className="heading-xsb header_text">Partner Since</p>
-              </th>
-              <th>
-                <p className="heading-xsb header_text">Action</p>
-              </th>
-            </tr>
-          </thead>
-
-          <tbody className="table_body">
-            {filteredPartners.map((partner) => (
-              <tr
-                onClick={() => {
-                  navigate("/edit-partner", { state: partner });
-                }}
-                className="partner_row"
-              >
-                <td>
-                  <p className="heading-xs body_text">{partner.id}</p>
-                </td>
-                <td>
-                  <p className="heading-xs body_text">{partner.name}</p>
-                </td>
-                <td>
-                  <p className="heading-xs body_text">{partner.email}</p>
-                </td>
-                <td>
-                  <p className="heading-xsb body_text">{partner.phone}</p>
-                </td>
-
-                <td>
-                  <p className="heading-xs body_text">{partner.city}</p>
-                </td>
-                <td>
-                  <p className="heading-xs body_text">{partner.partnerSince}</p>
-                </td>
-                <td>
-                  <div className="action_otr">
-                    <div className="icon_otr">
-                      <i class="ri-eye-fill view_icon icon"></i>
-                    </div>
-                    <div className="icon_otr">
-                      <i class="ri-edit-fill edit_icon icon"></i>
-                    </div>
-                    <div className="icon_otr">
-                      <i class="ri-delete-bin-6-fill delete_icon icon"></i>
-                    </div>
-                  </div>
-                </td>
+                <th>
+                  <p className="heading-xsb header_text">Partner Since</p>
+                </th>
+                <th>
+                  <p className="heading-xsb header_text">Action</p>
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+
+            <tbody className="table_body">
+              {filteredPartners.map((partner) => (
+                <tr
+                  onClick={() => {
+                    navigate("/edit-partner", { state: partner });
+                  }}
+                  className="partner_row"
+                >
+                  <td>
+                    <p className="heading-xs body_text">{partner.id}</p>
+                  </td>
+                  <td>
+                    <p className="heading-xs body_text">{partner.name}</p>
+                  </td>
+                  <td>
+                    <p className="heading-xs body_text">{partner.email}</p>
+                  </td>
+                  <td>
+                    <p className="heading-xsb body_text">{partner.phone}</p>
+                  </td>
+
+                  <td>
+                    <p className="heading-xs body_text">{partner.city}</p>
+                  </td>
+                  <td>
+                    <p className="heading-xs body_text">{partner.partnerSince}</p>
+                  </td>
+                  <td>
+                    <div className="action_otr">
+                      <div className="icon_otr">
+                        <i class="ri-eye-fill view_icon icon"></i>
+                      </div>
+                      <div className="icon_otr">
+                        <i class="ri-edit-fill edit_icon icon"></i>
+                      </div>
+                      <div className="icon_otr">
+                        <i class="ri-delete-bin-6-fill delete_icon icon"></i>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

@@ -12,18 +12,18 @@ import { isLoggedIn } from "../../api/NewLoginService";
 
 function PartnerOrderPage() {
 
-  const [filteredPartners, setFilteredPartners] = useState([]);
-  const [userObject, setUser] = useState(isLoggedIn());
-  
+    const [filteredPartners, setFilteredPartners] = useState([]);
+    const [userObject, setUser] = useState(isLoggedIn());
 
-  FetchService.GetOrderByPartnerId(userObject.user.id,"partner").then(data=>{
-      
-    setFilteredPartners(data.data);
-  })
+
+    FetchService.GetOrderByPartnerId(userObject.user.id, "partner").then(data => {
+
+        setFilteredPartners(data.data);
+    })
 
 
     return (
-        <div className='order_page_main'>
+        <div className='order_page_main partner_order'>
             <div className='heading_filter_otr'>
                 <p className='heading_activity heading-lb'>
                     Order
@@ -82,56 +82,56 @@ function PartnerOrderPage() {
                         </tr>
                     </thead>
                     <tbody className='table_body'>
-                      {filteredPartners.map((obj)=>(
-                        <tr>                        
+                        {filteredPartners.map((obj) => (
+                            <tr>
 
-                            <td>
-                                <p className='heading-xs body_text'>
-                                    {obj.id}
-                                </p>
-                            </td>
-                            <td>
-                                <div className='profile_otr'>
-                                    <img className='profile_img' src={ProfileImg} alt='img' />
-                                    <p className='heading-xs profile_name'>
-                                        {obj.FirstName} {obj.LastName}
+                                <td>
+                                    <p className='heading-xs body_text'>
+                                        {obj.id}
                                     </p>
-                                </div>
-                            </td>
-                            <td>
-                                <p className='heading-xs body_text'>
-                                    {obj.PartnerName} 
-                                </p>
-                            </td>
-                            <td>
-                                <p className='heading-xs body_text'>
-                                    {obj.Code}
-                                </p>
-                            </td>
-                            <td>
-                                <p className='heading-xsb body_text'>
-                                    {obj.ActivityName}
-                                </p>
-                            </td>
-                            <td>
-                                <p className='heading-xs body_text'>
-                                    {obj.City}
-                                </p>
-                            </td>
-                            <td>
-                                <p className='heading-xs body_text'>
-                                    {obj.price} nok
-                                </p>
-                            </td>
-                            <td>
-                                <div className='icon_otr'>
-                                    <Link to="/edit-order" className='icon_inr'>
-                                        <i class="ri-edit-fill edit_icon"></i>
-                                    </Link>
-                                </div>
-                            </td>
-                        </tr>
-                      ))}
+                                </td>
+                                <td>
+                                    <div className='profile_otr'>
+                                        <img className='profile_img' src={ProfileImg} alt='img' />
+                                        <p className='heading-xs profile_name'>
+                                            {obj.FirstName} {obj.LastName}
+                                        </p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <p className='heading-xs body_text'>
+                                        {obj.PartnerName}
+                                    </p>
+                                </td>
+                                <td>
+                                    <p className='heading-xs body_text'>
+                                        {obj.Code}
+                                    </p>
+                                </td>
+                                <td>
+                                    <p className='heading-xsb body_text'>
+                                        {obj.ActivityName}
+                                    </p>
+                                </td>
+                                <td>
+                                    <p className='heading-xs body_text'>
+                                        {obj.City}
+                                    </p>
+                                </td>
+                                <td>
+                                    <p className='heading-xs body_text'>
+                                        {obj.price} nok
+                                    </p>
+                                </td>
+                                <td>
+                                    <div className='icon_otr'>
+                                        <Link to="/edit-order" className='icon_inr'>
+                                            <i class="ri-edit-fill edit_icon"></i>
+                                        </Link>
+                                    </div>
+                                </td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>

@@ -3,12 +3,24 @@
 .dashboard_header {
     position: relative;
     padding: 20px 24px;
-    z-index: 9999;
+    z-index: 998;
+
+    @media (max-width: 992px) {
+        padding: 16px;
+    }
+
+    @media (max-width: 575px) {
+        padding: 12px 16px;
+    }
 
     .wrapper {
         display: flex;
         align-items: center;
         gap: 24px;
+
+        @media (max-width: 575px) {
+            gap: 16px;
+        }
     }
 
     .sidebar_menu_icon_otr {
@@ -21,6 +33,11 @@
         border-radius: 4px;
         cursor: pointer;
         transition: .3s;
+
+        @media (max-width: 575px) {
+            width: 32px;
+            height: 32px;
+        }
 
         &:hover {
             background-color: $Primary;
@@ -36,6 +53,11 @@
         line-height: 20px;
         color: $Black-65;
         transition: .3s;
+
+        @media (max-width: 575px) {
+            font-size: 16px;
+            line-height: 16px;
+        }
     }
 
     .search_otr {
@@ -43,6 +65,10 @@
         border-left: 1px solid $Black-10;
         padding-left: 24px;
         flex: 1;
+
+        @media (max-width: 575px) {
+            padding-left: 16px;
+        }
     }
 
     .search_icon {
@@ -53,18 +79,32 @@
         top: 50%;
         left: 24px;
         transform: translateY(-50%);
+
+        @media (max-width: 575px) {
+            font-size: 16px;
+            line-height: 16px;
+            left: 16px;
+        }
     }
 
     .search_input {
         padding: 8px 16px 8px 36px;
         background-color: transparent;
         box-shadow: none;
+
+        @media (max-width: 575px) {
+            padding: 4px 16px 4px 28px;
+        }
     }
 
     .profile_main {
         position: relative;
         border-left: 1px solid $Black-10;
         padding-left: 24px;
+
+        @media (max-width: 575px) {
+            padding-left: 16px;
+        }
 
         &:hover {
             .profile_drop_otr {
@@ -87,10 +127,19 @@
             object-fit: cover;
             object-position: center;
             border-radius: 100%;
+
+            @media (max-width: 575px) {
+                width: 32px;
+                height: 32px;
+            }
         }
 
         .user_name {
             color: $Black-40;
+
+            @media (max-width: 575px) {
+                display: none;
+            }
         }
 
         .profile_drop_otr {

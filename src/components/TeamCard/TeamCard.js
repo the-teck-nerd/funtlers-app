@@ -5,7 +5,7 @@ import './TeamCard.scss';
 
 function TeamCard(props) {
     return (
-        <div className='col-lg-3 col_teamCard_otr'>
+        <div className='col-lg-3 col-md-4 col-sm-6 col_teamCard_otr'>
             <div className='col_teamCard_inr'>
                 <Link to={props.CardLink} className='img_otr'>
                     <img className='card_img' src={props.CardImg} alt='img' />

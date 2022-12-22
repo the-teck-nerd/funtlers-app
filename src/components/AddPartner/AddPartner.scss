@@ -8,6 +8,7 @@
   font-weight: bold;
   text-align: center;
 }
+
 .success_message {
   border: 1px solid green;
   color: green;
@@ -67,6 +68,16 @@
 
     &:hover {
       color: $Primary;
+    }
+  }
+}
+
+.add_partner_main {
+  .row_custom {
+    padding: 112px 0 128px 0;
+
+    @media (max-width: 575px) {
+      padding: 72px 0;
     }
   }
 }

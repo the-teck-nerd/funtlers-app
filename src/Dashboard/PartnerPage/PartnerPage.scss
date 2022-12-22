@@ -16,6 +16,16 @@
         justify-content: space-between;
         margin-bottom: 30px;
 
+        @media (max-width: 992px) {
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 575px) {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
         .heading_activity {
             color: $Black;
         }
@@ -24,6 +34,33 @@
             display: flex;
             align-items: center;
             gap: 24px;
+
+            @media (max-width: 575px) {
+                width: 100%;
+                gap: 16px;
+
+                .Theme_btn_primary {
+                    font-size: 14px;
+                    padding: 8px 16px;
+                }
+            }
+
+            .search_otr {
+                @media (max-width: 575px) {
+                    flex: 1;
+                    width: 100%;
+                }
+            }
+
+            .search_input {
+                width: 280px;
+
+                @media (max-width: 575px) {
+                    width: 100% !important;
+                    padding: 8px 16px;
+                    flex: 1;
+                }
+            }
         }
 
         .filter_main {
@@ -61,8 +98,13 @@
     }
 
     .partner_table {
-        max-height: 492px;
-        overflow-y: auto;
+        overflow: auto;
+        width: 100%;
+
+        .partner_table_inr {
+            width: calc(100% - 60px);
+            min-width: 1024px;
+        }
 
         .data_table {
             width: 100%;

@@ -7,6 +7,16 @@
         justify-content: space-between;
         margin-bottom: 30px;
 
+        @media (max-width: 992px) {
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 575px) {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
         .heading_activity {
             color: $Black;
         }
@@ -30,14 +40,62 @@
             align-items: center;
             gap: 24px;
 
+            @media (max-width: 575px) {
+                width: 100%;
+                gap: 16px;
+
+                .Theme_btn_primary {
+                    font-size: 14px;
+                    padding: 8px 16px;
+                }
+            }
+
+            .search_otr {
+                @media (max-width: 575px) {
+                    flex: 1;
+                    width: 100%;
+                }
+            }
+
             .search_input {
                 width: 280px;
+
+                @media (max-width: 575px) {
+                    width: 100%;
+                    padding: 8px 16px;
+                }
             }
         }
     }
 
     .row_custom {
         gap: 24px 0;
+
+        @media (max-width: 992px) {
+            gap: 16px 0;
+        }
+
+        .col_searchCard_otr {
+            @media (max-width: 1200px) {
+                flex: 0 0 auto;
+                width: 33.33333333%;
+            }
+
+            @media (max-width: 992px) {
+                padding-left: 8px;
+                padding-right: 8px;
+            }
+
+            @media (max-width: 768px) {
+                flex: 0 0 auto;
+                width: 50%;
+            }
+
+            @media (max-width: 450px) {
+                flex: 0 0 auto;
+                width: 100%;
+            }
+        }
 
         .col_searchCard_inr {
             .edit_icon_otr {
