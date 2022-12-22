@@ -1,0 +1,83 @@
+@import "../../common-style/variable.scss";
+
+.error_message {
+  border: 1px solid red;
+  color: red;
+  border-radius: 4px;
+  margin: 20px 80px;
+  padding: 25px 40px;
+  font-weight: bold;
+
+}
+
+.success_message {
+  border: 1px solid green;
+  font-weight: bold;
+  color: green;
+  border-radius: 4px;
+
+  margin: 20px 80px;
+  padding: 25px 40px;
+}
+
+.Register_page {
+  .Register_main {
+    padding: 112px 0 128px 0;
+
+    @media (max-width: 575px) {
+      padding: 72px 0;
+    }
+  }
+
+  .row_custom {
+    justify-content: center;
+  }
+
+  .col_form_inr {
+    background-color: $Primary-Light2;
+    padding: 24px 30px 30px 30px;
+    border-radius: 16px;
+
+    @media (max-width: 575px) {
+      padding: 16px;
+    }
+  }
+
+  .form_heading {
+    color: $Black;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .form_main {
+    margin: 0;
+  }
+
+  .Input_otr {
+    margin-bottom: 24px;
+  }
+
+  .action_otr {
+    display: flex;
+    margin: 36px 0 24px 0;
+  }
+
+  .form_btn {
+    width: 100%;
+  }
+
+  .login_text_otr {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .login_text {
+    color: $Black;
+    transition: 0.3s;
+
+    &:hover {
+      color: $Primary;
+    }
+  }
+}

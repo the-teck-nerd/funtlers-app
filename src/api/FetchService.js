@@ -36,6 +36,10 @@ class FetchService {
     let apicall = APIServices.POST(apiURL() + "User", user);
     return apicall;
   }
+  UpdateUser(user) {
+    let apicall = APIServices.PUT(apiURL() + "User", user);
+    return apicall;
+  }
 
   VerifyUser(user) {
     let apicall = APIServices.POST(apiURL() + "Login", user);
@@ -67,24 +71,22 @@ class FetchService {
     return apicall;
   }
 
-  GetOrderByPartnerId(id,type)
-  {
-    let apicall = APIServices.GET(apiURL() + "Order?id="+1+"&type="+type+"");
+  GetOrderByPartnerId(id, type) {
+    let apicall = APIServices.GET(
+      apiURL() + "Order?id=" + 1 + "&type=" + type + ""
+    );
     return apicall;
-    
   }
-
 
   GetAnalytics() {
     let apicall = APIServices.GET(apiURL() + "Analytics");
     return apicall;
   }
 
-  GetAnalyticsById(id){
-    let apicall = APIServices.GET(apiURL() + "Analytics?type=Partner&id="+id);
+  GetAnalyticsById(id) {
+    let apicall = APIServices.GET(apiURL() + "Analytics?type=Partner&id=" + id);
     return apicall;
   }
-
 }
 
 export default new FetchService();

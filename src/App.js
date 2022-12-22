@@ -42,6 +42,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import PartnerDashboardSidebar from "./Dashboard/PartnerDashboardSidebar/PartnerDashboardSidebar";
 import FeaturesPage from "./components/FeaturesPage/FeaturesPage";
 import AdminLandingPage from "./Dashboard/AdminLandingPage/AdminLandingPage";
+import TermsPage from "./components/TermsPage/TermsPage";
+import EditProfile from "./components/EditProfile/EditProfile";
 
 function App() {
   const [SideBar, setSideBar] = useState(false);
@@ -139,7 +141,7 @@ function App() {
               </div>
               <div className="content_main dashboard-body-color">
                 <Routes>
-                <Route
+                  <Route
                     path="/"
                     exact={true}
                     element={<AdminLandingPage setIsLoading={setIsLoading} />}
@@ -217,14 +219,10 @@ function App() {
         <Route path="/contact" exact={true} element={<ContactPage />} />
         <Route path="/faq" exact={true} element={<FaqPage />} />
         <Route path="/about" exact={true} element={<AboutPage />} />
+        <Route path="/terms" exact={true} element={<TermsPage />} />
         <Route path="/partner" exact={true} element={<PartnersPage />} />
         <Route path="/activity" exact={true} element={<Activities />} />
         <Route path="/payment" exact={true} element={<Payments />} />
-        {/* <Route
-          path="/activity-details"
-          exact={true}
-          element={<ActivityDetails />}
-        /> */}
         <Route path="/login" exact={true} element={<Login />} />
         <Route path="/register" exact={true} element={<Register />} />
         <Route path="/partner" exact={true} element={<PartnersPage />} />
@@ -245,8 +243,18 @@ function App() {
 
         <Route path="/add-partner" exact={true} element={<AddPartner />} />
         <Route path="/edit-partner" exact={true} element={<EditPartner />} />
-        <Route path="/my-page" exact={true} element={<CustomerPage />} />
+
         <Route path="/features" exact={true} element={<FeaturesPage />} />
+        {userObject && (
+          <>
+            <Route
+              path="/edit-profile"
+              exact={true}
+              element={<EditProfile />}
+            />
+            <Route path="/my-page" exact={true} element={<CustomerPage />} />
+          </>
+        )}
       </Routes>
       <Footer />
     </>

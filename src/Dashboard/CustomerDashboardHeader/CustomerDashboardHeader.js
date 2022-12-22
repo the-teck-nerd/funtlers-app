@@ -41,11 +41,11 @@ function CustomerDashboardHeader(props) {
               <li className="profile_drop_li">
                 <Link to="/my-page" className="profile_drop_link">
                   <i class="ri-user-3-fill menu_icon"></i>
-                  <p className="menu_text heading-xs">My Page</p>
+                  <p className="menu_text heading-xs">Min side</p>
                 </Link>
               </li>
               <li className="profile_drop_li">
-                <Link to="/" className="profile_drop_link">
+                <Link to="/edit-profile" className="profile_drop_link">
                   <i class="ri-file-list-2-fill menu_icon"></i>
                   <p className="menu_text heading-xs">Edit Profile</p>
                 </Link>
