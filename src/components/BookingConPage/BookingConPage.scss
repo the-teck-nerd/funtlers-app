@@ -3,32 +3,55 @@
 .BookingCon_Page {
     .BookingCon_main {
         padding: 112px 0 128px 0;
+
+        @media (max-width: 575px) {
+            padding: 48px 0;
+        }
     }
 
     .content_wrapper {
         margin-bottom: 72px;
+
+        @media (max-width: 575px) {
+            margin-bottom: 48px;
+        }
     }
 
     .row_custom {
         align-items: center;
+
+        @media (max-width: 992px) {
+            gap: 48px;
+        }
+
+        @media (max-width: 575px) {
+            gap: 36px;
+        }
     }
 
     .col_img_inr {
         .booking_conf_img {
             width: 100%;
             height: 500px;
-            object-fit:fill;
+            object-fit: fill;
             object-position: center;
-
-             
         }
     }
 
     .col_content_inr {
         padding-left: 48px;
 
+        @media (max-width: 992px) {
+            padding-left: 0;
+        }
+
         .booking_text {
             color: $Black-65;
+
+            @media (max-width: 575px) {
+                font-size: 16px;
+                line-height: 28px;
+            }
 
             &:not(:last-child) {
                 margin-bottom: 16px;
@@ -38,6 +61,11 @@
         .booking_text_inr {
             color: $Black;
             margin-right: 10px;
+
+            @media (max-width: 575px) {
+                font-size: 16px;
+                line-height: 28px;
+            }
         }
 
         .social_ul {

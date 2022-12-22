@@ -80,10 +80,14 @@ function AddPartner() {
       text="Processing your request..."
     >
       <div className="Register_page">
-        <section>
+        <section className="add_partner_main">
+          <InnerHeader
+            HeaderHeading="Add Partner"
+            PageText="Add Partner"
+          />
           <div className="container">
-            <div className="row w-100">
-              <div className="px-2 col_form_otr">
+            <div className="row row_custom">
+              <div className="col-lg-8 col_form_otr">
                 <div className="col_form_inr">
                   <h3 className="heading-h3 form_heading">Add a new partner</h3>
                   {response === "Failed" && (

@@ -18,6 +18,11 @@
     .header_heading {
         color: $White;
         margin-bottom: 16px;
+
+        @media (max-width: 420px) {
+            font-size: 32px;
+            line-height: 48px;
+        }
     }
 
     .header_desc_link {

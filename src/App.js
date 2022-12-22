@@ -121,9 +121,7 @@ function App() {
           >
             <div className="dashboard_main">
               <div className="sidebar_content_main">
-                <div className="sidebar_main dashboard-header-color">
-                  <DashboardSidebar SidebarAddClass={SideBar} />
-                </div>
+                <DashboardSidebar SidebarAddClass={SideBar} SidebarStrech={SideMenuClick} />
                 <div className="Header_content_main dashboard-header-color">
                   <div className="dashboard_header_main dashboard-header-color">
                     <DashboardHeader SidebarStrech={SideMenuClick} setUser={setUser} />

@@ -15,7 +15,7 @@ export function ImageUploader({ setImagesCallBack }) {
   };
 
   return (
-    <div className="container">
+    <div className="img_uploader_container">
       <ImageUploading
         multiple
         value={images}
@@ -34,12 +34,13 @@ export function ImageUploader({ setImagesCallBack }) {
           errors,
         }) => (
           // write your building UI
-          <div>
+          <div className="img_btn_otr">
             <div className="image-container">
               <img
-                height={imageList.length < 2 ? 400 : 350}
+                className="uploadd_img"
+                height={imageList.length < 2 ? 405 : 450}
                 alt="img"
-                width={470}
+                width="100%"
                 src={
                   imageList.length === 0
                     ? campaignImg

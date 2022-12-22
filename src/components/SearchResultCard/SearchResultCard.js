@@ -17,7 +17,7 @@ function SearchResultCard(props) {
   };
   return (
     <div
-      className="col-lg-3 col_searchCard_otr"
+      className="col-lg-3 col-md-4 col-sm-6 col_searchCard_otr"
       onClick={() => {
         toActivityDetails();
       }}

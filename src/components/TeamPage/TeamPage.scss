@@ -3,13 +3,31 @@
 .team_page {
     .team_main {
         padding: 112px 0 128px 0;
+
+        @media (max-width: 575px) {
+            padding: 48px 0 72px 0;
+        }
     }
 
     .content_wrapper {
         margin-bottom: 72px;
+
+        @media (max-width: 575px) {
+            margin-bottom: 48px;
+        }
     }
 
     .row_custom {
         gap: 24px 0;
+
+        .col_teamCard_otr {
+            @media (max-width: 575px) {
+                width: 50%;
+            }
+
+            @media (max-width: 420px) {
+                width: 100%;
+            }
+        }
     }
 }
