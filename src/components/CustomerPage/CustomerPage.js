@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Select from "../Select/Select";
 import Input from "../Input/Input";
-
+import { useLocation, useNavigate } from "react-router-dom";
 import FetchService from "../../api/FetchService";
 
 import "./CustomerPage.scss";
@@ -13,8 +13,10 @@ import InnerHeader from "../InnerHeader/InnerHeader";
 function CustomerPage() {
   const [orders, setOrders] = useState([]);
   const [filteredOrders, setFilteredOrders] = useState([]);
+  const [filterOptions, setFilterOptions] = useState("showAll");
 
   const [user] = useState(isLoggedIn);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchData();
@@ -28,25 +30,30 @@ function CustomerPage() {
         return response.data;
       })
       .then((data) => {
-        // data.data=[{"id":1,"name":"string","price":0,"validPeriod":"2022-11-27T00:00:00","description":"string","imagePath":"string","isDeleted":true,"ownerID":1,"activityType":"string"},{"id":2,"name":"string","price":10,"validPeriod":"2022-11-27T00:00:00","description":"string","imagePath":"string","isDeleted":false,"ownerID":1,"activityType":null},{"id":3,"name":"string","price":10,"validPeriod":"2022-11-27T00:00:00","description":"string","imagePath":"string","isDeleted":false,"ownerID":1,"activityType":null}];
         setOrders(data);
         setFilteredOrders(data);
-        debugger;
       });
   };
 
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    const filter = orders.filter((x) => {
+    let filters = orders.filter((x) => {
       return JSON.stringify(x).indexOf(search) > 0 || search == "";
-    });
-    setFilteredOrders(filter);
-  }, [search]);
+    }); 
+    if (filterOptions !== "showAll") {
+      filters = filters.filter(
+        (x) =>
+          (filterOptions === "showValid" && x.isValid) ||
+          (filterOptions === "showExpired" && !x.isValid)
+      );
+    }
+    setFilteredOrders(filters);
+  }, [search, filterOptions]);
 
   return (
     <div className="my_page_main">
-      <InnerHeader HeaderHeading="My Page" PageText="My Page" />
+      <InnerHeader HeaderHeading="Min side" PageText="Min side" />
 
       <div className="container">
         <div className="partner_page_main">
@@ -66,6 +73,10 @@ function CustomerPage() {
             </div>
           </div>
           <div className="partner_table">
+            <RadioGroup
+              setFilterOptions={setFilterOptions}
+              filterOptions={filterOptions}
+            />
             <table className="data_table">
               <thead className="table_header">
                 <tr>
@@ -94,7 +105,12 @@ function CustomerPage() {
               </thead>
               <tbody className="table_body">
                 {filteredOrders.map((order) => (
-                  <tr>
+                  <tr
+                    className="table-row"
+                    onClick={() => {
+                      navigate("/ordered-activity", { state: order });
+                    }}
+                  >
                     <td>
                       <p className="heading-xs body_text">{order?.OrderId}</p>
                     </td>
@@ -129,6 +145,37 @@ function CustomerPage() {
           </div>
         </div>
       </div>
+    </div>
+  );
+}
+
+function RadioGroup({ setFilterOptions, filterOptions }) {
+  return (
+    <div className="radio-group">
+      <label className="radio" onClick={setFilterOptions("showAll")}>
+        <input
+          type="radio"
+          name="filter"
+          defaultChecked={filterOptions === "showAll"}
+        />
+        {"Show all"}
+      </label>
+      <label className="radio" onClick={setFilterOptions("showValid")}>
+        <input
+          type="radio"
+          name="filter"
+          defaultChecked={filterOptions === "showValid"}
+        />
+        {"Used Activities"}
+      </label>
+      <label className="radio" onClick={setFilterOptions("showExpired")}>
+        <input
+          type="radio"
+          name="filter"
+          defaultChecked={filterOptions === "showExpired"}
+        />
+        {"Future Activities"}
+      </label>
     </div>
   );
 }

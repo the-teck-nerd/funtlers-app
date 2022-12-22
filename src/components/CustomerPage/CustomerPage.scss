@@ -1,5 +1,25 @@
 @import "../../common-style//variable.scss";
 
+
+.table-row:hover
+{
+cursor: pointer;
+background-color: #f9c6a7b7;
+}
+.radio-group
+{
+   
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 20px 0;
+}
+.radio
+{
+  display: flex;
+  gap: 5px;
+}
+
 .my_page_main {
   .partner_page_main {
     margin: 112px 0 128px 0;

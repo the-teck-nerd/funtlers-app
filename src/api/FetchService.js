@@ -10,6 +10,15 @@ class FetchService {
     return apicall;
   }
 
+  GetActivityById(id) {
+    let apicall = APIServices.GET(apiURL() + "Activity?type=id&id=" + id);
+    return apicall;
+  }
+  GetAllActivitiesByPartnerId(id) {
+    let apicall = APIServices.GET(apiURL() + "Activity?type=partner&id=" + id);
+    return apicall;
+  }
+
   AddActivity(activity) {
     let apicall = APIServices.POST(apiURL() + "Activity", activity);
 
