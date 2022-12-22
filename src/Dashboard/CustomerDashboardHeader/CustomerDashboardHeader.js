@@ -10,8 +10,7 @@ import { Link } from "react-router-dom";
 
 function CustomerDashboardHeader(props) {
   const [showConfirmDialogue, setConfirmDialogue] = useState(false);
-  // const [userObject, setUser] = useState(isLoggedIn());
-
+  
   if (showConfirmDialogue) {
     return (
       <DialogueBox
@@ -23,7 +22,7 @@ function CustomerDashboardHeader(props) {
         open={showConfirmDialogue}
         setOpen={setConfirmDialogue}
       >
-        Are you sure you want to logout?{" "}
+        Are you sure you want to logout?
       </DialogueBox>
     );
   }
@@ -34,8 +33,7 @@ function CustomerDashboardHeader(props) {
           <div className="profile_otr">
             <div class="circle">
               <p class="circle-inner">{props?.firstName[0]}</p>
-            </div>{" "}
-            <p className="user_name heading-sb">{props?.firstName}</p>
+            </div>
           </div>
           <div className="profile_drop_otr">
             <ul className="profile_drop_ul">
