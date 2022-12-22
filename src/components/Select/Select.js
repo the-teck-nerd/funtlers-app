@@ -9,14 +9,16 @@ function Select({
   value,
   setValue,
   className,
+  disabled,
   hideDefault,
 }) {
   return (
-    <>
+    <div className={disabled ? "form-disabled" : ""}>
       <Form.Select
-        className={className ?? "Theme_input_white Theme_select"}
+        className={className ?? "Theme_input_white Theme_select "}
         aria-label="Default select example"
         value={value}
+        disabled={disabled}
         onChange={(event) => setValue(event.target.value)}
       >
         {/* <option>{"Alle"}</option> */}
@@ -25,7 +27,7 @@ function Select({
             <option value={option.value}>{option.label}</option>
           ))}
       </Form.Select>
-    </>
+    </div>
   );
 }
 

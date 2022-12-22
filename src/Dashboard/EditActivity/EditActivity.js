@@ -18,32 +18,32 @@ import "swiper/css/effect-fade";
 import "swiper/css/pagination";
 import Form from "react-bootstrap/Form";
 import "./EditActivity.scss";
- 
 
 let activityRequest = {
   id: 0,
   name: "",
-  type: "",
+  activityType: "",
   city: "",
   price: 0,
   originalPrice: 0,
   validPeriodEnd: "",
   validPeriodStart: "",
+  liveDate: "",
+  terms: "",
   description: "",
   imagePath: "",
   minPerson: 0,
   maxPerson: 0,
   discountPercent: 0,
   addDate: new Date().toISOString().slice(0, 10),
-  occassion: "",
 };
 
 function EditActivity() {
   const location = useLocation();
   const activity = location.state;
+  debugger;
 
-  
-
+  const [showImagePreview, setShowImagePreview] = useState(false);
   const [name, setName] = useState(activity.name);
   const [type, setType] = useState(activity.activityType);
   const [city, setCity] = useState(activity.city);
@@ -51,12 +51,17 @@ function EditActivity() {
   const [images, setImages] = useState(JSON.parse(activity.images));
   const [originalPrice, setOriginalPrice] = useState(activity.originalPrice);
   const [validPeriodStart, setValidPeriodStart] = useState(
-    activity.validPeriodStart.slice(0, 10)
+    activity.validPeriodStart?.slice(0, 10)
   );
   const [validPeriodEnd, setValidPeriodEnd] = useState(
-    activity.validPeriodEnd.slice(0, 10)
+    activity.validPeriodEnd?.slice(0, 10)
   );
+ 
+  const [liveDate, setLiveDate] = useState(activity.liveDate?.slice(0,10));
+
+  const [terms, setTerms] = useState(activity.terms);
   const [description, setDescription] = useState(activity.description);
+
 
   const [minPerson, setMinPerson] = useState(activity.minPerson);
   const [maxPerson, setMaxPerson] = useState(activity.maxPerson);
@@ -78,6 +83,11 @@ function EditActivity() {
     activityRequest.originalPrice = originalPrice;
     activityRequest.validPeriodEnd = validPeriodEnd;
     activityRequest.validPeriodStart = validPeriodStart;
+
+    activityRequest.liveDate = liveDate;
+
+    activityRequest.terms = terms;
+
     activityRequest.description = description;
     activityRequest.minPerson = minPerson;
     activityRequest.maxPerson = maxPerson;
@@ -112,6 +122,8 @@ function EditActivity() {
     setValidPeriodEnd("");
     setValidPeriodStart("");
     setDescription("");
+    setTerms("");
+    setLiveDate("");
 
     setImages([]);
   }
@@ -232,34 +244,44 @@ function EditActivity() {
 
                     <div className="col-lg-6 col_img_otr">
                       <div className="col_img_inr">
-                        <Swiper
-                          slidesPerView={1}
-                          spaceBetween={24}
-                          effect={"fade"}
-                          pagination={{
-                            clickable: true,
-                          }}
-                          autoplay={{
-                            delay: 2500,
-                            disableOnInteraction: false,
-                          }}
-                          modules={[EffectFade, Autoplay, Pagination]}
-                          className="mySwiper hero_swiper"
-                        >
-                          {images?.map((image) => (
-                            <SwiperSlide>
-                              <div className="img_otr">
-                                <img
-                                  className="campaign_img"
-                                  height="50"
-                                  width="70"
-                                  src={image.imageURL}
-                                  alt="img"
-                                />
-                              </div>
-                            </SwiperSlide>
-                          ))}
-                        </Swiper>
+                        <div className="image-uploader">
+                          {!showImagePreview && (
+                            <Swiper
+                              slidesPerView={1}
+                              spaceBetween={24}
+                              effect={"fade"}
+                              pagination={{
+                                clickable: true,
+                              }}
+                              autoplay={{
+                                delay: 2500,
+                                disableOnInteraction: false,
+                              }}
+                              modules={[EffectFade, Autoplay, Pagination]}
+                              className="mySwiper hero_swiper"
+                            >
+                              {images?.map((image) => (
+                                <SwiperSlide>
+                                  <div className="img_otr">
+                                    <img
+                                      className="campaign_img"
+                                      height="50"
+                                      width="70"
+                                      src={image.imageURL}
+                                      alt="img"
+                                    />
+                                  </div>
+                                </SwiperSlide>
+                              ))}
+                            </Swiper>
+                          )}
+                          <ImageUploader
+                            showImagePreview={showImagePreview}
+                            setShowImagePreview={setShowImagePreview}
+                            setImagesCallBack={setImages}
+                            editMode={true}
+                          />
+                        </div>
                       </div>
                     </div>
 
@@ -311,6 +333,16 @@ function EditActivity() {
                           }
                         />
                       </div>
+                      <div className="Input_otr col">
+                        <Input
+                          InputClass="Theme_input_white form_input"
+                          Inputype="date"
+                          InputName="number"
+                          label="Live Date"
+                          value={liveDate}
+                          onChange={(event) => setLiveDate(event.target.value)}
+                        />
+                      </div>
                     </div>
 
                     <div className="Input_otr">
@@ -321,6 +353,16 @@ function EditActivity() {
                         label="Description"
                         value={description}
                         onChange={(event) => setDescription(event.target.value)}
+                      />
+                    </div>
+                    <div className="Input_otr">
+                      <Input
+                        InputClass="Theme_input_white form_input description"
+                        Inputype="text"
+                        InputName="terms"
+                        label="Terms and Conditions"
+                        value={terms}
+                        onChange={(event) => setTerms(event.target.value)}
                       />
                     </div>
 

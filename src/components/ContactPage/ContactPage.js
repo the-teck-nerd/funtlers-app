@@ -7,8 +7,9 @@ function ContactPage() {
     return (
         <div className='contact_page'>
             <InnerHeader
-                HeaderHeading="Contact Us"
-                PageText="Contact Us"
+                HeaderHeading="Kontakt Oss"
+                PageText="kontakt oss"
+                hideHome={true}
             />
             <ContactSection />
         </div>

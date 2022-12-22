@@ -66,6 +66,7 @@ function Hero() {
     searchModal.peopleNumber = peopleNumber;
     searchModal.city = city;
 
+    
     navigate("/activities", { state: searchModal });
   };
 
@@ -80,9 +81,9 @@ function Hero() {
             <div className="row row_custom">
               <div className="col-lg-7 col_team_building_otr">
                 <div className="col_team_building_inr">
-                  <h3 className="heading-h3 heading_market">
+                  <p className=" heading_market_custom text-center">
                     Din markedsplass for sosiale aktiviter
-                  </h3>
+                  </p>
                   <div className="inpiration_teambuilding">
                     <form className="teambuilding_Form" onSubmit={handleSubmit}>
                       <div className="activity_main">
@@ -109,6 +110,7 @@ function Hero() {
                               setValue={setCity}
                               options={filters.cities}
                               defaultText="Cities"
+                              disabled={type==="digital"}
                             />
                           </li>
                           <li className="activity_li">
@@ -139,7 +141,7 @@ function Hero() {
                 </div> */}
                       </div>
                       <div className="activity-container">
-                        <b>Aktivitet ({activities.length})</b>
+                       <p className="small"> <b>Aktivitet ({activities.length})</b></p>
                       </div>
                     </form>
                     <form onSubmit={handleSubmit}>
@@ -150,7 +152,7 @@ function Hero() {
                         <ul className="inspiration_ul">
                           <li className="inspiration_li">
                             <button
-                              className="inspiration_btn Theme_btn_primary"
+                              className="inspiration_btn Theme_btn_primary_inspiration"
                               onClick={() => {
                                 setCategory("vennegjeng");
                               }}
@@ -160,7 +162,7 @@ function Hero() {
                           </li>
                           <li className="inspiration_li">
                             <button
-                              className="inspiration_btn Theme_btn_primary"
+                              className="inspiration_btn Theme_btn_primary_inspiration"
                               onClick={() => {
                                 setCategory("datenight");
                               }}
@@ -170,7 +172,7 @@ function Hero() {
                           </li>
                           <li className="inspiration_li">
                             <button
-                              className="inspiration_btn Theme_btn_primary"
+                              className="inspiration_btn Theme_btn_primary_inspiration"
                               onClick={() => {
                                 setCategory("barnebursdag");
                               }}
@@ -180,7 +182,7 @@ function Hero() {
                           </li>
                           <li className="inspiration_li">
                             <button
-                              className="inspiration_btn Theme_btn_primary"
+                              className="inspiration_btn Theme_btn_primary_inspiration"
                               onClick={() => {
                                 setCategory("bursdag");
                               }}
@@ -190,10 +192,10 @@ function Hero() {
                           </li>
                           <li className="inspiration_li">
                             <button
-                              className="inspiration_btn Theme_btn_primary"
+                              className="inspiration_btn Theme_btn_primary_inspiration"
                               //here we are setting the type instead of category
                               onClick={() => {
-                                setType("online");
+                                setType("digital");
                               }}
                             >
                               Online
@@ -201,7 +203,7 @@ function Hero() {
                           </li>
                           <li className="inspiration_li">
                             <button
-                              className="inspiration_btn Theme_btn_primary"
+                              className="inspiration_btn Theme_btn_primary_inspiration"
                               onClick={() => {
                                 setCategory("familiedag");
                               }}
@@ -211,7 +213,7 @@ function Hero() {
                           </li>
                           <li className="inspiration_li">
                             <button
-                              className="inspiration_btn Theme_btn_primary"
+                              className="inspiration_btn Theme_btn_primary_inspiration"
                               onClick={() => {
                                 setCategory("egentid");
                               }}
@@ -221,7 +223,7 @@ function Hero() {
                           </li>
                           <li className="inspiration_li">
                             <button
-                              className="inspiration_btn Theme_btn_primary"
+                              className="inspiration_btn Theme_btn_primary_inspiration"
                               onClick={() => {
                                 setCategory("dagsutflukt");
                               }}
@@ -231,7 +233,7 @@ function Hero() {
                           </li>
                           <li className="inspiration_li">
                             <button
-                              className="inspiration_btn Theme_btn_primary"
+                              className="inspiration_btn Theme_btn_primary_inspiration"
                               onClick={() => {
                                 setCategory("teambuilding");
                               }}
@@ -241,7 +243,7 @@ function Hero() {
                           </li>
                           <li className="inspiration_li">
                             <button
-                              className="inspiration_btn Theme_btn_primary"
+                              className="inspiration_btn Theme_btn_primary_inspiration"
                               onClick={() => {
                                 setCategory("sommerfest");
                               }}
@@ -251,7 +253,7 @@ function Hero() {
                           </li>
                           <li className="inspiration_li">
                             <button
-                              className="inspiration_btn Theme_btn_primary"
+                              className="inspiration_btn Theme_btn_primary_inspiration"
                               onClick={() => {
                                 setCategory("afterWork");
                               }}
@@ -261,7 +263,7 @@ function Hero() {
                           </li>
                           <li className="inspiration_li">
                             <button
-                              className="inspiration_btn Theme_btn_primary"
+                              className="inspiration_btn Theme_btn_primary_inspiration"
                               onClick={() => {
                                 setCategory("julebord");
                               }}
@@ -271,7 +273,7 @@ function Hero() {
                           </li>
                           <li className="inspiration_li">
                             <button
-                              className="inspiration_btn Theme_btn_primary"
+                              className="inspiration_btn Theme_btn_primary_inspiration"
                               onClick={() => {
                                 setCategory("utdrikningslag");
                               }}

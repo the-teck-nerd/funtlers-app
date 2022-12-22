@@ -1,5 +1,11 @@
 @import '../../common-style/variable.scss';
 
+.form-disabled > select
+{
+   cursor: not-allowed !important;
+   color: rgba(0, 0, 0, 0.5) !important;
+    
+}
 .Theme_select {
     font-size: $font-size-14px;
     line-height: $line-height-26px;

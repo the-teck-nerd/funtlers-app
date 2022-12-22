@@ -39,6 +39,11 @@
                 color: $White;
                 margin-bottom: 24px;
             }
+            .heading_market_custom {
+                font-size: 24px;
+                color: $White;
+                margin-bottom: 16px;
+            }
 
             .search_otr {
                 position: relative;
@@ -222,9 +227,14 @@
 
                 .inspiration_btn {
                     border: none;
-                    padding: 8px 16px;
+                    padding: 0px 10px ;
                     cursor: pointer;
                     outline: none;
+                    min-width: 120px;
+                    max-width: 120px;
+                    
+                    height: 45px;
+                    width: auto;
 
                     @media (max-width: 575px) {
                         font-size: $font-size-12px;

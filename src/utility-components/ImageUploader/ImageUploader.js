@@ -3,7 +3,12 @@ import ImageUploading from "react-images-uploading";
 import "./ImageUploader.scss";
 import campaignImg from "../../img/booking-confirmation-img.png";
 
-export function ImageUploader({ setImagesCallBack }) {
+export function ImageUploader({
+  editMode,
+  setImagesCallBack,
+  showImagePreview = true,
+  setShowImagePreview,
+}) {
   const [images, setImages] = useState([]);
 
   //image uploader
@@ -12,6 +17,7 @@ export function ImageUploader({ setImagesCallBack }) {
   const onChange = (imageList, addUpdateIndex) => {
     setImages(imageList);
     setImagesCallBack(imageList);
+    setShowImagePreview(true);
   };
 
   return (
@@ -34,46 +40,49 @@ export function ImageUploader({ setImagesCallBack }) {
           errors,
         }) => (
           // write your building UI
-          <div className="img_btn_otr">
-            <div className="image-container">
-              <img
-                className="uploadd_img"
-                height={imageList.length < 2 ? 405 : 450}
-                alt="img"
-                width="100%"
-                src={
-                  imageList.length === 0
-                    ? campaignImg
-                    : imageList[0]["data_url"]
-                }
-              />
-            </div>
+          <div>
+            {showImagePreview && (
+              <>
+                <div className="image-container">
+                  <img
+                    height={imageList.length < 2 ? 400 : 350}
+                    alt="img"
+                    width={"100%"}
+                    src={
+                      imageList.length === 0
+                        ? campaignImg
+                        : imageList[0]["data_url"]
+                    }
+                  />
+                </div>
 
-            {imageList.length > 1 && (
-              <div className="slider-container">
-                {imageList.map(
-                  (image, index) =>
-                    index > 0 && (
-                      <div key={index} className="image-item">
-                        <img
-                          src={image["data_url"]}
-                          alt="img"
-                          height="50"
-                          width="70"
-                        />
-                        <div>
-                          <button
-                            type="button"
-                            className="delete-button"
-                            onClick={() => onImageRemove(index)}
-                          >
-                            X
-                          </button>
-                        </div>
-                      </div>
-                    )
+                {imageList.length > 1 && (
+                  <div className="slider-container">
+                    {imageList.map(
+                      (image, index) =>
+                        index > 0 && (
+                          <div key={index} className="image-item">
+                            <img
+                              src={image["data_url"]}
+                              alt="img"
+                              height="50"
+                              width="70"
+                            />
+                            <div>
+                              <button
+                                type="button"
+                                className="delete-button"
+                                onClick={() => onImageRemove(index)}
+                              >
+                                X
+                              </button>
+                            </div>
+                          </div>
+                        )
+                    )}
+                  </div>
                 )}
-              </div>
+              </>
             )}
 
             <button
@@ -81,7 +90,7 @@ export function ImageUploader({ setImagesCallBack }) {
               onClick={onImageUpload}
               className="form_btn Theme_btn_primary"
             >
-              Upload
+              {editMode ? "Change" : "Upload"}
             </button>
 
             {/* <button className="Theme_btn_primary" onClick={onImageRemoveAll}>

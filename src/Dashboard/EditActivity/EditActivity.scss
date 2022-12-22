@@ -25,6 +25,14 @@
   height: 120px;
 }
 
+// .image-uploader {
+//   width: 600px;
+//   height: 500px;
+//   margin-top: 20px;
+
+// }
+
+
 .slider-container {
   display: flex;
 }
@@ -127,7 +135,8 @@
 .col_img_inr {
   .campaign_img {
     width: 100%;
-    height: 500px;
+    height: 400px;
+    margin-bottom: 40px;
     object-fit: fill;
     object-position: center;
     // animation-name: UpDown;

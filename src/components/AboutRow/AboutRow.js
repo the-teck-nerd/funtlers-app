@@ -29,6 +29,16 @@ function AboutRow(props) {
                     <p className='heading-s desc'>
                         {props.desc5}
                     </p>
+                    <p className='heading-s desc'>
+                        {props.desc6}
+                    </p>
+                    <p className='heading-s desc'>
+                        {props.desc7}
+                    </p>
+                    <p className='heading-s desc'>
+                        {props.desc8}
+                    </p>
+
                 </div>
             </div>
             <div className='col-lg-6 col_img_otr'>

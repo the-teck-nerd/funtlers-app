@@ -94,6 +94,7 @@ function SearchActivity() {
                         setValue={setCity}
                         options={filters.cities}
                         defaultText="Cities"
+                        disabled={type==="digital"}
                       />
                     </li>
                     <li className="activity_li">
@@ -126,7 +127,7 @@ function SearchActivity() {
                 </div> */}
                 </div>
                 <div className="activity-container">
-                  <b>Aktivitet ({activities.length})</b>
+                  <p className="small"><b>Aktivitet ({activities.length})</b></p>
                 </div>
               </form>
             </div>

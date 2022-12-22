@@ -1,138 +1,173 @@
-@import '../../common-style/variable.scss';
-
+@import "../../common-style/variable.scss";
 
 .Theme_btn_light {
-    position: relative;
-    font-size: $font-size-16px;
-    line-height: $line-height-24px;
-    font-family: $font-family-Bold;
-    color: $White;
-    background-color: $White-25;
-    backdrop-filter: blur(12.5px);
-    border-radius: 8px;
-    padding: 14px 40px;
-    transition: .4s;
-    cursor: pointer;
-    border: none;
-    outline: none;
-    overflow: hidden;
+  position: relative;
+  font-size: $font-size-16px;
+  line-height: $line-height-24px;
+  font-family: $font-family-Bold;
+  color: $White;
+  background-color: $White-25;
+  backdrop-filter: blur(12.5px);
+  border-radius: 8px;
+  padding: 14px 40px;
+  transition: 0.4s;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: -100%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $Primary-Dark;
+    z-index: -1;
+    transition: 0.4s;
+  }
+
+  &:hover {
+    color: $Primary;
 
     &::after {
-        content: '';
-        position: absolute;
-        left: -100%;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: $Primary-Dark;
-        z-index: -1;
-        transition: .4s;
+      left: 0;
     }
-
-    &:hover {
-        color: $Primary;
-
-        &::after {
-            left: 0;
-        }
-    }
+  }
 }
 
 .Theme_btn_white {
-    position: relative;
-    font-size: $font-size-16px;
-    line-height: $line-height-24px;
-    font-family: $font-family-Bold;
-    color: $Primary;
-    background-color: $White;
-    backdrop-filter: blur(12.5px);
-    border-radius: 8px;
-    padding: 14px 40px;
-    transition: .4s;
-    cursor: pointer;
-    border: none;
-    outline: none;
-    overflow: hidden;
+  position: relative;
+  font-size: $font-size-16px;
+  line-height: $line-height-24px;
+  font-family: $font-family-Bold;
+  color: $Primary;
+  background-color: $White;
+  backdrop-filter: blur(12.5px);
+  border-radius: 8px;
+  padding: 14px 40px;
+  transition: 0.4s;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  overflow: hidden;
 
+  &::after {
+    content: "";
+    position: absolute;
+    left: -100%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $Primary-Dark;
+    z-index: -1;
+    transition: 0.4s;
+  }
+
+  &:hover {
     &::after {
-        content: '';
-        position: absolute;
-        left: -100%;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: $Primary-Dark;
-        z-index: -1;
-        transition: .4s;
+      left: 0;
     }
-
-    &:hover {
-        &::after {
-            left: 0;
-        }
-    }
+  }
 }
 
-.Theme_btn_primary {
-    position: relative;
-    font-size: $font-size-16px;
-    line-height: $line-height-24px;
-    font-family: $font-family-Bold;
-    color: $White;
-    background-color: $Primary;
-    backdrop-filter: blur(12.5px);
-    border-radius: 8px;
-    padding: 14px 40px;
-    transition: .4s;
-    cursor: pointer;
-    border: none;
-    outline: none;
-    overflow: hidden;
+.Theme_btn_primary_inspiration {
+  position: relative;
+  font-size: 14px;
+  line-height: $line-height-24px;
+  font-family: $font-family-Bold;
+  color: $White;
+  background-color: $Primary;
+  backdrop-filter: blur(12.5px);
+  border-radius: 8px;
+  padding: 20px 20px;
+
+  transition: 0.4s;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: -100%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $Primary-Dark;
+    z-index: -1;
+    transition: 0.4s;
+  }
+
+  &:hover {
+    color: $Primary;
 
     &::after {
-        content: '';
-        position: absolute;
-        left: -100%;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: $Primary-Dark;
-        z-index: -1;
-        transition: .4s;
+      left: 0;
     }
+  }
+}
+.Theme_btn_primary {
+  position: relative;
+  font-size: $font-size-16px;
+  line-height: $line-height-24px;
+  font-family: $font-family-Bold;
+  color: $White;
+  background-color: $Primary;
+  backdrop-filter: blur(12.5px);
+  border-radius: 8px;
+  padding: 14px 40px;
+  transition: 0.4s;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  overflow: hidden;
 
-    &:hover {
-        color: $Primary;
+  &::after {
+    content: "";
+    position: absolute;
+    left: -100%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $Primary-Dark;
+    z-index: -1;
+    transition: 0.4s;
+  }
 
-        &::after {
-            left: 0;
-        }
+  &:hover {
+    color: $Primary;
+
+    &::after {
+      left: 0;
     }
+  }
 }
 .Theme_btn_primary1 {
-    position: relative;
-    font-size: $font-size-16px;
-    line-height: $line-height-24px;
-    font-family: $font-family-Bold;
-    color: $Primary;
-    border: 1px solid $Primary;
-    background: transparent;
-    backdrop-filter: blur(12.5px);
-    border-radius: 8px;
-    padding: 14px 40px;
-    transition: .4s;
-    cursor: pointer;
-    
-    outline: none;
-    overflow: hidden;
+  position: relative;
+  font-size: $font-size-16px;
+  line-height: $line-height-24px;
+  font-family: $font-family-Bold;
+  color: $Primary;
+  border: 1px solid $Primary;
+  background: transparent;
+  backdrop-filter: blur(12.5px);
+  border-radius: 8px;
+  padding: 14px 40px;
+  transition: 0.4s;
+  cursor: pointer;
 
-    
-    &:hover {
-        background-color: orange;
-        color: white;
+  outline: none;
+  overflow: hidden;
 
-        &::after {
-            left: 0;
-        }
+  &:hover {
+    background-color: orange;
+    color: white;
+
+    &::after {
+      left: 0;
     }
+  }
 }

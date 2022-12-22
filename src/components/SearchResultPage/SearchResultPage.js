@@ -7,6 +7,7 @@ import {
   getFilters,
   getNumberOfPeopleOptions,
   getFilteredActivities,
+  getLabelByValue,
 } from "../../commons/activity-filters/Helpers";
 import { useLocation } from "react-router-dom";
 import "./SearchResultPage.scss";
@@ -27,7 +28,11 @@ function SearchResultPage() {
   const filters = getFilters();
   const [city, setCity] = useState(searchFilter?.city);
   const [type, setType] = useState(searchFilter?.type);
-  const [category, setCategory] = useState(searchFilter?.category);
+
+  let categoryLabel =
+    getLabelByValue(filters.categories, searchFilter?.category) ?? "";
+
+  const category = searchFilter?.category ?? "";
   const [peopleNumber, setPeopleNumber] = useState(searchFilter?.peopleNumber);
   const [budget, setBudget] = useState(searchFilter?.budget);
 
@@ -38,6 +43,7 @@ function SearchResultPage() {
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchData = () => {
+    setIsLoading(true);
     let ownerid = 1;
     let apicall = FetchService.getAllActivities(ownerid);
 
@@ -56,11 +62,13 @@ function SearchResultPage() {
         filterModal.budget = budget === "" ? "all" : budget;
 
         setFilteredActivities(getFilteredActivities(data, filterModal));
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 1000);
       });
   };
 
   useEffect(() => {
-    setIsLoading(true);
     fetchData();
   }, []);
 
@@ -96,12 +104,12 @@ function SearchResultPage() {
           PageText="Søkeresultat fysisk"
         />
         {/* //todo: show the label not the actual value */}
-        <h2 className="padding header_heading text-center">{category}</h2>
+        <h2 className="padding header_heading text-center">{categoryLabel}</h2>
 
         <div className="searchRsult_main">
           <div className="container">
             <div className="wrapper">
-              <h3 className="heading-h3 filter_heading">
+              <h3 className="heading filter_heading">
                 Aktivitet (
                 {filteredActivities.length > 0 ? filteredActivities.length : 0})
               </h3>
@@ -122,6 +130,7 @@ function SearchResultPage() {
                         setValue={setCity}
                         options={filters.cities}
                         defaultText="Cities"
+                        disabled={type === "digital"}
                       />
                     </li>
                     <li className="activity_li">
@@ -141,12 +150,11 @@ function SearchResultPage() {
                       />
                     </li>
                     <li className="activity_li">
-                    <button
-                            class="ri-search-2-line search_icon_local search-button"
-                            type="submit"
-                          ></button>
-                      </li>
-
+                      <button
+                        class="ri-search-2-line search_icon_local search-button"
+                        type="submit"
+                      ></button>
+                    </li>
                   </ul>
                 </div>
                 {/* todo: hide it for now */}

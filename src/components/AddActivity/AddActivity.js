@@ -22,6 +22,8 @@ let activity = {
   originalPrice: 0,
   validPeriodEnd: "",
   validPeriodStart: "",
+  liveDate: "",
+  terms: "",
   description: "",
   imagePath: "",
   minPerson: 0,
@@ -43,7 +45,10 @@ function AddActivity() {
   const [originalPrice, setOriginalPrice] = useState(0);
   const [validPeriodStart, setValidPeriodStart] = useState("");
   const [validPeriodEnd, setValidPeriodEnd] = useState("");
+  const [liveDate, setLiveDate] = useState("");
+
   const [description, setDescription] = useState("");
+  const [terms, setTerms] = useState("");
 
   const [minPerson, setMinPerson] = useState(0);
   const [maxPerson, setMaxPerson] = useState(0);
@@ -64,9 +69,14 @@ function AddActivity() {
     activity.city = city;
     activity.price = price;
     activity.originalPrice = originalPrice;
+
     activity.validPeriodEnd = validPeriodEnd;
     activity.validPeriodStart = validPeriodStart;
+    activity.liveDate = liveDate;
+
     activity.description = description;
+    activity.terms = terms;
+
     activity.minPerson = minPerson;
     activity.maxPerson = maxPerson;
     activity.category = category;
@@ -76,7 +86,6 @@ function AddActivity() {
 
     setIsLoading(true);
     activity.images = images.map((x) => x.data_url);
-
 
     FetchService.AddActivity(activity).then((response) => {
       if (response) {
@@ -102,6 +111,8 @@ function AddActivity() {
     setMaxPerson(0);
     setValidPeriodEnd("");
     setValidPeriodStart("");
+    setTerms("");
+    setLiveDate("");
     setPartnerID(0);
     setPartnerName(0);
     setImages([]);
@@ -290,6 +301,67 @@ function AddActivity() {
                         </div>
                       </div>
                     </div>
+
+                    <div className="row">
+                      <div className="Input_otr col">
+                        <Input
+                          InputClass="Theme_input_white form_input"
+                          Inputype="number"
+                          InputName="number"
+                          label="Minimum Person"
+                          value={minPerson}
+                          onChange={(event) => setMinPerson(event.target.value)}
+                        />
+                      </div>
+                      <div className="Input_otr col">
+                        <Input
+                          InputClass="Theme_input_white form_input"
+                          Inputype="number"
+                          InputName="number"
+                          label="Maximum Person"
+                          value={maxPerson}
+                          onChange={(event) => setMaxPerson(event.target.value)}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="row">
+                      <div className="Input_otr col">
+                        <Input
+                          InputClass="Theme_input_white form_input"
+                          Inputype="date"
+                          InputName="number"
+                          label="Valid from"
+                          value={validPeriodStart}
+                          onChange={(event) =>
+                            setValidPeriodStart(event.target.value)
+                          }
+                        />
+                      </div>
+                      <div className="Input_otr col">
+                        <Input
+                          InputClass="Theme_input_white form_input"
+                          Inputype="date"
+                          InputName="number"
+                          label="Valid Til"
+                          value={validPeriodEnd}
+                          onChange={(event) =>
+                            setValidPeriodEnd(event.target.value)
+                          }
+                        />
+                      </div>
+                      <div className="Input_otr col">
+                        <Input
+                          InputClass="Theme_input_white form_input"
+                          Inputype="date"
+                          InputName="number"
+                          label="Live Date"
+                          value={liveDate}
+                          onChange={(event) => setLiveDate(event.target.value)}
+                        />
+                      </div>
+                    </div>
+
                     <div className="Input_otr">
                       <Input
                         InputClass="Theme_input_white form_input description"
@@ -300,14 +372,29 @@ function AddActivity() {
                         onChange={(event) => setDescription(event.target.value)}
                       />
                     </div>
-                    <div >
+                    <div className="Input_otr">
+                      <Input
+                        InputClass="Theme_input_white form_input description"
+                        Inputype="text"
+                        InputName="terms"
+                        label="Terms and Conditions"
+                        value={terms}
+                        onChange={(event) => setTerms(event.target.value)}
+                      />
+                    </div>
+
+                    <div>
                       {/* Add activity button if the partner is not attached. */}
                       {partnerId !== 0 && (
                         <>
                           <div className="Input_otr">
-                            <p><b>Partner Id: </b> {partnerId}</p>
+                            <p>
+                              <b>Partner Id: </b> {partnerId}
+                            </p>
                             <br />
-                            <p><b>Partner Name: </b> {partnerName}</p>
+                            <p>
+                              <b>Partner Name: </b> {partnerName}
+                            </p>
                           </div>
                           <div className="Input_otr action_otr">
                             <button
