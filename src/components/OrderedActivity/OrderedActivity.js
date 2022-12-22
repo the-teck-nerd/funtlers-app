@@ -18,7 +18,7 @@ function OrderedActivity() {
   const location = useLocation();
 
   const [order, setOrder] = useState(location.state);
-   
+
   const [activity, setActivity] = useState();
   const [images, setImages] = useState([]);
 
@@ -44,7 +44,6 @@ function OrderedActivity() {
       .then((data) => {
         setActivity(data[0]);
         setImages(JSON.parse(data[0].images));
-        console.log(images);
         setTimeout(() => {
           setIsLoading(false);
         }, 2000);
@@ -201,6 +200,11 @@ function OrderedActivity() {
                         <h3 className="text_heading ">
                           {"Brukt: " +
                             (order?.IsConsumed === true ? "Ja" : "Nei")}
+                        </h3>
+                      </li>
+                      <li className="text_li">
+                        <h3 className="text_heading ">
+                          {"bekreftelseskode: " + order?.Code}
                         </h3>
                       </li>
                     </ul>
