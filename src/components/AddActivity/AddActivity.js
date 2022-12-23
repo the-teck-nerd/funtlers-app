@@ -247,61 +247,7 @@ function AddActivity() {
                         </div>
                       </div>
                     </div>
-                    <div className="row row_custom_inr">
-                      <div className="col-lg-6 col_input_otr">
-                        <div className="col_input_inr">
-                          <div className="Input_otr ">
-                            <Input
-                              InputClass="Theme_input_white form_input"
-                              Inputype="number"
-                              InputName="number"
-                              label="Minimum Person"
-                              value={minPerson}
-                              onChange={(event) => setMinPerson(event.target.value)}
-                            />
-                          </div>
-                          <div className="Input_otr ">
-                            <Input
-                              InputClass="Theme_input_white form_input"
-                              Inputype="date"
-                              InputName="number"
-                              label="Valid from"
-                              value={validPeriodStart}
-                              onChange={(event) =>
-                                setValidPeriodStart(event.target.value)
-                              }
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-lg-6 col_img_otr">
-                        <div className="col_img_inr">
-                          <div className="Input_otr ">
-                            <Input
-                              InputClass="Theme_input_white form_input"
-                              Inputype="number"
-                              InputName="number"
-                              label="Maximum Person"
-                              value={maxPerson}
-                              onChange={(event) => setMaxPerson(event.target.value)}
-                            />
-                          </div>
-                          <div className="Input_otr ">
-                            <Input
-                              InputClass="Theme_input_white form_input"
-                              Inputype="date"
-                              InputName="number"
-                              label="Valid Til"
-                              value={validPeriodEnd}
-                              onChange={(event) =>
-                                setValidPeriodEnd(event.target.value)
-                              }
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
+                   
                     <div className="row">
                       <div className="Input_otr col">
                         <Input
