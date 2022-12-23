@@ -82,7 +82,7 @@ class FetchService {
 
   GetOrderByPartnerId(id, type) {
     let apicall = APIServices.GET(
-      apiURL() + "Order?id=" + 1 + "&type=" + type + ""
+      apiURL() + "Order?id=" + id + "&type=" + type + ""
     );
     return apicall;
   }
