@@ -152,7 +152,7 @@ function CustomerPage() {
 function RadioGroup({ setFilterOptions, filterOptions }) {
   return (
     <div className="radio-group">
-      <label className="radio" onClick={setFilterOptions("showAll")}>
+      <label className="radio" onClick={()=> setFilterOptions("showAll")}>
         <input
           type="radio"
           name="filter"
@@ -160,7 +160,7 @@ function RadioGroup({ setFilterOptions, filterOptions }) {
         />
         {"Show all"}
       </label>
-      <label className="radio" onClick={setFilterOptions("showValid")}>
+      <label className="radio" onClick={()=>setFilterOptions("showValid")}>
         <input
           type="radio"
           name="filter"
@@ -168,7 +168,7 @@ function RadioGroup({ setFilterOptions, filterOptions }) {
         />
         {"Used Activities"}
       </label>
-      <label className="radio" onClick={setFilterOptions("showExpired")}>
+      <label className="radio" onClick={()=>setFilterOptions("showExpired")}>
         <input
           type="radio"
           name="filter"

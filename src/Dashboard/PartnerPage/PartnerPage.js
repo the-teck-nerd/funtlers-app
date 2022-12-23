@@ -32,9 +32,10 @@ function PartnerPage() {
   }, []);
 
   useEffect(() => {
-    const filter = partners.filter((x) =>
-      x.name.toLowerCase().includes(search) ||
-      (x.id).toString().includes(search)
+    const filter = partners.filter(
+      (x) =>
+        x.name.toLowerCase().includes(search) ||
+        x.id.toString().includes(search)
     );
     setFilteredPartners(filter);
   }, [search]);
@@ -101,12 +102,7 @@ function PartnerPage() {
 
             <tbody className="table_body">
               {filteredPartners.map((partner) => (
-                <tr
-                  onClick={() => {
-                    navigate("/edit-partner", { state: partner });
-                  }}
-                  className="partner_row"
-                >
+                <tr className="partner_row">
                   <td>
                     <p className="heading-xs body_text">{partner.id}</p>
                   </td>
@@ -124,11 +120,34 @@ function PartnerPage() {
                     <p className="heading-xs body_text">{partner.city}</p>
                   </td>
                   <td>
-                    <p className="heading-xs body_text">{partner.partnerSince}</p>
+                    <p className="heading-xs body_text">
+                      {partner.partnerSince}
+                    </p>
                   </td>
                   <td>
                     <div className="action_otr">
-                      <div className="icon_otr">
+                      <ThemeBtn
+                        BtnClass="Theme_btn_primary partner-page-button activity"
+                        BtnText="Activities"
+                        onClick={() => {
+                          navigate("/partner-activities", { state: partner });
+                        }}
+                      />
+                      <ThemeBtn
+                        BtnClass="Theme_btn_primary partner-page-button order"
+                        BtnText="Orders"
+                        onClick={() => {
+                          navigate("/partner-orders", { state: partner });
+                        }}
+                      />
+                      <ThemeBtn
+                        BtnClass="Theme_btn_primary partner-page-button edit"
+                        BtnText="Edit"
+                        onClick={() => {
+                          navigate("/edit-partner", { state: partner });
+                        }}
+                      />
+                      {/* <div className="icon_otr">
                         <i class="ri-eye-fill view_icon icon"></i>
                       </div>
                       <div className="icon_otr">
@@ -136,7 +155,7 @@ function PartnerPage() {
                       </div>
                       <div className="icon_otr">
                         <i class="ri-delete-bin-6-fill delete_icon icon"></i>
-                      </div>
+                      </div> */}
                     </div>
                   </td>
                 </tr>
