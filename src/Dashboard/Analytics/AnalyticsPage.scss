@@ -1,5 +1,19 @@
 @import '../../common-style//variable.scss';
 
+.radio-group
+{
+   
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 20px 0;
+}
+.radio
+{
+  display: flex;
+  gap: 5px;
+}
+
 .partner_analytics_page {
     .heading_otr {
         margin-bottom: 24px;
