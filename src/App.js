@@ -44,6 +44,8 @@ import FeaturesPage from "./components/FeaturesPage/FeaturesPage";
 import AdminLandingPage from "./Dashboard/AdminLandingPage/AdminLandingPage";
 import TermsPage from "./components/TermsPage/TermsPage";
 import EditProfile from "./components/EditProfile/EditProfile";
+import OrderedActivity from "./components/OrderedActivity/OrderedActivity";
+import PartnerActivities from "./Dashboard/PartnerActivities/PartnerActivities";
 
 function App() {
   const [SideBar, setSideBar] = useState(false);
@@ -52,7 +54,6 @@ function App() {
   const [userObject, setUser] = useState(isLoggedIn());
   const navigate = useNavigate();
 
-  console.log(userObject);
   useEffect(() => {
     // navigate(0);
   }, [userObject]);
@@ -189,9 +190,14 @@ function App() {
                     element={<PartnerPage />}
                   />
                   <Route
-                    path="/partnerorder-dashboard"
+                    path="/partner-orders"
                     exact={true}
                     element={<PartnerOrderPage />}
+                  />
+                  <Route
+                    path="/partner-activities"
+                    exact={true}
+                    element={<PartnerActivities />}
                   />
                   <Route
                     path="/partner-analytics"
@@ -254,6 +260,11 @@ function App() {
               element={<EditProfile />}
             />
             <Route path="/my-page" exact={true} element={<CustomerPage />} />
+            <Route
+              path="/ordered-activity"
+              exact={true}
+              element={<OrderedActivity />}
+            />
           </>
         )}
       </Routes>

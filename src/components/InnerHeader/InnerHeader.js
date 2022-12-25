@@ -8,15 +8,18 @@ function InnerHeader(props) {
       <div className="container">
         <div className="header_wrapper">
           <h2 className="heading-h2 header_heading">{props.HeaderHeading}</h2>
+         
+         {/* Todo: removing inner headr for now
           {props.hideHome !== true && (
             <p className="heading-m header_desc_link">
-              <span>{props.PageText}</span>|
+              <span>{props.PageText}</span>
+              |
               <Link to="/" className="linkk_home">
                 {" "}
                 Home
               </Link>
             </p>
-          )}
+          )} */}
         </div>
       </div>
     </div>

@@ -1,0 +1,121 @@
+@import '../../common-style/variable.scss';
+
+.text_heading 
+{
+    font-size: 24px;
+}
+.campaign_Page {
+    .campaign_main {
+        padding: 112px 0 128px 0;
+    }
+
+    .row_custom {
+        align-items: center;
+    }
+
+    .col_content_inr {
+        padding-right: 48px;
+
+        .campaign_text {
+            color: $Black-65;
+
+            &:not(:last-child) {
+                margin-bottom: 12px;
+            }
+        }
+
+        .heading_terms {
+            color: $Black;
+            margin: 32px 0 12px 0;
+        }
+
+        .action_otr {
+            display: inline-flex;
+            margin-top: 40px;
+        }
+    }
+
+    .col_img_inr {
+        .campaign_img {
+            width: 100%;
+            height: 500px;
+            object-fit:fill;
+            object-position: center;
+            // animation-name: UpDown;
+            // animation-duration: 6s;
+            // animation-iteration-count: infinite;
+            // animation-timing-function: linear;
+        }
+
+        .social_text_otr {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: $Primary-Light2;
+            border-radius: 8px;
+            padding: 28px 36px;
+            margin-top: 72px;
+        }
+
+        .text_ul {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .text_heading {
+            display: flex;
+            align-items: center;
+            color: $Black;
+
+            .icon_text_otr {
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                margin-right: 16px;
+            }
+
+            .q_icon {
+                font-size: 24px;
+                line-height: 24px;
+                color: $Primary;
+                transition: .3s;
+            }
+        }
+
+        .social_ul {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 120px;
+            gap: 16px;
+        }
+
+        .social_a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 52px;
+            height: 52px;
+            border-radius: 100%;
+            background-color: $White;
+            box-shadow: $Box-Shadow-Custom;
+            transition: .3s;
+
+            &:hover {
+                background-color: $Primary;
+
+                .social_icon {
+                    color: $White;
+                }
+            }
+
+            .social_icon {
+                font-size: 24px;
+                line-height: 24px;
+                color: $Primary;
+                transition: .3s;
+            }
+        }
+    }
+}
