@@ -115,6 +115,16 @@ class FetchService {
     let apicall = APIServices.GET(apiURL() + "User");
     return apicall;
   }
+
+  GetAnalyticsPartner() {
+    let apicall = APIServices.GET(apiURL() + "Analytics?type=AllPartner&id=0");
+    return apicall;
+  }
+
+  GetAnalyticsActivity() {
+    let apicall = APIServices.GET(apiURL() + "Analytics?type=AllActivity&id=0");
+    return apicall;
+  }
 }
 
 export default new FetchService();
