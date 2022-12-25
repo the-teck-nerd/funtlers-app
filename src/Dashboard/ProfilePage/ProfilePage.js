@@ -9,10 +9,9 @@ import Select from "../../components/Select/Select";
 import { useLocation, useNavigate } from "react-router-dom";
 
 function ProfilePage() {
-  
   const location = useLocation();
   const user = location?.state;
-  debugger;
+
   return (
     <div className="profile_page_main">
       <div className="profile_img_content_main">
@@ -21,7 +20,9 @@ function ProfilePage() {
             <img className="profile_img" src={ProfileImg} alt="img" />
           </div>
           <div className="content_otr">
-            <h3 className="user_name heading-h3">{user.firstName} {user.lastName}</h3>
+            <h3 className="user_name heading-h3">
+              {user.firstName} {user.lastName}
+            </h3>
             <p className="designation_text heading-s">Owner & Founder</p>
             <div className="location_otr">
               <i class="ri-map-pin-fill location_icon"></i>
@@ -44,7 +45,7 @@ function ProfilePage() {
                 InputClass="Theme_input_white form_input input_disable"
                 Inputype="fullname"
                 InputName="fullname"
-                InputPlaceholder={user.firstName+' '+user.lastName}
+                InputPlaceholder={user.firstName + " " + user.lastName}
               />
             </li>
             <li className="info_li">
@@ -169,10 +170,12 @@ function ProfilePage() {
 
                 <td>
                   <div className="role_select_otr">
-                    <Select  options={[
+                    <Select
+                      options={[
                         { label: "Admin", value: "admin" },
                         { label: "Partner", value: "partner" },
-                      ]}/>
+                      ]}
+                    />
                   </div>
                 </td>
                 <td>

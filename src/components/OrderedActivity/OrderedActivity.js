@@ -13,13 +13,12 @@ import "swiper/css/effect-fade";
 import "swiper/css/pagination";
 
 function OrderedActivity() {
-  let currentdate = new Date();
-
   const location = useLocation();
 
-  const [order, setOrder] = useState(location.state);
+  //Getting only order Id which is being passed from the calling screen
+  const orderId = location.state;
 
-  const [activity, setActivity] = useState();
+  let [order, setOrder] = useState();
   const [images, setImages] = useState([]);
 
   const [isLoading, setIsLoading] = useState(false);
@@ -35,14 +34,15 @@ function OrderedActivity() {
   }, []);
 
   const fetchData = () => {
-    let apicall = FetchService.GetActivityById(order.ActivityId);
+    let apicall = FetchService.GetOrderByOrderId(orderId);
 
     apicall
       .then((response) => {
         return response.data;
       })
       .then((data) => {
-        setActivity(data[0]);
+        console.table(data[0]);
+        setOrder(data[0]);
         setImages(JSON.parse(data[0].images));
         setTimeout(() => {
           setIsLoading(false);
@@ -56,7 +56,7 @@ function OrderedActivity() {
       text="Processing your request..."
     >
       <div className="campaign_Page">
-        <InnerHeader HeaderHeading={activity?.name} PageText={activity?.name} />
+        <InnerHeader HeaderHeading={order?.Name} PageText={order?.Name} />
         <div className="campaign_main">
           <div className="container">
             <div className="row row_custom">
@@ -91,19 +91,19 @@ function OrderedActivity() {
                   <h3 className="heading-h3 heading_terms">Vilkår</h3>
                   <div className="content">
                     <p className="heading-m campaign_text">
-                      Prisen: <b> {activity?.price + " NOK"} </b> {" pr.pers"}
+                      Prisen: <b> {order?.Price + " NOK"} </b> {" pr.pers"}
                       <br />
                       Valid for:{" "}
                       <b>
-                        {activity?.minPerson} - {activity?.maxPerson}
+                        {order?.MinPerson} - {order?.MaxPerson}
                       </b>{" "}
                       Personer
                     </p>
                     <p className="heading-m campaign_text">
                       Aktivitet må bookes mellom:{" "}
                       <b>
-                        {formatDate(activity?.validPeriodStart)} -{" "}
-                        {formatDate(activity?.validPeriodEnd)}
+                        {formatDate(order?.validPeriodStart)} -{" "}
+                        {formatDate(order?.validPeriodEnd)}
                       </b>
                     </p>
                     <p className="heading-m campaign_text">
@@ -165,7 +165,7 @@ function OrderedActivity() {
                       </li>
                       <li className="text_li">
                         <h3 className="text_heading ">
-                          {"Leverandør: " + activity?.partnerName}
+                          {"Leverandør: " + order?.PartnerName}
                         </h3>
                       </li>
                       <li className="text_li">
@@ -185,13 +185,13 @@ function OrderedActivity() {
 
                       <li className="text_li">
                         <h3 className="text_heading">
-                          {"Rabatt: " + activity?.discountPercent + "%"}
+                          {"Rabatt: " + order?.DiscountPercent + "%"}
                         </h3>
                       </li>
                       <li className="text_li">
                         <h3 className="text_heading ">
                           {"Spart beløp: " +
-                            (activity?.originalPrice - activity?.price) *
+                            (order?.OriginalPrice - order?.Price) *
                               order?.Quantity +
                             " NOK"}
                         </h3>

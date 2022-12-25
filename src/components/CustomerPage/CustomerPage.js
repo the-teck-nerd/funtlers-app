@@ -108,7 +108,7 @@ function CustomerPage() {
                   <tr
                     className="table-row"
                     onClick={() => {
-                      navigate("/ordered-activity", { state: order });
+                      navigate("/ordered-activity", { state: order.OrderId });
                     }}
                   >
                     <td>

@@ -75,6 +75,14 @@ class FetchService {
     return apicall;
   }
 
+  //This api call will return entire order object which is basically a join in the
+  // the database of user, partner, order and activity object
+  GetOrderByOrderId(orderId) {
+    
+    let apicall = APIServices.GET(apiURL() + "Order?id=" + orderId+"&type=orderactivity");
+    return apicall;
+  }
+
   GetOrdersByUserId(userId) {
     let apicall = APIServices.GET(apiURL() + "Order?id=" + userId);
     return apicall;

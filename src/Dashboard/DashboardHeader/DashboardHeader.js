@@ -10,17 +10,13 @@ import ProfileImg from "../../img/profile-img.png";
 import { Link } from "react-router-dom";
 
 function DashboardHeader(props) {
-  debugger;
   const [showConfirmDialogue, setConfirmDialogue] = useState(false);
   const navigate = useNavigate();
 
   // const [userObject, setUser] = useState(isLoggedIn());
-  const Profile = async () =>
-  {
+  const Profile = async () => {
     navigate("/profile", { state: props?.userObject?.user });
-
-  }
-  
+  };
 
   if (showConfirmDialogue) {
     return (
@@ -38,7 +34,6 @@ function DashboardHeader(props) {
     );
   }
   return (
-    
     <div className="dashboard_header">
       <div className="wrapper">
         <div className="sidebar_menu_icon_otr" onClick={props.SidebarStrech}>
@@ -55,14 +50,24 @@ function DashboardHeader(props) {
         </div>
         <div className="profile_main">
           <div className="profile_otr">
-              <p class="circle-inner">{props?.userObject?.user?.firstName[0]}</p>
-            <p className="user_name heading-sb">{props?.userObject?.user?.firstName}</p>
+            <p class="circle-inner">{props?.userObject?.user?.firstName[0]}</p>
+            <p className="user_name heading-sb">
+              {props?.userObject?.user?.firstName}
+            </p>
           </div>
           <div className="profile_drop_otr">
             <ul className="profile_drop_ul">
-              <p className="user_text heading-xs">Welcome {props?.userObject?.user?.firstName}&nbsp;{props?.userObject?.user?.lastName}</p>
+              <p className="user_text heading-xs">
+                Welcome {props?.userObject?.user?.firstName}&nbsp;
+                {props?.userObject?.user?.lastName}
+              </p>
               <li className="profile_drop_li">
-                <a onClick={() => { Profile(); }} className="profile_drop_link">
+                <a
+                  onClick={() => {
+                    Profile();
+                  }}
+                  className="profile_drop_link"
+                >
                   <i class="ri-user-3-fill menu_icon"></i>
                   <p className="menu_text heading-xs">Profile</p>
                 </a>
@@ -80,9 +85,12 @@ function DashboardHeader(props) {
                 </Link>
               </li>
               <li className="profile_drop_li">
-                <Link className="profile_drop_link"    onClick={() => setConfirmDialogue(true)}>
+                <Link
+                  className="profile_drop_link"
+                  onClick={() => setConfirmDialogue(true)}
+                >
                   <i class="ri-logout-box-fill menu_icon"></i>
-                  <p className="menu_text heading-xs" >Logout</p>
+                  <p className="menu_text heading-xs">Logout</p>
                 </Link>
               </li>
             </ul>
