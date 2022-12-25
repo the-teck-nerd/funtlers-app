@@ -1,11 +1,9 @@
 @import '../../common-style//variable.scss';
 
-.partner_row {
-    cursor: pointer;
-}
 
 .partner_row:hover {
     font-weight: bold;
+    cursor: pointer;
 }
 
 .partner_order {

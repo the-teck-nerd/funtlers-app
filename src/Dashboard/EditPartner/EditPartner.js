@@ -40,6 +40,7 @@ function EditPartner() {
     partnerRequest.zip = zip;
     partnerRequest.id = partner.id;
     partnerRequest.email=email;
+    partnerRequest.phone=phone;
  
 
     FetchService.UpdatePartner(partnerRequest).then((response) => {

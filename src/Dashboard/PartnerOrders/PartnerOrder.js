@@ -7,12 +7,14 @@ import "./PartnerOrder.scss";
 import ProfileImg from "../../img/profile-img.png";
 import { Link } from "react-router-dom";
 import { isLoggedIn } from "../../api/NewLoginService";
-import { useLocation } from "react-router-dom";
+
+import { useLocation, useNavigate } from "react-router-dom";
 
 function PartnerOrderPage() {
+  const navigate = useNavigate();
+
   const [orders, setOrders] = useState([]);
   const userObject = useState(isLoggedIn());
-
 
   //If this page is called from admin, view partner order, it will have partner id in uselocation state
   //but if this page is openend from partner side, the partner id will be in isLoggedIn user object
@@ -21,7 +23,6 @@ function PartnerOrderPage() {
   const fetchData = () => {
     FetchService.GetOrderByPartnerId(partnerId, "partner").then((data) => {
       setOrders(data.data);
-      
     });
   };
 
@@ -69,33 +70,38 @@ function PartnerOrderPage() {
             </tr>
           </thead>
           <tbody className="table_body">
-            {orders.map((obj) => (
-              <tr>
+            {orders.map((order) => (
+              <tr
+                className="partner_row"
+                onClick={() => {
+                  navigate("/ordered-activity", { state: order.Id });
+                }}
+              >
                 <td>
-                  <p className="heading-xs body_text">{obj.id}</p>
+                  <p className="heading-xs body_text">{order.Id}</p>
                 </td>
                 <td>
                   <div className="profile_otr">
                     <img className="profile_img" src={ProfileImg} alt="img" />
                     <p className="heading-xs profile_name">
-                      {obj.FirstName} {obj.LastName}
+                      {order.FirstName} {order.LastName}
                     </p>
                   </div>
                 </td>
                 <td>
-                  <p className="heading-xs body_text">{obj.PartnerName}</p>
+                  <p className="heading-xs body_text">{order.PartnerName}</p>
                 </td>
                 <td>
-                  <p className="heading-xs body_text">{obj.Code}</p>
+                  <p className="heading-xs body_text">{order.Code}</p>
                 </td>
                 <td>
-                  <p className="heading-xsb body_text">{obj.ActivityName}</p>
+                  <p className="heading-xsb body_text">{order.ActivityName}</p>
                 </td>
                 <td>
-                  <p className="heading-xs body_text">{obj.City}</p>
+                  <p className="heading-xs body_text">{order.City}</p>
                 </td>
                 <td>
-                  <p className="heading-xs body_text">{obj.price} nok</p>
+                  <p className="heading-xs body_text">{order.price} nok</p>
                 </td>
                 <td>
                   <div className="icon_otr">

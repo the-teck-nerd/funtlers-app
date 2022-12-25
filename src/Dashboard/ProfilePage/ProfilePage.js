@@ -9,7 +9,7 @@ import Select from "../../components/Select/Select";
 import { useLocation, useNavigate } from "react-router-dom";
 import FetchService from "../../api/FetchService";
 import { isLoggedIn } from "./../../api/NewLoginService";
-import DialogueBox from './../../components/DialogueBox/DialogueBox';
+import DialogueBox from "./../../components/DialogueBox/DialogueBox";
 
 function ProfilePage() {
   const [users, setUsers] = useState([]);
@@ -28,10 +28,7 @@ function ProfilePage() {
       setUsers(data.filter((obj) => obj.email != userObject.user.email));
     });
 
-
-    function UpdateUser(user)
-    {
-
+  function UpdateUser(user) {
     FetchService.UpdateUserType(user).then((response) => {
       FetchService.GetUsers()
         .then((response) => {
@@ -41,10 +38,9 @@ function ProfilePage() {
           setUsers(data.filter((obj) => obj.email != userObject.user.email));
         });
     });
-    }
+  }
 
-  function UpdateAdmin (user)  {
-
+  function UpdateAdmin(user) {
     user.userTypeId = 2;
 
     return (
@@ -59,12 +55,10 @@ function ProfilePage() {
       >
         Are you sure you want to change user role?{" "}
       </DialogueBox>
-    )
+    );
+  }
 
-    
-  };
-
-  function RemoveAdmin  (user) {
+  function RemoveAdmin(user) {
     user.userTypeId = 1;
 
     return (
@@ -79,12 +73,12 @@ function ProfilePage() {
       >
         Are you sure you want to change user role?{" "}
       </DialogueBox>
-    )
-  };
+    );
+  }
 
   const location = useLocation();
   const user = location?.state;
-  
+
   return (
     <div className="profile_page_main">
       <div className="profile_img_content_main">

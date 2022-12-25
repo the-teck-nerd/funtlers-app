@@ -41,7 +41,6 @@ let activityRequest = {
 function EditActivity() {
   const location = useLocation();
   const activity = location.state;
-  
 
   const [showImagePreview, setShowImagePreview] = useState(false);
   const [name, setName] = useState(activity.name);
@@ -56,12 +55,11 @@ function EditActivity() {
   const [validPeriodEnd, setValidPeriodEnd] = useState(
     activity.validPeriodEnd?.slice(0, 10)
   );
- 
-  const [liveDate, setLiveDate] = useState(activity.liveDate?.slice(0,10));
+
+  const [liveDate, setLiveDate] = useState(activity.liveDate?.slice(0, 10));
 
   const [terms, setTerms] = useState(activity.terms);
   const [description, setDescription] = useState(activity.description);
-
 
   const [minPerson, setMinPerson] = useState(activity.minPerson);
   const [maxPerson, setMaxPerson] = useState(activity.maxPerson);

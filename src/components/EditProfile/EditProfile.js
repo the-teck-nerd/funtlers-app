@@ -57,7 +57,7 @@ function EditProfile() {
       user.oldPassword = oldPassword;
       user.Password = Password;
       user.phone = phone;
-      user.id= userObject.id;
+      user.id = userObject.id;
 
       FetchService.UpdateUser(user).then((response) => {
             
@@ -65,11 +65,11 @@ function EditProfile() {
           setResponse("Success");
           setResponseMessage("Profile has been successfully updated");
           clearForm();
-        }
-        else
-        {
+        } else {
           setResponse("Failed");
-          setResponseMessage("Error: Wrong password entered. Please try again.");
+          setResponseMessage(
+            "Error: Wrong password entered. Please try again."
+          );
         }
         setTimeout(() => {
           setIsLoading(false);
@@ -161,9 +161,7 @@ function EditProfile() {
                         Inputype="password"
                         InputName="password"
                         InputPlaceholder="Nåværende passord"
-                        onChange={(event) =>
-                          setoldPassword(event.target.value)
-                        }
+                        onChange={(event) => setoldPassword(event.target.value)}
                       />
                     </div>
                     <div className="Input_otr">

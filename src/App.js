@@ -211,6 +211,11 @@ function App() {
                     exact={true}
                     element={<EditOrderPage />}
                   />
+                  <Route
+                    path="/ordered-activity"
+                    exact={true}
+                    element={<OrderedActivity />}
+                  />
                 </Routes>
               </div>
             </div>
