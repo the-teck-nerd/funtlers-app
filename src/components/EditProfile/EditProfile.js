@@ -60,7 +60,7 @@ function EditProfile() {
       user.id= userObject.id;
 
       FetchService.UpdateUser(user).then((response) => {
-      debugger;      
+            
   if (response.data == true) {
           setResponse("Success");
           setResponseMessage("Profile has been successfully updated");

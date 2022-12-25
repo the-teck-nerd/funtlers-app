@@ -21,7 +21,7 @@ function PartnerOrderPage() {
   const fetchData = () => {
     FetchService.GetOrderByPartnerId(partnerId, "partner").then((data) => {
       setOrders(data.data);
-      debugger;
+      
     });
   };
 

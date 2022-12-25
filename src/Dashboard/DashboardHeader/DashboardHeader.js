@@ -10,7 +10,7 @@ import ProfileImg from "../../img/profile-img.png";
 import { Link } from "react-router-dom";
 
 function DashboardHeader(props) {
-  debugger;
+  
   const [showConfirmDialogue, setConfirmDialogue] = useState(false);
   const navigate = useNavigate();
 
