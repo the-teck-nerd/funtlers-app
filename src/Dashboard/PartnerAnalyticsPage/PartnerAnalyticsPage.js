@@ -24,7 +24,7 @@ function PartnerAnalyticsPage() {
         <div className='partner_analytics_page'>
             <div className='heading_otr'>
                 <p className='heading-lb heading_partner'>
-                     Anaylytics
+                     Analytics
                 </p>
             </div>
             
