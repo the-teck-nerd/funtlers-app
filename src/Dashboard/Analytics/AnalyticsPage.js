@@ -2,16 +2,16 @@ import AnalyticsCard from '../AnalyticsCard/AnalyticsCard';
 import FetchService from "../../api/FetchService";
 import React, { useState, useEffect } from "react";
 
-import './PartnerAnalyticsPage.scss';
+import './AnalyticsPage.scss';
 import { isLoggedIn } from '../../api/NewLoginService';
 
-function PartnerAnalyticsPage() {
+function AnalyticsPage() {
 
    const [filteredPartners, setFilteredPartners] = useState([]);
    const [userObject, setUser] = useState(isLoggedIn());
 
    const fetchData = () => {
-    FetchService.GetAnalyticsById(userObject.user.id).then(data=>{
+    FetchService.GetAnalytics().then(data=>{
         setFilteredPartners(data.data[0]);
     })
     }
@@ -22,12 +22,12 @@ function PartnerAnalyticsPage() {
   }, []);
     return (
         <div className='partner_analytics_page'>
+
             <div className='heading_otr'>
                 <p className='heading-lb heading_partner'>
                      Anaylytics
                 </p>
             </div>
-            
             <div className='statistics_main'>
                 <div className='row row_custom'>
                     <div className="col-lg-3 col_card_otr">
@@ -77,11 +77,19 @@ function PartnerAnalyticsPage() {
                             TextColor="red_text"
                         />
                     </div>
-                   
+                    <div className='col-lg-3 col_card_otr'>
+                        <AnalyticsCard
+                            CardIcon="ri-wallet-fill"
+                            CardHeading={filteredPartners.Partners}
+                            CardName="Partners"
+                            PercentText=""
+                            TextColor="black_text"
+                        />
+                    </div>
                 </div>
             </div>
         </div>
     )
 }
 
-export default PartnerAnalyticsPage
+export default AnalyticsPage

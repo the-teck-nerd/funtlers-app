@@ -44,7 +44,7 @@ function DashboardSidebar(props) {
                             </Link>
                         </li>
                         <li className='sidebar_menu_li'>
-                            <Link to="/partner-analytics" className='sidebar_menu_link'>
+                            <Link to="/analytics" className='sidebar_menu_link'>
                                 <i class="ri-service-fill menu_icon"></i>
                                 <p className='menu_text heading-m'>
                                     Analytics

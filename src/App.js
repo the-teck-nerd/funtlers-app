@@ -46,6 +46,7 @@ import TermsPage from "./components/TermsPage/TermsPage";
 import EditProfile from "./components/EditProfile/EditProfile";
 import OrderedActivity from "./components/OrderedActivity/OrderedActivity";
 import PartnerActivities from "./Dashboard/PartnerActivities/PartnerActivities";
+import AnalyticsPage from './Dashboard/Analytics/AnalyticsPage';
 
 function App() {
   const [SideBar, setSideBar] = useState(false);
@@ -200,9 +201,9 @@ function App() {
                     element={<PartnerActivities />}
                   />
                   <Route
-                    path="/partner-analytics"
+                    path="/analytics"
                     exact={true}
-                    element={<PartnerAnalyticsPage />}
+                    element={<AnalyticsPage />}
                   />
                   <Route path="/order" exact={true} element={<OrderPage />} />
                   <Route

@@ -1,0 +1,17 @@
+@import '../../common-style//variable.scss';
+
+.partner_analytics_page {
+    .heading_otr {
+        margin-bottom: 24px;
+    }
+
+    .heading_partner {
+        color: $Black;
+    }
+
+    .statistics_main {
+        .row_custom {
+            gap: 24px 0;
+        }
+    }
+}
