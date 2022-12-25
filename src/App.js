@@ -137,6 +137,7 @@ function App() {
                 <DashboardHeader
                   SidebarStrech={SideMenuClick}
                   setUser={setUser}
+                  userObject={userObject}
                 />
               </div>
               <div className="content_main dashboard-body-color">

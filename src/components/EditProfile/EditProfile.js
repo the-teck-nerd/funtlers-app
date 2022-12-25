@@ -16,8 +16,8 @@ let user = {
   firstName: "",
   lastName: "",
   email: "",
-  currentPassword: "",
-  newPassword: "",
+  oldPassword: "",
+  Password: "",
   phone: "",
   userTypeId: 1,
 };
@@ -29,8 +29,8 @@ function EditProfile() {
   const [lastName, setLastName] = useState(userObject?.lastName);
   const [email, setEmail] = useState(userObject?.email);
 
-  const [currentPassword, setCurrentPassword] = useState("");
-  const [newPassword, setNewPassword] = useState("");
+  const [oldPassword, setoldPassword] = useState("");
+  const [Password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
 
   const [phone, setPhone] = useState(userObject?.phone);
@@ -43,20 +43,25 @@ function EditProfile() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    if (newPassword !== repeatPassword) {
+    if (Password !== repeatPassword) {
       setResponse("Failed");
       setResponseMessage("Error: Password don't match");
+      setTimeout(() => {
+        setIsLoading(false);
+        setResponse(response);
+      }, 3000);
     } else {
       user.firstName = firstName;
       user.lastName = lastName;
       user.email = email;
-      user.currentPassword = currentPassword;
-      user.newPassword = newPassword;
+      user.oldPassword = oldPassword;
+      user.Password = Password;
       user.phone = phone;
       user.id= userObject.id;
 
       FetchService.UpdateUser(user).then((response) => {
-        if (response === true) {
+      debugger;      
+  if (response.data == true) {
           setResponse("Success");
           setResponseMessage("Profile has been successfully updated");
           clearForm();
@@ -68,7 +73,6 @@ function EditProfile() {
         }
         setTimeout(() => {
           setIsLoading(false);
-          setResponse(response);
         }, 3000);
       });
     }
@@ -77,9 +81,9 @@ function EditProfile() {
   function clearForm() {
     setFirstName("");
     setLastName("");
-    setCurrentPassword("");
+    setoldPassword("");
     setRepeatPassword("");
-    setNewPassword("");
+    setPassword("");
     setPhone("");
   }
 
@@ -158,7 +162,7 @@ function EditProfile() {
                         InputName="password"
                         InputPlaceholder="Nåværende passord"
                         onChange={(event) =>
-                          setCurrentPassword(event.target.value)
+                          setoldPassword(event.target.value)
                         }
                       />
                     </div>
@@ -168,7 +172,7 @@ function EditProfile() {
                         Inputype="password"
                         InputName="password"
                         InputPlaceholder="Nytt passord"
-                        onChange={(event) => setNewPassword(event.target.value)}
+                        onChange={(event) => setPassword(event.target.value)}
                       />
                     </div>
                     <div className="Input_otr">

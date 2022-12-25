@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Input from "../../components/Input/Input";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import "./DashboardHeader.scss";
 import { isLoggedIn, logOut } from "../../api/NewLoginService";
@@ -9,9 +10,16 @@ import ProfileImg from "../../img/profile-img.png";
 import { Link } from "react-router-dom";
 
 function DashboardHeader(props) {
+  debugger;
   const [showConfirmDialogue, setConfirmDialogue] = useState(false);
-  // const [userObject, setUser] = useState(isLoggedIn());
+  const navigate = useNavigate();
 
+  // const [userObject, setUser] = useState(isLoggedIn());
+  const Profile = async () =>
+  {
+    navigate("/profile", { state: props?.userObject?.user });
+
+  }
   
 
   if (showConfirmDialogue) {
@@ -47,17 +55,17 @@ function DashboardHeader(props) {
         </div>
         <div className="profile_main">
           <div className="profile_otr">
-            <img className="profile_img" src={ProfileImg} alt="img" />
-            <p className="user_name heading-sb">Jennifer Alnes</p>
+              <p class="circle-inner">{props?.userObject?.user?.firstName[0]}</p>
+            <p className="user_name heading-sb">{props?.userObject?.user?.firstName}</p>
           </div>
           <div className="profile_drop_otr">
             <ul className="profile_drop_ul">
-              <p className="user_text heading-xs">Welcome Jennifer Alnes</p>
+              <p className="user_text heading-xs">Welcome {props?.userObject?.user?.firstName}&nbsp;{props?.userObject?.user?.lastName}</p>
               <li className="profile_drop_li">
-                <Link to="/profile" className="profile_drop_link">
+                <a onClick={() => { Profile(); }} className="profile_drop_link">
                   <i class="ri-user-3-fill menu_icon"></i>
                   <p className="menu_text heading-xs">Profile</p>
-                </Link>
+                </a>
               </li>
               <li className="profile_drop_li">
                 <Link to="/" className="profile_drop_link">

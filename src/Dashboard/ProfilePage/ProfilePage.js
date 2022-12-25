@@ -6,8 +6,13 @@ import ProfileImg from "../../img/profile-img.png";
 import Input from "../../components/Input/Input";
 import { Link } from "react-router-dom";
 import Select from "../../components/Select/Select";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function ProfilePage() {
+  
+  const location = useLocation();
+  const user = location?.state;
+  debugger;
   return (
     <div className="profile_page_main">
       <div className="profile_img_content_main">
@@ -16,7 +21,7 @@ function ProfilePage() {
             <img className="profile_img" src={ProfileImg} alt="img" />
           </div>
           <div className="content_otr">
-            <h3 className="user_name heading-h3">Jennifer Alnes</h3>
+            <h3 className="user_name heading-h3">{user.firstName} {user.lastName}</h3>
             <p className="designation_text heading-s">Owner & Founder</p>
             <div className="location_otr">
               <i class="ri-map-pin-fill location_icon"></i>
@@ -39,7 +44,7 @@ function ProfilePage() {
                 InputClass="Theme_input_white form_input input_disable"
                 Inputype="fullname"
                 InputName="fullname"
-                InputPlaceholder="Jennifer Alnes"
+                InputPlaceholder={user.firstName+' '+user.lastName}
               />
             </li>
             <li className="info_li">
@@ -48,7 +53,7 @@ function ProfilePage() {
                 InputClass="Theme_input_white form_input input_disable"
                 Inputype="number"
                 InputName="number"
-                InputPlaceholder="+47 47880198"
+                InputPlaceholder={user.phone}
               />
             </li>
             <li className="info_li">
@@ -57,7 +62,7 @@ function ProfilePage() {
                 InputClass="Theme_input_white form_input input_disable"
                 Inputype="email"
                 InputName="email"
-                InputPlaceholder="jennifer.alnes@funtlers.com"
+                InputPlaceholder={user.email}
               />
             </li>
             <li className="info_li">
@@ -66,7 +71,7 @@ function ProfilePage() {
                 InputClass="Theme_input_white form_input input_disable"
                 Inputype="address"
                 InputName="address"
-                InputPlaceholder="Oslo, Norway"
+                InputPlaceholder={user.address}
               />
             </li>
           </ul>
