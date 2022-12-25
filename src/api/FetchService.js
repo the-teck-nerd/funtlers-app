@@ -50,6 +50,11 @@ class FetchService {
     return apicall;
   }
 
+  UpdateUserType(user) {
+    let apicall = APIServices.PUT(apiURL() + "User?type=admin", user);
+    return apicall;
+  }
+
   VerifyUser(user) {
     let apicall = APIServices.POST(apiURL() + "Login", user);
     return apicall;
@@ -102,6 +107,12 @@ class FetchService {
 
   GetAnalyticsById(id) {
     let apicall = APIServices.GET(apiURL() + "Analytics?type=Partner&id=" + id);
+    return apicall;
+  }
+
+
+  GetUsers() {
+    let apicall = APIServices.GET(apiURL() + "User");
     return apicall;
   }
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import "./ProfilePage.scss";
 
@@ -7,8 +7,75 @@ import Input from "../../components/Input/Input";
 import { Link } from "react-router-dom";
 import Select from "../../components/Select/Select";
 import { useLocation, useNavigate } from "react-router-dom";
+import FetchService from "../../api/FetchService";
+import { isLoggedIn } from "./../../api/NewLoginService";
+import DialogueBox from "./../../components/DialogueBox/DialogueBox";
 
 function ProfilePage() {
+  const [users, setUsers] = useState([]);
+  const [userObject, setLoginUser] = useState(isLoggedIn());
+  const [showConfirmDialogue, setConfirmDialogue] = useState(false);
+
+  useEffect(() => {
+    // navigate(0);
+  }, [userObject]);
+  let apicall = FetchService.GetUsers();
+  apicall
+    .then((response) => {
+      return response.data;
+    })
+    .then((data) => {
+      setUsers(data.filter((obj) => obj.email != userObject.user.email));
+    });
+
+  function UpdateUser(user) {
+    FetchService.UpdateUserType(user).then((response) => {
+      FetchService.GetUsers()
+        .then((response) => {
+          return response.data;
+        })
+        .then((data) => {
+          setUsers(data.filter((obj) => obj.email != userObject.user.email));
+        });
+    });
+  }
+
+  function UpdateAdmin(user) {
+    user.userTypeId = 2;
+
+    return (
+      <DialogueBox
+        title={"Confirm Change"}
+        onConfirm={UpdateUser}
+        onConfirmState={user}
+        confirmText={"Update"}
+        cancelText={"Cancel"}
+        open={true}
+        setOpen={setConfirmDialogue}
+      >
+        Are you sure you want to change user role?{" "}
+      </DialogueBox>
+    );
+  }
+
+  function RemoveAdmin(user) {
+    user.userTypeId = 1;
+
+    return (
+      <DialogueBox
+        title={"Confirm Change"}
+        onConfirm={UpdateUser}
+        onConfirmState={user}
+        confirmText={"Update"}
+        cancelText={"Cancel"}
+        open={true}
+        setOpen={setConfirmDialogue}
+      >
+        Are you sure you want to change user role?{" "}
+      </DialogueBox>
+    );
+  }
+
   const location = useLocation();
   const user = location?.state;
 
@@ -102,14 +169,15 @@ function ProfilePage() {
                   <p className="heading-xsb header_text">Profile</p>
                 </th>
                 <th>
-                  <p className="heading-xsb header_text">Date</p>
+                  <p className="heading-xsb header_text">Email</p>
+                </th>
+
+                <th>
+                  <p className="heading-xsb header_text">User Since</p>
                 </th>
 
                 <th>
                   <p className="heading-xsb header_text">Role</p>
-                </th>
-                <th>
-                  <p className="heading-xsb header_text">Status</p>
                 </th>
                 <th>
                   <p className="heading-xsb header_text">Action</p>
@@ -117,78 +185,62 @@ function ProfilePage() {
               </tr>
             </thead>
             <tbody className="table_body">
-              <tr>
-                <td>
-                  <p className="heading-xs body_text">#VL2110</p>
-                </td>
-                <td>
-                  <div className="prodile_otr">
-                    <img className="profile_img" src={ProfileImg} alt="img" />
-                    <p className="heading-xs profile_name">Benedicte</p>
-                  </div>
-                </td>
-                <td>
-                  <p className="heading-xs body_text">07 Oct, 2021</p>
-                </td>
-
-                <td>
-                  <div className="role_select_otr">
-                    <Select
-                      options={[
-                        { label: "Admin", value: "admin" },
-                        { label: "Partner", value: "partner" },
-                      ]}
-                    />
-                  </div>
-                </td>
-                <td>
-                  <div className="status_text_otr">
-                    <p className="heading-xsb status_text paid_text">
-                      Inactive
+              {users.map((userdata) => (
+                <tr>
+                  <td>
+                    <p className="heading-xs body_text">{userdata.id}</p>
+                  </td>
+                  <td>
+                    <div className="prodile_otr">
+                      <img className="profile_img" src={ProfileImg} alt="img" />
+                      <p className="heading-xs profile_name">
+                        {userdata.firstName}&nbsp;{userdata.lastName}
+                      </p>
+                    </div>
+                  </td>
+                  <td>
+                    <p className="heading-xs body_text">{userdata.email}</p>
+                  </td>
+                  <td>
+                    <p className="heading-xs body_text">
+                      {userdata.userSince.slice(0, 10)}
                     </p>
-                  </div>
-                </td>
-                <td>
-                  <div className="icon_otr">
-                    <i class="ri-edit-fill edit_icon"></i>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <p className="heading-xs body_text">#VL2110</p>
-                </td>
-                <td>
-                  <div className="prodile_otr">
-                    <img className="profile_img" src={ProfileImg} alt="img" />
-                    <p className="heading-xs profile_name">Jonas</p>
-                  </div>
-                </td>
-                <td>
-                  <p className="heading-xs body_text">07 Oct, 2021</p>
-                </td>
+                  </td>
+                  <td>
+                    <div className="heading-xs body_text">
+                      {userdata.usertype}
+                    </div>
+                  </td>
 
-                <td>
-                  <div className="role_select_otr">
-                    <Select
-                      options={[
-                        { label: "Admin", value: "admin" },
-                        { label: "Partner", value: "partner" },
-                      ]}
-                    />
-                  </div>
-                </td>
-                <td>
-                  <div className="status_text_otr">
-                    <p className="heading-xsb status_text paid_text">Active</p>
-                  </div>
-                </td>
-                <td>
-                  <div className="icon_otr">
-                    <i class="ri-edit-fill edit_icon"></i>
-                  </div>
-                </td>
-              </tr>
+                  <td>
+                    <div className="icon_otr">
+                      {userdata.userTypeId == 1 ? (
+                        <span class="status_text_otr">
+                          <p
+                            class="heading-xsb status_text paid_text"
+                            onClick={() => {
+                              UpdateAdmin(userdata);
+                            }}
+                          >
+                            Add Admin
+                          </p>
+                        </span>
+                      ) : (
+                        <span class="status_text_otr">
+                          <p
+                            class="heading-xsb status_text paid_text"
+                            onClick={() => {
+                              RemoveAdmin(userdata);
+                            }}
+                          >
+                            Remove Admin
+                          </p>
+                        </span>
+                      )}
+                    </div>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

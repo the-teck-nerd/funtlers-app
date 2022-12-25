@@ -74,7 +74,7 @@ function PartnerOrderPage() {
               <tr
                 className="partner_row"
                 onClick={() => {
-                  navigate("/ordered-activity", { state:  order.Id  });
+                  navigate("/ordered-activity", { state: order.Id });
                 }}
               >
                 <td>
