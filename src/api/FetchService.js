@@ -125,6 +125,14 @@ class FetchService {
     let apicall = APIServices.GET(apiURL() + "Analytics?type=AllActivity&id=0");
     return apicall;
   }
+
+
+  VerifyOrder(order) {
+    let apicall = APIServices.PUT(apiURL() + "Order",order);
+    return apicall;
+  }
+
+
 }
 
 export default new FetchService();
