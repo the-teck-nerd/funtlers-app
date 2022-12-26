@@ -26,8 +26,8 @@ function Register() {
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
   const [response, setResponse] = useState("");
-  const [isLoading, setIsLoading]= useState(false);
-  
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -38,12 +38,13 @@ function Register() {
     user.phone = phone;
     setIsLoading(true);
     register(user).then((response) => {
-      
       if (response === "Success") {
         clearForm();
       }
-      setTimeout(()=>{setIsLoading(false); setResponse(response);}, 3000);
-
+      setTimeout(() => {
+        setIsLoading(false);
+        setResponse(response);
+      }, 3000);
     });
   };
 
@@ -55,30 +56,30 @@ function Register() {
     setEmail("");
   }
 
- 
   return (
-    <LoadingOverlay active={isLoading} spinner text="Processing your request...">
+    <LoadingOverlay active={isLoading} spinner text="Vi oppretter din konto">
       <div className="Register_page">
-        <InnerHeader HeaderHeading="Register" PageText="Register" />
+        <InnerHeader
+          HeaderHeading="Registrer deg hos Funtlers"
+          PageText="Register"
+        />
         <section className="Register_main">
           <div className="container">
             <div className="row row_custom">
               <div className="col-lg-6 col_form_otr">
                 <div className="col_form_inr">
-                  <h3 className="heading-h3 form_heading">
-                    Register to Funtlers
-                  </h3>
+                  <h3 className="heading-h3 form_heading">Register deg her</h3>
                   {response === "Failed" && (
                     <div className="error_message">
                       {
-                        "User with this email address already exists. Please try again with different email."
+                        "Bruker med denne e-postadressen eksisterer allerede. Vennligst prøv igjen med en annen e-postadresse."
                       }
                     </div>
                   )}
                   {response === "Success" && (
                     <div className="success_message">
                       {
-                        "User successfully registered! Please login to access your account!"
+                        "Din bruker har blitt registrert. Logg inn for å se din konto"
                       }
                     </div>
                   )}
@@ -89,7 +90,7 @@ function Register() {
                         InputClass="Theme_input_white form_input"
                         Inputype="fname"
                         InputName="fname"
-                        InputPlaceholder="First Name"
+                        InputPlaceholder="Fornavn"
                         value={firstName}
                         onChange={(event) => setFirstName(event.target.value)}
                       />
@@ -99,7 +100,7 @@ function Register() {
                         InputClass="Theme_input_white form_input"
                         Inputype="lname"
                         InputName="lname"
-                        InputPlaceholder="Last Name"
+                        InputPlaceholder="Etternavn"
                         value={lastName}
                         onChange={(event) => setLastName(event.target.value)}
                       />
@@ -109,7 +110,7 @@ function Register() {
                         InputClass="Theme_input_white form_input"
                         Inputype="email"
                         InputName="email"
-                        InputPlaceholder="Email Address"
+                        InputPlaceholder="E-post adresse"
                         value={email}
                         onChange={(event) => setEmail(event.target.value)}
                       />
@@ -119,7 +120,7 @@ function Register() {
                         InputClass="Theme_input_white form_input"
                         Inputype="number"
                         InputName="number"
-                        InputPlaceholder="Phone"
+                        InputPlaceholder="Telefon"
                         value={phone}
                         onChange={(event) => setPhone(event.target.value)}
                       />
@@ -129,7 +130,7 @@ function Register() {
                         InputClass="Theme_input_white form_input"
                         Inputype="password"
                         InputName="password"
-                        InputPlaceholder="Password"
+                        InputPlaceholder="Passord"
                         value={password}
                         onChange={(event) => setPassword(event.target.value)}
                       />
@@ -139,12 +140,12 @@ function Register() {
                         type="submit"
                         className="Theme_btn_primary form_btn"
                       >
-                        Register
+                        Registrere
                       </button>
                     </div>
                     <div className="login_text_otr">
                       <Link to="/login" className="login_text heading-sb">
-                        Login
+                        Logg inn
                       </Link>
                     </div>
                   </form>
