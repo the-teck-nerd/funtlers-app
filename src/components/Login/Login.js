@@ -21,7 +21,7 @@ export default function Login() {
     <LoadingOverlay
       active={isLoading}
       spinner
-      text="Processing your request..."
+      text="Behandler forespørselen din"
     >
       <div className="Login_page">
         <InnerHeader HeaderHeading="Log In" PageText="Login" />

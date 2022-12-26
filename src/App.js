@@ -69,7 +69,7 @@ function App() {
       <LoadingOverlay
         active={isLoading}
         spinner
-        text="Processing your request..."
+        text="Behandler forespørselen din"
       >
         <div className="dashboard_main">
           <div className="sidebar_content_main">
@@ -129,7 +129,7 @@ function App() {
       <LoadingOverlay
         active={isLoading}
         spinner
-        text="Processing your request..."
+        text="Behandler forespørselen din"
       >
         <div className="dashboard_main">
           <div className="sidebar_content_main">

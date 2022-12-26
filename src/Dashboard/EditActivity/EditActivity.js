@@ -130,7 +130,7 @@ function EditActivity() {
     <LoadingOverlay
       active={isLoading}
       spinner
-      text="Processing your request..."
+      text="Behandler forespørselen din"
     >
       <div className="Register_page">
         {/* Todo: might need to change this in future for better design

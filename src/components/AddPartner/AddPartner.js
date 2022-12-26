@@ -77,7 +77,7 @@ function AddPartner() {
     <LoadingOverlay
       active={isLoading}
       spinner
-      text="Processing your request..."
+      text="Behandler forespørselen din"
     >
       <div className="Register_page">
         <section className="add_partner_main">

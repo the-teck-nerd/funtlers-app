@@ -96,7 +96,7 @@ function SearchResultPage() {
     <LoadingOverlay
       active={isLoading}
       spinner
-      text="Processing your request..."
+      text="Behandler forespørselen din"
     >
       <div className="searchRsult_page">
         <InnerHeader

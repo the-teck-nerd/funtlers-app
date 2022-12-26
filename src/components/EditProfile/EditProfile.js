@@ -91,7 +91,7 @@ function EditProfile() {
     <LoadingOverlay
       active={isLoading}
       spinner
-      text="Processing your request..."
+      text="Behandler forespørselen din"
     >
       <div className="Register_page">
         <InnerHeader HeaderHeading="Rediger profil" />

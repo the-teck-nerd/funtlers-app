@@ -10,7 +10,7 @@ export default function LoginPopup({ setUser, setShowLogin, ref }) {
     <LoadingOverlay
       active={isLoading}
       spinner
-      text="Processing your request..."
+      text="Behandler forespørselen din"
     >
       <div className="Login_page login_popup">
         <section className="login_main">

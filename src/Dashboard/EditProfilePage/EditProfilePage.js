@@ -100,7 +100,7 @@ function EditProfilePage() {
     <LoadingOverlay
       active={isLoading}
       spinner
-      text="Processing your request..."
+      text="Behandler forespørselen din"
     >
       <div className="Register_page">
         <div className="profile_page_main">

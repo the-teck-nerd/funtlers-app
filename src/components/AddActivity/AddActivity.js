@@ -122,7 +122,7 @@ function AddActivity() {
     <LoadingOverlay
       active={isLoading}
       spinner
-      text="Processing your request..."
+      text="Behandler forespørselen din"
     >
       <div className="Register_page">
         {/* Todo: might need to change this in future for better design
@@ -130,10 +130,7 @@ function AddActivity() {
      */}
 
         <section className="add_activity_main">
-          <InnerHeader
-            HeaderHeading="Add Activity"
-            PageText="Add Activity"
-          />
+          <InnerHeader HeaderHeading="Add Activity" PageText="Add Activity" />
           <div className="container">
             <div className="row_custom">
               <div className="col_form_otr">
@@ -179,7 +176,9 @@ function AddActivity() {
                               }}
                             >
                               {filters.categories.map((option) => (
-                                <option value={option.value}>{option.label}</option>
+                                <option value={option.value}>
+                                  {option.label}
+                                </option>
                               ))}
                             </Form.Select>
                           </div>
@@ -194,7 +193,9 @@ function AddActivity() {
                               }}
                             >
                               {filters.cities.map((option) => (
-                                <option value={option.value}>{option.label}</option>
+                                <option value={option.value}>
+                                  {option.label}
+                                </option>
                               ))}
                             </Form.Select>
                           </div>
@@ -209,7 +210,9 @@ function AddActivity() {
                               }}
                             >
                               {filters.types.map((option) => (
-                                <option value={option.value}>{option.label}</option>
+                                <option value={option.value}>
+                                  {option.label}
+                                </option>
                               ))}
                             </Form.Select>
                           </div>
@@ -221,7 +224,9 @@ function AddActivity() {
                                 InputName="number"
                                 label="Price"
                                 value={price}
-                                onChange={(event) => setPrice(event.target.value)}
+                                onChange={(event) =>
+                                  setPrice(event.target.value)
+                                }
                               />
                             </div>
                             <div className="Input_otr ">
@@ -247,7 +252,7 @@ function AddActivity() {
                         </div>
                       </div>
                     </div>
-                   
+
                     <div className="row">
                       <div className="Input_otr col">
                         <Input

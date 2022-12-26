@@ -53,7 +53,7 @@ function OrderedActivity() {
     <LoadingOverlay
       active={isLoading}
       spinner
-      text="Processing your request..."
+      text="Behandler forespørselen din"
     >
       <div className="campaign_Page">
         <InnerHeader HeaderHeading={order?.Name} PageText={order?.Name} />
