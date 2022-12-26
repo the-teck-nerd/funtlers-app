@@ -192,20 +192,20 @@ function ProfilePage() {
                   <td>
                     <div className="icon_otr">
                       {userdata.userTypeId == 1 ? (
-                        <span class="status_text_otr">
+                        <span class="status_text_otr ">
                           <p
-                            class="heading-xsb status_text paid_text"
+                            class="heading-xsb status_text paid_text button-green"
                             onClick={() => {
                               UpdateAdmin(userdata);
                             }}
                           >
-                            Add Admin
+                            Make Admin
                           </p>
                         </span>
                       ) : (
                         <span class="status_text_otr">
                           <p
-                            class="heading-xsb status_text paid_text"
+                            class="heading-xsb status_text paid_text button-red"
                             onClick={() => {
                               RemoveAdmin(userdata);
                             }}

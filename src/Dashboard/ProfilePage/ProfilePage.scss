@@ -1,5 +1,14 @@
 @import "../../common-style//variable.scss";
 
+.button-green
+{
+  background-color: green !important;
+}
+.button-red
+{
+  background-color: red !important;
+}
+
 .profile_page_main {
   .profile_img_content_main {
     display: flex;
