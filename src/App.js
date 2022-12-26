@@ -110,7 +110,7 @@ function App() {
                   <Route
                     path="/order"
                     exact={true}
-                    element={<PartnerOrderPage />}
+                    element={<PartnerOrderPage setIsLoading={setIsLoading} />}
                   />
                   <Route
                     path="/edit-order"
