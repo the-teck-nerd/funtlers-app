@@ -8,10 +8,10 @@ import bookingImg from "../../img/booking-confirmation-img.png";
 import LoadingOverlay from "react-loading-overlay";
 import InnerHeader from "../../components/InnerHeader/InnerHeader";
 import Input from "../../components/Input/Input";
+import { isLoggedIn } from "../../api/NewLoginService";
 
 function PartnerActivities() {
-  
-  const partner = useLocation()?.state;
+  const partner = useLocation()?.state ?? isLoggedIn()?.user;
 
   const [activities, setActivities] = useState([]);
   const [filteredActivities, setFilteredActivities] = useState([]);
