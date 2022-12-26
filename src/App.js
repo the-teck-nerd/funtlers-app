@@ -47,6 +47,7 @@ import EditProfile from "./components/EditProfile/EditProfile";
 import OrderedActivity from "./components/OrderedActivity/OrderedActivity";
 import PartnerActivities from "./Dashboard/PartnerActivities/PartnerActivities";
 import AnalyticsPage from './Dashboard/Analytics/AnalyticsPage';
+import PartnerProfilePage from './Dashboard/PartnerProfilePage/PartnerProfilePage';
 
 function App() {
   const [SideBar, setSideBar] = useState(false);
@@ -93,7 +94,7 @@ function App() {
                   <Route
                     path="/profile"
                     exact={true}
-                    element={<ProfilePage />}
+                    element={<PartnerProfilePage />}
                   />
                   <Route
                     path="/profile-edit"

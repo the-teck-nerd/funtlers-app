@@ -22,6 +22,7 @@ export function setUserSession(userObject) {
 }
 
 export function isLoggedIn() {
+  
   const userObject = sessionStorage.getItem("userObject");
   return userObject? JSON.parse(userObject) : null;
 }

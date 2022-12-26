@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 function PartnerDashboardHeader(props) {
   const [showConfirmDialogue, setConfirmDialogue] = useState(false);
-  // const [userObject, setUser] = useState(isLoggedIn());
+  const [userObject, setUser] = useState(isLoggedIn());
 
   
 
@@ -47,12 +47,14 @@ function PartnerDashboardHeader(props) {
         </div>
         <div className="profile_main">
           <div className="profile_otr">
-            <img className="profile_img" src={ProfileImg} alt="img" />
-            <p className="user_name heading-sb">Jennifer Alnes</p>
+          <div class="circle">
+              <p class="circle-inner">{userObject.user?.firstName[0]}</p>
+            </div>         
+              <p className="user_name heading-sb">{userObject.user.firstName}&nbsp;{userObject.user.lastName}</p>
           </div>
           <div className="profile_drop_otr">
             <ul className="profile_drop_ul">
-              <p className="user_text heading-xs">Welcome Jennifer Alnes</p>
+              <p className="user_text heading-xs">Welcome {userObject.user.firstName}&nbsp;{userObject.user.lastName}</p>
               <li className="profile_drop_li">
                 <Link to="/profile" className="profile_drop_link">
                   <i class="ri-user-3-fill menu_icon"></i>

@@ -20,3 +20,23 @@
         }
     }
 }
+
+.circle2 {
+    display: inline-block;
+      background-color: orangered;
+      border-radius: 50%;
+  }
+  
+  .circle2-inner {
+    color: white;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+    height: 138px;
+    width: 138px;
+    font-size: 65px;
+    background-color: #fc9765;
+    border-radius: 50%;
+  
+  }
