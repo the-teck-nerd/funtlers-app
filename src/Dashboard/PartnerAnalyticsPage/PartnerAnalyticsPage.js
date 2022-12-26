@@ -5,23 +5,29 @@ import React, { useState, useEffect } from "react";
 import "./PartnerAnalyticsPage.scss";
 import { isLoggedIn } from "../../api/NewLoginService";
 
-function PartnerAnalyticsPage() {
+function PartnerAnalyticsPage({ setIsLoading }) {
   const [filteredPartners, setFilteredPartners] = useState([]);
   const [userObject, setUser] = useState(isLoggedIn());
   const [filteredActivities, setFilteredActivities] = useState([]);
 
   const fetchData = () => {
+    
     FetchService.GetAnalyticsById(userObject.user.id).then((data) => {
       setFilteredPartners(data.data[0]);
+     
     });
 
     FetchService.GetAnalyticsActivity().then((data) => {
       setFilteredActivities(data.data);
+       setTimeout(() => {
+        setIsLoading(false);
+      }, 1000);
       //Todo: filter these activities based on the currently logged in partner
     });
   };
 
   useEffect(() => {
+    setIsLoading(true);
     fetchData();
   }, []);
   return (

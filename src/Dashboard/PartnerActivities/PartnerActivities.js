@@ -10,14 +10,14 @@ import InnerHeader from "../../components/InnerHeader/InnerHeader";
 import Input from "../../components/Input/Input";
 import { isLoggedIn } from "../../api/NewLoginService";
 
-function PartnerActivities() {
+function PartnerActivities({ setIsLoading }) {
   const partner = useLocation()?.state ?? isLoggedIn()?.user;
 
   const [activities, setActivities] = useState([]);
   const [filteredActivities, setFilteredActivities] = useState([]);
 
   const [visible, setVisible] = useState(8);
-  const [isLoading, setIsLoading] = useState(false);
+
   const [search, setSearch] = useState("");
 
   const fetchData = () => {
@@ -54,11 +54,8 @@ function PartnerActivities() {
   };
 
   return (
-    <LoadingOverlay
-      active={isLoading}
-      spinner
-      text="Processing your request..."
-    >
+    
+     
       <div className="searchRsult_page">
         <div className="wrapper">
           <div className="filter_main">
@@ -104,7 +101,7 @@ function PartnerActivities() {
           </div>
         )}
       </div>
-    </LoadingOverlay>
+    
   );
 }
 

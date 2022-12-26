@@ -10,7 +10,7 @@ import { isLoggedIn } from "../../api/NewLoginService";
 
 import { useLocation, useNavigate } from "react-router-dom";
 
-function PartnerOrderPage() {
+function PartnerOrderPage({ setIsLoading }) {
   const navigate = useNavigate();
 
   const [orders, setOrders] = useState([]);
@@ -24,10 +24,14 @@ function PartnerOrderPage() {
   const fetchData = () => {
     FetchService.GetOrderByPartnerId(partnerId, "partner").then((data) => {
       setOrders(data.data);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1000);
     });
   };
 
   useEffect(() => {
+    setIsLoading(true);
     fetchData();
   }, []);
 

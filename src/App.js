@@ -54,6 +54,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
 
   const [userObject, setUser] = useState(isLoggedIn());
+  debugger;
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -104,7 +105,7 @@ function App() {
                   <Route
                     path="/partner-analytics"
                     exact={true}
-                    element={<PartnerAnalyticsPage />}
+                    element={<PartnerAnalyticsPage setIsLoading={setIsLoading}  />}
                   />
                   <Route
                     path="/order"
@@ -189,33 +190,33 @@ function App() {
                   <Route
                     path="/partner-dashboard"
                     exact={true}
-                    element={<PartnerPage />}
+                    element={<PartnerPage  setIsLoading={setIsLoading}/>}
                   />
                   <Route
                     path="/partner-orders"
                     exact={true}
-                    element={<PartnerOrderPage />}
+                    element={<PartnerOrderPage  setIsLoading={setIsLoading} />}
                   />
                   <Route
                     path="/partner-activities"
                     exact={true}
-                    element={<PartnerActivities />}
+                    element={<PartnerActivities setIsLoading={setIsLoading}/>}
                   />
                   <Route
                     path="/analytics"
                     exact={true}
-                    element={<AnalyticsPage />}
+                    element={<AnalyticsPage  setIsLoading={setIsLoading}/>}
                   />
-                  <Route path="/order" exact={true} element={<OrderPage />} />
+                  <Route path="/order" exact={true} element={<OrderPage  setIsLoading={setIsLoading} />} />
                   <Route
                     path="/edit-order"
                     exact={true}
-                    element={<EditOrderPage />}
+                    element={<EditOrderPage  setIsLoading={setIsLoading} />}
                   />
                   <Route
                     path="/ordered-activity"
                     exact={true}
-                    element={<OrderedActivity />}
+                    element={<OrderedActivity  setIsLoading={setIsLoading}/>}
                   />
                 </Routes>
               </div>
