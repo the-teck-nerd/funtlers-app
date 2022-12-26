@@ -13,7 +13,6 @@ import { isLoggedIn } from "./../../api/NewLoginService";
 function ProfilePage() {
   const [users, setUsers] = useState([]);
   const [userObject, setLoginUser] = useState(isLoggedIn());
-<<<<<<< HEAD
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -30,23 +29,8 @@ function ProfilePage() {
   
   }, []);
 
-  
 
-  function UpdateAdmin (user)  {
-    
-=======
-  useEffect(() => {}, [userObject]);
-  let apicall = FetchService.GetUsers();
-  apicall
-    .then((response) => {
-      return response.data;
-    })
-    .then((data) => {
-      setUsers(data.filter((obj) => obj.email != userObject.user.email));
-    });
-
-  const UpdateAdmin = async (user) => {
->>>>>>> 00ecd20166665aa8e3e10ba2db9e486b3191f3ce
+  const UpdateAdmin =  (user) => {
     user.userTypeId = 2;
 
     FetchService.UpdateUserType(user).then((response) => {
@@ -73,14 +57,8 @@ function ProfilePage() {
     });
   };
 
-<<<<<<< HEAD
-
-  
-
-=======
   const location = useLocation();
   const user = location?.state;
->>>>>>> 00ecd20166665aa8e3e10ba2db9e486b3191f3ce
 
   return (
     <div className="profile_page_main">
