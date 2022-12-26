@@ -17,15 +17,15 @@ function PartnerDashboardHeader(props) {
   if (showConfirmDialogue) {
     return (
       <DialogueBox
-        title={"Confirm logout"}
+        title={"Bekreft utlogging"}
         onConfirm={logOut}
         onConfirmState={props.setUser}
-        confirmText={"Logout"}
-        cancelText={"Cancel"}
+        confirmText={"Logg ut"}
+        cancelText={"Avbryt"}
         open={showConfirmDialogue}
         setOpen={setConfirmDialogue}
       >
-        Are you sure you want to logout?{" "}
+        Er du sikker på at du vil logge ut?{" "}
       </DialogueBox>
     );
   }
