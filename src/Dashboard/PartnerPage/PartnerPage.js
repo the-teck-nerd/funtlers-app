@@ -8,7 +8,7 @@ import "./PartnerPage.scss";
 
 import ThemeBtn from "../../components/ThemeBtn/ThemeBtn";
 
-function PartnerPage() {
+function PartnerPage({setIsLoading}) {
   const navigate = useNavigate();
   const [partners, setPartners] = useState([]);
   const [filteredPartners, setFilteredPartners] = useState([]);
@@ -24,11 +24,16 @@ function PartnerPage() {
       .then((data) => {
         setPartners(data);
         setFilteredPartners(data);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 1000);
       });
   };
 
   useEffect(() => {
+    setIsLoading(true);
     fetchData();
+
   }, []);
 
   useEffect(() => {

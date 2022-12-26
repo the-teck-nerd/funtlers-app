@@ -13,9 +13,7 @@ import { isLoggedIn } from "./../../api/NewLoginService";
 function ProfilePage() {
   const [users, setUsers] = useState([]);
   const [userObject, setLoginUser] = useState(isLoggedIn());
-  useEffect(() => {
-    // navigate(0);
-  }, [userObject]);
+  useEffect(() => {}, [userObject]);
   let apicall = FetchService.GetUsers();
   apicall
     .then((response) => {
@@ -26,7 +24,6 @@ function ProfilePage() {
     });
 
   const UpdateAdmin = async (user) => {
-    
     user.userTypeId = 2;
 
     FetchService.UpdateUserType(user).then((response) => {
@@ -42,7 +39,7 @@ function ProfilePage() {
 
   const RemoveAdmin = async (user) => {
     user.userTypeId = 1;
-     FetchService.UpdateUserType(user).then((response) => {
+    FetchService.UpdateUserType(user).then((response) => {
       FetchService.GetUsers()
         .then((response) => {
           return response.data;
@@ -55,7 +52,7 @@ function ProfilePage() {
 
   const location = useLocation();
   const user = location?.state;
-  
+
   return (
     <div className="profile_page_main">
       <div className="profile_img_content_main">

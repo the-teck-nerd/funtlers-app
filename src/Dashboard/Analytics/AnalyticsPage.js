@@ -7,7 +7,7 @@ import { isLoggedIn } from "../../api/NewLoginService";
 import AnalyticsPartnerPage from "../AnalyticsPartnerPage/AnalyticsPartnerPage";
 import AnalyticsActivityPage from "../AnalyticsActivityPage/AnalyticsActivityPage";
 
-function AnalyticsPage() {
+function AnalyticsPage({ setIsLoading }) {
   const [filteredPartners, setFilteredPartners] = useState([]);
   const [userObject, setUser] = useState(isLoggedIn());
   const [analyticsType, setAnalyticsType] = useState("Partner");
@@ -15,10 +15,14 @@ function AnalyticsPage() {
   const fetchData = () => {
     FetchService.GetAnalytics().then((data) => {
       setFilteredPartners(data.data[0]);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1000);
     });
   };
 
   useEffect(() => {
+    setIsLoading(true);
     fetchData();
   }, []);
   return (
@@ -105,8 +109,8 @@ function AnalyticsPage() {
         </label>
       </div>
 
-      {analyticsType === "Partner" && <AnalyticsPartnerPage/>}
-      {analyticsType === "Activity" && <AnalyticsActivityPage/>}
+      {analyticsType === "Partner" && <AnalyticsPartnerPage />}
+      {analyticsType === "Activity" && <AnalyticsActivityPage />}
     </div>
   );
 }
