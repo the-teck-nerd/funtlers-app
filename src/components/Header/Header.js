@@ -153,7 +153,7 @@ function Header({ setUser, userObject }) {
             <ul className="menu_ul">
               <li className="menu_li" onClick={handleCloseMenu}>
                 <Link to="/about" className="menu_a heading-sb">
-                  Hvordan fungerer det
+                  Slik fungerer det
                 </Link>
               </li>
               <li className="menu_li" onClick={handleCloseMenu}>
@@ -168,12 +168,12 @@ function Header({ setUser, userObject }) {
               </li>
               <li className="menu_li" onClick={handleCloseMenu}>
                 <Link to="/contact" className="menu_a heading-sb">
-                  Kontakt
+                  Kontakt oss
                 </Link>
               </li>
               <li className="menu_li" onClick={handleCloseMenu}>
                 <Link to="/partner" className="menu_a heading-sb">
-                  Partner
+                  Bli en partner
                 </Link>
               </li>
               <li className="menu_li" onClick={handleCloseMenu}>
