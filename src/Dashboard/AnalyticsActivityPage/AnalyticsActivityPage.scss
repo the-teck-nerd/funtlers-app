@@ -21,24 +21,7 @@
             th {
                 padding: 8px 0;
 
-                &:first-child {
-                    width: 110px;
-                }
-
-                &:nth-child(3) {
-                    width: 170px;
-                }
-
-                &:nth-child(4) {
-                    width: 130px;
-                }
-
-                &:nth-child(5),
-                &:nth-child(6),
-                &:last-child {
-                    width: 140px;
-                }
-
+                
                 &:not(:last-child) {
                     .header_text {
                         border-right: 1px solid $Black-25;

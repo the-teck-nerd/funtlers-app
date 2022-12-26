@@ -86,7 +86,7 @@ function App() {
                   <Route
                     path="/"
                     exact={true}
-                    element={<ActivityPage setIsLoading={setIsLoading} />}
+                    element={<PartnerActivities setIsLoading={setIsLoading} />}
                   />
 
                   <Route

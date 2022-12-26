@@ -9,13 +9,10 @@ import Select from "../../components/Select/Select";
 import { useLocation, useNavigate } from "react-router-dom";
 import FetchService from "../../api/FetchService";
 import { isLoggedIn } from "./../../api/NewLoginService";
-import DialogueBox from "./../../components/DialogueBox/DialogueBox";
 
 function ProfilePage() {
   const [users, setUsers] = useState([]);
   const [userObject, setLoginUser] = useState(isLoggedIn());
-  const [showConfirmDialogue, setConfirmDialogue] = useState(false);
-
   useEffect(() => {
     // navigate(0);
   }, [userObject]);
@@ -28,7 +25,10 @@ function ProfilePage() {
       setUsers(data.filter((obj) => obj.email != userObject.user.email));
     });
 
-  function UpdateUser(user) {
+  const UpdateAdmin = async (user) => {
+    
+    user.userTypeId = 2;
+
     FetchService.UpdateUserType(user).then((response) => {
       FetchService.GetUsers()
         .then((response) => {
@@ -38,47 +38,24 @@ function ProfilePage() {
           setUsers(data.filter((obj) => obj.email != userObject.user.email));
         });
     });
-  }
+  };
 
-  function UpdateAdmin(user) {
-    user.userTypeId = 2;
-
-    return (
-      <DialogueBox
-        title={"Confirm Change"}
-        onConfirm={UpdateUser}
-        onConfirmState={user}
-        confirmText={"Update"}
-        cancelText={"Cancel"}
-        open={true}
-        setOpen={setConfirmDialogue}
-      >
-        Are you sure you want to change user role?{" "}
-      </DialogueBox>
-    );
-  }
-
-  function RemoveAdmin(user) {
+  const RemoveAdmin = async (user) => {
     user.userTypeId = 1;
-
-    return (
-      <DialogueBox
-        title={"Confirm Change"}
-        onConfirm={UpdateUser}
-        onConfirmState={user}
-        confirmText={"Update"}
-        cancelText={"Cancel"}
-        open={true}
-        setOpen={setConfirmDialogue}
-      >
-        Are you sure you want to change user role?{" "}
-      </DialogueBox>
-    );
-  }
+     FetchService.UpdateUserType(user).then((response) => {
+      FetchService.GetUsers()
+        .then((response) => {
+          return response.data;
+        })
+        .then((data) => {
+          setUsers(data.filter((obj) => obj.email != userObject.user.email));
+        });
+    });
+  };
 
   const location = useLocation();
   const user = location?.state;
-
+  
   return (
     <div className="profile_page_main">
       <div className="profile_img_content_main">

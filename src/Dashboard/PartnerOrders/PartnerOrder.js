@@ -19,7 +19,7 @@ function PartnerOrderPage() {
   //If this page is called from admin, view partner order, it will have partner id in uselocation state
   //but if this page is openend from partner side, the partner id will be in isLoggedIn user object
 
-  let partnerId = useLocation()?.state?.id ?? userObject.user.id;
+  let partnerId = useLocation()?.state?.id ?? userObject[0].user.id;
 
   const fetchData = () => {
     FetchService.GetOrderByPartnerId(partnerId, "partner").then((data) => {

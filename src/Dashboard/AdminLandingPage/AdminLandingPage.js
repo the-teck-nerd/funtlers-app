@@ -62,21 +62,21 @@ function AdminLandingPage() {
           <h2 className="text-center m-5">Summary</h2>
           <ThemeBtn
             onClick={() => {
-              navigate("/activity-page");
+              navigate("/order");
             }}
             BtnClass="Theme_btn_primary "
             BtnText="SALES HISTORY"
           />
           <ThemeBtn
             onClick={() => {
-              navigate("/add-partner");
+              alert("No unique codes found")
             }}
             BtnClass="Theme_btn_primary "
             BtnText="UNIQUE CODES"
           />
           <ThemeBtn
             onClick={() => {
-              navigate("/add-partner");
+             alert("No Google Analytics embedded")
             }}
             BtnClass="Theme_btn_primary "
             BtnText="VISITOR DATA"

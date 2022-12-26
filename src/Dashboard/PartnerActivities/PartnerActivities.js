@@ -10,6 +10,7 @@ import InnerHeader from "../../components/InnerHeader/InnerHeader";
 import Input from "../../components/Input/Input";
 
 function PartnerActivities() {
+  
   const partner = useLocation()?.state;
 
   const [activities, setActivities] = useState([]);
