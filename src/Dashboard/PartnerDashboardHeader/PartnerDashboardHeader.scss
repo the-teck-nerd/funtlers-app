@@ -1,0 +1,19 @@
+.circle {
+    display: inline-block;
+      background-color: orangered;
+      border-radius: 50%;
+  }
+  
+  .circle-inner {
+    color: white;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+    height: 38px;
+    width: 38px;
+    font-size: 25px;
+    background-color: #fc9765;
+    border-radius: 50%;
+
+  }

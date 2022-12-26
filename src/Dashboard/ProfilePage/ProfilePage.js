@@ -13,19 +13,25 @@ import { isLoggedIn } from "./../../api/NewLoginService";
 function ProfilePage() {
   const [users, setUsers] = useState([]);
   const [userObject, setLoginUser] = useState(isLoggedIn());
-  useEffect(() => {
-    // navigate(0);
-  }, [userObject]);
-  let apicall = FetchService.GetUsers();
-  apicall
-    .then((response) => {
-      return response.data;
-    })
-    .then((data) => {
-      setUsers(data.filter((obj) => obj.email != userObject.user.email));
-    });
+  const navigate = useNavigate();
 
-  const UpdateAdmin = async (user) => {
+  useEffect(() => {
+
+      let apicall = FetchService.GetUsers();
+      apicall
+      .then((response) => {
+          return response.data;
+      })
+      .then((data) => {
+          setUsers(data.filter((obj) => obj.email != userObject.user.email));
+      });
+
+  
+  }, []);
+
+  
+
+  function UpdateAdmin (user)  {
     
     user.userTypeId = 2;
 
@@ -40,7 +46,7 @@ function ProfilePage() {
     });
   };
 
-  const RemoveAdmin = async (user) => {
+  function RemoveAdmin  (user) {
     user.userTypeId = 1;
      FetchService.UpdateUserType(user).then((response) => {
       FetchService.GetUsers()
@@ -53,19 +59,21 @@ function ProfilePage() {
     });
   };
 
-  const location = useLocation();
-  const user = location?.state;
+
   
+
+
   return (
     <div className="profile_page_main">
       <div className="profile_img_content_main">
         <div className="img_content_otr">
           <div className="img_otr">
-            <img className="profile_img" src={ProfileImg} alt="img" />
-          </div>
+          <div class="circle2">
+              <p class="circle2-inner">{userObject?.user?.firstName[0]}</p>
+            </div>             </div>
           <div className="content_otr">
             <h3 className="user_name heading-h3">
-              {user.firstName} {user.lastName}
+              {userObject.user.firstName} {userObject.user.lastName}
             </h3>
             <p className="designation_text heading-s">Owner & Founder</p>
             <div className="location_otr">
@@ -74,7 +82,8 @@ function ProfilePage() {
             </div>
           </div>
         </div>
-        <Link to="/profile-edit" className="edit_btn_otr">
+        <Link  to="/profile-edit" 
+           className="edit_btn_otr">
           <i class="ri-edit-fill btn_icon"></i>
           <p className="btn_text heading-xsb">Edit Profile</p>
         </Link>
@@ -89,7 +98,7 @@ function ProfilePage() {
                 InputClass="Theme_input_white form_input input_disable"
                 Inputype="fullname"
                 InputName="fullname"
-                InputPlaceholder={user.firstName + " " + user.lastName}
+                InputPlaceholder={userObject.user.firstName + " " + userObject.user.lastName}
               />
             </li>
             <li className="info_li">
@@ -98,7 +107,7 @@ function ProfilePage() {
                 InputClass="Theme_input_white form_input input_disable"
                 Inputype="number"
                 InputName="number"
-                InputPlaceholder={user.phone}
+                InputPlaceholder={userObject.user.phone}
               />
             </li>
             <li className="info_li">
@@ -107,7 +116,7 @@ function ProfilePage() {
                 InputClass="Theme_input_white form_input input_disable"
                 Inputype="email"
                 InputName="email"
-                InputPlaceholder={user.email}
+                InputPlaceholder={userObject.user.email}
               />
             </li>
             <li className="info_li">
@@ -116,7 +125,7 @@ function ProfilePage() {
                 InputClass="Theme_input_white form_input input_disable"
                 Inputype="address"
                 InputName="address"
-                InputPlaceholder={user.address}
+                InputPlaceholder={userObject.user.address}
               />
             </li>
           </ul>
