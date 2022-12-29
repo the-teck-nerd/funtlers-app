@@ -11,75 +11,75 @@ function AdminLandingPage() {
       <h1 className="text-center ">Admin Dashboard</h1>
       <div className="body-landing">
         <div className="item-landing">
-          <h2 className="text-center m-5">Partners</h2>
+          <h2 className="text-center m-5">Partnere</h2>
           <ThemeBtn
             onClick={() => {
               navigate("/add-partner");
             }}
             BtnClass="Theme_btn_primary "
-            BtnText="ADD NEW"
+            BtnText="Legg til"
           />
           <ThemeBtn
             onClick={() => {
               navigate("/partner-dashboard");
             }}
             BtnClass="Theme_btn_primary "
-            BtnText="EDIT EXISTING"
+            BtnText="Rediger"
           />
           <ThemeBtn
             onClick={() => {
               navigate("/partner-dashboard");
             }}
             BtnClass="Theme_btn_primary "
-            BtnText="SEE ALL"
+            BtnText="Se alle"
           />
         </div>
         <div className="item-landing">
-          <h2 className="text-center m-5 ">Activities</h2>
+          <h2 className="text-center m-5 ">Aktiviteter</h2>
           <ThemeBtn
             onClick={() => {
               navigate("/add-activity");
             }}
             BtnClass="Theme_btn_primary "
-            BtnText="ADD NEW"
+            BtnText="Legg til"
           />
           <ThemeBtn
             onClick={() => {
               navigate("/activity-page");
             }}
             BtnClass="Theme_btn_primary "
-            BtnText="EDIT EXISTING"
+            BtnText="Rediger"
           />
           <ThemeBtn
             onClick={() => {
               navigate("/activity-page");
             }}
             BtnClass="Theme_btn_primary "
-            BtnText="SEE ALL"
+            BtnText="Se alle"
           />
         </div>
         <div className="item-landing">
-          <h2 className="text-center m-5">Summary</h2>
+          <h2 className="text-center m-5">Sammendrag</h2>
           <ThemeBtn
             onClick={() => {
               navigate("/order");
             }}
             BtnClass="Theme_btn_primary "
-            BtnText="SALES HISTORY"
+            BtnText="Salg historikk"
           />
           <ThemeBtn
             onClick={() => {
-              alert("No unique codes found")
+              alert("No unique codes found");
             }}
             BtnClass="Theme_btn_primary "
-            BtnText="UNIQUE CODES"
+            BtnText="Unike koder"
           />
           <ThemeBtn
             onClick={() => {
-             alert("No Google Analytics embedded")
+              alert("No Google Analytics embedded");
             }}
             BtnClass="Theme_btn_primary "
-            BtnText="VISITOR DATA"
+            BtnText="Besøksdata"
           />
         </div>
       </div>

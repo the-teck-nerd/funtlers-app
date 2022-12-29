@@ -20,7 +20,6 @@ let partnerRequest = {
 function EditPartner() {
   const location = useLocation();
   const partner = location.state;
- 
 
   const [name, setName] = useState(partner.name);
   const [address, setAddress] = useState(partner.address);
@@ -39,9 +38,8 @@ function EditPartner() {
     partnerRequest.city = city;
     partnerRequest.zip = zip;
     partnerRequest.id = partner.id;
-    partnerRequest.email=email;
-    partnerRequest.phone=phone;
- 
+    partnerRequest.email = email;
+    partnerRequest.phone = phone;
 
     FetchService.UpdatePartner(partnerRequest).then((response) => {
       if (response) {
@@ -69,19 +67,17 @@ function EditPartner() {
           <div className="row w-100">
             <div className="px-2 col_form_otr">
               <div className="col_form_inr">
-                <h3 className="heading-h3 form_heading">Update Partner</h3>
-                {response === "Failed" && (
+                <h3 className="heading-h3 form_heading">Rediger partner</h3>
+                {response === "" && (
                   <div className="error_message">
                     {
-                      "Error: Failed to update partner data. Please try again"
+                      "Feil: Kunne ikke oppdatere partnerdata. Vær så snill, prøv på nytt"
                     }
                   </div>
                 )}
-                {response === "Success" && (
+                {response === "" && (
                   <div className="success_message">
-                    {
-                      "Partner Data Update Successfully"
-                    }
+                    {"Partneren er oppdatert"}
                   </div>
                 )}
 
@@ -91,7 +87,7 @@ function EditPartner() {
                       InputClass="Theme_input_white form_input"
                       Inputype="text"
                       InputName="name"
-                      label="Name"
+                      label="Navn"
                       value={name}
                       onChange={(event) => setName(event.target.value)}
                     />
@@ -102,7 +98,7 @@ function EditPartner() {
                       InputClass="Theme_input_white form_input"
                       Inputype="text"
                       InputName="address"
-                      label="Address"
+                      label="Adresse"
                       value={address}
                       onChange={(event) => setAddress(event.target.value)}
                     />
@@ -113,7 +109,7 @@ function EditPartner() {
                       InputClass="Theme_input_white form_input"
                       Inputype="text"
                       InputName="city"
-                      label="City"
+                      label="By"
                       value={city}
                       onChange={(event) => setCity(event.target.value)}
                     />
@@ -124,7 +120,7 @@ function EditPartner() {
                       InputClass="Theme_input_white form_input"
                       Inputype="text"
                       InputName="zip"
-                      label="Zip"
+                      label="Postkode"
                       value={zip}
                       onChange={(event) => setZip(event.target.value)}
                     />
@@ -144,7 +140,7 @@ function EditPartner() {
                       InputClass="Theme_input_white form_input"
                       Inputype="number"
                       InputName="phone"
-                      label="Phone"
+                      label="Telefon"
                       value={phone}
                       onChange={(event) => setPhone(event.target.value)}
                     />
@@ -155,7 +151,7 @@ function EditPartner() {
                       type="submit"
                       className="Theme_btn_primary form_btn"
                     >
-                      Update Partner
+                      Oppdatert partner
                     </button>
                   </div>
                 </form>

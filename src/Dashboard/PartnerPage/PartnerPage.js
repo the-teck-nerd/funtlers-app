@@ -8,7 +8,7 @@ import "./PartnerPage.scss";
 
 import ThemeBtn from "../../components/ThemeBtn/ThemeBtn";
 
-function PartnerPage({setIsLoading}) {
+function PartnerPage({ setIsLoading }) {
   const navigate = useNavigate();
   const [partners, setPartners] = useState([]);
   const [filteredPartners, setFilteredPartners] = useState([]);
@@ -33,7 +33,6 @@ function PartnerPage({setIsLoading}) {
   useEffect(() => {
     setIsLoading(true);
     fetchData();
-
   }, []);
 
   useEffect(() => {
@@ -61,14 +60,14 @@ function PartnerPage({setIsLoading}) {
               InputClass="Theme_input_white search_input"
               Inputype="search"
               InputName="search"
-              InputPlaceholder="Search by Id or name"
+              InputPlaceholder="SØK"
               value={search}
               onChange={(event) => setSearch(event.target.value)}
             />
           </div>
           <ThemeBtn
             BtnClass="Theme_btn_primary"
-            BtnText="Add Partner"
+            BtnText="Legg til parter"
             onClick={() => {
               navigate("/add-partner");
             }}
@@ -84,20 +83,20 @@ function PartnerPage({setIsLoading}) {
                   <p className="heading-xsb header_text">Partner ID</p>
                 </th>
                 <th>
-                  <p className="heading-xsb header_text">Name</p>
+                  <p className="heading-xsb header_text">Navn</p>
                 </th>
                 <th>
                   <p className="heading-xsb header_text">Email</p>
                 </th>
                 <th>
-                  <p className="heading-xsb header_text">Phone</p>
+                  <p className="heading-xsb header_text">Telefon</p>
                 </th>
                 <th>
-                  <p className="heading-xsb header_text">City</p>
+                  <p className="heading-xsb header_text">By</p>
                 </th>
 
                 <th>
-                  <p className="heading-xsb header_text">Partner Since</p>
+                  <p className="heading-xsb header_text">Partner side</p>
                 </th>
                 <th>
                   <p className="heading-xsb header_text">Action</p>
@@ -133,21 +132,21 @@ function PartnerPage({setIsLoading}) {
                     <div className="action_otr">
                       <ThemeBtn
                         BtnClass="Theme_btn_primary partner-page-button activity"
-                        BtnText="Activities"
+                        BtnText="Aktiviteter"
                         onClick={() => {
                           navigate("/partner-activities", { state: partner });
                         }}
                       />
                       <ThemeBtn
                         BtnClass="Theme_btn_primary partner-page-button order"
-                        BtnText="Orders"
+                        BtnText="Ordre"
                         onClick={() => {
                           navigate("/partner-orders", { state: partner });
                         }}
                       />
                       <ThemeBtn
                         BtnClass="Theme_btn_primary partner-page-button edit"
-                        BtnText="Edit"
+                        BtnText="Rediger"
                         onClick={() => {
                           navigate("/edit-partner", { state: partner });
                         }}

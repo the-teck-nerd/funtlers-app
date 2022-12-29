@@ -27,7 +27,7 @@ function OrderPage({ setIsLoading }) {
   return (
     <div className="order_page_main">
       <div className="heading_filter_otr">
-        <p className="heading_activity heading-lb">Order</p>
+        <p className="heading_activity heading-lb">Ordre</p>
         <div className="filter_main">
           <p className="sort_text heading-xs">Sort By:</p>
           <Select />
@@ -38,25 +38,25 @@ function OrderPage({ setIsLoading }) {
           <thead className="table_header">
             <tr>
               <th>
-                <p className="heading-xsb header_text">Order No</p>
+                <p className="heading-xsb header_text">Ordre Nummer</p>
               </th>
               <th>
-                <p className="heading-xsb header_text">Customer Name</p>
+                <p className="heading-xsb header_text">Kundenavn</p>
               </th>
               <th>
-                <p className="heading-xsb header_text">Partner Name</p>
+                <p className="heading-xsb header_text">Partner</p>
               </th>
               <th>
-                <p className="heading-xsb header_text">Code</p>
+                <p className="heading-xsb header_text">Kode</p>
               </th>
               <th>
-                <p className="heading-xsb header_text">Activity Name</p>
+                <p className="heading-xsb header_text">Aktivitet</p>
               </th>
               <th>
-                <p className="heading-xsb header_text">City</p>
+                <p className="heading-xsb header_text">By</p>
               </th>
               <th>
-                <p className="heading-xsb header_text">Price</p>
+                <p className="heading-xsb header_text">Pris</p>
               </th>
               <th>
                 <p className="heading-xsb header_text">Action</p>

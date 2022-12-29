@@ -90,7 +90,7 @@ export function ImageUploader({
               onClick={onImageUpload}
               className="form_btn Theme_btn_primary"
             >
-              {editMode ? "Change" : "Upload"}
+              {editMode ? "Change" : "Rediger bilde"}
             </button>
 
             {/* <button className="Theme_btn_primary" onClick={onImageRemoveAll}>
