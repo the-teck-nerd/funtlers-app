@@ -52,7 +52,7 @@ function AddActivity() {
 
   const [minPerson, setMinPerson] = useState(0);
   const [maxPerson, setMaxPerson] = useState(0);
-  const [category, setCategory] = useState("vennegjeng");
+  const [category, setCategory] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const [response, setResponse] = useState("");
@@ -140,13 +140,13 @@ function AddActivity() {
                   {response === "Failed" && (
                     <div className="error_message">
                       {
-                        "Error: System was not able to save the activity. Please try again."
+                        "Feil: Systemet kunne ikke lagre aktiviteten. Vær så snill, prøv på nytt."
                       }
                     </div>
                   )}
                   {response === "Success" && (
                     <div className="success_message">
-                      {"Activity has been added successfully."}
+                      {"Aktiviteten er lagt til."}
                     </div>
                   )}
 
@@ -343,7 +343,7 @@ function AddActivity() {
                             </p>
                             <br />
                             <p>
-                              <b>Partner Name: </b> {partnerName}
+                              <b>Partnernavn: </b> {partnerName}
                             </p>
                           </div>
                           <div className="Input_otr action_otr">
@@ -351,7 +351,7 @@ function AddActivity() {
                               type="submit"
                               className="Theme_btn_primary form_btn"
                             >
-                              Add Activity
+                              Legg til aktivitet
                             </button>
                           </div>
                         </>
