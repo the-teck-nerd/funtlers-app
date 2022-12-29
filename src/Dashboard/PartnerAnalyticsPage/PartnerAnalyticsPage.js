@@ -11,15 +11,13 @@ function PartnerAnalyticsPage({ setIsLoading }) {
   const [filteredActivities, setFilteredActivities] = useState([]);
 
   const fetchData = () => {
-    
     FetchService.GetAnalyticsById(userObject.user.id).then((data) => {
       setFilteredPartners(data.data[0]);
-     
     });
 
     FetchService.GetAnalyticsActivity().then((data) => {
       setFilteredActivities(data.data);
-       setTimeout(() => {
+      setTimeout(() => {
         setIsLoading(false);
       }, 1000);
       //Todo: filter these activities based on the currently logged in partner
@@ -42,7 +40,7 @@ function PartnerAnalyticsPage({ setIsLoading }) {
             <AnalyticsCard
               CardIcon="ri-money-dollar-circle-fill"
               CardHeading={filteredPartners.TotalEarning}
-              CardName="Total Earning"
+              CardName="Total inntekt"
               PercentText=""
               TextColor="green_text"
             />
@@ -52,7 +50,7 @@ function PartnerAnalyticsPage({ setIsLoading }) {
             <AnalyticsCard
               CardIcon="ri-shopping-bag-fill"
               CardHeading={filteredPartners.Orders}
-              CardName="Orders"
+              CardName="Ordre"
               PercentText=""
               TextColor="green_text"
             />
@@ -61,7 +59,7 @@ function PartnerAnalyticsPage({ setIsLoading }) {
             <AnalyticsCard
               CardIcon="ri-user-fill"
               CardHeading={filteredPartners.Customers}
-              CardName="Customers"
+              CardName="Kunder"
               PercentText=""
               TextColor="red_text"
             />
@@ -70,7 +68,7 @@ function PartnerAnalyticsPage({ setIsLoading }) {
             <AnalyticsCard
               CardIcon="ri-file-list-fill"
               CardHeading={filteredPartners.ActivityActive}
-              CardName="Active Activities"
+              CardName="Aktive aktiviteter"
               PercentText=""
               TextColor="green_text"
             />
@@ -79,7 +77,7 @@ function PartnerAnalyticsPage({ setIsLoading }) {
             <AnalyticsCard
               CardIcon="ri-shopping-bag-fill"
               CardHeading={filteredPartners.ActivitySold}
-              CardName="Activity Sold"
+              CardName="Aktiviteter solgt"
               PercentText=""
               TextColor="red_text"
             />
