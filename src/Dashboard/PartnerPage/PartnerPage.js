@@ -47,7 +47,7 @@ function PartnerPage({ setIsLoading }) {
   return (
     <div className="partner_page_main partner_page_main_da">
       <div className="heading_filter_otr">
-        <p className="heading_activity heading-lb">Partners</p>
+        <p className="heading_activity heading-lb">Partnere</p>
         <div className="filter_search_otr">
           {/* Todo: implement filter by solution */}
           {/* <div className="filter_main">
