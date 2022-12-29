@@ -18,6 +18,7 @@ import "swiper/css/effect-fade";
 import "swiper/css/pagination";
 import Form from "react-bootstrap/Form";
 import "./EditActivity.scss";
+import AttachActivity from "../AttachActivity/AttachActivity";
 
 let activityRequest = {
   id: 0,
@@ -42,6 +43,8 @@ function EditActivity() {
   const location = useLocation();
   const activity = location.state;
 
+  debugger;
+
   const [showImagePreview, setShowImagePreview] = useState(false);
   const [name, setName] = useState(activity.name);
   const [type, setType] = useState(activity.activityType);
@@ -65,6 +68,10 @@ function EditActivity() {
   const [maxPerson, setMaxPerson] = useState(activity.maxPerson);
   const [category, setCategory] = useState(activity.category);
   const [isLoading, setIsLoading] = useState(false);
+
+  const [showPopup, setShowPopup] = useState(false);
+  const [partnerId, setPartnerId] = useState(activity?.ownerID);
+  const [partnerName, setPartnerName] = useState(activity?.partnerName);
 
   const [response, setResponse] = useState("");
 
@@ -92,6 +99,8 @@ function EditActivity() {
     activityRequest.category = category;
     activityRequest.activityType = type;
     activityRequest.discountPercent = 100 - (price / originalPrice) * 100;
+
+    activityRequest.ownerID = partnerId;
 
     activityRequest.images = images.map((x) => x.data_url);
 
@@ -142,17 +151,19 @@ function EditActivity() {
             <div className="row row_custom">
               <div className="col_form_otr">
                 <div className="col_form_inr">
-                  <h3 className="heading-h3 form_heading">Update activity</h3>
+                  <h3 className="heading-h3 form_heading">
+                    Oppdater aktivitet
+                  </h3>
                   {response === "Failed" && (
                     <div className="error_message">
                       {
-                        "Error: System was not able to save the activity. Please try again."
+                        "Feil: Systemet kunne ikke lagre aktiviteten. Vær så snill, prøv på nytt."
                       }
                     </div>
                   )}
                   {response === "Success" && (
                     <div className="success_message">
-                      {"Activity has been updated successfully."}
+                      {"Aktiviteten er oppdatert."}
                     </div>
                   )}
 
@@ -163,13 +174,13 @@ function EditActivity() {
                           InputClass="Theme_input_white form_input"
                           Inputype="text"
                           InputName="name"
-                          label="Activity Name"
+                          label="Aktivitetsnavn"
                           value={name}
                           onChange={(event) => setName(event.target.value)}
                         />
                       </div>
                       <div className="Input_otr">
-                        {"Categories"}
+                        {"Kategori"}
                         <Form.Select
                           className="Theme_input_white form_input"
                           aria-label="Default select example"
@@ -184,7 +195,7 @@ function EditActivity() {
                         </Form.Select>
                       </div>
                       <div className="Input_otr">
-                        {"City"}
+                        {"By"}
                         <Form.Select
                           className="Theme_input_white form_input"
                           aria-label="Default select example"
@@ -199,7 +210,7 @@ function EditActivity() {
                         </Form.Select>
                       </div>
                       <div className="Input_otr">
-                        {"Activity Type"}
+                        {"Aktivitetstype"}
                         <Form.Select
                           className="Theme_input_white form_input"
                           aria-label="Default select example"
@@ -220,7 +231,7 @@ function EditActivity() {
                             InputClass="Theme_input_white form_input"
                             Inputype="number"
                             InputName="number"
-                            label="Price"
+                            label="Pris"
                             value={price}
                             onChange={(event) => setPrice(event.target.value)}
                           />
@@ -230,7 +241,7 @@ function EditActivity() {
                             InputClass="Theme_input_white form_input"
                             Inputype="number"
                             InputName="number"
-                            label="Original Price"
+                            label="Orginalpris"
                             value={originalPrice}
                             onChange={(event) =>
                               setOriginalPrice(event.target.value)
@@ -289,7 +300,7 @@ function EditActivity() {
                           InputClass="Theme_input_white form_input"
                           Inputype="number"
                           InputName="number"
-                          label="Minimum Person"
+                          label="Minimumspersoner"
                           value={minPerson}
                           onChange={(event) => setMinPerson(event.target.value)}
                         />
@@ -299,7 +310,7 @@ function EditActivity() {
                           InputClass="Theme_input_white form_input"
                           Inputype="number"
                           InputName="number"
-                          label="Maximum Person"
+                          label="Maksimumspersoner"
                           value={maxPerson}
                           onChange={(event) => setMaxPerson(event.target.value)}
                         />
@@ -312,7 +323,7 @@ function EditActivity() {
                           InputClass="Theme_input_white form_input"
                           Inputype="date"
                           InputName="number"
-                          label="Valid from"
+                          label="Gyldig fra"
                           value={validPeriodStart}
                           onChange={(event) =>
                             setValidPeriodStart(event.target.value)
@@ -324,7 +335,7 @@ function EditActivity() {
                           InputClass="Theme_input_white form_input"
                           Inputype="date"
                           InputName="number"
-                          label="Valid Til"
+                          label="Gyldig Til"
                           value={validPeriodEnd}
                           onChange={(event) =>
                             setValidPeriodEnd(event.target.value)
@@ -336,7 +347,7 @@ function EditActivity() {
                           InputClass="Theme_input_white form_input"
                           Inputype="date"
                           InputName="number"
-                          label="Live Date"
+                          label="Live fra"
                           value={liveDate}
                           onChange={(event) => setLiveDate(event.target.value)}
                         />
@@ -348,7 +359,7 @@ function EditActivity() {
                         InputClass="Theme_input_white form_input description"
                         Inputype="text"
                         InputName="description"
-                        label="Description"
+                        label="Beskrivelse"
                         value={description}
                         onChange={(event) => setDescription(event.target.value)}
                       />
@@ -358,10 +369,34 @@ function EditActivity() {
                         InputClass="Theme_input_white form_input description"
                         Inputype="text"
                         InputName="terms"
-                        label="Terms and Conditions"
+                        label="Vilkår"
                         value={terms}
                         onChange={(event) => setTerms(event.target.value)}
                       />
+                    </div>
+
+                    <div className="change-partner">
+                      {/* Add activity button if the partner is not attached. */}
+                      {partnerId !== 0 && (
+                        <div className="Input_otr">
+                          <p>
+                            <b>Partner Id: </b> {partnerId}
+                          </p>
+                          <br />
+                          <p>
+                            <b>Partnernavn: </b> {partnerName}
+                          </p>
+                        </div>
+                      )}
+                      <button
+                        type="button"
+                        className="Theme_btn_primary h-50 bg-danger mt-2"
+                        onClick={() => {
+                          setShowPopup(true);
+                        }}
+                      >
+                        Bytte partner
+                      </button>
                     </div>
 
                     <div className="Input_otr action_otr">
@@ -369,7 +404,7 @@ function EditActivity() {
                         type="submit"
                         className="Theme_btn_primary form_btn"
                       >
-                        Update Activity
+                        Oppdater aktivitet
                       </button>
                     </div>
                   </form>
@@ -378,6 +413,18 @@ function EditActivity() {
             </div>
           </div>
         </section>
+
+        {showPopup && (
+          <div className="backdrop">
+            <div className="backdrop-container">
+              <AttachActivity
+                setShowPopup={setShowPopup}
+                setPartnerID={setPartnerId}
+                setPartnerName={setPartnerName}
+              />
+            </div>
+          </div>
+        )}
       </div>
     </LoadingOverlay>
   );
