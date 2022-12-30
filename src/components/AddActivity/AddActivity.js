@@ -52,7 +52,7 @@ function AddActivity() {
 
   const [minPerson, setMinPerson] = useState(0);
   const [maxPerson, setMaxPerson] = useState(0);
-  const [category, setCategory] = useState("vennegjeng");
+  const [category, setCategory] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const [response, setResponse] = useState("");
@@ -129,25 +129,24 @@ function AddActivity() {
         <InnerHeader HeaderHeading="Activity" PageText="Add Activity" />
      */}
 
-        <section className="add_activity_main">
-          <InnerHeader HeaderHeading="Add Activity" PageText="Add Activity" />
+        <section className="">
           <div className="container">
             <div className="row_custom">
               <div className="col_form_otr">
                 <div className="col_form_inr">
                   <h3 className="heading-h3 form_heading">
-                    Add a new activity
+                    Legg til aktivitiet
                   </h3>
                   {response === "Failed" && (
                     <div className="error_message">
                       {
-                        "Error: System was not able to save the activity. Please try again."
+                        "Feil: Systemet kunne ikke lagre aktiviteten. Vær så snill, prøv på nytt."
                       }
                     </div>
                   )}
                   {response === "Success" && (
                     <div className="success_message">
-                      {"Activity has been added successfully."}
+                      {"Aktiviteten er lagt til."}
                     </div>
                   )}
 
@@ -160,13 +159,13 @@ function AddActivity() {
                               InputClass="Theme_input_white form_input"
                               Inputype="text"
                               InputName="name"
-                              label="Activity Name"
+                              label="Aktivitetsnavn"
                               value={name}
                               onChange={(event) => setName(event.target.value)}
                             />
                           </div>
                           <div className="Input_otr">
-                            {"Categories"}
+                            {"Kategori"}
                             <Form.Select
                               className="Theme_input_white form_input"
                               aria-label="Default select example"
@@ -183,7 +182,7 @@ function AddActivity() {
                             </Form.Select>
                           </div>
                           <div className="Input_otr">
-                            {"City"}
+                            {"By"}
                             <Form.Select
                               className="Theme_input_white form_input"
                               aria-label="Default select example"
@@ -200,7 +199,7 @@ function AddActivity() {
                             </Form.Select>
                           </div>
                           <div className="Input_otr">
-                            {"Activity Type"}
+                            {"Aktivitetstype"}
                             <Form.Select
                               className="Theme_input_white form_input"
                               aria-label="Default select example"
@@ -222,7 +221,7 @@ function AddActivity() {
                                 InputClass="Theme_input_white form_input"
                                 Inputype="number"
                                 InputName="number"
-                                label="Price"
+                                label="Pris"
                                 value={price}
                                 onChange={(event) =>
                                   setPrice(event.target.value)
@@ -234,7 +233,7 @@ function AddActivity() {
                                 InputClass="Theme_input_white form_input"
                                 Inputype="number"
                                 InputName="number"
-                                label="Original Price"
+                                label="Orginalpris"
                                 value={originalPrice}
                                 onChange={(event) =>
                                   setOriginalPrice(event.target.value)
@@ -259,7 +258,7 @@ function AddActivity() {
                           InputClass="Theme_input_white form_input"
                           Inputype="number"
                           InputName="number"
-                          label="Minimum Person"
+                          label="Minimumspersoner"
                           value={minPerson}
                           onChange={(event) => setMinPerson(event.target.value)}
                         />
@@ -269,7 +268,7 @@ function AddActivity() {
                           InputClass="Theme_input_white form_input"
                           Inputype="number"
                           InputName="number"
-                          label="Maximum Person"
+                          label="Maksimumspersoner"
                           value={maxPerson}
                           onChange={(event) => setMaxPerson(event.target.value)}
                         />
@@ -282,7 +281,7 @@ function AddActivity() {
                           InputClass="Theme_input_white form_input"
                           Inputype="date"
                           InputName="number"
-                          label="Valid from"
+                          label="Gyldig fra"
                           value={validPeriodStart}
                           onChange={(event) =>
                             setValidPeriodStart(event.target.value)
@@ -294,7 +293,7 @@ function AddActivity() {
                           InputClass="Theme_input_white form_input"
                           Inputype="date"
                           InputName="number"
-                          label="Valid Til"
+                          label="Gyldig Til"
                           value={validPeriodEnd}
                           onChange={(event) =>
                             setValidPeriodEnd(event.target.value)
@@ -306,7 +305,7 @@ function AddActivity() {
                           InputClass="Theme_input_white form_input"
                           Inputype="date"
                           InputName="number"
-                          label="Live Date"
+                          label="Live fra"
                           value={liveDate}
                           onChange={(event) => setLiveDate(event.target.value)}
                         />
@@ -318,7 +317,7 @@ function AddActivity() {
                         InputClass="Theme_input_white form_input description"
                         Inputype="text"
                         InputName="description"
-                        label="Description"
+                        label="Beskrivelse"
                         value={description}
                         onChange={(event) => setDescription(event.target.value)}
                       />
@@ -328,7 +327,7 @@ function AddActivity() {
                         InputClass="Theme_input_white form_input description"
                         Inputype="text"
                         InputName="terms"
-                        label="Terms and Conditions"
+                        label="Vilkår"
                         value={terms}
                         onChange={(event) => setTerms(event.target.value)}
                       />
@@ -344,7 +343,7 @@ function AddActivity() {
                             </p>
                             <br />
                             <p>
-                              <b>Partner Name: </b> {partnerName}
+                              <b>Partnernavn: </b> {partnerName}
                             </p>
                           </div>
                           <div className="Input_otr action_otr">
@@ -352,7 +351,7 @@ function AddActivity() {
                               type="submit"
                               className="Theme_btn_primary form_btn"
                             >
-                              Add Activity
+                              Legg til aktivitet
                             </button>
                           </div>
                         </>
@@ -365,7 +364,7 @@ function AddActivity() {
                             setShowPopup(true);
                           }}
                         >
-                          Attach Partner
+                          Knytt til partner
                         </button>
                       )}
                     </div>

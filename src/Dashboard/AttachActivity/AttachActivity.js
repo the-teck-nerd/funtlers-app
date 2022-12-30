@@ -43,7 +43,7 @@ function AttachActivity({ setShowPopup, setPartnerID, setPartnerName }) {
   return (
     <div className="partner_page_main attach_activity">
       <div className="heading_filter_otr">
-        <p className="heading_activity heading-lb">Partners</p>
+        <p className="heading_activity heading-lb">Partnere</p>
         <div className="filter_search_otr">
           <div className="search_otr">
             <i class="ri-search-2-line search_icon"></i>

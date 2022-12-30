@@ -36,7 +36,7 @@ function AnalyticsPage({ setIsLoading }) {
             <AnalyticsCard
               CardIcon="ri-money-dollar-circle-fill"
               CardHeading={filteredPartners.TotalEarning}
-              CardName="Total Earning"
+              CardName="Total inntekt"
               PercentText=""
               TextColor="green_text"
             />
@@ -46,7 +46,7 @@ function AnalyticsPage({ setIsLoading }) {
             <AnalyticsCard
               CardIcon="ri-shopping-bag-fill"
               CardHeading={filteredPartners.Orders}
-              CardName="Orders"
+              CardName="Ordre"
               PercentText=""
               TextColor="green_text"
             />
@@ -55,7 +55,7 @@ function AnalyticsPage({ setIsLoading }) {
             <AnalyticsCard
               CardIcon="ri-user-fill"
               CardHeading={filteredPartners.Customers}
-              CardName="Customers"
+              CardName="Kunder"
               PercentText=""
               TextColor="red_text"
             />
@@ -64,7 +64,7 @@ function AnalyticsPage({ setIsLoading }) {
             <AnalyticsCard
               CardIcon="ri-file-list-fill"
               CardHeading={filteredPartners.ActivityActive}
-              CardName="Active Activities"
+              CardName="Aktive aktiviteter"
               PercentText=""
               TextColor="green_text"
             />
@@ -73,7 +73,7 @@ function AnalyticsPage({ setIsLoading }) {
             <AnalyticsCard
               CardIcon="ri-shopping-bag-fill"
               CardHeading={filteredPartners.ActivitySold}
-              CardName="Activity Sold"
+              CardName="Aktiviteter solgt"
               PercentText=""
               TextColor="red_text"
             />
@@ -82,7 +82,7 @@ function AnalyticsPage({ setIsLoading }) {
             <AnalyticsCard
               CardIcon="ri-wallet-fill"
               CardHeading={filteredPartners.Partners}
-              CardName="Partners"
+              CardName="Partnere"
               PercentText=""
               TextColor="black_text"
             />

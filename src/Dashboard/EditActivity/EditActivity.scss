@@ -1,6 +1,12 @@
 @import "../../common-style/variable.scss";
 
 
+.change-partner
+{
+  display: flex;
+  gap: 50px;
+}
+
 .error_message {
   border: 1px solid red;
   color: red;

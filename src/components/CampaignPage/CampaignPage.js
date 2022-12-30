@@ -66,6 +66,9 @@ function CampaignPage() {
               <div className="col_content_inr">
                 <div className="content">
                   <p className="heading-m campaign_text">
+                    {activity?.description}
+                  </p>
+                  {/* <p className="heading-m campaign_text">
                     Fangene på Fortet tilbyr 48 forskjellige celler med ulike
                     oppgaver man skal løse sammen som et lag.
                   </p>
@@ -87,7 +90,7 @@ function CampaignPage() {
                   <p className="heading-m campaign_text">
                     Vi anbefaler fra 3 – 5 deltakere per lag slik at man får
                     mest ut av opplevelsen, men det er også mulig å bare være 2.
-                  </p>
+                  </p> */}
                 </div>
                 <h3 className="heading-h3 heading_terms">Vilkår</h3>
                 <div className="content">
@@ -107,7 +110,9 @@ function CampaignPage() {
                       {formatDate(activity.validPeriodEnd)}
                     </b>
                   </p>
-                  <p className="heading-m campaign_text">
+                  <p className="heading-m campaign_text">{activity?.terms}</p>
+
+                  {/* <p className="heading-m campaign_text">
                     Bruk rabattkode ved booking
                   </p>
                   <p className="heading-m campaign_text">
@@ -117,24 +122,11 @@ function CampaignPage() {
                     Dealer som ikke brukes grunnet for sen booking, sykdom,
                     manglende oppmøte, avbestilling eller flytting mindre enn 24
                     timer før bestilt time, refunderes ikke
-                  </p>
+                  </p> */}
                 </div>
               </div>
               <br />
               <br />
-
-              <button
-                class="Theme_btn_primary"
-                onClick={() => {
-                  if (!userObject) {
-                    alert("Error: User not logged in");
-                  } else {
-                    BookActivity();
-                  }
-                }}
-              >
-                Book
-              </button>
             </div>
             <div className="col-lg-6 col_img_otr">
               <div className="col_img_inr">
@@ -181,7 +173,11 @@ function CampaignPage() {
                           activity.price * peopleNumber +
                           " NOK"}
                       </h3>
-                      <h3 className="text_heading heading-h3"></h3>
+                    </li>
+                    <li className="text_li">
+                      <h3 className="text_heading heading-h3">
+                        {"Prisen: " + activity.price + " NOK pr.pers"}
+                      </h3>
                     </li>
                     <li className="text_li">
                       <h3 className="text_heading heading-h3">
@@ -216,14 +212,28 @@ function CampaignPage() {
                       <h3 className="text_heading heading-h3">
                         {"Rabatt: " + activity.discountPercent + "%"}
                       </h3>
-                      </li>
-                      <li className="text_li">
-                  
+                    </li>
+                    <li className="text_li">
                       <h3 className="text_heading heading-h3">
                         {"Spart beløp: " +
                           (activity.originalPrice - activity.price) *
-                            peopleNumber + " NOK"}
+                            peopleNumber +
+                          " NOK"}
                       </h3>
+                    </li>
+                    <li className="text_li">
+                      <button
+                        class="Theme_btn_primary"
+                        onClick={() => {
+                          if (!userObject) {
+                            alert("Error: User not logged in");
+                          } else {
+                            BookActivity();
+                          }
+                        }}
+                      >
+                        Book
+                      </button>
                     </li>
                   </ul>
 

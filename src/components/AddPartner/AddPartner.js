@@ -81,23 +81,22 @@ function AddPartner() {
     >
       <div className="Register_page">
         <section className="add_partner_main">
-          <InnerHeader
-            HeaderHeading="Add Partner"
-            PageText="Add Partner"
-          />
+          <InnerHeader HeaderHeading="Add Partner" PageText="Add Partner" />
           <div className="container">
             <div className="row row_custom">
               <div className="col-lg-8 col_form_otr">
                 <div className="col_form_inr">
-                  <h3 className="heading-h3 form_heading">Add a new partner</h3>
+                  <h3 className="heading-h3 form_heading">
+                    Legg til ny partner
+                  </h3>
                   {response === "Failed" && (
                     <div className="error_message">
-                      {"Partner with this name already exists."}
+                      {"Feil: Partner ikke registrert. Prøv igjen."}
                     </div>
                   )}
                   {response === "Success" && (
                     <div className="success_message">
-                      {"Partner successfully registered!"}
+                      {"Partner registrert"}
                     </div>
                   )}
 
@@ -107,7 +106,7 @@ function AddPartner() {
                         InputClass="Theme_input_white form_input"
                         Inputype="text"
                         InputName="name"
-                        label="Name"
+                        label="Navn"
                         value={name}
                         onChange={(event) => setName(event.target.value)}
                       />
@@ -118,7 +117,7 @@ function AddPartner() {
                         InputClass="Theme_input_white form_input"
                         Inputype="text"
                         InputName="address"
-                        label="Address"
+                        label="Adresse"
                         value={address}
                         onChange={(event) => setAddress(event.target.value)}
                       />
@@ -129,7 +128,7 @@ function AddPartner() {
                         InputClass="Theme_input_white form_input"
                         Inputype="text"
                         InputName="city"
-                        label="City"
+                        label="By"
                         value={city}
                         onChange={(event) => setCity(event.target.value)}
                       />
@@ -140,7 +139,7 @@ function AddPartner() {
                         InputClass="Theme_input_white form_input"
                         Inputype="text"
                         InputName="zip"
-                        label="Zip code"
+                        label="Postkode"
                         value={zip}
                         onChange={(event) => setZip(event.target.value)}
                       />
@@ -160,7 +159,7 @@ function AddPartner() {
                         InputClass="Theme_input_white form_input"
                         Inputype="number"
                         InputName="phone"
-                        label="Phone number"
+                        label="Telefonnummer"
                         value={phone}
                         onChange={(event) => setPhone(event.target.value)}
                       />
@@ -171,7 +170,7 @@ function AddPartner() {
                         type="submit"
                         className="Theme_btn_primary form_btn"
                       >
-                        Add Partner
+                        Legg til
                       </button>
                     </div>
                   </form>

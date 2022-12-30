@@ -54,14 +54,14 @@ function ActivityPage({ setIsLoading }) {
               InputClass="Theme_input_white search_input"
               Inputype="search"
               InputName="search"
-              InputPlaceholder="Search"
+              InputPlaceholder="SØK"
               value={search}
               onChange={(event) => setSearch(event.target.value)}
             />
           </div>
           <ThemeBtn
             BtnClass="Theme_btn_primary"
-            BtnText="Add Activity"
+            BtnText="Legg til aktivitiet"
             onClick={() => {
               navigate("/add-activity");
             }}
