@@ -82,6 +82,8 @@ function EditActivity() {
 
     activityRequest.id = activity.id;
     activityRequest.ownerID = activity.ownerID;
+    activityRequest.stripePaymentID = activity.stripePaymentID;
+    activityRequest.stripeProductID = activity.stripeProductID;
     activityRequest.name = name;
     activityRequest.city = city;
     activityRequest.price = price;
@@ -102,7 +104,7 @@ function EditActivity() {
 
     activityRequest.ownerID = partnerId;
 
-    activityRequest.images = images.map((x) => x.data_url);
+    activityRequest.images = images?.map((x) => x.data_url);
 
     FetchService.UpdateActivity(activityRequest).then((response) => {
       if (response) {

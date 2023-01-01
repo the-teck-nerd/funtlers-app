@@ -1,8 +1,9 @@
-import React from "react";
+import {React,useEffect,useState} from "react";
 import InnerHeader from "../InnerHeader/InnerHeader";
 import SectionHeadingDesc from "../SectionHeadingDesc/SectionHeadingDesc";
 import { Link } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router-dom";
+import { isLoggedIn } from "../../api/NewLoginService";
 
 import "./BookingConPage.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -13,6 +14,8 @@ import "swiper/css/effect-fade";
 import "swiper/css/pagination";
 
 import ThemeBtn from "../ThemeBtn/ThemeBtn";
+import apiURL from './../../api/API-Url';
+import FetchService from "../../api/FetchService";
 
 const formatDate = (dateString) => {
   const options = { year: "numeric", month: "long", day: "numeric" };
@@ -32,6 +35,40 @@ function BookingConPage() {
   const peopleNumber = location.state?.peopleNumber;
   const user = location.state?.user;
   const activityImages = activity?.images ? JSON.parse(activity?.images) : [];
+  let search = window.location.search;
+  let params = new URLSearchParams(search);
+  var id = params.get('id');
+  const [userObject, setUser] = useState(isLoggedIn()?.user);
+
+
+   
+  useEffect(() => {
+    BookActivity();
+  }, []);
+
+  const BookActivity = async () => {
+    const bookActivity = {
+      activity: activity,
+      peopleNumber: peopleNumber,
+      user: userObject,
+    };
+
+    var request = {
+      userID: userObject.id,
+      totalAmount: activity.price * peopleNumber,
+      additionalDetails: "No details right now.",
+      address: activity.city,
+      quantity: peopleNumber,
+      activityId: activity.id,
+      StripeOrderID:id
+    };
+
+    var response = FetchService.BookAcitvity(request);
+
+    response.then((data) => {
+     
+    });
+  };
 
   return (
     <div className="BookingCon_Page">
@@ -148,13 +185,7 @@ function BookingConPage() {
                     </Link>
                   </li>
                 </ul> */}
-                {/* <Link className="action_otr">
-                  <ThemeBtn
-                    BtnClass="Theme_btn_primary del_btn"
-                    BtnText="Del"
-                    onClick={() => {}}
-                  />
-                </Link> */}
+               
               </div>
             </div>
           </div>

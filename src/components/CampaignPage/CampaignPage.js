@@ -8,6 +8,7 @@ import { isLoggedIn } from "../../api/NewLoginService";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Autoplay, Pagination } from "swiper";
+import apiURL from './../../api/API-Url';
 
 import "swiper/css";
 import "swiper/css/effect-fade";
@@ -222,7 +223,7 @@ function CampaignPage() {
                       </h3>
                     </li>
                     <li className="text_li">
-                      <button
+                      {/* <button
                         class="Theme_btn_primary"
                         onClick={() => {
                           if (!userObject) {
@@ -233,7 +234,27 @@ function CampaignPage() {
                         }}
                       >
                         Book
-                      </button>
+                      </button> */}
+
+                      <section>
+                        <form
+                          action={
+                            apiURL() +
+                            "create-checkout-session?PriceID=" +
+                            activity.stripePaymentID +
+                            "&Quantity=" +
+                            peopleNumber
+                          }
+                          method="POST"
+                        >
+                          <button
+                            class="Theme_btn_primary"
+                            type="submit"
+                          >
+                            Book
+                          </button>{" "}
+                        </form>
+                      </section>
                     </li>
                   </ul>
 
