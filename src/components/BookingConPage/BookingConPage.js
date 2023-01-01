@@ -16,6 +16,7 @@ import "swiper/css/pagination";
 import ThemeBtn from "../ThemeBtn/ThemeBtn";
 import apiURL from './../../api/API-Url';
 import FetchService from "../../api/FetchService";
+import { getBookingSession } from './../../api/NewLoginService';
 
 const formatDate = (dateString) => {
   const options = { year: "numeric", month: "long", day: "numeric" };
@@ -30,11 +31,12 @@ const formatTime = (dateString) => {
   });
 };
 function BookingConPage() {
-  const location = useLocation();
-  const activity = location.state?.activity;
-  const peopleNumber = location.state?.peopleNumber;
-  const user = location.state?.user;
-  const activityImages = activity?.images ? JSON.parse(activity?.images) : [];
+  debugger;
+  const location = getBookingSession();
+  const activity = location?.activity;
+  const peopleNumber = location?.peopleNumber;
+  const user = location?.user;
+  const activityImages = location?.images ? JSON.parse(location?.images) : [];
   let search = window.location.search;
   let params = new URLSearchParams(search);
   var id = params.get('id');

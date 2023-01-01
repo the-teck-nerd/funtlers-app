@@ -21,6 +21,7 @@ export function setUserSession(userObject) {
   sessionStorage.setItem("userObject", JSON.stringify(userObject));
 }
 
+
 export function isLoggedIn() {
   
   const userObject = sessionStorage.getItem("userObject");
@@ -36,4 +37,14 @@ export function register(user) {
   return FetchService.RegisterUser(user).then((response) => {
     return response.data ? "Success" : "Failed";
   });
+  
+}
+
+export function setBookingSession(userObject) {
+  sessionStorage.setItem("bookingSession", JSON.stringify(userObject));
+}
+
+export function getBookingSession() {
+  const userObject = sessionStorage.getItem("bookingSession");
+  return userObject? JSON.parse(userObject) : null;
 }
