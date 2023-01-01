@@ -31,7 +31,7 @@ const formatTime = (dateString) => {
   });
 };
 function BookingConPage() {
-  debugger;
+  
   const location = getBookingSession();
   const activity = location?.activity;
   const peopleNumber = location?.peopleNumber;

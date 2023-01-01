@@ -54,7 +54,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
 
   const [userObject, setUser] = useState(isLoggedIn());
-  debugger;
+  
   const navigate = useNavigate();
 
   useEffect(() => {

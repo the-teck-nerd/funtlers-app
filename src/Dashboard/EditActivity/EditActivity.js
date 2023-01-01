@@ -43,7 +43,7 @@ function EditActivity() {
   const location = useLocation();
   const activity = location.state;
 
-  debugger;
+  
 
   const [showImagePreview, setShowImagePreview] = useState(false);
   const [name, setName] = useState(activity.name);

@@ -43,7 +43,7 @@ function CampaignPage() {
   };
 
   function SaveSession() {
-    debugger;
+    
     const bookActivity = {
       activity: activity,
       peopleNumber: peopleNumber,
@@ -84,7 +84,7 @@ function CampaignPage() {
       var response = FetchService.GetActivityById(activityId);
 
       response.then((data) => {
-        debugger;
+        
         if (data) {
           setActivity(data.data[0]);
           setPeopleNumber(data.data[0]?.minPerson);
