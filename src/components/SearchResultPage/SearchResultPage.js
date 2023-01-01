@@ -40,7 +40,7 @@ function SearchResultPage() {
   const [filteredActivities, setFilteredActivities] = useState([]);
 
   const [visible, setVisible] = useState(8);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchData = () => {
     setIsLoading(true);
@@ -64,7 +64,7 @@ function SearchResultPage() {
         setFilteredActivities(getFilteredActivities(data, filterModal));
         setTimeout(() => {
           setIsLoading(false);
-        }, 1000);
+        }, 3000);
       });
   };
 
@@ -85,7 +85,7 @@ function SearchResultPage() {
 
     setTimeout(() => {
       setIsLoading(false);
-    }, 1000);
+    }, 1500);
   }, [city, type, category, peopleNumber, budget]);
 
   const showMoreItems = () => {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import InnerHeader from "../InnerHeader/InnerHeader";
 import "./CampaignPage.scss";
 
@@ -13,17 +13,26 @@ import apiURL from './../../api/API-Url';
 import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/pagination";
+import LoadingOverlay from "react-loading-overlay";
 
 function CampaignPage() {
   let currentdate = new Date();
   const navigate = useNavigate();
   const location = useLocation();
+  const [isLoading, setIsLoading]=useState(true);
+
+
+  //getting activity id from previous screen
+
+  const activityId = location.state?.id;
 
   const [booking, setBooking] = useState({ currentdate });
-  const [activity, setActivity] = useState(location.state);
+
+  var [activity, setActivity] = useState({});
+
   const [peopleNumber, setPeopleNumber] = useState(+location.state?.minPerson);
-  const [images, setImages] = useState(JSON.parse(activity.images));
-  const [userObject, setUser] = useState(isLoggedIn()?.user);
+  const [images, setImages] = useState([]);
+  const userObject = isLoggedIn()?.user;
 
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
@@ -56,7 +65,28 @@ function CampaignPage() {
     });
   };
 
+  useEffect(() => {
+    const GetActivityById = () => {
+      var response = FetchService.GetActivityById(activityId);
+
+      response.then((data) => {
+        if (data) {
+          setActivity(data.data[0]);
+          setImages(JSON.parse(data.data[0]?.images));
+          setTimeout(() => {setIsLoading(false)}, 1000);
+        }
+      });
+    };
+
+    GetActivityById();
+  }, []);
+
   return (
+    <LoadingOverlay
+    active={isLoading}
+    spinner
+    text="Behandler forespørselen din"
+  >
     <div className="campaign_Page">
       <InnerHeader HeaderHeading={activity.name} PageText={activity.name} />
 
@@ -267,6 +297,7 @@ function CampaignPage() {
         </div>
       </div>
     </div>
+    </LoadingOverlay>
   );
 }
 
