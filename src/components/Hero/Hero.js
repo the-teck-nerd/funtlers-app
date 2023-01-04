@@ -170,7 +170,7 @@ function Hero() {
                               Datenight
                             </button>
                           </li>
-                          <li className="inspiration_li">
+                          {/* <li className="inspiration_li">
                             <button
                               className="inspiration_btn Theme_btn_primary_inspiration"
                               onClick={() => {
@@ -179,7 +179,7 @@ function Hero() {
                             >
                               Barnebursdag
                             </button>
-                          </li>
+                          </li> */}
                           <li className="inspiration_li">
                             <button
                               className="inspiration_btn Theme_btn_primary_inspiration"
@@ -261,7 +261,7 @@ function Hero() {
                               After work
                             </button>
                           </li>
-                          <li className="inspiration_li">
+                          {/* <li className="inspiration_li">
                             <button
                               className="inspiration_btn Theme_btn_primary_inspiration"
                               onClick={() => {
@@ -270,7 +270,7 @@ function Hero() {
                             >
                               Julebord
                             </button>
-                          </li>
+                          </li> */}
                           <li className="inspiration_li">
                             <button
                               className="inspiration_btn Theme_btn_primary_inspiration"
