@@ -81,7 +81,8 @@ function AddActivity() {
     activity.maxPerson = maxPerson;
     activity.category = category;
     activity.activityType = type;
-    activity.discountPercent = 100 - (price / originalPrice) * 100;
+    debugger;
+    activity.discountPercent = (100 - (price / originalPrice) * 100) || 0;
     activity.ownerID = partnerId;
 
     setIsLoading(true);
