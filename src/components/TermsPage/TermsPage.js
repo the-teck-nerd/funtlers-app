@@ -169,7 +169,7 @@ function TermsPage() {
               om dealen, vilkår og prissetting.
             </p>
           </div>
-          <div className="terms-section">
+          {/* <div className="terms-section">
             <h2 className="heading-h2">Betaling</h2>
             <h3 className="heading-h2 sub-heading">Klarna Checkout</h3>
             <p className="heading-s">
@@ -218,7 +218,7 @@ function TermsPage() {
               redgjørelse over hva dette innebærer, les vår integritetspolicy og
               Klarnas databeskyttelsespolicy.
             </p>
-          </div>
+          </div> */}
 
           <div className="terms-section">
             <h2 className="heading-h2">Angrerett</h2>
