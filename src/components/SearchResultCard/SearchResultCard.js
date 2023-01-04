@@ -31,7 +31,7 @@ function SearchResultCard(props) {
         </div>
         <div className="content">
           <Link className="heading-lb card_heading">{props.CardHeading}</Link>
-          <p className="heading-s card_desc">{props.CardDesc}</p>
+          <p className="heading-s card_desc_activity">{props.CardDesc}</p>
         </div>
       </div>
     </div>
