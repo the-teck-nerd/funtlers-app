@@ -16,10 +16,10 @@ export function getAllActivityCategories() {
       value: "datenight",
       label: "Datenight",
     },
-    {
-      value: "barnebursdag",
-      label: "Barnebursdag",
-    },
+    // {
+    //   value: "barnebursdag",
+    //   label: "Barnebursdag",
+    // },
     {
       value: "bursdag",
       label: "Bursdag",
@@ -48,10 +48,10 @@ export function getAllActivityCategories() {
       value: "afterWork",
       label: "After work",
     },
-    {
-      value: "julebord",
-      label: "Julebord",
-    },
+    // {
+    //   value: "julebord",
+    //   label: "Julebord",
+    // },
     {
       value: "utdrikningslag",
       label: "Utdrikningslag",
