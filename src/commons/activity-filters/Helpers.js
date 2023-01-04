@@ -1,7 +1,7 @@
 export function getAllActivityCategories() {
   const categories = [
     {
-      value: "all",
+      value: "default",
       label: "Kategori",
     },
     {
@@ -63,7 +63,7 @@ export function getAllActivityCategories() {
 export function getAllActivityTypes() {
   const types = [
     {
-      value: "all",
+      value: "default",
       label: "Type",
     },
     {
@@ -85,7 +85,7 @@ export function getAllActivityTypes() {
 export function getAllCities() {
   const cities = [
     {
-      value: "all",
+      value: "default",
       label: "Sted",
     },
     {
@@ -119,7 +119,7 @@ export function getAllCities() {
 export function getBudgetOptions() {
   const budgetOptions = [
     {
-      value: "all",
+      value: "default",
       label: "Pris per person",
     },
     {
@@ -150,7 +150,7 @@ export function getBudgetOptions() {
 export function getNumberOfPeopleOptions() {
   const peopleOptions = [
     {
-      value: "all",
+      value: "default",
       label: "Antall",
     },
     {
@@ -195,17 +195,21 @@ export function getFilters(type) {
 
   //Removing all type pf option if we are add any activity
   if (type === "add") {
-    filterModal.types = filterModal.types.filter((x) => x.value !== "all");
+    filterModal.types = filterModal.types.filter(
+      (x) => x.value !== "all" && x.value !== "default"
+    );
     filterModal.categories = filterModal.categories.filter(
-      (x) => x.value !== "all"
+      (x) => x.value !== "all" && x.value !== "default"
     );
     filterModal.budgetOptions = filterModal.budgetOptions.filter(
-      (x) => x.value !== "all"
+      (x) => x.value !== "all" && x.value !== "default"
     );
     filterModal.peopleNumber = filterModal.peopleNumber.filter(
-      (x) => x.value !== "all"
+      (x) => x.value !== "all" && x.value !== "default"
     );
-    filterModal.cities = filterModal.cities.filter((x) => x.value !== "all");
+    filterModal.cities = filterModal.cities.filter(
+      (x) => x.value !== "all" && x.value !== "default"
+    );
   }
 
   return filterModal;
@@ -217,14 +221,20 @@ export function getFilteredActivities(activities, filterModal) {
 
   const filteredActivities = activities.filter(
     (activity) =>
-      (filterModal.city === "all" || activity.city === filterModal.city) &&
+      (filterModal.city === "all" ||
+        filterModal.city === "default" ||
+        activity.city === filterModal.city) &&
       (filterModal.type === "all" ||
+        filterModal.type === "default" ||
         activity.activityType === filterModal.type) &&
       (filterModal.category === "all" ||
+        filterModal.category === "default" ||
         activity.category === filterModal.category) &&
       (filterModal.peopleNumber === "all" ||
+        filterModal.peopleNumber === "default" ||
         (activity.minPerson >= minPeople && activity.minPerson <= maxPeople)) &&
       (filterModal.budget === "all" ||
+        filterModal.budget === "default" ||
         (activity.price >= minBudget && activity.price <= maxBudget))
   );
 
