@@ -100,7 +100,7 @@ function EditActivity() {
     activityRequest.maxPerson = maxPerson;
     activityRequest.category = category;
     activityRequest.activityType = type;
-    activityRequest.discountPercent = 100 - (price / originalPrice) * 100;
+    activityRequest.discountPercent = (100 - (price / originalPrice) * 100) || 0;
 
     activityRequest.ownerID = partnerId;
 
