@@ -8,8 +8,8 @@ import ThemeBtn from "../ThemeBtn/ThemeBtn";
 
 function Footer() {
   const scrollToTop = () => {
-    window.scrollTo(0, 0)
-}
+    window.scrollTo(0, 0);
+  };
   return (
     <>
       <section className="footer_main">
@@ -27,11 +27,11 @@ function Footer() {
                 <p className="desc2 company-data">
                   FUNTLERS AS
                   <br />
-                  930 276 367
+                  Org.nr 930 276 367
                   <br />
                   Orestien 30C, 1387 Asker
                   <br />
-                  Vilkår
+                  
                 </p>
                 <ul className="social_ul">
                   <li className="social_li">
@@ -103,7 +103,7 @@ function Footer() {
             <div className="col-lg-4 col-md-6 col-sm-6 col_sub_otr">
               <div className="col_sub_inr">
                 <h3 className="heading-h3 heading_sub">
-                  Abonner på vårt nyhetsrev!
+                  Abonner på vårt nyhetsbrev!
                 </h3>
                 <p className="heading-s desc_sub">
                   Få de ferskeste oppdateringene fra oss

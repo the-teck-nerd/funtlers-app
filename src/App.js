@@ -46,15 +46,15 @@ import TermsPage from "./components/TermsPage/TermsPage";
 import EditProfile from "./components/EditProfile/EditProfile";
 import OrderedActivity from "./components/OrderedActivity/OrderedActivity";
 import PartnerActivities from "./Dashboard/PartnerActivities/PartnerActivities";
-import AnalyticsPage from './Dashboard/Analytics/AnalyticsPage';
-import PartnerProfilePage from './Dashboard/PartnerProfilePage/PartnerProfilePage';
+import AnalyticsPage from "./Dashboard/Analytics/AnalyticsPage";
+import PartnerProfilePage from "./Dashboard/PartnerProfilePage/PartnerProfilePage";
 
 function App() {
   const [SideBar, setSideBar] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const [userObject, setUser] = useState(isLoggedIn());
-  
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -105,7 +105,9 @@ function App() {
                   <Route
                     path="/partner-analytics"
                     exact={true}
-                    element={<PartnerAnalyticsPage setIsLoading={setIsLoading}  />}
+                    element={
+                      <PartnerAnalyticsPage setIsLoading={setIsLoading} />
+                    }
                   />
                   <Route
                     path="/order"
@@ -190,33 +192,37 @@ function App() {
                   <Route
                     path="/partner-dashboard"
                     exact={true}
-                    element={<PartnerPage  setIsLoading={setIsLoading}/>}
+                    element={<PartnerPage setIsLoading={setIsLoading} />}
                   />
                   <Route
                     path="/partner-orders"
                     exact={true}
-                    element={<PartnerOrderPage  setIsLoading={setIsLoading} />}
+                    element={<PartnerOrderPage setIsLoading={setIsLoading} />}
                   />
                   <Route
                     path="/partner-activities"
                     exact={true}
-                    element={<PartnerActivities setIsLoading={setIsLoading}/>}
+                    element={<PartnerActivities setIsLoading={setIsLoading} />}
                   />
                   <Route
                     path="/analytics"
                     exact={true}
-                    element={<AnalyticsPage  setIsLoading={setIsLoading}/>}
+                    element={<AnalyticsPage setIsLoading={setIsLoading} />}
                   />
-                  <Route path="/order" exact={true} element={<OrderPage  setIsLoading={setIsLoading} />} />
+                  <Route
+                    path="/order"
+                    exact={true}
+                    element={<OrderPage setIsLoading={setIsLoading} />}
+                  />
                   <Route
                     path="/edit-order"
                     exact={true}
-                    element={<EditOrderPage  setIsLoading={setIsLoading} />}
+                    element={<EditOrderPage setIsLoading={setIsLoading} />}
                   />
                   <Route
                     path="/ordered-activity"
                     exact={true}
-                    element={<OrderedActivity  setIsLoading={setIsLoading}/>}
+                    element={<OrderedActivity setIsLoading={setIsLoading} />}
                   />
                 </Routes>
               </div>
@@ -227,56 +233,66 @@ function App() {
     </>
   ) : (
     <>
-      <Header setUser={setUser} userObject={userObject} />
-      <Routes>
-        <Route path="/" exact={true} element={<LandingPage />} />
-        <Route path="/login" exact={true} element={<Login />} />
-        <Route path="/contact" exact={true} element={<ContactPage />} />
-        <Route path="/faq" exact={true} element={<FaqPage />} />
-        <Route path="/about" exact={true} element={<AboutPage />} />
-        <Route path="/terms" exact={true} element={<TermsPage />} />
-        <Route path="/partner" exact={true} element={<PartnersPage />} />
-        <Route path="/activity" exact={true} element={<Activities />} />
-        <Route path="/payment" exact={true} element={<Payments />} />
-        <Route path="/login" exact={true} element={<Login />} />
-        <Route path="/register" exact={true} element={<Register />} />
-        <Route path="/partner" exact={true} element={<PartnersPage />} />
-        <Route path="/activities" exact={true} element={<SearchResultPage />} />
-        <Route path="/team" exact={true} element={<TeamPage />} />
-        <Route
-          path="/booking-confirmation"
-          exact={true}
-          element={<BookingConPage />}
-        />
-        <Route
-          path="/activity-detail"
-          exact={true}
-          element={<CampaignPage />}
-        />
-        <Route path="/add-activity" exact={true} element={<AddActivity />} />
-        <Route path="/edit-activity" exact={true} element={<AddActivity />} />
+      <LoadingOverlay
+        active={isLoading}
+        spinner
+        text="Behandler forespørselen din"
+      >
+        <Header setUser={setUser} userObject={userObject} />
+        <Routes>
+          <Route path="/" exact={true} element={<LandingPage />} />
+          <Route path="/login" exact={true} element={<Login />} />
+          <Route path="/contact" exact={true} element={<ContactPage />} />
+          <Route path="/faq" exact={true} element={<FaqPage />} />
+          <Route path="/about" exact={true} element={<AboutPage />} />
+          <Route path="/terms" exact={true} element={<TermsPage />} />
+          <Route path="/partner" exact={true} element={<PartnersPage />} />
+          <Route path="/activity" exact={true} element={<Activities />} />
+          <Route path="/payment" exact={true} element={<Payments />} />
+          <Route path="/login" exact={true} element={<Login />} />
+          <Route path="/register" exact={true} element={<Register />} />
+          <Route path="/partner" exact={true} element={<PartnersPage />} />
+          <Route
+            path="/activities"
+            exact={true}
+            element={<SearchResultPage />}
+          />
+          <Route path="/team" exact={true} element={<TeamPage />} />
+          <Route
+            path="/booking-confirmation"
+            exact={true}
+            element={<BookingConPage />}
+          />
+          <Route
+            path="/activity-detail"
+            exact={true}
+            element={<CampaignPage />}
+          />
+          <Route path="/add-activity" exact={true} element={<AddActivity />} />
+          <Route path="/edit-activity" exact={true} element={<AddActivity />} />
 
-        <Route path="/add-partner" exact={true} element={<AddPartner />} />
-        <Route path="/edit-partner" exact={true} element={<EditPartner />} />
+          <Route path="/add-partner" exact={true} element={<AddPartner />} />
+          <Route path="/edit-partner" exact={true} element={<EditPartner />} />
 
-        <Route path="/features" exact={true} element={<FeaturesPage />} />
-        {userObject && (
-          <>
-            <Route
-              path="/edit-profile"
-              exact={true}
-              element={<EditProfile />}
-            />
-            <Route path="/my-page" exact={true} element={<CustomerPage />} />
-            <Route
-              path="/ordered-activity"
-              exact={true}
-              element={<OrderedActivity />}
-            />
-          </>
-        )}
-      </Routes>
-      <Footer />
+          <Route path="/why-choose-us" exact={true} element={<FeaturesPage />} />
+          {userObject && (
+            <>
+              <Route
+                path="/edit-profile"
+                exact={true}
+                element={<EditProfile />}
+              />
+              <Route path="/my-page" exact={true} element={<CustomerPage />} />
+              <Route
+                path="/ordered-activity"
+                exact={true}
+                element={<OrderedActivity />}
+              />
+            </>
+          )}
+        </Routes>
+        <Footer />
+      </LoadingOverlay>
     </>
   );
 }

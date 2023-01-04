@@ -144,9 +144,9 @@ function CampaignPage() {
                   <h3 className="heading-h3 heading_terms">Vilkår</h3>
                   <div className="content">
                     <p className="heading-m campaign_text">
-                      Prisen: <b> {activity.price + " NOK"} </b> {" pr.pers"}
+                      Pris per person: <b> {activity.price + " NOK"} </b> {" pr.pers"}
                       <br />
-                      Valid for:{" "}
+                      Gyldig for:{" "}
                       <b>
                         {activity.minPerson} - {activity.maxPerson}
                       </b>{" "}
@@ -218,14 +218,14 @@ function CampaignPage() {
                       </li>
                       <li className="text_li">
                         <h3 className="text_heading heading-h3">
-                          {"Totalkostnad: " +
+                          {"Total kostnad: " +
                             activity.price * peopleNumber +
                             " NOK"}
                         </h3>
                       </li>
                       <li className="text_li">
                         <h3 className="text_heading heading-h3">
-                          {"Prisen: " + activity.price + " NOK pr.pers"}
+                          {"Pris per person: " + activity.price + " NOK pr.pers"}
                         </h3>
                       </li>
                       <li className="text_li">

@@ -91,9 +91,10 @@ function OrderedActivity() {
                   <h3 className="heading-h3 heading_terms">Vilkår</h3>
                   <div className="content">
                     <p className="heading-m campaign_text">
-                      Prisen: <b> {order?.Price + " NOK"} </b> {" pr.pers"}
+                      Pris per person: <b> {order?.Price + " NOK"} </b>{" "}
+                      {" pr.pers"}
                       <br />
-                      Valid for:{" "}
+                      Gyldig for:{" "}
                       <b>
                         {order?.MinPerson} - {order?.MaxPerson}
                       </b>{" "}
@@ -170,7 +171,7 @@ function OrderedActivity() {
                       </li>
                       <li className="text_li">
                         <h3 className="text_heading ">
-                          {"Totalkostnad: " + order?.TotalAmount + " NOK"}
+                          {"Total kostnad: " + order?.TotalAmount + " NOK"}
                         </h3>
                         <h3 className="text_heading "></h3>
                       </li>

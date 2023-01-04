@@ -38,16 +38,15 @@ function ContactSection() {
         <div className="row row_custom">
           <div className="col-lg-6 col_content_otr margin-temp">
             <div className="col_content_inr">
-              <h2 className="heading-h22">
-                Ikke nøl med å ta kontakt om du har lurer på noe, har
+              <h2 className="heading-h22 mb-5">
+                Ikke nøl med å ta kontakt dersom du lurer på noe, har
                 tilbakemeldinger eller ideer du ønsker å foreslå!
               </h2>
               {/* <p className='heading-m desc'>
                                 The sources of ideas for software products are plentiful. These ideas can come from market research.
                             </p> */}
               <ul className="icon_ul">
-                <li className="icon_li">
-                </li>
+                <li className="icon_li"></li>
                 <li className="icon_li">
                   <Link
                     to="mailto:contact@funtlers.com"
@@ -99,7 +98,7 @@ function ContactSection() {
               <div className="input_otr">
                 <textarea
                   className="Theme_input_white Text_area"
-                  placeholder="Meldig"
+                  placeholder="Melding"
                 />
               </div>
               <div className="action_otr">
@@ -112,7 +111,6 @@ function ContactSection() {
           </div>
         </div>
       </div>
-     
     </section>
   );
 }

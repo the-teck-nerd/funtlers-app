@@ -96,7 +96,7 @@ function PartnerActivities({ setIsLoading }) {
         {activities.length > 8 && (
           <div className="action_otr">
             <button onClick={showMoreItems} className="Theme_btn_primary">
-              {"Load More"}
+              {"Last mer"}
             </button>
           </div>
         )}

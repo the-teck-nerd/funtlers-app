@@ -88,7 +88,7 @@ function ActivityPage({ setIsLoading }) {
       {/* <div className="action_otr">
         <ThemeBtn
           BtnClass="Theme_btn_primary load_more_btn"
-          BtnText="Load More"
+          BtnText="Last mer"
         />
       </div> */}
     </div>

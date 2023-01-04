@@ -182,7 +182,7 @@ function SearchResultPage() {
             </div>
             <div className="action_otr">
               <button onClick={showMoreItems} className="Theme_btn_primary">
-                {"Load More"}
+                {"Last mer"}
               </button>
             </div>
           </div>
