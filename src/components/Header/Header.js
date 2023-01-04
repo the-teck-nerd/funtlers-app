@@ -76,7 +76,7 @@ function Header({ setUser, userObject }) {
             <div className="action_menu_otr">
               <ul className="menu_ul">
                 <li className="menu_li">
-                  <Link to="/about" className="menu_a heading-sb">
+                  <Link to="/why-choose-us" className="menu_a heading-sb">
                     Slik fungerer det
                   </Link>
                 </li>

@@ -19,6 +19,7 @@ import "./../ContactSection/ContactSection";
 
 import TextImg from "../../img/funtler-text-img.svg";
 import Input from "../Input/Input";
+import AboutRow from "../AboutRow/AboutRow";
 
 function PartnersPage() {
   return (
@@ -109,15 +110,24 @@ function PartnersPage() {
           <div className="row row_custom">
             <div className="col-lg-6 col_content_otr margin-temp">
               <div className="col_content_inr">
-                <h2 className="heading-h22">Hvorfor velge funtlers</h2>
-                <p className="heading-m desc">
+                <h2 className="heading-h22 mb-5">Hvorfor velge funtlers</h2>
+                
+                <p className="heading-s desc">
                   Funtler sitt mål er å være en ledende sosial markedsplass for
                   alle, som tilbyr fysiske og digitale aktiviteter i hele
-                  Norden/norge/velg. Hvorfor samarbeide med Funtler? Unik
+                  Norden/norge/velg. 
+                 </p>
+                 <p className="heading-s desc"> 
+                  Hvorfor samarbeide med Funtler? 
+                  </p>
+                  <p className="heading-s desc"> 
+                  Unik
                   eksponeringsmulighet Koble virksomheten din opp mot bredt
                   publikum i hele Norge Maksimere antall bookinger månedlig Vær
                   endel av vårt unike utvalg av sosiale aktiviteter Trofaste og
-                  tilbakevendende kunder Er dette interessant? Fyll ut følgende
+                  tilbakevendende kunder Er dette interessant? </p>
+                  <p className="heading-s desc"> 
+                  Fyll ut følgende
                   skjema også tar vi kontakt med deg for en uforpliktende prat.{" "}
                 </p>
               </div>
